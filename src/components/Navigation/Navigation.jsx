@@ -7,6 +7,8 @@ import '../App/App.css';
 
 import React, { useState } from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -23,13 +25,54 @@ function Navigation() {
     const aboutOpen = Boolean(aboutMenu);
     const horsesOpen = Boolean(horsesMenu);
 
+    const navigate = useNavigate();
+
     function handleMenuClick(event) {
+
         if (event.target.id === 'about-button') {
             setAboutMenu(event.currentTarget);
         }
         else if (event.target.id === 'horses-button') {
             setHorsesMenu(event.currentTarget);
         }
+        else if (event.target.id === 'home-button') {
+            navigate('/home')
+        }
+        else if (event.target.id === 'mission-button') {
+            navigate('/mission')
+            handleMenuClose()
+        }
+        else if (event.target.id === 'testimonials-button') {
+            navigate('/testimonials')
+            handleMenuClose()
+        }
+        else if (event.target.id === 'visit-button') {
+            navigate('/visit')
+            handleMenuClose()
+        }
+        else if (event.target.id === 'stallions-button') {
+            navigate('/stallions_gallery')
+            handleMenuClose()
+        }
+        else if (event.target.id === 'mares-button') {
+            navigate('/mares_gallery')
+            handleMenuClose()
+        }
+        else if (event.target.id === 'expecting-button') {
+            navigate('/expecting_gallery')
+            handleMenuClose()
+        }
+        else if (event.target.id === 'sales-button') {
+            navigate('/sales_gallery')
+            handleMenuClose()
+        }
+        else if (event.target.id === 'social-button') {
+            navigate('/social_media')
+        }
+        else if (event.target.id === 'contact-button') {
+            navigate('/contact')
+        }
+
     }
 
     function handleMenuClose() {
@@ -42,9 +85,9 @@ function Navigation() {
         
         <div className="navigation-header">
 
-            <img className='navigation-header-logo' src="westwind-logo.jpg" alt="logo"/>
+            <img id='home-button' className='navigation-header-logo' src="westwind-logo.jpg" alt="logo" onClick={handleMenuClick}/>
 
-            <Button variant="text">Home</Button>
+            <Button id='home-button' variant="text" onClick={handleMenuClick}>Home</Button>
 
             <Button id="about-button" 
                 aria-controls={aboutMenu ? 'about-menu' : false} 
@@ -60,21 +103,20 @@ function Navigation() {
                 onClick={handleMenuClick}
             >Horses</Button>
 
-
-            <Button variant="text">Social Media</Button>
-            <Button variant="text">Contact</Button>
+            <Button id='social-button' variant="text" onClick={handleMenuClick}>Social Media</Button>
+            <Button id='contact-button' variant="text" onClick={handleMenuClick}>Contact</Button>
 
             <Menu id="about-menu" anchorEl={aboutMenu} open={aboutOpen} onClose={handleMenuClose}>
-                <MenuItem onClick={handleMenuClose}>Mission</MenuItem>
-                <MenuItem onClick={handleMenuClose}>Testimonials</MenuItem>
-                <MenuItem onClick={handleMenuClose}>Visit</MenuItem>
+                <MenuItem id='mission-button' onClick={handleMenuClick}>Mission</MenuItem>
+                <MenuItem id='testimonials-button' onClick={handleMenuClick}>Testimonials</MenuItem>
+                <MenuItem id='visit-button' onClick={handleMenuClick}>Visit</MenuItem>
             </Menu>
 
             <Menu id="horses-menu" anchorEl={horsesMenu} open={horsesOpen} onClose={handleMenuClose}>
-                <MenuItem onClick={handleMenuClose}>Stallions</MenuItem>
-                <MenuItem onClick={handleMenuClose}>Mares</MenuItem>
-                <MenuItem onClick={handleMenuClose}>Sales List</MenuItem>
-                <MenuItem onClick={handleMenuClose}>Expecting 2023</MenuItem>
+                <MenuItem id='stallions-button' onClick={handleMenuClick}>Stallions</MenuItem>
+                <MenuItem id='mares-button' onClick={handleMenuClick}>Mares</MenuItem>
+                <MenuItem id='sales-button' onClick={handleMenuClick}>Sales List</MenuItem>
+                <MenuItem id='expecting-button' onClick={handleMenuClick}>Expecting 2023</MenuItem>
             </Menu>
 
         </div>
