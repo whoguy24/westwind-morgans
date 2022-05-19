@@ -1,5 +1,6 @@
 body {
   margin: 0px;
+  margin: auto;
 }
 
 p, h1, h2, h3, h4, h5, h6 {
@@ -31,4 +32,39 @@ p, h1, h2, h3, h4, h5, h6 {
 .navigation-header Button:hover {
   background-color: #6c2c2a;
   color: #e2b04d;
+}
+
+.footer {
+  position:absolute;
+  text-align: center;
+  bottom: 0px; 
+  width: 100%;
+  border-top: 1px solid #DDDDDD;
+  background-color: white;
+}
+
+.swiper {
+  margin-top: 42px;
+  width: 100%;
+  height: 60vh
+}
+
+.swiper-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: hsla(0, 0%, 0%, 0) !important;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover{
+  color: hsla(0, 0%, 100%, 0.5) !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: hsla(0, 0%, 100%, 0.5) !important;
 }
