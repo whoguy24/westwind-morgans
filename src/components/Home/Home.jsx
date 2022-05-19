@@ -5,21 +5,80 @@
 // Import Stylesheets
 import '../App/App.css';
 
-///////////////////////////////////////////////////////
-///// COMPONENT FUNCTION //////////////////////////////
-///////////////////////////////////////////////////////
+import {React, useRef} from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css'
+import {Navigation, EffectFade, Autoplay, Pagination} from 'swiper'
+import 'swiper/css/navigation'
+import 'swiper/css/effect-fade'
+import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
+
+
+
 
 function Home() {
 
-    // Render DOM
-    return (
-        
-        <div>
-            <h1>Home Page</h1>
-        </div>
+  return (
 
-    );
+    <div>
+
+      <Swiper
+        modules={[Navigation, EffectFade, Pagination, Autoplay]}
+        navigation
+        effect={'fade'}
+        speed={800}
+        autoplay={{
+          delay: 8000,
+          pauseOnMouseEnter: true
+        }}
+        slidesPerView={1}
+        pagination={{ clickable: true }}
+        loop
+        className='swiper'
+      >
+
+
+        <SwiperSlide className='swiper-slide'>
+          <img className='swiper-image' src='/images/slide_1.png' />
+        </SwiperSlide>
+
+        <SwiperSlide className='swiper-slide'>
+          <img className='swiper-image' src='/images/slide_2.png' />
+        </SwiperSlide>
+
+        <SwiperSlide className='swiper-slide'>
+          <img className='swiper-image' src='/images/slide_3.png' />
+        </SwiperSlide>
+
+        <SwiperSlide className='swiper-slide'>
+          <img className='swiper-image' src='/images/slide_4.png' />
+        </SwiperSlide>
+
+        <SwiperSlide className='swiper-slide'>
+          <img className='swiper-image' src='/images/slide_5.png' />
+        </SwiperSlide>
+
+      </Swiper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+  );
+
 }
 
-// Export Component Function
 export default Home;

@@ -3,7 +3,6 @@ import './App.css';
 import { HashRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 
 import Navigation from '../Navigation/Navigation';
-
 import Contact from '../Contact/Contact';
 import Home from '../Home/Home';
 import HorseDetail from '../HorseDetail/HorseDetail';
@@ -39,7 +38,7 @@ function App() {
           <Route exact path='/visit' element={<Visit />} />
           <Route exact path='*' element={<NotFound />} />
         </Routes>
-        <Footer/>
+        <Footer className='footer'/>
       </Router>
 
     </div>
