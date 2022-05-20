@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import Drawer from '@mui/material/Drawer';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import MenuIcon from '@mui/icons-material/Menu';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -163,7 +163,7 @@ function Navigation() {
 
             }
 
-            <Drawer variant="temporary" open={drawerActive} onClose={()=>setDrawerActive(false)} anchor={'bottom'}>
+            <SwipeableDrawer variant="temporary" open={drawerActive} onOpen={()=>setDrawerActive(true)} onClose={()=>setDrawerActive(false)} anchor={'bottom'}>
 
                 <List className='navigation-menu-list'>
 
@@ -255,7 +255,7 @@ function Navigation() {
 
                 </List>
 
-            </Drawer>
+            </SwipeableDrawer>
 
 
         </div>
