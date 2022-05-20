@@ -3,10 +3,6 @@ body {
   margin: auto;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
-  font-family: "Roboto","Helvetica","Arial",sans-serif;
-}
-
 .navigation-header {
   background-color: white;
   height: 50px;
@@ -14,6 +10,27 @@ p, h1, h2, h3, h4, h5, h6 {
   width: 100%;
   justify-content: left;
   border-bottom: 1px solid #DDDDDD;
+}
+
+.navigation-header-mobile {
+  background-color: white;
+  height: 50px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: 1px solid #DDDDDD;
+}
+
+.navigation-header-mobile Button {
+  color: #6c2c2a;
+  padding: 20px;
+  border-radius: 0px;
+}
+
+.navigation-header-mobile Button:hover {
+  background-color: #6c2c2a;
+  color: #e2b04d;
+  border-radius: 0px;
 }
 
 .navigation-header-logo {
