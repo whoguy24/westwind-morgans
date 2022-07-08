@@ -5,7 +5,7 @@
 // Import Stylesheets
 import '../App/App.css';
 
-import {React, useRef} from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css'
 import {Navigation, EffectFade, Autoplay, Pagination} from 'swiper'
