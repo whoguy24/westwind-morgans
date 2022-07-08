@@ -33,7 +33,6 @@ function Navigation() {
 
     const [drawerActive, setDrawerActive] = useState(false);
 
-    const [height, setHeight] = useState(document.body.clientHeight);
     const [width, setWidth] = useState(document.body.clientWidth);
 
     const aboutOpen = Boolean(aboutMenu);
@@ -44,7 +43,6 @@ function Navigation() {
     window.addEventListener('resize', handleContentSizeChange)
 
     function handleContentSizeChange() {
-        setHeight(document.body.clientHeight)
         setWidth(document.body.clientWidth)
     }
     
@@ -116,37 +114,47 @@ function Navigation() {
 
                     <img id='home-button' className='navigation-header-logo' src="westwind-logo.jpg" alt="logo" onClick={handleMenuClick}/>
 
-                    <Button id='home-button' variant="text" onClick={handleMenuClick}>Home</Button>
+                    <div className='navigation-left'>
 
-                    <Button id="about-button" 
-                        aria-controls={aboutMenu ? 'about-menu' : false} 
-                        aria-haspopup="true" 
-                        aria-expanded={aboutMenu ? 'true' : false}
-                        onClick={handleMenuClick}
-                    >About</Button>
+                        <Button id='home-button' variant="text" onClick={handleMenuClick}>Home</Button>
 
-                    <Button id="horses-button" 
-                        aria-controls={horsesMenu ? 'horses-menu' : false} 
-                        aria-haspopup="true" 
-                        aria-expanded={horsesMenu ? 'true' : false}
-                        onClick={handleMenuClick}
-                    >Horses</Button>
+                        <Button id="about-button" 
+                            aria-controls={aboutMenu ? 'about-menu' : false} 
+                            aria-haspopup="true" 
+                            aria-expanded={aboutMenu ? 'true' : false}
+                            onClick={handleMenuClick}
+                        >About</Button>
 
-                    <Button id='social-button' variant="text" onClick={handleMenuClick}>Social Media</Button>
-                    <Button id='contact-button' variant="text" onClick={handleMenuClick}>Contact</Button>
+                        <Button id="horses-button" 
+                            aria-controls={horsesMenu ? 'horses-menu' : false} 
+                            aria-haspopup="true" 
+                            aria-expanded={horsesMenu ? 'true' : false}
+                            onClick={handleMenuClick}
+                        >Horses</Button>
 
-                    <Menu id="about-menu" anchorEl={aboutMenu} open={aboutOpen} onClose={handleMenuClose}>
-                        <MenuItem id='mission-button' onClick={handleMenuClick}>Mission</MenuItem>
-                        <MenuItem id='testimonials-button' onClick={handleMenuClick}>Testimonials</MenuItem>
-                        <MenuItem id='visit-button' onClick={handleMenuClick}>Visit</MenuItem>
-                    </Menu>
+                        <Button id='social-button' variant="text" onClick={handleMenuClick}>Social Media</Button>
+                        <Button id='contact-button' variant="text" onClick={handleMenuClick}>Contact</Button>
 
-                    <Menu id="horses-menu" anchorEl={horsesMenu} open={horsesOpen} onClose={handleMenuClose}>
-                        <MenuItem id='stallions-button' onClick={handleMenuClick}>Stallions</MenuItem>
-                        <MenuItem id='mares-button' onClick={handleMenuClick}>Mares</MenuItem>
-                        <MenuItem id='sales-button' onClick={handleMenuClick}>Sales List</MenuItem>
-                        <MenuItem id='expecting-button' onClick={handleMenuClick}>Expecting 2023</MenuItem>
-                    </Menu>
+                        <Menu id="about-menu" anchorEl={aboutMenu} open={aboutOpen} onClose={handleMenuClose}>
+                            <MenuItem id='mission-button' onClick={handleMenuClick}>Mission</MenuItem>
+                            <MenuItem id='testimonials-button' onClick={handleMenuClick}>Testimonials</MenuItem>
+                            <MenuItem id='visit-button' onClick={handleMenuClick}>Visit</MenuItem>
+                        </Menu>
+
+                        <Menu id="horses-menu" anchorEl={horsesMenu} open={horsesOpen} onClose={handleMenuClose}>
+                            <MenuItem id='stallions-button' onClick={handleMenuClick}>Stallions</MenuItem>
+                            <MenuItem id='mares-button' onClick={handleMenuClick}>Mares</MenuItem>
+                            <MenuItem id='sales-button' onClick={handleMenuClick}>Sales List</MenuItem>
+                            <MenuItem id='expecting-button' onClick={handleMenuClick}>Expecting 2023</MenuItem>
+                        </Menu>
+
+                    </div>
+
+                    <div className='navigation-right'>
+
+                        <Button id='login-button'>Log In</Button>
+
+                    </div>
 
                 </div>
 

@@ -13,9 +13,6 @@ function Home() {
 
     <div>
 
-      <h5>Header</h5>
-      <p>This is a bunch of words.</p>
-
     </div>
 
 
