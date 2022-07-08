@@ -1,6 +1,9 @@
 import './App.css';
 
+import React, { useEffect } from 'react';
 import { HashRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import Navigation from '../Navigation/Navigation';
 import Contact from '../Contact/Contact';
@@ -15,6 +18,13 @@ import NotFound from '../NotFound/NotFound';
 import Footer from '../Footer/Footer';
 
 function App() {
+
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch({ type: 'FETCH_USER' });
+  // }, [dispatch]);
+
   return (
     <div className="App">
 

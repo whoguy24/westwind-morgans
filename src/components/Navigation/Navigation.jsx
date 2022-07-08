@@ -8,6 +8,7 @@ import '../App/App.css';
 import React, { useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
@@ -21,12 +22,18 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
+import DialogTitle from '@mui/material/DialogTitle';
+import Dialog from '@mui/material/Dialog';
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
 ///////////////////////////////////////////////////////
 
 function Navigation() {
+
+    const dispatch = useDispatch();
+
+    const user = useSelector(store => store.user);
 
     const [aboutMenu, setAboutMenu] = useState();
     const [horsesMenu, setHorsesMenu] = useState();
@@ -103,6 +110,10 @@ function Navigation() {
         setDrawerActive(false)
     }
 
+    function test() {
+        console.log(user);
+    }
+
     // Render DOM
     return (
 
@@ -152,7 +163,7 @@ function Navigation() {
 
                     <div className='navigation-right'>
 
-                        <Button id='login-button'>Log In</Button>
+                        <Button id='login-button' onClick={test}>Log In</Button>
 
                     </div>
 
