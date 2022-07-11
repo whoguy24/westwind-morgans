@@ -8,6 +8,7 @@ import '../App/App.css';
 import React, { useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
@@ -21,12 +22,16 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
+import DialogTitle from '@mui/material/DialogTitle';
+import Dialog from '@mui/material/Dialog';
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
 ///////////////////////////////////////////////////////
 
 function Navigation() {
+
+    const user = useSelector(store => store.user);
 
     const [aboutMenu, setAboutMenu] = useState();
     const [horsesMenu, setHorsesMenu] = useState();
@@ -46,61 +51,65 @@ function Navigation() {
         setWidth(document.body.clientWidth)
     }
     
-    function handleMenuClick(event) {
+    // function handleMenuClick(event) {
 
-        if (event.currentTarget.id === 'about-button') {
-            setAboutMenu(event.currentTarget);
-        }
-        else if (event.currentTarget.id === 'horses-button') {
-            setHorsesMenu(event.currentTarget);
-        }
-        else if (event.currentTarget.id === 'home-button' || event.currentTarget.id === 'home-button-mobile') {
-            navigate('/home')
-            handleMenuClose()
-        }
-        else if (event.currentTarget.id === 'mission-button' || event.currentTarget.id === 'mission-button-mobile') {
-            navigate('/mission')
-            handleMenuClose()
-        }
-        else if (event.currentTarget.id === 'testimonials-button' || event.currentTarget.id === 'testimonials-button-mobile') {
-            navigate('/testimonials')
-            handleMenuClose()
-        }
-        else if (event.currentTarget.id === 'visit-button' || event.currentTarget.id === 'visit-button-mobile') {
-            navigate('/visit')
-            handleMenuClose()
-        }
-        else if (event.currentTarget.id === 'stallions-button' || event.currentTarget.id === 'stallions-button-mobile') {
-            navigate('/stallions_gallery')
-            handleMenuClose()
-        }
-        else if (event.currentTarget.id === 'mares-button' || event.currentTarget.id === 'mares-button-mobile') {
-            navigate('/mares_gallery')
-            handleMenuClose()
-        }
-        else if (event.currentTarget.id === 'expecting-button' || event.currentTarget.id === 'expecting-button-mobile') {
-            navigate('/expecting_gallery')
-            handleMenuClose()
-        }
-        else if (event.currentTarget.id === 'sales-button' || event.currentTarget.id === 'sales-button-mobile') {
-            navigate('/sales_gallery')
-            handleMenuClose()
-        }
-        else if (event.currentTarget.id === 'social-button' || event.currentTarget.id === 'social-button-mobile') {
-            navigate('/social_media')
-            handleMenuClose()
-        }
-        else if (event.currentTarget.id === 'contact-button' || event.currentTarget.id === 'contact-button-mobile') {
-            navigate('/contact')
-            handleMenuClose()
-        }
+    //     if (event.currentTarget.id === 'about-button') {
+    //         setAboutMenu(event.currentTarget);
+    //     }
+    //     else if (event.currentTarget.id === 'horses-button') {
+    //         setHorsesMenu(event.currentTarget);
+    //     }
+    //     else if (event.currentTarget.id === 'home-button' || event.currentTarget.id === 'home-button-mobile') {
+    //         navigate('/home')
+    //         handleMenuClose()
+    //     }
+    //     else if (event.currentTarget.id === 'mission-button' || event.currentTarget.id === 'mission-button-mobile') {
+    //         navigate('/mission')
+    //         handleMenuClose()
+    //     }
+    //     else if (event.currentTarget.id === 'testimonials-button' || event.currentTarget.id === 'testimonials-button-mobile') {
+    //         navigate('/testimonials')
+    //         handleMenuClose()
+    //     }
+    //     else if (event.currentTarget.id === 'visit-button' || event.currentTarget.id === 'visit-button-mobile') {
+    //         navigate('/visit')
+    //         handleMenuClose()
+    //     }
+    //     else if (event.currentTarget.id === 'stallions-button' || event.currentTarget.id === 'stallions-button-mobile') {
+    //         navigate('/stallions_gallery')
+    //         handleMenuClose()
+    //     }
+    //     else if (event.currentTarget.id === 'mares-button' || event.currentTarget.id === 'mares-button-mobile') {
+    //         navigate('/mares_gallery')
+    //         handleMenuClose()
+    //     }
+    //     else if (event.currentTarget.id === 'expecting-button' || event.currentTarget.id === 'expecting-button-mobile') {
+    //         navigate('/expecting_gallery')
+    //         handleMenuClose()
+    //     }
+    //     else if (event.currentTarget.id === 'sales-button' || event.currentTarget.id === 'sales-button-mobile') {
+    //         navigate('/sales_gallery')
+    //         handleMenuClose()
+    //     }
+    //     else if (event.currentTarget.id === 'social-button' || event.currentTarget.id === 'social-button-mobile') {
+    //         navigate('/social_media')
+    //         handleMenuClose()
+    //     }
+    //     else if (event.currentTarget.id === 'contact-button' || event.currentTarget.id === 'contact-button-mobile') {
+    //         navigate('/contact')
+    //         handleMenuClose()
+    //     }
 
-    }
+    // }
 
     function handleMenuClose() {
         setAboutMenu(null);
         setHorsesMenu(null);
         setDrawerActive(false)
+    }
+
+    function test() {
+        console.log(user);
     }
 
     // Render DOM
@@ -152,7 +161,7 @@ function Navigation() {
 
                     <div className='navigation-right'>
 
-                        <Button id='login-button'>Log In</Button>
+                        <Button id='login-button' onClick={test}>Log In</Button>
 
                     </div>
 
@@ -264,6 +273,19 @@ function Navigation() {
                 </List>
 
             </SwipeableDrawer>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         </div>

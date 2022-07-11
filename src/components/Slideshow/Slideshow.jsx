@@ -56,7 +56,7 @@ function Slideshow()
 
             </Swiper>
         </div>
-    )
+    );
 }
 
 export default Slideshow;
