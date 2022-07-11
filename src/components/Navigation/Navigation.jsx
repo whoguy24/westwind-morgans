@@ -3,7 +3,7 @@
 ///////////////////////////////////////////////////////
 
 // Import Stylesheets
-import '../App/App.css';
+import '../Navigation/Navigation.css';
 
 import React, { useState } from 'react';
 
@@ -11,7 +11,12 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Button from '@mui/material/Button';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import MenuIcon from '@mui/icons-material/Menu';
 import Menu from '@mui/material/Menu';
@@ -22,6 +27,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
+
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
 
@@ -30,6 +36,8 @@ import Dialog from '@mui/material/Dialog';
 ///////////////////////////////////////////////////////
 
 function Navigation() {
+
+    const nextYear = new Date().getFullYear() + 1
 
     const user = useSelector(store => store.user);
 
@@ -51,56 +59,56 @@ function Navigation() {
         setWidth(document.body.clientWidth)
     }
     
-    // function handleMenuClick(event) {
+    function handleMenuClick(event) {
 
-    //     if (event.currentTarget.id === 'about-button') {
-    //         setAboutMenu(event.currentTarget);
-    //     }
-    //     else if (event.currentTarget.id === 'horses-button') {
-    //         setHorsesMenu(event.currentTarget);
-    //     }
-    //     else if (event.currentTarget.id === 'home-button' || event.currentTarget.id === 'home-button-mobile') {
-    //         navigate('/home')
-    //         handleMenuClose()
-    //     }
-    //     else if (event.currentTarget.id === 'mission-button' || event.currentTarget.id === 'mission-button-mobile') {
-    //         navigate('/mission')
-    //         handleMenuClose()
-    //     }
-    //     else if (event.currentTarget.id === 'testimonials-button' || event.currentTarget.id === 'testimonials-button-mobile') {
-    //         navigate('/testimonials')
-    //         handleMenuClose()
-    //     }
-    //     else if (event.currentTarget.id === 'visit-button' || event.currentTarget.id === 'visit-button-mobile') {
-    //         navigate('/visit')
-    //         handleMenuClose()
-    //     }
-    //     else if (event.currentTarget.id === 'stallions-button' || event.currentTarget.id === 'stallions-button-mobile') {
-    //         navigate('/stallions_gallery')
-    //         handleMenuClose()
-    //     }
-    //     else if (event.currentTarget.id === 'mares-button' || event.currentTarget.id === 'mares-button-mobile') {
-    //         navigate('/mares_gallery')
-    //         handleMenuClose()
-    //     }
-    //     else if (event.currentTarget.id === 'expecting-button' || event.currentTarget.id === 'expecting-button-mobile') {
-    //         navigate('/expecting_gallery')
-    //         handleMenuClose()
-    //     }
-    //     else if (event.currentTarget.id === 'sales-button' || event.currentTarget.id === 'sales-button-mobile') {
-    //         navigate('/sales_gallery')
-    //         handleMenuClose()
-    //     }
-    //     else if (event.currentTarget.id === 'social-button' || event.currentTarget.id === 'social-button-mobile') {
-    //         navigate('/social_media')
-    //         handleMenuClose()
-    //     }
-    //     else if (event.currentTarget.id === 'contact-button' || event.currentTarget.id === 'contact-button-mobile') {
-    //         navigate('/contact')
-    //         handleMenuClose()
-    //     }
+        if (event.currentTarget.id === 'about-button') {
+            setAboutMenu(event.currentTarget);
+        }
+        else if (event.currentTarget.id === 'horses-button') {
+            setHorsesMenu(event.currentTarget);
+        }
+        else if (event.currentTarget.id === 'home-button' || event.currentTarget.id === 'home-button-mobile') {
+            navigate('/home')
+            handleMenuClose()
+        }
+        else if (event.currentTarget.id === 'mission-button' || event.currentTarget.id === 'mission-button-mobile') {
+            navigate('/mission')
+            handleMenuClose()
+        }
+        else if (event.currentTarget.id === 'testimonials-button' || event.currentTarget.id === 'testimonials-button-mobile') {
+            navigate('/testimonials')
+            handleMenuClose()
+        }
+        else if (event.currentTarget.id === 'visit-button' || event.currentTarget.id === 'visit-button-mobile') {
+            navigate('/visit')
+            handleMenuClose()
+        }
+        else if (event.currentTarget.id === 'stallions-button' || event.currentTarget.id === 'stallions-button-mobile') {
+            navigate('/stallions_gallery')
+            handleMenuClose()
+        }
+        else if (event.currentTarget.id === 'mares-button' || event.currentTarget.id === 'mares-button-mobile') {
+            navigate('/mares_gallery')
+            handleMenuClose()
+        }
+        else if (event.currentTarget.id === 'expecting-button' || event.currentTarget.id === 'expecting-button-mobile') {
+            navigate('/expecting_gallery')
+            handleMenuClose()
+        }
+        else if (event.currentTarget.id === 'sales-button' || event.currentTarget.id === 'sales-button-mobile') {
+            navigate('/sales_gallery')
+            handleMenuClose()
+        }
+        else if (event.currentTarget.id === 'social-button' || event.currentTarget.id === 'social-button-mobile') {
+            navigate('/social_media')
+            handleMenuClose()
+        }
+        else if (event.currentTarget.id === 'contact-button' || event.currentTarget.id === 'contact-button-mobile') {
+            navigate('/contact')
+            handleMenuClose()
+        }
 
-    // }
+    }
 
     function handleMenuClose() {
         setAboutMenu(null);
@@ -108,85 +116,137 @@ function Navigation() {
         setDrawerActive(false)
     }
 
-    function test() {
-        console.log(user);
-    }
-
     // Render DOM
     return (
 
         <div>
 
-            { width > 700 ?
-            
-                <div className="navigation-header">
+            { width > 750 ?
 
-                    <img id='home-button' className='navigation-header-logo' src="westwind-logo.jpg" alt="logo" onClick={handleMenuClick}/>
+                <AppBar id="navigation-header" position="static">
+                    <Toolbar id="navigation-toolbar">
 
-                    <div className='navigation-left'>
+                        <div id="navigation-group-left">
+                            <Button id="home-button" variant="text" onClick={handleMenuClick}>Westwind Morgans</Button>
+                        </div>
 
-                        <Button id='home-button' variant="text" onClick={handleMenuClick}>Home</Button>
+                        <div id="navigation-group-right">
 
-                        <Button id="about-button" 
-                            aria-controls={aboutMenu ? 'about-menu' : false} 
-                            aria-haspopup="true" 
-                            aria-expanded={aboutMenu ? 'true' : false}
-                            onClick={handleMenuClick}
-                        >About</Button>
+                            <Button id="about-button" 
+                                aria-controls={aboutMenu ? 'about-menu' : false} 
+                                aria-haspopup="true" 
+                                aria-expanded={aboutMenu ? 'true' : false}
+                                onClick={handleMenuClick}
+                                startIcon={<KeyboardArrowDownIcon />}
+                            >
+                            About
+                            </Button>
 
-                        <Button id="horses-button" 
-                            aria-controls={horsesMenu ? 'horses-menu' : false} 
-                            aria-haspopup="true" 
-                            aria-expanded={horsesMenu ? 'true' : false}
-                            onClick={handleMenuClick}
-                        >Horses</Button>
+                            <Button id="horses-button" 
+                                aria-controls={horsesMenu ? 'horses-menu' : false} 
+                                aria-haspopup="true" 
+                                aria-expanded={horsesMenu ? 'true' : false}
+                                onClick={handleMenuClick}
+                                startIcon={<KeyboardArrowDownIcon />}
+                            >Horses
+                            </Button>
+                        
+                            <Button id="contact-button" variant="text" onClick={handleMenuClick}>Contact</Button>
 
-                        <Button id='social-button' variant="text" onClick={handleMenuClick}>Social Media</Button>
-                        <Button id='contact-button' variant="text" onClick={handleMenuClick}>Contact</Button>
+                            {/* TODO: Link social button to Bryan's Facebook page */}
 
-                        <Menu id="about-menu" anchorEl={aboutMenu} open={aboutOpen} onClose={handleMenuClose}>
-                            <MenuItem id='mission-button' onClick={handleMenuClick}>Mission</MenuItem>
-                            <MenuItem id='testimonials-button' onClick={handleMenuClick}>Testimonials</MenuItem>
-                            <MenuItem id='visit-button' onClick={handleMenuClick}>Visit</MenuItem>
-                        </Menu>
+                            <IconButton id="facebook-button" color="inherit">
+                                <FacebookIcon />
+                            </IconButton>
 
-                        <Menu id="horses-menu" anchorEl={horsesMenu} open={horsesOpen} onClose={handleMenuClose}>
-                            <MenuItem id='stallions-button' onClick={handleMenuClick}>Stallions</MenuItem>
-                            <MenuItem id='mares-button' onClick={handleMenuClick}>Mares</MenuItem>
-                            <MenuItem id='sales-button' onClick={handleMenuClick}>Sales List</MenuItem>
-                            <MenuItem id='expecting-button' onClick={handleMenuClick}>Expecting 2023</MenuItem>
-                        </Menu>
+                            {/* 
+                                TODO: Hide user icon when logged out
+                                TODO: Build user icon functionality 
+                            */}
 
-                    </div>
+                            <IconButton id="login-button" color="inherit">
+                                <AccountCircleIcon />
+                            </IconButton>
 
-                    <div className='navigation-right'>
+                            <Menu id="about-menu" anchorEl={aboutMenu} open={aboutOpen} onClose={handleMenuClose}>
+                                <MenuItem id="mission-button" onClick={handleMenuClick}>Mission</MenuItem>
+                                <MenuItem id="testimonials-button" onClick={handleMenuClick}>Testimonials</MenuItem>
+                                <MenuItem id="visit-button" onClick={handleMenuClick}>Visit</MenuItem>
+                            </Menu>
 
-                        <Button id='login-button' onClick={test}>Log In</Button>
+                            <Menu id="horses-menu" anchorEl={horsesMenu} open={horsesOpen} onClose={handleMenuClose}>
+                                <MenuItem id="stallions-button" onClick={handleMenuClick}>Stallions</MenuItem>
+                                <MenuItem id="mares-button" onClick={handleMenuClick}>Mares</MenuItem>
+                                <MenuItem id="sales-button" onClick={handleMenuClick}>Sales List</MenuItem>
+                                <MenuItem id="expecting-button" onClick={handleMenuClick}>Expecting {nextYear}</MenuItem>
+                            </Menu>
 
-                    </div>
+                        </div>
 
-                </div>
+                    </Toolbar>
+                </AppBar>
 
-                :
+            :
 
-                <div className="navigation-header-mobile">
-                    <img id='home-button' className='navigation-header-logo' src="westwind-logo.jpg" alt="logo" onClick={handleMenuClick}/>
+                <AppBar id="navigation-header" position="static">
 
-                    <IconButton className='navigation-menu-button' onClick={()=>setDrawerActive(!drawerActive)}>
-                            <MenuIcon className='navigation-menu-button-icon'/>
-                    </IconButton>
 
-                </div>
+                    <Toolbar id="navigation-toolbar">
+
+                        <div id="navigation-group-left-mobile">
+                            <IconButton onClick={()=>setDrawerActive(!drawerActive)}>
+                                <MenuIcon />
+                            </IconButton>
+
+                        </div>
+
+                        <div id="navigation-group-center-mobile">
+                            <Button id="home-button" variant="text" onClick={handleMenuClick}>Westwind Morgans</Button>
+                        </div>
+
+                        <div id="navigation-group-right-mobile">
+
+                            {/* TODO: Link social button to Bryan's Facebook page */}
+
+                            <IconButton id="facebook-button" color="inherit">
+                                <FacebookIcon />
+                            </IconButton>
+
+                            {/* 
+                                TODO: Hide user icon when logged out
+                                TODO: Build user icon functionality 
+                            */}
+
+                            <IconButton id="login-button" color="inherit">
+                                <AccountCircleIcon />
+                            </IconButton>
+
+                        </div>
+
+
+                            
+
+                        
+
+                        
+                    </Toolbar>
+                </AppBar>
 
             }
+            
+            <SwipeableDrawer 
+                variant="temporary" 
+                open={drawerActive} 
+                onOpen={()=>setDrawerActive(true)} 
+                onClose={()=>setDrawerActive(false)} 
+                anchor={'bottom'}
+                >
 
-            <SwipeableDrawer variant="temporary" open={drawerActive} onOpen={()=>setDrawerActive(true)} onClose={()=>setDrawerActive(false)} anchor={'bottom'}>
-
-                <List className='navigation-menu-list'>
+                <List>
 
                     <ListItem id='home-button-mobile'disablePadding>
                         <ListItemButton  id='home-button-mobile' onClick={handleMenuClick}>
-                            <ListItemText primary="Home"/>
+                            <ListItemText primary="Westwind Morgans"/>
                         </ListItemButton>
                     </ListItem>
 
@@ -252,17 +312,11 @@ function Navigation() {
 
                     <ListItem disablePadding>
                         <ListItemButton id='expecting-button-mobile' onClick={handleMenuClick}>
-                            <ListItemText primary="Expecting 2023" sx={{ ml: 2 }} />
+                            <ListItemText primary={`Expecting ${nextYear}`} sx={{ ml: 2 }} />
                         </ListItemButton>
                     </ListItem>
 
                     <Divider />
-
-                    <ListItem disablePadding>
-                        <ListItemButton id='social-button-mobile' onClick={handleMenuClick}>
-                            <ListItemText primary="Social Media" />
-                        </ListItemButton>
-                    </ListItem>
 
                     <ListItem disablePadding>
                         <ListItemButton id='contact-button-mobile' onClick={handleMenuClick}>
@@ -273,20 +327,6 @@ function Navigation() {
                 </List>
 
             </SwipeableDrawer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         </div>
 
