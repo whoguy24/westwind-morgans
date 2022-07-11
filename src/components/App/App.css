@@ -1,9 +1,11 @@
 body {
   margin: 0px;
   margin: auto;
+  background-color: #762D2E;
+  font-family: "Roboto", sans-serif;
 }
 
-.navigation-header {
+/* .navigation-header {
   background-color: white;
   height: 50px;
   display: flex;
@@ -95,4 +97,4 @@ body {
   display: flex;
   position: fixed;
   right: 0px;
-}
+} */

@@ -48,7 +48,7 @@ function App() {
           <Route exact path='/visit' element={<Visit />} />
           <Route exact path='*' element={<NotFound />} />
         </Routes>
-        <Footer className='footer'/>
+        {/* <Footer className='footer'/> */}
       </Router>
 
     </div>
