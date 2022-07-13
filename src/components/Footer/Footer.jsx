@@ -13,8 +13,11 @@ function Footer() {
 
     // Render DOM
     return (
-        <div className="footer">
-            <p>Copyright © 2020 O'Brien Software Studios</p>
+        <div id="footer">
+            <p>Block</p>
+            <p>Block</p>
+            <p>Block</p>
+            <p>Block</p>
         </div>
     );
 }
