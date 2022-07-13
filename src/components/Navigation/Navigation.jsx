@@ -188,6 +188,8 @@ function Navigation() {
 
             :
 
+            <div>
+
                 <AppBar id="navigation-header" position="static">
 
 
@@ -231,8 +233,6 @@ function Navigation() {
                         
                     </Toolbar>
                 </AppBar>
-
-            }
             
             <SwipeableDrawer 
                 variant="temporary" 
@@ -327,6 +327,10 @@ function Navigation() {
                 </List>
 
             </SwipeableDrawer>
+
+            </div>
+
+            }
 
         </div>
 

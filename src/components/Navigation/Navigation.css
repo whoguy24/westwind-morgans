@@ -18,7 +18,7 @@
 #navigation-group-right {
   height: 50px;
   display: flex;
-  position: fixed;
+  position: absolute;
   right: 80px;
 }
 
@@ -36,14 +36,14 @@
 #navigation-group-right-mobile {
   height: 50px;
   display: flex;
-  position: fixed;
+  position: absolute;
   right: 0px;
 }
 
 #navigation-group-mobile {
   height: 50px;
   display: flex;
-  position: fixed;
+  position: absolute;
 }
 
 #navigation-header Button {
