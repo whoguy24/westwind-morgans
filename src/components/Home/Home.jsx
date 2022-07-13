@@ -13,9 +13,9 @@ function Home() {
 
   window.addEventListener('resize', handleContentSizeChange)
 
-    function handleContentSizeChange() {
-        setWidth(document.body.clientWidth)
-    }
+  function handleContentSizeChange() {
+      setWidth(document.body.clientWidth)
+  }
 
   return (
 
@@ -25,9 +25,13 @@ function Home() {
 
         <div id="home-slide">
 
-          <img id="home-slide-image" src="/images/west_wind_otto_outline_right.png" />
+          <img id="home-slide-image" src="/images/slide_home.png" />
+
           <div id="home-slide-header">
+
             <h3>100% OLD FOUNDATION RANCHING BLOODLINES</h3>
+
+
           </div>
 
         </div>
@@ -40,7 +44,7 @@ function Home() {
             <h3>100% OLD FOUNDATION RANCHING BLOODLINES</h3>
           </div>
 
-          <img id="home-slide-image-mobile" src="/images/west_wind_otto_outline_right.png" />
+          <img id="home-slide-image-mobile" src="/images/slide_home.png" />
 
         </div>
 

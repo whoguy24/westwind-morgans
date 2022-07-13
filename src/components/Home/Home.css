@@ -5,24 +5,29 @@
 }
 
 #home-slide-image {
-  min-height: 400px;
-  max-height: 90vh;
+  width: 70%;
   margin-top: -30px;
+  margin-bottom: auto;
+  margin-left: 0px;
+  margin-right: 50px;
+
 }
 
 #home-slide-header {
-  width: 300px;
-  margin-left: 80px;
-  margin-right: auto;
+  width: 30%;
+  margin-left: 0px;
+  margin-right: 80px;
   margin-top: auto;
   margin-bottom: auto;
+
 }
 
 #home-slide-header h3 {
   color: #FFEBA6;
-  font-size: 42px;
   text-align: center;
+  font-size: 3vw;
 }
+
 
 #home-slide-mobile {
   background-color: #120A07;
@@ -36,13 +41,13 @@
 }
 
 #home-slide-header-mobile {
-  max-width: 300px;
+  width: 80%;
   margin: auto;
 }
 
 #home-slide-header-mobile h3 {
   color: #FFEBA6;
-  font-size: 30px;
+  font-size: 5vw;
   text-align: center;
   margin: 0px;
   padding: 42px;
