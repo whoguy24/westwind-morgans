@@ -8,9 +8,8 @@
   width: 70%;
   margin-top: -30px;
   margin-bottom: auto;
-  margin-left: 0px;
+  margin-left: -50px;
   margin-right: 50px;
-
 }
 
 #home-slide-header {
@@ -19,13 +18,13 @@
   margin-right: 80px;
   margin-top: auto;
   margin-bottom: auto;
-
 }
 
 #home-slide-header h3 {
   color: #FFEBA6;
   text-align: center;
   font-size: 3vw;
+  letter-spacing: 4px;
 }
 
 
@@ -51,4 +50,5 @@
   text-align: center;
   margin: 0px;
   padding: 42px;
+  letter-spacing: 4px;
 }
