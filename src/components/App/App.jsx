@@ -16,6 +16,7 @@ import Testimonials from "../Testimonials/Testimonials";
 import Visit from "../Visit/Visit";
 import NotFound from "../NotFound/NotFound";
 import Footer from "../Footer/Footer";
+import Login from "../Login/Login";
 
 function App() {
 
@@ -46,6 +47,7 @@ function App() {
           <Route exact path="/social_media" element={<SocialMedia />} />
           <Route exact path="/testimonials" element={<Testimonials />} />
           <Route exact path="/visit" element={<Visit />} />
+          <Route exact path="/login" element={<Login />} />
           <Route exact path="*" element={<NotFound />} />
         </Routes>
         <Footer id="footer"/>

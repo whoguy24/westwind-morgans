@@ -28,9 +28,6 @@ import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 
-import DialogTitle from '@mui/material/DialogTitle';
-import Dialog from '@mui/material/Dialog';
-
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
 ///////////////////////////////////////////////////////

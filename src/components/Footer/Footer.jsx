@@ -48,7 +48,7 @@ function Footer() {
                     <ul>
                         <li><NavLink to="/social_media">News</NavLink></li>
                         <li><NavLink to="/contact">Contact</NavLink></li>
-                        <li><NavLink to="/home">Admin Login</NavLink></li>
+                        <li><NavLink to="/login">Admin Login</NavLink></li>
                     </ul>
 
                     <ul>
@@ -77,7 +77,7 @@ function Footer() {
                             <li><NavLink to="/expecting_gallery">Expected 2023</NavLink></li>
                             <li><NavLink to="/social_media">News</NavLink></li>
                             <li><NavLink to="/contact">Contact</NavLink></li>
-                            <li><NavLink to="/home">Admin Login</NavLink></li>
+                            <li><NavLink to="/login">Admin Login</NavLink></li>
 
                             <div id="footer-seperator"></div>
 
@@ -97,8 +97,6 @@ function Footer() {
                 <p>2022 © Westwind Morgans </p>
                 <p>Web Design by O'Brien Software Studios</p>
             </div>
-
-
 
         </div>
     );
