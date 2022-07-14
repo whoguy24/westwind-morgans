@@ -34,7 +34,7 @@ function Footer() {
                 <div id="footer-links">
 
                     <ul>
-                        <li><NavLink to="/home">Westwind Morgans</NavLink></li>
+                        <li><NavLink to="/home">Home</NavLink></li>
                         <li><NavLink to="/mission">Mission</NavLink></li>
                         <li><NavLink to="/testimonials">Testimonials</NavLink></li>
                         <li><NavLink to="/visit">Visit</NavLink></li>
@@ -67,7 +67,7 @@ function Footer() {
                     <div id="footer-links-mobile">
 
                         <ul>
-                            <li><NavLink to="/home">Westwind Morgans</NavLink></li>
+                            <li><NavLink to="/home">Home</NavLink></li>
                             <li><NavLink to="/mission">Mission</NavLink></li>
                             <li><NavLink to="/testimonials">Testimonials</NavLink></li>
                             <li><NavLink to="/visit">Visit</NavLink></li>
