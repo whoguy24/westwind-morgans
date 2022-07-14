@@ -81,10 +81,10 @@ function Footer() {
 
                             <div id="footer-seperator"></div>
 
-                            <li>Bryan Blatt, Owner</li>
-                            <li>Bozeman, MT</li>
-                            <li>(406) 451-9311</li>
-                            <li>bryan@westwindmorgans.com</li>
+                            <li className="footer-address">Bryan Blatt, Owner</li>
+                            <li className="footer-address">Bozeman, MT</li>
+                            <li className="footer-address">(406) 451-9311</li>
+                            <li className="footer-address">bryan@westwindmorgans.com</li>
                         </ul>
 
                     </div>

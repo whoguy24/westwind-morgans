@@ -7,15 +7,17 @@
 
 #footer-links {
   display: flex;
-  line-height: 200%;
+  line-height: 150%;
   justify-content: space-between;
+  padding-left: 200px;
+  padding-right: 200px;
 }
 
 #footer-links ul {
   margin: 0px;
-  padding: 0px;
   list-style-type: none;
   margin-top: 0px;
+  font-size: 14px;
 }
 
 #footer-links a, li {
@@ -36,6 +38,10 @@
   padding-bottom: 42px;
 }
 
+#footer-address {
+  font-size: 24px;
+}
+
 #footer-links-mobile {
   display: flex;
   line-height: 250%;
@@ -47,6 +53,7 @@
   padding: 0px;
   list-style-type: none;
   margin-top: 0px;
+  font-size: 14px;
 }
 
 #footer-links-mobile a, li {
@@ -65,10 +72,10 @@
 
 #footer-copyright {
   color: #FFEBA6;
-  line-height: 150%;
   text-align: center;
   padding-top: 42px;
   padding-bottom: 10px;
+  font-size: 12px;
 }
 
 #footer-seperator {
