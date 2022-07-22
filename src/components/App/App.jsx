@@ -20,11 +20,11 @@ import Login from "../Login/Login";
 
 function App() {
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch({ type: "FETCH_USER" });
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch({ type: "FETCH_USER" });
+  }, [dispatch]);
 
   return (
     <div className="App">

@@ -48,7 +48,7 @@ function Footer() {
                     <ul>
                         <li><NavLink to="/social_media">News</NavLink></li>
                         <li><NavLink to="/contact">Contact</NavLink></li>
-                        <li><NavLink to="/login">Admin Login</NavLink></li>
+                        <li><NavLink to="/login">Owner Login</NavLink></li>
                     </ul>
 
                     <ul>
@@ -77,7 +77,7 @@ function Footer() {
                             <li><NavLink to="/expecting_gallery">Expected 2023</NavLink></li>
                             <li><NavLink to="/social_media">News</NavLink></li>
                             <li><NavLink to="/contact">Contact</NavLink></li>
-                            <li><NavLink to="/login">Admin Login</NavLink></li>
+                            <li><NavLink to="/login">Owner Login</NavLink></li>
 
                             <div id="footer-seperator"></div>
 

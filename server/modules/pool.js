@@ -21,7 +21,7 @@ if (process.env.DATABASE_URL) {
   config = {
     host: 'localhost',
     port: 5432,
-    database: 'site_asset_manager',
+    database: 'westwind_morgans',
     max: 10,
     idleTimeoutMillis: 30000,
   };
