@@ -2,8 +2,7 @@ import "./App.css";
 
 import React, { useEffect } from "react";
 import { HashRouter as Router, Navigate, Route, Routes } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import { useSelector, useDispatch } from "react-redux";
 
 import Navigation from "../Navigation/Navigation";
 import Contact from "../Contact/Contact";
@@ -17,10 +16,13 @@ import Visit from "../Visit/Visit";
 import NotFound from "../NotFound/NotFound";
 import Footer from "../Footer/Footer";
 import Login from "../Login/Login";
+import Admin from "../Admin/Admin";
 
 function App() {
 
   const dispatch = useDispatch();
+
+  const user = useSelector(store => store.user);
 
   useEffect(() => {
     dispatch({ type: "FETCH_USER" });
@@ -48,6 +50,7 @@ function App() {
           <Route exact path="/testimonials" element={<Testimonials />} />
           <Route exact path="/visit" element={<Visit />} />
           <Route exact path="/login" element={<Login />} />
+          <Route exact path="/admin" element={ user.id?<Admin />:<Login />} />
           <Route exact path="*" element={<NotFound />} />
         </Routes>
         <Footer id="footer"/>

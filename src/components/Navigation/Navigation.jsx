@@ -8,14 +8,14 @@ import '../Navigation/Navigation.css';
 import React, { useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+
+import { useSelector } from "react-redux";
 
 import Button from '@mui/material/Button';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -104,7 +104,10 @@ function Navigation() {
             navigate('/contact')
             handleMenuClose()
         }
-
+        else if (event.currentTarget.id === 'admin-button' || event.currentTarget.id === 'admin-button-mobile') {
+            navigate('/admin')
+            handleMenuClose()
+        }
     }
 
     function handleMenuClose() {
@@ -134,7 +137,7 @@ function Navigation() {
                                 aria-haspopup="true" 
                                 aria-expanded={aboutMenu ? 'true' : false}
                                 onClick={handleMenuClick}
-                                startIcon={<KeyboardArrowDownIcon />}
+                                // startIcon={<KeyboardArrowDownIcon />}
                             >
                             About
                             </Button>
@@ -144,25 +147,20 @@ function Navigation() {
                                 aria-haspopup="true" 
                                 aria-expanded={horsesMenu ? 'true' : false}
                                 onClick={handleMenuClick}
-                                startIcon={<KeyboardArrowDownIcon />}
+                                // startIcon={<KeyboardArrowDownIcon />}
                             >Horses
                             </Button>
                         
                             <Button id="contact-button" variant="text" onClick={handleMenuClick}>Contact</Button>
 
+                            { user.id &&
+                                <Button id="admin-button" variant="text" onClick={handleMenuClick}>Admin</Button>
+                            }
+
                             {/* TODO: Link social button to Bryan's Facebook page */}
 
                             <IconButton id="facebook-button" color="inherit">
                                 <FacebookIcon />
-                            </IconButton>
-
-                            {/* 
-                                TODO: Hide user icon when logged out
-                                TODO: Build user icon functionality 
-                            */}
-
-                            <IconButton id="login-button" color="inherit">
-                                <AccountCircleIcon />
                             </IconButton>
 
                             <Menu id="about-menu" anchorEl={aboutMenu} open={aboutOpen} onClose={handleMenuClose}>
@@ -189,7 +187,6 @@ function Navigation() {
 
                 <AppBar id="navigation-header" position="static">
 
-
                     <Toolbar id="navigation-toolbar">
 
                         <div id="navigation-group-left-mobile">
@@ -211,32 +208,17 @@ function Navigation() {
                                 <FacebookIcon />
                             </IconButton>
 
-                            {/* 
-                                TODO: Hide user icon when logged out
-                                TODO: Build user icon functionality 
-                            */}
-
-                            <IconButton id="login-button" color="inherit">
-                                <AccountCircleIcon />
-                            </IconButton>
-
                         </div>
-
-
-                            
-
-                        
-
                         
                     </Toolbar>
                 </AppBar>
             
-            <SwipeableDrawer 
-                variant="temporary" 
-                open={drawerActive} 
-                onOpen={()=>setDrawerActive(true)} 
-                onClose={()=>setDrawerActive(false)} 
-                anchor={'bottom'}
+                <SwipeableDrawer 
+                    variant="temporary" 
+                    open={drawerActive} 
+                    onOpen={()=>setDrawerActive(true)} 
+                    onClose={()=>setDrawerActive(false)} 
+                    anchor={'bottom'}
                 >
 
                 <List>
@@ -318,6 +300,12 @@ function Navigation() {
                     <ListItem disablePadding>
                         <ListItemButton id='contact-button-mobile' onClick={handleMenuClick}>
                             <ListItemText primary="Contact" />
+                        </ListItemButton>
+                    </ListItem>
+
+                    <ListItem disablePadding>
+                        <ListItemButton id='admin-button-mobile' onClick={handleMenuClick}>
+                            <ListItemText primary="Admin" />
                         </ListItemButton>
                     </ListItem>
 

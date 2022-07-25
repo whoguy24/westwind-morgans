@@ -8,7 +8,7 @@ function* loginUser(action) {
       headers: { 'Content-Type': 'application/json' },
       withCredentials: true,
     };
-    yield axios.post('/user/login', action.payload, config);
+    yield axios.post('api/user/login', action.payload, config);
     yield put({ type: 'FETCH_USER' });
   } catch (error) {
     console.log('Error with user login:', error);
@@ -26,7 +26,7 @@ function* logoutUser(action) {
       headers: { 'Content-Type': 'application/json' },
       withCredentials: true,
     };
-    yield axios.post('/user/logout', config);
+    yield axios.post('api/user/logout', config);
     yield put({ type: 'UNSET_USER' });
   } catch (error) {
     console.log('Error with user logout:', error);
