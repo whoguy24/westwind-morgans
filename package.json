@@ -51,6 +51,9 @@
       "react-app/jest"
     ]
   },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -69,4 +72,5 @@
       "react-dom": "^18.0.0"
     }
   }
+  "heroku-run-build-script": true
 }
