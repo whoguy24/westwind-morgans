@@ -48,3 +48,17 @@
 .navigation-button-social:hover {
   color: #fff8dd !important;
 }
+
+.MuiMenu-paper {
+  background-color: #482c19 !important;
+  font-weight: 10 !important;
+}
+
+.MuiMenuItem-root {
+  color: #FFEBA6 !important;
+  font-weight: 300 !important;
+}
+
+.MuiMenuItem-root:hover {
+  color: #fff8dd !important;
+}
