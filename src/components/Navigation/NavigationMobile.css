@@ -1,0 +1,54 @@
+@import "../../fonts/fonts.css";
+
+#navigation-mobile {
+  background-color: #3A1A06;
+  border-bottom: 1px solid #202020;
+  justify-content: space-around;
+  height: 64px;
+  min-width: 280px;
+}
+
+#navigation-mobile-group-left {
+  display: flex;
+  margin-right: auto;
+}
+
+#navigation-mobile-group-center {
+  display: flex;
+}
+
+#navigation-mobile-group-right {
+  display: flex;
+  margin-left: auto;
+}
+
+.navigation-mobile-button-menu {
+  color: #FFEBA6 !important;
+}
+
+.navigation-mobile-button-home {
+  font-family: "royalSignage" !important;
+  text-transform: capitalize !important;
+  color: #FFEBA6 !important;
+  font-size: 16px !important;
+}
+
+.navigation-mobile-button-home:hover {
+  background-color: inherit !important;
+}
+
+.navigation-mobile-button-social {
+  color: #FFEBA6 !important;
+}
+
+#navigation-mobile-menu-list{
+  background-color: #3A1A06;
+}
+
+#navigation-mobile-menu-list{
+  background-color: #3A1A06;
+}
+
+.navigation-mobile-divider {
+  background-color: #00000050 !important;
+}

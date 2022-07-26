@@ -29,11 +29,11 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="App">
+    <div>
 
       <Router>
         <Navigation/>
-        <Routes>
+        {/* <Routes>
           <Route path="/" element={<Navigate replace to="/home" />} />
           <Route exact path="/contact" element={<Contact />} />
           <Route exact path="/home" element={<Home />} />
@@ -53,7 +53,7 @@ function App() {
           <Route exact path="/admin" element={ user.id?<Admin />:<Login />} />
           <Route exact path="*" element={<NotFound />} />
         </Routes>
-        <Footer id="footer"/>
+        <Footer id="footer"/> */}
       </Router>
 
     </div>

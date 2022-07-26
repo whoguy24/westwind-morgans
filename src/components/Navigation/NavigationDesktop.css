@@ -1,0 +1,50 @@
+@import "../../fonts/fonts.css";
+
+#navigation {
+  background-color: #3A1A06;
+  border-bottom: 1px solid #202020;
+  justify-content: space-around;
+  height: 64px;
+}
+
+#navigation-group-left {
+  display: flex;
+  width: 100%;
+  margin-left: 80px;
+}
+
+#navigation-group-right {
+  display: flex;
+  margin-right: 40px
+}
+
+.navigation-button-home {
+  font-family: "royalSignage" !important;
+  text-transform: capitalize !important;
+  color: #FFEBA6 !important;
+  font-size: 24px !important;
+}
+
+.navigation-button-home:hover {
+  background-color: inherit !important;
+}
+
+.navigation-button {
+  color: #FFEBA6 !important;
+  font-weight: 300 !important;
+  margin-left: 8px !important;
+  margin-right: 8px !important;
+}
+
+.navigation-button:hover {
+  background-color: #482c19 !important;
+  color: #fff8dd !important;
+}
+
+.navigation-button-social {
+  color: #FFEBA6 !important;
+}
+
+.navigation-button-social:hover {
+  color: #fff8dd !important;
+}
