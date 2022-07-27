@@ -52,8 +52,8 @@ function App() {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/admin" element={ user.id?<Admin />:<Login />} />
           <Route exact path="*" element={<NotFound />} />
-        </Routes>
-        <Footer id="footer"/> */}
+        </Routes> */}
+        <Footer />
       </Router>
 
     </div>

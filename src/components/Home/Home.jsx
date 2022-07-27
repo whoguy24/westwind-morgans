@@ -25,24 +25,11 @@ function Home() {
 
         <div id="home-slide">
 
-          {/* <img id="home-slide-image" src="/images/slide_home.png" />
-
-          <div id="home-slide-header">
-
-            <h3>100% OLD FOUNDATION RANCHING BLOODLINES</h3>
-
-
-          </div> */}
-
         </div>
 
       :
 
         <div id="home-slide-mobile">
-
-          <div id="home-slide-header-mobile">
-            <h3>100% OLD FOUNDATION RANCHING BLOODLINES</h3>
-          </div>
 
           <img id="home-slide-image-mobile" src="/images/slide_home.png" />
 
