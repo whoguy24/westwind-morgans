@@ -51,9 +51,11 @@ function Footer() {
 
                 <div className="footer-group-top-column">
                     <ul>
-                        <li>Bryan Blatt, Owner</li>
-                        <li>Sheridan, MT</li>
-                        <li>(406) 451-9311</li>
+                        <NavLink to="/contact">
+                            Bryan Blatt, Owner<br/>
+                            Sheridan, MT<br/>
+                            (406) 451-9311<br/>
+                        </NavLink>
                     </ul>
                 </div>
 
