@@ -47,8 +47,8 @@ function Navigation() {
             case "social":
                 window.open("https://www.facebook.com/people/Westwind-Morgans/100063575859271/")
                 break;
-            case "mission":
-                navigate("/mission")
+            case "foundation":
+                navigate("/foundation")
                 break;
             case "testimonials":
                 navigate("/testimonials")
@@ -62,11 +62,11 @@ function Navigation() {
             case "mares":
                 navigate("/mares")
                 break;
-            case "foals":
-                navigate("/foals")
+            case "breeding":
+                navigate("/breeding")
                 break;
-            case "sales":
-                navigate("/sales")
+            case "stock":
+                navigate("/stock")
                 break;
             case "contact":
                 navigate("/contact")
@@ -127,8 +127,8 @@ function Navigation() {
                     <Divider className="navigation-mobile-divider" />
 
                     <ListItem disablePadding>
-                        <ListItemButton id="mission" onClick={handleMenuClick}>
-                            <ListItemText primary="Mission" />
+                        <ListItemButton id="foundation" onClick={handleMenuClick}>
+                            <ListItemText primary="Why Foundation" />
                         </ListItemButton>
                     </ListItem>
 
@@ -147,26 +147,26 @@ function Navigation() {
                     <Divider className="navigation-mobile-divider" />
 
                     <ListItem disablePadding>
-                        <ListItemButton id="stallions" onClick={handleMenuClick}>
-                            <ListItemText primary="Stallions" />
-                        </ListItemButton>
-                    </ListItem>
-
-                    <ListItem disablePadding>
                         <ListItemButton id="mares" onClick={handleMenuClick}>
                             <ListItemText primary="Mares" />
                         </ListItemButton>
                     </ListItem>
 
                     <ListItem disablePadding>
-                        <ListItemButton id="foals" onClick={handleMenuClick}>
-                            <ListItemText primary="Foals" />
+                        <ListItemButton id="stallions" onClick={handleMenuClick}>
+                            <ListItemText primary="Stallions" />
                         </ListItemButton>
                     </ListItem>
 
                     <ListItem disablePadding>
-                        <ListItemButton id="sales" onClick={handleMenuClick}>
-                            <ListItemText primary="Sales List" />
+                        <ListItemButton id="breeding" onClick={handleMenuClick}>
+                            <ListItemText primary="Breeding" />
+                        </ListItemButton>
+                    </ListItem>
+
+                    <ListItem disablePadding>
+                        <ListItemButton id="stock" onClick={handleMenuClick}>
+                            <ListItemText primary="Stock for Sale" />
                         </ListItemButton>
                     </ListItem>
 

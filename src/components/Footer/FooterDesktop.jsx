@@ -5,8 +5,6 @@
 // Import Stylesheets
 import './FooterDesktop.css';
 
-import React from 'react';
-
 import { NavLink } from "react-router-dom";
 
 ///////////////////////////////////////////////////////
@@ -30,20 +28,21 @@ function Footer() {
 
                 <div className="footer-group-top-column">
                     <ul>
-                        <li><NavLink to="/foals">Breeding</NavLink></li>
-                        <li><NavLink to="/sales">Stock for Sale</NavLink></li>
+                        <li><NavLink to="/breeding">Breeding</NavLink></li>
+                        <li><NavLink to="/stock">Stock for Sale</NavLink></li>
+                    </ul>
+                </div>
+
+                <div className="footer-group-top-column">
+                    <ul>
+                        <li><NavLink to="/foundation">Why Foundation</NavLink></li>
+                        <li><NavLink to="/contact">Testimonials</NavLink></li>
                     </ul>
                 </div>
 
                 <div className="footer-group-top-column">
                     <ul>
                         <li><NavLink to="/contact">Contact</NavLink></li>
-                        <li><NavLink to="/mission">Why Foundation</NavLink></li>
-                    </ul>
-                </div>
-
-                <div className="footer-group-top-column">
-                    <ul>
                         <li><NavLink to="/visit">Visit</NavLink></li>
                         <li><NavLink to="/admin">Admin</NavLink></li>
                     </ul>

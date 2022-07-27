@@ -33,26 +33,21 @@ function App() {
 
       <Router>
         <Navigation/>
-        {/* <Routes>
+        <Routes>
           <Route path="/" element={<Navigate replace to="/home" />} />
-          <Route exact path="/contact" element={<Contact />} />
           <Route exact path="/home" element={<Home />} />
-          <Route exact path="/stallions" element={<HorseDetail />} />
-          <Route exact path="/mares" element={<HorseDetail />} />
-          <Route exact path="/sales" element={<HorseDetail />} />
-          <Route exact path="/expecting" element={<HorseDetail />} />
-          <Route exact path="/stallions_gallery" element={<HorseList />} />
-          <Route exact path="/mares_gallery" element={<HorseList />} />
-          <Route exact path="/sales_gallery" element={<HorseList />} />
-          <Route exact path="/expecting_gallery" element={<HorseList />} />
-          <Route exact path="/mission" element={<Mission />} />
-          <Route exact path="/social_media" element={<SocialMedia />} />
-          <Route exact path="/testimonials" element={<Testimonials />} />
-          <Route exact path="/visit" element={<Visit />} />
+          <Route exact path="/stallions" element={<Home />} />
+          <Route exact path="/mares" element={<Home />} />
+          <Route exact path="/stock" element={<Home />} />
+          <Route exact path="/breeding" element={<Home />} />
+          <Route exact path="/foundation" element={<Home />} />
+          <Route exact path="/testimonials" element={<Home />} />
+          <Route exact path="/contact" element={<Home />} />
+          <Route exact path="/visit" element={<Home />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/admin" element={ user.id?<Admin />:<Login />} />
           <Route exact path="*" element={<NotFound />} />
-        </Routes> */}
+        </Routes>
         <Footer />
       </Router>
 

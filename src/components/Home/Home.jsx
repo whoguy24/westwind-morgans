@@ -19,26 +19,8 @@ function Home() {
 
   return (
 
-    <div>
-
-      { width > 750 ?
-
-        <div id="home-slide">
-
-        </div>
-
-      :
-
-        <div id="home-slide-mobile">
-
-          <img id="home-slide-image-mobile" src="/images/slide_home.png" />
-
-        </div>
-
-      }
-
-      
-
+    <div id="home-placeholder">
+      <h3 id="home-placeholder-text">Placeholder</h3>
     </div>
 
   );

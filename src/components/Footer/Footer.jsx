@@ -24,8 +24,7 @@ function Footer() {
     // Render DOM
     return (
         <div>
-            <FooterDesktop/>
-            {/* { width > 700 ? <FooterDesktop/> : <FooterMobile/> } */}
+            { width > 700 ? <FooterDesktop/> : <FooterMobile/> }
         </div>
     );
 }
