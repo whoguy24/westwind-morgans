@@ -45,10 +45,15 @@
   background-color: #3A1A06;
 }
 
-#navigation-mobile-menu-list{
-  background-color: #3A1A06;
-}
-
 .navigation-mobile-divider {
   background-color: #00000050 !important;
+}
+
+.MuiListItemText-primary {
+  color: #FFEBA6 !important;
+  font-weight: 300 !important;
+}
+
+.MuiListItemText-primary:hover {
+  color: #fff8dd !important;
 }

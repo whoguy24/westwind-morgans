@@ -44,8 +44,8 @@ function Navigation() {
             case "horses":
                 setHorsesMenuActive(event.currentTarget);
                 break;
-            case "mission":
-                navigate("/mission")
+            case "foundation":
+                navigate("/foundation")
                 break;
             case "testimonials":
                 navigate("/testimonials")
@@ -59,11 +59,11 @@ function Navigation() {
             case "mares":
                 navigate("/mares")
                 break;
-            case "foals":
-                navigate("/foals")
+            case "breeding":
+                navigate("/breeding")
                 break;
-            case "sales":
-                navigate("/sales")
+            case "stock":
+                navigate("/stock")
                 break;
             case "contact":
                 navigate("/contact")
@@ -99,52 +99,21 @@ function Navigation() {
 
                     <div id="navigation-group-right">
 
-                        <Button
-                            id="about" 
-                            className="navigation-button"
-                            aria-controls={aboutMenuActive ? 'about' : false} 
-                            aria-haspopup="true" 
-                            aria-expanded={aboutMenuActive ? 'true' : false}
-                            onClick={handleMenuClick}
-                        >
-                        About
-                        </Button>
+                        <Button id="about" className="navigation-button" aria-controls={aboutMenuActive ? 'about' : false} aria-haspopup="true" aria-expanded={aboutMenuActive ? 'true' : false} onClick={handleMenuClick}>About</Button>
 
-                        <Menu 
-                            id="about-menu" 
-                            className="navigation-button-menu"
-                            anchorEl={aboutMenuActive} 
-                            open={Boolean(aboutMenuActive)} 
-                            onClose={handleMenuClose}
-                        
-                        
-                        
-                        >
-
-
-
-
-                            <MenuItem id="mission" onClick={handleMenuClick}>Mission</MenuItem>
+                        <Menu id="about-menu" className="navigation-button-menu" disableScrollLock={true} anchorEl={aboutMenuActive} open={Boolean(aboutMenuActive)} onClose={handleMenuClose} >
+                            <MenuItem id="foundation" onClick={handleMenuClick}>Why Foundation</MenuItem>
                             <MenuItem id="testimonials" onClick={handleMenuClick}>Testimonials</MenuItem>
                             <MenuItem id="visit" onClick={handleMenuClick}>Visit</MenuItem>
                         </Menu>
 
-                        <Button
-                            id="horses" 
-                            className="navigation-button"
-                            aria-controls={horsesMenuActive ? 'horses' : false} 
-                            aria-haspopup="true" 
-                            aria-expanded={horsesMenuActive ? 'true' : false}
-                            onClick={handleMenuClick}
-                        >
-                        Horses
-                        </Button>
+                        <Button id="horses" className="navigation-button" aria-controls={horsesMenuActive ? 'horses' : false} aria-haspopup="true" aria-expanded={horsesMenuActive ? 'true' : false} onClick={handleMenuClick}>Horses</Button>
 
-                        <Menu id="horses-menu" anchorEl={horsesMenuActive} open={Boolean(horsesMenuActive)} onClose={handleMenuClose}>
-                            <MenuItem id="stallions" onClick={handleMenuClick}>Stallions</MenuItem>
+                        <Menu id="horses-menu" disableScrollLock={true} anchorEl={horsesMenuActive} open={Boolean(horsesMenuActive)} onClose={handleMenuClose}>
                             <MenuItem id="mares" onClick={handleMenuClick}>Mares</MenuItem>
-                            <MenuItem id="foals" onClick={handleMenuClick}>Foals</MenuItem>
-                            <MenuItem id="sales" onClick={handleMenuClick}>Sales List</MenuItem>
+                            <MenuItem id="stallions" onClick={handleMenuClick}>Stallions</MenuItem>
+                            <MenuItem id="breeding" onClick={handleMenuClick}>Breeding</MenuItem>
+                            <MenuItem id="stock" onClick={handleMenuClick}>Stock for Sale</MenuItem>
                         </Menu>
 
                         <Button id="contact" className="navigation-button" variant="text" onClick={handleMenuClick}>Contact</Button>

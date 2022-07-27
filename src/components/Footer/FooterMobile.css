@@ -1,89 +1,67 @@
-#footer {
-  display: block;
+#footer-mobile {
+  background-color: #3A1A06;
+  width: 100%;
+}
+
+#footer-mobile-group-top {
+  display: flex;
+  padding-top: 10px;
+  justify-content: center;
+  margin-left: 80px;
+  margin-right: 80px;
   margin: auto;
-  padding-left: 80px;
-  padding-right: 80px;
 }
 
-#footer-links {
-  display: flex;
-  line-height: 150%;
-  justify-content: space-between;
-}
-
-#footer-links ul {
-  margin: 0px;
+#footer-mobile-group-top ul {
+  width: 100%;
   list-style-type: none;
+  font-size: 12px;
   margin-top: 0px;
-  font-size: 14px;
+  margin-bottom: 0px;
 }
 
-#footer-links a, li {
-  text-decoration: none;
-  color: #FFEBA6;
+#footer-mobile-group-top a:hover {
+  color: #fff8dd;
 }
 
-#footer-links a:hover {
-  text-decoration: none;
-  color: #d9831a;
-}
-
-#footer-logo {
+#footer-mobile-group-center {
   display: flex;
-  width: 80%;
-  margin: auto;
-  padding-top: 42px;
-  padding-bottom: 42px;
-}
-
-#footer-address {
-  font-size: 24px;
-}
-
-#footer-links-mobile {
-  display: flex;
-  line-height: 250%;
-  justify-content: space-between;
-}
-
-#footer-links-mobile ul {
-  margin: 0px;
-  padding: 0px;
-  list-style-type: none;
-  margin-top: 0px;
-  font-size: 14px;
-}
-
-#footer-links-mobile a, li {
-  text-decoration: none;
-  color: #FFEBA6;
-}
-
-#footer-links-mobile-li-right {
-  text-align: right;
-}
-
-#footer-links-mobile a:hover {
-  text-decoration: none;
-  color: #d9831a;
-}
-
-#footer-copyright {
-  color: #FFEBA6;
-  text-align: center;
-  padding-top: 42px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 10px;
   padding-bottom: 10px;
+}
+
+#footer-mobile-group-center a {
+  color: #FFEBA6;
+  line-height: 150%;
   font-size: 12px;
 }
 
-#footer-seperator {
-  height: 1px;
-  background-color: #FFEBA6;
-  margin-top: 24px;
-  margin-bottom: 24px;
+#footer-mobile-group-center a:hover {
+  color: #fff8dd;
 }
 
-#footer-button:hover {
-  color: #d9831a;
-  cursor: pointer;
+#footer-mobile-group-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.footer-mobile-copyright {
+  margin: 2px;
+  font-size: 8px;
+  font-weight: 400;
+  color: #FFEBA6;
+}
+
+#footer-mobile-divider {
+  height: 1px;
+  width: 100%;
+  background-color: #202020;
+  margin-top: 10px;
 }
