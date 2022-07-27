@@ -17,6 +17,7 @@ import NotFound from "../NotFound/NotFound";
 import Footer from "../Footer/Footer";
 import Login from "../Login/Login";
 import Admin from "../Admin/Admin";
+import Placeholder from "../Placeholder/Placeholder";
 
 function App() {
 
@@ -36,14 +37,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate replace to="/home" />} />
           <Route exact path="/home" element={<Home />} />
-          <Route exact path="/stallions" element={<Home />} />
-          <Route exact path="/mares" element={<Home />} />
-          <Route exact path="/stock" element={<Home />} />
-          <Route exact path="/breeding" element={<Home />} />
-          <Route exact path="/foundation" element={<Home />} />
-          <Route exact path="/testimonials" element={<Home />} />
-          <Route exact path="/contact" element={<Home />} />
-          <Route exact path="/visit" element={<Home />} />
+          <Route exact path="/stallions" element={<Placeholder />} />
+          <Route exact path="/mares" element={<Placeholder />} />
+          <Route exact path="/stock" element={<Placeholder />} />
+          <Route exact path="/breeding" element={<Placeholder />} />
+          <Route exact path="/foundation" element={<Placeholder />} />
+          <Route exact path="/testimonials" element={<Placeholder />} />
+          <Route exact path="/contact" element={<Placeholder />} />
+          <Route exact path="/visit" element={<Placeholder />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/admin" element={ user.id?<Admin />:<Login />} />
           <Route exact path="*" element={<NotFound />} />

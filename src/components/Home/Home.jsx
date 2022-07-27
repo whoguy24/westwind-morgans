@@ -19,8 +19,33 @@ function Home() {
 
   return (
 
-    <div id="home-placeholder">
-      <h3 id="home-placeholder-text">Placeholder</h3>
+    <div id="home-container">
+
+      <div>
+        <span id="home-header">100% Old Foundation Ranching Bloodlines</span>
+      </div>
+
+      <div>
+        <div>
+          <img src="/images/home_rider.png" alt="home" id="home-image"/>
+          {/* <span id="home-caption">
+              National Reined<br/>
+              Cowhorse Association<br/>
+              Open Competition<br/>
+              Zane Davis Performance Horses<br/>
+              Zane Davis Trainer/Rider
+          </span> */}
+        </div>
+      </div>
+
+      <div>
+        <span id="home-label-otto">WestWind Otto</span>
+      </div>
+
+      <div>
+        
+      </div>
+
     </div>
 
   );

@@ -1,15 +1,48 @@
-#home-placeholder {
+@import "../../fonts/fonts.css";
+
+#home-container {
   display: flex;
-  height: 100vh;
-  padding-top: 140px;
-  align-items:flex-start;
-  justify-content: center;
-  /* background-image: url("../../../public/images/background.png");
-  background-repeat: no-repeat;
-  background-size: cover; */
+  padding-top: 24px;
+  align-items: center;
+  justify-content: top;
+  flex-direction: column;
 }
 
-#home-placeholder-text {
+#home-header {
   color: #FFEBA6;
   font-weight: 300;
+  font-family: "royalSignage";
+  text-transform: capitalize;
+  font-size: 5vh;
+}
+
+#home-image {
+  display: flex;
+  height: 90vh;
+  max-height: 700px;
+  margin: auto;
+  position: relative;
+  top: -50px;
+  /* background-color: red; */
+}
+
+#home-label-otto {
+  color: #FFEBA6;
+  font-weight: 300;
+  font-family: "royalSignage";
+  text-transform: capitalize;
+  font-size: 5vh;
+  position: relative;
+  top: -60px;
+}
+
+#home-caption {
+  color: #FFEBA6;
+  font-weight: 300;
+  text-transform: uppercase;
+  line-height: 20%;
+  font-size: 8px;
+  /* background-color: green; */
+  position: relative;
+  top: -120px;
 }
