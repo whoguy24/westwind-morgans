@@ -1,0 +1,7 @@
+#preloader {
+  background: black url("../../../public/images/preloader_logo_2.gif") no-repeat center center;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+}

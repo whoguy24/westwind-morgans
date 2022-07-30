@@ -5,7 +5,9 @@
 // Import Stylesheets
 import '../Home/Home.css';
 
-import React, { useState } from 'react';
+import Typography from '@mui/material/Typography';
+
+import React, { useEffect, useState } from 'react';
 
 function Home() {
 
@@ -17,17 +19,25 @@ function Home() {
       setWidth(document.body.clientWidth)
   }
 
+  useEffect(() => {
+    setTimeout(() => {;
+    }, 3000);
+  }, []);
+
   return (
 
     <div id="home-container">
 
-      <div>
-        <span id="home-header">100% Old Foundation Ranching Bloodlines</span>
+      <div id="home-header">
+        <Typography id="home-header-headline">100% Old Foundation Ranching Bloodlines</Typography>
       </div>
 
-      <div>
-        <div>
-          <img src="/images/home_rider.png" alt="home" id="home-image"/>
+      <div id="home-hero">
+        
+          <img id="home-hero-image" src="/images/home_hero.png" alt="home"/>
+
+
+
           {/* <span id="home-caption">
               National Reined<br/>
               Cowhorse Association<br/>
@@ -35,16 +45,18 @@ function Home() {
               Zane Davis Performance Horses<br/>
               Zane Davis Trainer/Rider
           </span> */}
-        </div>
+
+
+
       </div>
 
-      <div>
-        <span id="home-label-otto">WestWind Otto</span>
-      </div>
+      {/* <div>
+        <Typography id="test-type">Here is some Text</Typography>
+      </div> */}
 
-      <div>
-        
-      </div>
+      {/* <div>
+        <span id="home-label-otto">Westwind Otto</span>
+      </div> */}
 
     </div>
 

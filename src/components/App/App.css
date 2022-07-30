@@ -1,12 +1,16 @@
 body {
   margin: 0px;
-  margin: auto;
-  background-color: rgb(20, 20, 20);
   font-family: "Roboto", sans-serif;
   align-items: center;
-  background: url("../../../public/images/background.png") no-repeat center center fixed; 
+  background: url("../../../public/images/background.png") repeat-y top center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  -o-background-size: contain;
+  background-size: 66%;
+  background-color: #0c0c0c;
 }
+
+#fade-in {
+    animation: fadeIn 2s;
+}
+

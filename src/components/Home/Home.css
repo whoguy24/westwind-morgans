@@ -2,31 +2,47 @@
 
 #home-container {
   display: flex;
-  padding-top: 24px;
   align-items: center;
   justify-content: top;
   flex-direction: column;
+  width: 66%;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #home-header {
-  color: #FFEBA6;
+  width: 100%;
+  /* background-color: green; */
+  font-size: 52px;
+}
+
+#home-header-headline {
+  color: #FFEBA6 !important;
   font-weight: 300;
   font-family: "royalSignage";
   text-transform: capitalize;
-  font-size: 5vh;
+  text-align: center;
+  font-size: clamp(24px, 3vw, 52px)
 }
 
-#home-image {
+#home-hero {
+
   display: flex;
-  height: 90vh;
-  max-height: 700px;
-  margin: auto;
-  position: relative;
-  top: -50px;
   /* background-color: red; */
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  margin-top: 18px;
 }
 
-#home-label-otto {
+#home-hero-image {
+  width: 70%;
+  /* animation: fadeIn 3s; */
+}
+
+/* #home-label-otto {
   color: #FFEBA6;
   font-weight: 300;
   font-family: "royalSignage";
@@ -42,7 +58,17 @@
   text-transform: uppercase;
   line-height: 20%;
   font-size: 8px;
-  /* background-color: green; */
+  background-color: green;
   position: relative;
   top: -120px;
+} */
+
+#test-type {
+  display: flex;
+  background-color: green;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
