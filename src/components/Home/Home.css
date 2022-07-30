@@ -5,70 +5,77 @@
   align-items: center;
   justify-content: top;
   flex-direction: column;
-  width: 66%;
-  margin-top: 30px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 #home-header {
-  width: 100%;
   /* background-color: green; */
+  width: 100%;
   font-size: 52px;
+  margin-top: 24px;
+  margin-bottom: 24px;
 }
 
-#home-header-headline {
+#home-header-text {
   color: #FFEBA6 !important;
   font-weight: 300;
   font-family: "royalSignage";
   text-transform: capitalize;
   text-align: center;
-  font-size: clamp(24px, 3vw, 52px)
+  font-size: clamp(24px, 3vw, 42px)
 }
 
 #home-hero {
-
-  display: flex;
   /* background-color: red; */
+  position: relative;
+  display: flex;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
-  margin-top: 18px;
+  align-items: center;
 }
 
 #home-hero-image {
-  width: 70%;
-  /* animation: fadeIn 3s; */
+  /* background-color: purple; */
+  width: 50%;
+  animation: slide 1s forwards;
 }
 
-/* #home-label-otto {
-  color: #FFEBA6;
-  font-weight: 300;
-  font-family: "royalSignage";
-  text-transform: capitalize;
-  font-size: 5vh;
-  position: relative;
-  top: -60px;
-}
-
-#home-caption {
+#home-hero-caption {
+  /* background-color: green; */
   color: #FFEBA6;
   font-weight: 300;
   text-transform: uppercase;
-  line-height: 20%;
-  font-size: 8px;
-  background-color: green;
-  position: relative;
-  top: -120px;
-} */
-
-#test-type {
-  display: flex;
-  background-color: green;
+  font-size: 0.6vw;
+  position: absolute;
+  bottom: 6%;
+  right: 26%;
 }
 
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+#home-westwind-otto {
+  /* background-color: green; */
+  display: flex;
+  height: 60px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 24px;
+  margin-bottom: 24px;
+
+}
+
+#home-westwind-otto-text {
+  color: #FFEBA6;
+  font-size: 3vw;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(50%);
+    overflow: hidden;
+  }
+  100% {
+    transform: translateX(0);
+    overflow: hidden;
+  }
 }

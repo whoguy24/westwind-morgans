@@ -1,10 +1,10 @@
 @import "../../fonts/fonts.css";
 
 #navigation {
-  background-color: #3A1A06;
+  background-color: rgb(223, 71, 37, .2);
   border-bottom: 1px solid #202020;
   justify-content: space-around;
-  height: 64px;
+  height: 80px;
 }
 
 #navigation-group-left {
@@ -22,7 +22,7 @@
   font-family: "royalSignage" !important;
   text-transform: capitalize !important;
   color: #FFEBA6 !important;
-  font-size: 24px !important;
+  font-size: 32px !important;
 }
 
 .navigation-button-home:hover {

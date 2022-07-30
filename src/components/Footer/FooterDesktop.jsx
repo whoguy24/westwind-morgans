@@ -21,28 +21,27 @@ function Footer() {
                 
                 <div className="footer-group-top-column">
                     <ul>
-                        <li><NavLink to="/mares">Mares</NavLink></li>
                         <li><NavLink to="/stallions">Stallions</NavLink></li>
+                        <li><NavLink to="/mares">Mares</NavLink></li>
                     </ul>
                 </div>
 
                 <div className="footer-group-top-column">
                     <ul>
-                        <li><NavLink to="/breeding">Breeding</NavLink></li>
                         <li><NavLink to="/stock">Stock for Sale</NavLink></li>
+                        <li><NavLink to="/breeding">Breeding</NavLink></li>
                     </ul>
                 </div>
 
                 <div className="footer-group-top-column">
                     <ul>
                         <li><NavLink to="/foundation">Why Foundation</NavLink></li>
-                        <li><NavLink to="/contact">Testimonials</NavLink></li>
+                        <li><NavLink to="/contact">Contact</NavLink></li>
                     </ul>
                 </div>
 
                 <div className="footer-group-top-column">
                     <ul>
-                        <li><NavLink to="/contact">Contact</NavLink></li>
                         <li><NavLink to="/visit">Visit</NavLink></li>
                         <li><NavLink to="/admin">Admin</NavLink></li>
                     </ul>

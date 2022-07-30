@@ -33,7 +33,7 @@ function App() {
     setTimeout(() => {
       setLoading(false);
       console.log(loading);
-    }, 3000);
+    }, 2000);
   }, []);
 
   useEffect(() => {
@@ -64,7 +64,7 @@ function App() {
               <Route exact path="/admin" element={ user.id?<Admin />:<Login />} />
               <Route exact path="*" element={<NotFound />} />
             </Routes>
-            {/* <Footer /> */}
+            <Footer />
           </div>
         }
       </Router>
