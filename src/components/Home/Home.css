@@ -8,11 +8,9 @@
 }
 
 #home-header {
-  /* background-color: green; */
   width: 100%;
   font-size: 52px;
   margin-top: 24px;
-  margin-bottom: 24px;
 }
 
 #home-header-text {
@@ -25,7 +23,6 @@
 }
 
 #home-hero {
-  /* background-color: red; */
   position: relative;
   display: flex;
   width: 100%;
@@ -36,40 +33,92 @@
 }
 
 #home-hero-image {
-  /* background-color: purple; */
-  width: 50%;
-  animation: slide 1s forwards;
+  width: 40%;
+  /* animation: slide 1s forwards; */
 }
 
 #home-hero-caption {
-  /* background-color: green; */
   color: #FFEBA6;
   font-weight: 300;
   text-transform: uppercase;
   font-size: 0.6vw;
   position: absolute;
-  bottom: 6%;
-  right: 26%;
+  bottom: 8px;
+  right: 28%;
 }
 
 #home-westwind-otto {
-  /* background-color: green; */
   display: flex;
   height: 60px;
   width: 100%;
   align-items: center;
   justify-content: center;
   margin-top: 24px;
-  margin-bottom: 24px;
-
 }
 
 #home-westwind-otto-text {
   color: #FFEBA6;
-  font-size: 3vw;
+  font-size: 2vw;
+  font-family: "royalSignage" !important;
+  text-transform:lowercase !important;
 }
 
-@keyframes slide {
+.home-header {
+  display: flex !important;
+  height: 60px !important;
+  width: 100% !important;
+  background-color: rgb(223, 71, 37, .2) !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-top: 24px !important;
+  margin-bottom: 24px !important;
+}
+
+.home-header-text {
+  display: flex !important;
+  color: #FFEBA6 !important;
+  font-family: "royalSignage" !important;
+  text-transform: capitalize !important;
+  font-size: 1.8vw !important;
+}
+
+.home-container {
+  position: relative !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  height: 14vw !important;
+  width: 50% !important;
+  display: grid !important;
+  grid-template-columns: auto auto auto !important;
+  column-gap: 24px !important;
+  padding: 24px !important;
+}
+
+.home-horse-card {
+  display: flex !important ;
+  border-radius: 0px !important;
+}
+
+.home-horse-card:hover {
+  filter: brightness(115%) !important;
+}
+
+.home-horse-card-label {
+  display: flex !important;
+  position: absolute !important;
+  background-color: rgb(0, 0, 0, .6) !important;
+  color: #FFEBA6 !important;
+  bottom: 0px !important;
+  width: 100% !important;
+  height: 50px !important;
+}
+
+.home-horse-card-label-text {
+  margin: auto !important;
+  display: flex !important;
+  letter-spacing: 2px !important;
+}
+
+/* @keyframes slide {
   0% {
     transform: translateX(50%);
     overflow: hidden;
@@ -78,4 +127,4 @@
     transform: translateX(0);
     overflow: hidden;
   }
-}
+} */
