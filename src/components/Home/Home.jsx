@@ -33,6 +33,11 @@ function Home() {
 
       <HomeHero />
 
+      <HomeHorses/>
+
+      <HomeFoundation/>
+
+      <HomeBreeding />
 
     </div>
 

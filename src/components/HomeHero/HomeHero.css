@@ -1,14 +1,14 @@
 @import "../../fonts/fonts.css";
 
 #home-hero-header {
-  background-color: yellow;
+  /* background-color: red; */
   display: flex;
   width: 100%;
   margin: 18px;
 }
 
 #home-hero-header-text {
-  background-color: green;
+  /* background-color: green; */
   display: flex;
   margin: auto;
   color: #FFEBA6;
@@ -16,51 +16,51 @@
   font-family: "royalSignage";
   text-transform: capitalize;
   justify-content: center;
-  font-size: clamp(24px, 3vw, 32px)
+  font-size: clamp(28px, 3vw, 36px)
 }
 
 #home-hero {
-  background-color: orange;
-  width: 66%;
-  position: relative;
+  /* background-color: red; */
   display: flex;
+  width: 90%;
+  position: relative;
   justify-content: center;
   align-items: center;
 }
 
 #home-hero-image {
-  background-color: purple;
+  /* background-color: purple; */
+  width: 80%;
   animation: slide 1s forwards;
 }
 
 #home-hero-caption {
-  background-color: green;
+  /* background-color: green; */
+  position: absolute;
   color: #FFEBA6;
   font-weight: 300;
   text-transform: uppercase;
   font-size: clamp(8px, 0.6vw, 12px);
-  position: absolute;
-  right: 15%;
-  bottom: 2%;
+  right: 10%;
+  bottom: 5%;
 }
 
-/* #home-westwind-otto {
-  background-color: red;
+#home-westwind-otto {
+  /* background-color: red; */
   display: flex;
-  height: 60px;
+  margin: 18px;
   width: 100%;
   align-items: center;
   justify-content: center;
-  margin-top: 24px;
-} */
+}
 
-/* #home-westwind-otto-text {
-  background-color: green;
+#home-westwind-otto-text {
+  /* background-color: green; */
   color: #FFEBA6;
-  font-size: 2vw;
+  font-size: clamp(18px, 3vw, 28px);
   font-family: "royalSignage";
   text-transform: lowercase;
-} */
+}
 
 @keyframes slide {
   0% {
