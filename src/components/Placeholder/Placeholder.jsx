@@ -10,7 +10,7 @@ function Placeholder() {
   return (
 
     <div id="placeholder">
-      <h3 id="placeholder-text">Placeholder</h3>
+      <h3 id="placeholder-text">Page Under Construction</h3>
     </div>
 
   );
