@@ -2,11 +2,9 @@ body {
   margin: 0px;
   font-family: "Roboto", sans-serif;
   align-items: center;
-  background: url("../../../public/images/background.png") repeat-y top center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: contain;
-  background-size: 100%;
+  justify-content: center;
+  /* background: url("../../../public/images/background.png") repeat top center fixed; 
+  background-size: 10%; */
   background-color: #0c0c0c;
 }
 

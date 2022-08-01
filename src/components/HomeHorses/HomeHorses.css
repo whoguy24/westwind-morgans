@@ -1,4 +1,4 @@
-@import "../../fonts/fonts.css";
+/* @import "../../fonts/fonts.css";
 
 #home-container {
   display: flex;
@@ -23,7 +23,6 @@
 }
 
 #home-hero {
-  /* background-color: blue; */
   position: relative;
   display: flex;
   width: 80%;
@@ -34,7 +33,6 @@
 }
 
 #home-hero-image {
-  /* background-color: green; */
   width: 100%;
 }
 
@@ -85,7 +83,6 @@
 
 .home-container {
   display: flex;
-  /* background-color: red; */
   width: 80%;
   max-width: 800px;
   background-color: rgba(0, 0, 0, 0.3) !important;
@@ -96,7 +93,6 @@
 
 .home-container-grid {
   position: relative;
-  /* background-color: green; */
   display: grid !important;
   grid-template-columns: auto auto auto !important;
   column-gap: 2vw !important;
@@ -145,7 +141,6 @@
 }
 
 .home-container-text {
-  /* background-color: green; */
   color: #FFEBA6 !important;
   font-weight: 400 !important;
   margin-left: 5vw !important;
@@ -154,7 +149,6 @@
 }
 
 .home-container-button {
-  /* background-color: blue !important; */
   background-color: rgb(223, 71, 37, .2) !important;
   color: #FFEBA6 !important;
   margin-top: 18px !important;
@@ -162,4 +156,4 @@
   margin-right: 5vw !important;
   border-radius: 0px !important;
   text-transform: initial !important;
-}
+} */
