@@ -51,12 +51,3 @@
   color: #FFEBA6 !important;
   font-weight: 300 !important;
 }
-
-.MuiListItemButton-root:hover {
-  background-color: rgb(223, 71, 37, .3) !important;
-  color: #fff8dd !important;
-}
-
-.MuiListItemButton-root:hover .MuiListItemText-primary {
-  color: #fff8dd !important;
-}
