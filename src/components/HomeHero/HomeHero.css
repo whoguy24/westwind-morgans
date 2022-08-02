@@ -61,7 +61,7 @@
 #home-westwind-otto {
   /* background-color: red; */
   display: flex;
-  margin: 18px;
+  margin-top: 18px;
   width: 100%;
   align-items: center;
   justify-content: center;
