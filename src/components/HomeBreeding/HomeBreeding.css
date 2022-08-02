@@ -34,10 +34,9 @@
   display: flex;
   width: 100%;
   box-sizing: border-box;
-  padding: 18px;
   justify-content: center;
   align-items: center;
-  padding: clamp(10px, 1vw, 24px);
+  padding: clamp(10px, 1vw, 18px);
 }
 
 #home-breeding-image {
@@ -61,5 +60,39 @@
   border-radius: 0px;
   text-transform: initial;
   margin-left: clamp(18px, 10vw, 36px);
+  height: clamp(24px, 2vw, 36px);
+}
+
+#home-breeding-container-mobile {
+  /* background-color: yellow; */
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: clamp(18px, 5vw, 36px);
+}
+
+#home-breeding-image-mobile {
+  display: flex;
+  width: 100%;
+  margin-bottom: clamp(18px, 5vw, 36px);
+  
+}
+
+#home-breeding-text-mobile {
+  /* background-color: green; */
+  color: #FFEBA6;
+  font-weight: 400;
+  font-size: clamp(12px, 1vw, 16px);
+}
+
+#home-breeding-button-mobile {
+  background-color: rgb(223, 71, 37, .2);
+  color: #FFEBA6;
+  border-radius: 0px;
+  text-transform: initial;
   height: clamp(24px, 2vw, 36px);
 }

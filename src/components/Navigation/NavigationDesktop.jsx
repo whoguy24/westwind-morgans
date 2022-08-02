@@ -89,48 +89,37 @@ function Navigation() {
     // Render DOM
     return (
 
-        <div>
+        <>
             <AppBar id="navigation" position="static">
                 <Toolbar >
-
                     <div id="navigation-group-left">
                         <Button className="navigation-button-home" id="home" variant="text" disableRipple onClick={handleMenuClick}>Westwind Morgans</Button>
                     </div>
-
                     <div id="navigation-group-right">
-
+                    <Button id="horses" className="navigation-button" aria-controls={horsesMenuActive ? 'horses' : false} aria-haspopup="true" aria-expanded={horsesMenuActive ? 'true' : false} onClick={handleMenuClick}>Horses</Button>
+                        <Menu id="horses-menu" disableScrollLock={true} anchorEl={horsesMenuActive} open={Boolean(horsesMenuActive)} onClose={handleMenuClose}>
+                        <MenuItem id="stallions" onClick={handleMenuClick}>Stallions</MenuItem>
+                            <MenuItem id="mares" onClick={handleMenuClick}>Mares</MenuItem>
+                            <MenuItem id="stock" onClick={handleMenuClick}>Stock for Sale</MenuItem>
+                        </Menu>
                         <Button id="about" className="navigation-button" aria-controls={aboutMenuActive ? 'about' : false} aria-haspopup="true" aria-expanded={aboutMenuActive ? 'true' : false} onClick={handleMenuClick}>About</Button>
-
                         <Menu id="about-menu" className="navigation-button-menu" disableScrollLock={true} anchorEl={aboutMenuActive} open={Boolean(aboutMenuActive)} onClose={handleMenuClose} >
-                            <MenuItem id="foundation" onClick={handleMenuClick}>Why Foundation</MenuItem>
+                            <MenuItem id="foundation" onClick={handleMenuClick}>Foundation</MenuItem>
+                            <MenuItem id="breeding" onClick={handleMenuClick}>Breeding</MenuItem>
                             <MenuItem id="testimonials" onClick={handleMenuClick}>Testimonials</MenuItem>
                             <MenuItem id="visit" onClick={handleMenuClick}>Visit</MenuItem>
                         </Menu>
-
-                        <Button id="horses" className="navigation-button" aria-controls={horsesMenuActive ? 'horses' : false} aria-haspopup="true" aria-expanded={horsesMenuActive ? 'true' : false} onClick={handleMenuClick}>Horses</Button>
-
-                        <Menu id="horses-menu" disableScrollLock={true} anchorEl={horsesMenuActive} open={Boolean(horsesMenuActive)} onClose={handleMenuClose}>
-                            <MenuItem id="mares" onClick={handleMenuClick}>Mares</MenuItem>
-                            <MenuItem id="stallions" onClick={handleMenuClick}>Stallions</MenuItem>
-                            <MenuItem id="breeding" onClick={handleMenuClick}>Breeding</MenuItem>
-                            <MenuItem id="stock" onClick={handleMenuClick}>Stock for Sale</MenuItem>
-                        </Menu>
-
                         <Button id="contact" className="navigation-button" variant="text" onClick={handleMenuClick}>Contact</Button>
-                        
                         { user.id && 
                             <Button id="admin" className="navigation-button" variant="text" onClick={handleMenuClick}>Admin</Button> 
                         }
-                        
                         <IconButton id="social" className="navigation-button-social" onClick={handleMenuClick}>
                             <FacebookIcon sx={{ fontSize: 24 }} />
                         </IconButton>
-
                     </div>
-
                 </Toolbar>
             </AppBar>
-        </div>
+        </>
 
     );
 }

@@ -29,17 +29,23 @@ function Home() {
 
   return (
 
-    <div id="home-container">
-
-      <HomeHero />
-
-      <HomeHorses/>
-
-      <HomeFoundation/>
-
-      <HomeBreeding />
-
-    </div>
+    <>
+      { width > 800 ?
+        <div id="home-container">
+          <HomeHero width={width} />
+          <HomeHorses width={width} />
+          <HomeFoundation width={width} />
+          <HomeBreeding width={width} />
+        </div>
+        :
+        <div id="home-container-mobile">
+          <HomeHero width={width} />
+          <HomeHorses width={width }/>
+          <HomeFoundation width={width} />
+          <HomeBreeding width={width} />
+        </div>
+      }
+    </>
 
   );
 

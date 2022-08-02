@@ -85,7 +85,7 @@ function Navigation() {
     // Render DOM
     return (
 
-        <div>
+        <>
 
             <AppBar id="navigation-mobile" position="static">
                 <Toolbar>
@@ -127,8 +127,34 @@ function Navigation() {
                     <Divider className="navigation-mobile-divider" />
 
                     <ListItem disablePadding>
+                        <ListItemButton id="stallions" onClick={handleMenuClick}>
+                            <ListItemText primary="Stallions" />
+                        </ListItemButton>
+                    </ListItem>
+
+                    <ListItem disablePadding>
+                        <ListItemButton id="mares" onClick={handleMenuClick}>
+                            <ListItemText primary="Mares" />
+                        </ListItemButton>
+                    </ListItem>
+
+                    <ListItem disablePadding>
+                        <ListItemButton id="stock" onClick={handleMenuClick}>
+                            <ListItemText primary="Stock for Sale" />
+                        </ListItemButton>
+                    </ListItem>
+
+                    <Divider className="navigation-mobile-divider" />
+
+                    <ListItem disablePadding>
                         <ListItemButton id="foundation" onClick={handleMenuClick}>
-                            <ListItemText primary="Why Foundation" />
+                            <ListItemText primary="Foundation" />
+                        </ListItemButton>
+                    </ListItem>
+
+                    <ListItem disablePadding>
+                        <ListItemButton id="breeding" onClick={handleMenuClick}>
+                            <ListItemText primary="Breeding" />
                         </ListItemButton>
                     </ListItem>
 
@@ -141,32 +167,6 @@ function Navigation() {
                     <ListItem disablePadding>
                         <ListItemButton id="visit" onClick={handleMenuClick}>
                             <ListItemText primary="Visit" />
-                        </ListItemButton>
-                    </ListItem>
-
-                    <Divider className="navigation-mobile-divider" />
-
-                    <ListItem disablePadding>
-                        <ListItemButton id="mares" onClick={handleMenuClick}>
-                            <ListItemText primary="Mares" />
-                        </ListItemButton>
-                    </ListItem>
-
-                    <ListItem disablePadding>
-                        <ListItemButton id="stallions" onClick={handleMenuClick}>
-                            <ListItemText primary="Stallions" />
-                        </ListItemButton>
-                    </ListItem>
-
-                    <ListItem disablePadding>
-                        <ListItemButton id="breeding" onClick={handleMenuClick}>
-                            <ListItemText primary="Breeding" />
-                        </ListItemButton>
-                    </ListItem>
-
-                    <ListItem disablePadding>
-                        <ListItemButton id="stock" onClick={handleMenuClick}>
-                            <ListItemText primary="Stock for Sale" />
                         </ListItemButton>
                     </ListItem>
 
@@ -190,7 +190,7 @@ function Navigation() {
 
             </SwipeableDrawer>
 
-        </div>
+        </>
 
     );
 }

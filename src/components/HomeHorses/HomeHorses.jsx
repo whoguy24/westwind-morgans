@@ -11,7 +11,11 @@ import CardMedia from '@mui/material/CardMedia';
 
 import { CardActionArea } from '@mui/material';
 
+import { useNavigate } from 'react-router-dom';
+
 function HomeHorses() {
+
+  const navigate = useNavigate();
 
   return (
 
@@ -19,9 +23,10 @@ function HomeHorses() {
       <div id="home-horses-header">
         <Typography id="home-horses-header-text">Horses</Typography>
       </div>
+
         <div id="home-horses">
           <div id="home-horses-grid">
-            <Card className="home-horses-card">
+            <Card className="home-horses-card" onClick={()=>navigate("/stallions")}>
               <CardActionArea>
                 <CardMedia
                   component="img"
@@ -33,7 +38,7 @@ function HomeHorses() {
                 </div>
               </CardActionArea>
             </Card>
-            <Card className="home-horses-card">
+            <Card className="home-horses-card" onClick={()=>navigate("/mares")}>
               <CardActionArea>
                 <CardMedia
                   component="img"
@@ -45,7 +50,7 @@ function HomeHorses() {
                 </div>
               </CardActionArea>
             </Card>
-            <Card className="home-horses-card">
+            <Card className="home-horses-card" onClick={()=>navigate("/stock")}>
               <CardActionArea>
                 <CardMedia
                   component="img"
@@ -59,6 +64,7 @@ function HomeHorses() {
             </Card>
           </div>
         </div>
+        
     </>
 
   );

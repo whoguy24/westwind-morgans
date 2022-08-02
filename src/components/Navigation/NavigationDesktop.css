@@ -1,21 +1,22 @@
 @import "../../fonts/fonts.css";
 
 #navigation {
+  display: flex;
   background-color: rgb(223, 71, 37, .2);
-  border-bottom: 1px solid #202020;
   justify-content: space-around;
-  height: 80px;
 }
 
 #navigation-group-left {
+  /* background-color: red; */
   display: flex;
   width: 100%;
-  margin-left: 80px;
+  margin-left: 60px;
 }
 
 #navigation-group-right {
+  /* background-color: blue; */
   display: flex;
-  margin-right: 40px
+  margin-right: 20px
 }
 
 .navigation-button-home {
@@ -32,12 +33,14 @@
 .navigation-button {
   color: #FFEBA6 !important;
   font-weight: 300 !important;
+  font-size: 16px !important;
+  border-radius: 0px !important;
   margin-left: 8px !important;
   margin-right: 8px !important;
 }
 
 .navigation-button:hover {
-  background-color: #482c19 !important;
+  background-color: rgb(223, 71, 37, .3) !important;
   color: #fff8dd !important;
 }
 
@@ -50,7 +53,7 @@
 }
 
 .MuiMenu-paper {
-  background-color: #482c19 !important;
+  background-color: rgb(100, 30, 20) !important;
   font-weight: 10 !important;
 }
 
@@ -60,5 +63,6 @@
 }
 
 .MuiMenuItem-root:hover {
+  background-color: rgb(223, 71, 37, .3) !important;
   color: #fff8dd !important;
 }
