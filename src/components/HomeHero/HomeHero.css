@@ -23,7 +23,7 @@
 #home-hero {
   /* background-color: red; */
   display: flex;
-  width: 80%;
+  width: 100%;
   position: relative;
   justify-content: center;
   align-items: center;
@@ -31,7 +31,7 @@
 
 #home-hero-image {
   /* background-color: purple; */
-  width: 100%;
+  width: 80%;
   animation: slide 1s forwards;
 }
 
