@@ -1,10 +1,8 @@
 @import "../../fonts/fonts.css";
 
 #navigation-mobile {
-  background-color: #3A1A06;
-  border-bottom: 1px solid #202020;
+  background-color: rgb(223, 71, 37, .2);
   justify-content: space-around;
-  height: 64px;
   min-width: 280px;
 }
 
@@ -30,7 +28,7 @@
   font-family: "royalSignage" !important;
   text-transform: capitalize !important;
   color: #FFEBA6 !important;
-  font-size: 16px !important;
+  font-size: clamp(16px, 5vw, 30px) !important;
 }
 
 .navigation-mobile-button-home:hover {
@@ -42,7 +40,7 @@
 }
 
 #navigation-mobile-menu-list{
-  background-color: #3A1A06;
+  background-color: rgb(71, 27, 21) !important;
 }
 
 .navigation-mobile-divider {
@@ -54,6 +52,11 @@
   font-weight: 300 !important;
 }
 
-.MuiListItemText-primary:hover {
+.MuiListItemButton-root:hover {
+  background-color: rgb(223, 71, 37, .3) !important;
+  color: #fff8dd !important;
+}
+
+.MuiListItemButton-root:hover .MuiListItemText-primary {
   color: #fff8dd !important;
 }

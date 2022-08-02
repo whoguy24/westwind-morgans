@@ -1,136 +1,77 @@
 @import "../../fonts/fonts.css";
 
-#home-container {
+#home-hero-header {
+  /* background-color: red; */
   display: flex;
-  align-items: center;
-  justify-content: top;
-  flex-direction: column;
-}
-
-#home-header {
   width: 100%;
-  font-size: 52px;
-  margin-top: 24px;
+  margin: 18px;
 }
 
-#home-header-text {
-  color: #FFEBA6 !important;
+#home-hero-header-text {
+  /* background-color: green; */
+  display: flex;
+  margin: auto;
+  color: #FFEBA6;
   font-weight: 300;
   font-family: "royalSignage";
   text-transform: capitalize;
   text-align: center;
-  font-size: clamp(24px, 3vw, 42px)
+  justify-content: center;
+  font-size: clamp(18px, 3vw, 36px)
 }
 
 #home-hero {
-  /* background-color: blue; */
-  position: relative;
+  /* background-color: red; */
   display: flex;
   width: 80%;
-  max-width: 800px;
+  position: relative;
   justify-content: center;
   align-items: center;
-  animation: slide 2s forwards;
 }
 
 #home-hero-image {
-  /* background-color: green; */
+  /* background-color: purple; */
   width: 100%;
+  animation: slide 1s forwards;
 }
 
 #home-hero-caption {
+  /* background-color: green; */
+  position: absolute;
   color: #FFEBA6;
   font-weight: 300;
   text-transform: uppercase;
-  font-size: 0.6vw;
+  font-size: clamp(8px, 0.6vw, 12px);
+  left: 76%;
+  bottom: 5%;
+}
+
+#home-hero-caption-mobile {
+  /* background-color: green; */
   position: absolute;
-  bottom: 8px;
-  right: 0px;
+  color: #FFEBA6;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: clamp(6px, 1vw, 18px);
+  left: 64%;
+  top: 8%;
 }
 
 #home-westwind-otto {
+  /* background-color: red; */
   display: flex;
-  height: 60px;
+  margin: 18px;
   width: 100%;
   align-items: center;
   justify-content: center;
-  margin-top: 24px;
 }
 
 #home-westwind-otto-text {
-  color: #FFEBA6;
-  font-size: 2vw;
-  font-family: "royalSignage" !important;
-  text-transform: lowercase !important;
-}
-
-.home-header {
-  display: flex !important;
-  height: 60px !important;
-  width: 100% !important;
-  background-color: rgb(223, 71, 37, .2) !important;
-  align-items: center !important;
-  justify-content: center !important;
-  margin-top: 24px !important;
-  margin-bottom: 24px !important;
-}
-
-.home-header-text {
-  display: flex !important;
-  color: #FFEBA6 !important;
-  font-family: "royalSignage" !important;
-  text-transform: capitalize !important;
-  font-size: 1.8vw !important;
-}
-
-.home-container {
-  display: flex;
-  /* background-color: red; */
-  width: 80%;
-  max-width: 800px;
-  background-color: rgba(0, 0, 0, 0.3) !important;
-  padding: 18px;
-  justify-content: center;
-  align-items: center;
-}
-
-.home-container-grid {
-  position: relative;
   /* background-color: green; */
-  display: grid !important;
-  grid-template-columns: auto auto auto !important;
-  column-gap: 2vw !important;
-  padding: 2vw !important;
-}
-
-.home-horse-card {
-  display: flex !important ;
-  border-radius: 0px !important;
-}
-
-.home-horse-card:hover {
-  filter: brightness(115%) !important;
-}
-
-.home-horse-card-label {
-  display: flex !important;
-  position: absolute !important;
-  background-color: rgb(0, 0, 0, .6) !important;
-  color: #FFEBA6 !important;
-  bottom: 0px !important;
-  width: 100% !important;
-  height: 50px !important;
-}
-
-.home-horse-card-label-text {
-  margin: auto !important;
-  display: flex !important;
-  letter-spacing: 2px !important;
-  font-size: clamp(8px, 1.5vw, 18px)!important;
-}
-
-.home-container-image {
-  height: 500vh !important;
+  color: #FFEBA6;
+  font-size: clamp(14px, 3vw, 28px);
+  font-family: "royalSignage";
+  text-transform: lowercase;
 }
 
 @keyframes slide {
@@ -142,24 +83,4 @@
     transform: translateX(0);
     overflow: hidden;
   }
-}
-
-.home-container-text {
-  /* background-color: green; */
-  color: #FFEBA6 !important;
-  font-weight: 400 !important;
-  margin-left: 5vw !important;
-  margin-right: 5vw !important;
-  line-height: 130% !important;
-}
-
-.home-container-button {
-  /* background-color: blue !important; */
-  background-color: rgb(223, 71, 37, .2) !important;
-  color: #FFEBA6 !important;
-  margin-top: 18px !important;
-  margin-left: 5vw !important;
-  margin-right: 5vw !important;
-  border-radius: 0px !important;
-  text-transform: initial !important;
 }

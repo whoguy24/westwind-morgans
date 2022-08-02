@@ -23,9 +23,9 @@ function Navigation() {
 
     // Render DOM
     return (
-        <div>
-            { width > 700 ? <NavigationDesktop /> : <NavigationMobile /> }
-        </div>
+        <>
+            { width > 800 ? <NavigationDesktop /> : <NavigationMobile /> }
+        </>
     );
 }
 
