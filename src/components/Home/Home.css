@@ -6,9 +6,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  min-width: 800px;
-  max-width: 1200px;
-  width: 66%;
+  width: 800px;
 }
 
 #home-container-mobile {

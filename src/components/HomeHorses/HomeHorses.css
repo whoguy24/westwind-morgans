@@ -16,7 +16,7 @@
   color: #FFEBA6;
   font-family: "royalSignage";
   text-transform: capitalize;
-  font-size: clamp(24px, 3vw, 32px);
+  font-size: 24px;
 }
 
 #home-horses {
@@ -56,12 +56,12 @@
   width: 100% !important;
   justify-content: center;
   align-items: center;
-  height: clamp( 24px, 5vw, 52px) !important;
+  height: clamp( 24px, 5vw, 36px) !important;
 }
 
 .home-horses-card-label-text {
   display: flex !important;
   margin: auto !important;
   letter-spacing: 1.5px !important;
-  font-size: clamp(8px, 2vw, 18px)!important;
+  font-size: clamp(8px, 2vw, 14px)!important;
 }

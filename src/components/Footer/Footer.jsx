@@ -42,9 +42,11 @@ function Footer() {
                             <ul>
                                 <li><NavLink to="/foundation">Why Foundation</NavLink></li>
                                 <li><NavLink to="/breeding">Breeding</NavLink></li>
-                                <li><NavLink to="/visit">Visit</NavLink></li>
+                                <li><NavLink to="/testimonials">Testimonials</NavLink></li>
+                                
                             </ul>
                             <ul>
+                            <li><NavLink to="/visit">Visit</NavLink></li>
                                 <li><NavLink to="/contact">Contact</NavLink></li>
                                 <li><NavLink to="/home">Admin</NavLink></li>
                             </ul>

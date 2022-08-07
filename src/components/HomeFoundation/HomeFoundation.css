@@ -16,7 +16,7 @@
   color: #FFEBA6;
   font-family: "royalSignage";
   text-transform: capitalize;
-  font-size: clamp(24px, 3vw, 32px);
+  font-size: 24px;
 }
 
 #home-foundation {
@@ -48,7 +48,7 @@
   /* background-color: green; */
   color: #FFEBA6;
   font-weight: 400;
-  font-size: clamp(12px, 1vw, 16px);
+  font-size: 12px;
   margin-left: clamp(18px, 10vw, 36px);
   margin-right: clamp(18px, 10vw, 36px);
 }
@@ -58,16 +58,15 @@
   color: #FFEBA6;
   border-radius: 0px;
   text-transform: initial;
+  font-size: 12px;
   margin-left: clamp(18px, 10vw, 36px);
   height: clamp(24px, 2vw, 36px);
 }
 
-
-
-
-
-
-
+#home-foundation-button:hover {
+  background-color: rgb(223, 71, 37, .3) !important;
+  color: #fff8dd !important;
+}
 
 #home-foundation-container-mobile {
   /* background-color: yellow; */
@@ -100,4 +99,10 @@
   border-radius: 0px;
   text-transform: initial;
   height: clamp(24px, 2vw, 36px);
+  font-size: 12px;
+}
+
+#home-foundation-button-mobile:hover {
+  background-color: rgb(223, 71, 37, .3) !important;
+  color: #fff8dd !important;
 }

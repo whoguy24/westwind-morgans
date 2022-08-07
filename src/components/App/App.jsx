@@ -32,13 +32,12 @@ function App() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      console.log(loading);
     }, 3000);
   }, []);
 
-  useEffect(() => {
-    dispatch({ type: "FETCH_USER" });
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch({ type: "FETCH_USER" });
+  // }, [dispatch]);
 
   return (
     <div>

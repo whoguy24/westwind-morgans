@@ -4,11 +4,12 @@
   width: 100%;
   justify-content: center;
   flex-direction: column;
+  margin-top: 18px;
 }
 
 #footer-copyright {
   margin: 2px;
-  font-size: 10px;
+  font-size: 8px;
   font-weight: 400;
   color: #FFEBA6;
   text-align: center;
@@ -19,22 +20,21 @@
   /* background-color: red; */
   display: flex;
   justify-content: center;
-  width: 66%;
+  width: 100%;
   margin: auto;
-  min-width: 800px;
-  max-width: 1200px;
+  width: 800px;
 }
 
 #footer-links-container {
   /* background-color: green; */
   display: flex;
-  width: 90%;
+  width: 100%;
 }
 
 #footer-links-container ul {
   width: 100%;
   list-style-type: none;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 #footer-links-container li, a {
