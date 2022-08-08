@@ -18,14 +18,15 @@ function HomeHorses() {
   const navigate = useNavigate();
 
   return (
-
     <>
+    
       <div id="home-horses-header">
         <Typography id="home-horses-header-text">Horses</Typography>
       </div>
 
         <div id="home-horses">
           <div id="home-horses-grid">
+
             <Card className="home-horses-card" onClick={()=>navigate("/stallions")}>
               <CardActionArea>
                 <CardMedia
@@ -38,6 +39,7 @@ function HomeHorses() {
                 </div>
               </CardActionArea>
             </Card>
+
             <Card className="home-horses-card" onClick={()=>navigate("/mares")}>
               <CardActionArea>
                 <CardMedia
@@ -50,6 +52,7 @@ function HomeHorses() {
                 </div>
               </CardActionArea>
             </Card>
+
             <Card className="home-horses-card" onClick={()=>navigate("/stock")}>
               <CardActionArea>
                 <CardMedia
@@ -62,11 +65,11 @@ function HomeHorses() {
                 </div>
               </CardActionArea>
             </Card>
+
           </div>
         </div>
         
     </>
-
   );
 
 }

@@ -1,28 +1,24 @@
-@import "../../fonts/fonts.css";
+@import "../../styles/global.css";
 
 #home-hero-header {
-  /* background-color: red; */
   display: flex;
   width: 100%;
-  margin-top: 18px;
-  margin-bottom: 18px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 #home-hero-header-text {
-  /* background-color: green; */
   display: flex;
   margin: auto;
-  color: #FFEBA6;
-  font-weight: 300;
-  font-family: "royalSignage";
-  text-transform: capitalize;
   text-align: center;
   justify-content: center;
-  font-size: clamp(16px, 3vw, 36px)
+  color: var(--color-accent-300);
+  font-size: clamp(1rem, 3vw, 2rem);
+  font-family: "Royal Signage";
+  text-transform: capitalize;
 }
 
 #home-hero {
-  /* background-color: red; */
   display: flex;
   width: 100%;
   position: relative;
@@ -31,47 +27,32 @@
 }
 
 #home-hero-image {
-  /* background-color: purple; */
   width: 80%;
   animation: slide 1s forwards;
 }
 
 #home-hero-caption {
-  /* background-color: green; */
+  color: var(--color-accent-300);
+  font-weight: var(--font-weight-light);
   position: absolute;
-  color: #FFEBA6;
-  font-weight: 300;
   text-transform: uppercase;
-  font-size: clamp(8px, 0.6vw, 12px);
-  left: 76%;
+  font-size: clamp(0.4rem, 1vw, 0.6rem);
+  left: 72%;
   bottom: 5%;
 }
 
-#home-hero-caption-mobile {
-  /* background-color: green; */
-  position: absolute;
-  color: #FFEBA6;
-  font-weight: 300;
-  text-transform: uppercase;
-  font-size: clamp(6px, 1vw, 18px);
-  left: 64%;
-  top: 8%;
-}
-
 #home-westwind-otto {
-  /* background-color: red; */
   display: flex;
-  margin-top: 18px;
-  width: 100%;
   align-items: center;
   justify-content: center;
+  margin-top: 1rem;
+  width: 100%;
 }
 
 #home-westwind-otto-text {
-  /* background-color: green; */
-  color: #FFEBA6;
-  font-size: clamp(14px, 3vw, 28px);
-  font-family: "royalSignage";
+  color: var(--color-accent-300);
+  font-size: clamp(1rem, 3vw, 2rem);
+  font-family: "Royal Signage";
   text-transform: lowercase;
 }
 
@@ -83,5 +64,12 @@
   100% {
     transform: translateX(0);
     overflow: hidden;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #home-hero-caption {
+    left: 60%;
+    top: 12%;
   }
 }

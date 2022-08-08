@@ -28,10 +28,12 @@ function Footer() {
 
     // Render DOM
     return (
-
         <>
-            { width > 700 ? 
-                <div id="footer">
+
+            <div id="footer">
+
+                { width > 800 &&
+
                     <div id="footer-links">
                         <div id="footer-links-container">
                             <ul>
@@ -59,21 +61,17 @@ function Footer() {
                             </ul>
                         </div>
                     </div>
-                    <Typography id="footer-copyright">
-                        2022 © Westwind Morgans<br/>
-                        Web Design by O'Brien Software Studios
-                    </Typography>
-                </div>
-                : 
-                <div id="footer">
-                    <Typography id="footer-copyright">
-                        2022 © Westwind Morgans<br/>
-                        Web Design by O'Brien Software Studios
-                    </Typography>
-                </div>
-            }
-        </>
 
+                }
+
+                <Typography id="footer-copyright">
+                    2022 © Westwind Morgans<br/>
+                    Web Design by O'Brien Software Studios
+                </Typography>
+
+            </div>
+            
+        </>
     );
 }
 
