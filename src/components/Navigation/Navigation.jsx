@@ -1,15 +1,16 @@
 ///////////////////////////////////////////////////////
-///// IMPORT LIBRARIES / COMPONENTS ///////////////////
+///// IMPORT MODULES //////////////////////////////////
 ///////////////////////////////////////////////////////
 
 // Import Stylesheets
 import "../Navigation/Navigation.css";
 
+// Import Libraries
 import { useState } from 'react';
 import { useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 
-// Import Components
+// Import Custom Components
 import NavigationDrawer from "../NavigationDrawer/NavigationDrawer";
 
 // Import MUI Components
@@ -28,6 +29,9 @@ import MenuItem from '@mui/material/MenuItem';
 
 function Navigation() {
 
+    // React Router Variables
+    const navigate = useNavigate();
+
     // State Variables
     const [aboutMenuActive, setAboutMenuActive] = useState();
     const [horsesMenuActive, setHorsesMenuActive] = useState();
@@ -36,9 +40,6 @@ function Navigation() {
 
     // Redux Store Variables
     const user = useSelector(store => store.user);
-
-    // React Router DOM Variables
-    const navigate = useNavigate();
 
     // Misc Variables
     const facebookLink = "https://www.facebook.com/people/Westwind-Morgans/100063575859271/";
@@ -282,6 +283,7 @@ function Navigation() {
 
         </>
     );
+    
 }
 
 ///////////////////////////////////////////////////////

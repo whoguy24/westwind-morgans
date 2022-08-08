@@ -1,18 +1,18 @@
+///////////////////////////////////////////////////////
+///// IMPORT MODULES //////////////////////////////////
+///////////////////////////////////////////////////////
+
+// Import Stylesheets
 import "./App.css";
 
+// Import Libraries
 import React, { useState, useEffect } from "react";
 import { HashRouter as Router, Navigate, Route, Routes } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
+// Import Custom Components
 import Navigation from "../Navigation/Navigation";
-import Contact from "../Contact/Contact";
 import Home from "../Home/Home";
-import HorseDetail from "../HorseDetail/HorseDetail";
-import HorseList from "../HorseList/HorseList";
-import Mission from "../Mission/Mission";
-import SocialMedia from "../SocialMedia/SocialMedia";
-import Testimonials from "../Testimonials/Testimonials";
-import Visit from "../Visit/Visit";
 import NotFound from "../NotFound/NotFound";
 import Footer from "../Footer/Footer";
 import Login from "../Login/Login";
@@ -20,14 +20,22 @@ import Admin from "../Admin/Admin";
 import Placeholder from "../Placeholder/Placeholder";
 import Preloader from "../Preloader/Preloader";
 
+///////////////////////////////////////////////////////
+///// COMPONENT FUNCTION //////////////////////////////
+///////////////////////////////////////////////////////
+
 function App() {
 
+  // Redux Variables
   const dispatch = useDispatch();
 
-  const user = useSelector(store => store.user);
-
+  // State Variables
   const [loading, setLoading] = useState(false);
 
+  // Redux Store Variables
+  const user = useSelector(store => store.user);
+
+  // Delay Render to Allow Preloader Time to Display
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
@@ -35,15 +43,18 @@ function App() {
     }, 3000);
   }, []);
 
-  // useEffect(() => {
-  //   dispatch({ type: "FETCH_USER" });
-  // }, [dispatch]);
+  // Fetch User if Logged In
+  if (user.id) {
+    useEffect(() => {
+      dispatch({ type: "FETCH_USER" });
+    }, [dispatch]);
+  }
 
+  // Render DOM
   return (
-    <div>
+    <>
 
       <Router>
-        
         { loading && <Preloader /> }
         { !loading &&
           <div id="fade-in">
@@ -60,7 +71,7 @@ function App() {
               <Route exact path="/contact" element={<Placeholder />} />
               <Route exact path="/visit" element={<Placeholder />} />
               <Route exact path="/login" element={<Login />} />
-              <Route exact path="/admin" element={ user.id?<Admin />:<Login />} />
+              <Route exact path="/admin" element={user.id?<Admin />:<Login />} />
               <Route exact path="*" element={<NotFound />} />
             </Routes>
             <Footer />
@@ -68,8 +79,13 @@ function App() {
         }
       </Router>
 
-    </div>
+    </>
   );
+  
 }
+
+///////////////////////////////////////////////////////
+///// EXPORT COMPONENT FUNCTION ///////////////////////
+///////////////////////////////////////////////////////
 
 export default App;

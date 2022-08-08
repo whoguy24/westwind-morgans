@@ -1,13 +1,11 @@
 ///////////////////////////////////////////////////////
-///// IMPORT LIBRARIES ////////////////////////////////
+///// IMPORT MODULES //////////////////////////////////
 ///////////////////////////////////////////////////////
 
 // Import Stylesheets
 import "../NavigationDrawer/NavigationDrawer.css";
 
-import { useNavigate } from 'react-router-dom';
-
-// Import MUI Modules
+// Import MUI Components
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -86,7 +84,11 @@ function Navigation({drawerActive, setDrawerActive, handleMenuClick}) {
 
         </>
     );
+    
 }
 
-// Export Component Function
+///////////////////////////////////////////////////////
+///// EXPORT COMPONENT FUNCTION ///////////////////////
+///////////////////////////////////////////////////////
+
 export default Navigation;

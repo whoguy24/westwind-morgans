@@ -1,21 +1,28 @@
 ///////////////////////////////////////////////////////
-///// IMPORT LIBRARIES ////////////////////////////////
+///// IMPORT MODULES //////////////////////////////////
 ///////////////////////////////////////////////////////
 
 // Import Stylesheets
 import '../HomeBreeding/HomeBreeding.css';
 
+// Import Libraries
+import { useNavigate } from 'react-router-dom';
+
+// Import MUI Components
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
-import { useNavigate } from 'react-router-dom';
+///////////////////////////////////////////////////////
+///// COMPONENT FUNCTION //////////////////////////////
+///////////////////////////////////////////////////////
 
 function HomeBreeding() {
 
+  // React Router Variables
   const navigate = useNavigate();
 
+  // Render DOM
   return (
-
     <>
 
       <div id="home-breeding-header">
@@ -44,9 +51,12 @@ function HomeBreeding() {
       </div>
 
     </>
-
   );
 
 }
+
+///////////////////////////////////////////////////////
+///// EXPORT COMPONENT FUNCTION ///////////////////////
+///////////////////////////////////////////////////////
 
 export default HomeBreeding;

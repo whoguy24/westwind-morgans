@@ -1,36 +1,39 @@
 ///////////////////////////////////////////////////////
-///// IMPORT LIBRARIES ////////////////////////////////
+///// IMPORT MODULES //////////////////////////////////
 ///////////////////////////////////////////////////////
 
 // Import Stylesheets
 import '../Home/Home.css';
 
-import { useEffect } from 'react';
-
+// Import Custom Components
 import HomeHero from "../HomeHero/HomeHero";
 import HomeHorses from "../HomeHorses/HomeHorses";
 import HomeFoundation from "../HomeFoundation/HomeFoundation";
 import HomeBreeding from "../HomeBreeding/HomeBreeding";
 
-function Home() {
+///////////////////////////////////////////////////////
+///// COMPONENT FUNCTION //////////////////////////////
+///////////////////////////////////////////////////////
 
-  useEffect(() => {
-    setTimeout(() => {;
-    }, 3000);
-  }, []);
+function Home() {
 
   return (
     <>
+
       <div id="home-container">
         <HomeHero />
         <HomeHorses />
         <HomeFoundation />
         <HomeBreeding />
       </div>
-    </>
 
+    </>
   );
 
 }
+
+///////////////////////////////////////////////////////
+///// EXPORT COMPONENT FUNCTION ///////////////////////
+///////////////////////////////////////////////////////
 
 export default Home;

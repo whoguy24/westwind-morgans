@@ -1,16 +1,16 @@
 ///////////////////////////////////////////////////////
-///// IMPORT LIBRARIES ////////////////////////////////
+///// IMPORT MODULES //////////////////////////////////
 ///////////////////////////////////////////////////////
-
-import React, { useState } from 'react';
-
-
-import Typography from '@mui/material/Typography';
-
-import { NavLink } from "react-router-dom";
 
 // Import Stylesheets
 import '../Footer/Footer.css';
+
+// Import Libraries
+import { useState } from 'react';
+import { NavLink } from "react-router-dom";
+
+// Import MUI Components
+import Typography from '@mui/material/Typography';
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
@@ -18,11 +18,14 @@ import '../Footer/Footer.css';
 
 function Footer() {
 
+    // State Variables
     const [width, setWidth] = useState(document.body.clientWidth);
 
-    window.addEventListener('resize', handleContentSizeChange)
-  
-    function handleContentSizeChange() {
+    // Event Listener for Responsive Rendering
+    window.addEventListener('resize', handleViewportChange)
+
+    // Update State On Viewport Size Change
+    function handleViewportChange() {
         setWidth(document.body.clientWidth)
     }
 
@@ -70,10 +73,14 @@ function Footer() {
                 </Typography>
 
             </div>
-            
+
         </>
     );
+    
 }
 
-// Export Component Function
+///////////////////////////////////////////////////////
+///// EXPORT COMPONENT FUNCTION ///////////////////////
+///////////////////////////////////////////////////////
+
 export default Footer;

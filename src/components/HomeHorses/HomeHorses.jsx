@@ -1,25 +1,32 @@
 ///////////////////////////////////////////////////////
-///// IMPORT LIBRARIES ////////////////////////////////
+///// IMPORT MODULES //////////////////////////////////
 ///////////////////////////////////////////////////////
 
 // Import Stylesheets
 import '../HomeHorses/HomeHorses.css';
 
+// Import Libraries
+import { useNavigate } from 'react-router-dom';
+
+// Import MUI Components
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
-
 import { CardActionArea } from '@mui/material';
 
-import { useNavigate } from 'react-router-dom';
+///////////////////////////////////////////////////////
+///// COMPONENT FUNCTION //////////////////////////////
+///////////////////////////////////////////////////////
 
 function HomeHorses() {
 
+  // React Router Variables
   const navigate = useNavigate();
 
+  // Render DOM
   return (
     <>
-    
+
       <div id="home-horses-header">
         <Typography id="home-horses-header-text">Horses</Typography>
       </div>
@@ -73,5 +80,9 @@ function HomeHorses() {
   );
 
 }
+
+///////////////////////////////////////////////////////
+///// EXPORT COMPONENT FUNCTION ///////////////////////
+///////////////////////////////////////////////////////
 
 export default HomeHorses;
