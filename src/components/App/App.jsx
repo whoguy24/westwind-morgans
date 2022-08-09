@@ -19,6 +19,7 @@ import Login from "../Login/Login";
 import Admin from "../Admin/Admin";
 import Placeholder from "../Placeholder/Placeholder";
 import Preloader from "../Preloader/Preloader";
+import StallionGallery from "../StallionGallery/StallionGallery";
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
@@ -62,7 +63,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Navigate replace to="/home" />} />
               <Route exact path="/home" element={<Home />} />
-              <Route exact path="/stallions" element={<Placeholder />} />
+              <Route exact path="/stallions" element={<StallionGallery />} />
               <Route exact path="/mares" element={<Placeholder />} />
               <Route exact path="/stock" element={<Placeholder />} />
               <Route exact path="/breeding" element={<Placeholder />} />
