@@ -15,8 +15,7 @@ function StallionGallery() {
   return (
     <>
 
-      <div>
-        <h3>Stallions Page</h3>
+      <div id="stallion-gallery-banner">
       </div>
       
     </>
