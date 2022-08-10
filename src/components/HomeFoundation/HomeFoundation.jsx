@@ -46,7 +46,7 @@ function HomeFoundation() {
                 Kansas and broodmares from the Sweet's 
                 family in Jewell County Kansas.<br/><br/>
             </Typography>
-            <Button id="home-foundation-button" onClick={()=>navigate("/foundation")}>Read More</Button>
+            <Button className="form-button" onClick={()=>navigate("/foundation")}>Read More</Button>
           </div>
 
         </div>

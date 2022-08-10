@@ -6,12 +6,20 @@
 import '../StallionGallery/StallionGallery.css';
 
 // Import Libraries
-import { useNavigate } from 'react-router-dom';
+import { useEffect } from "react";
+import { NavLink } from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux";
+
 
 // Import MUI Components
 import Typography from '@mui/material/Typography';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
-import Link from '@mui/material/Link';
+import IconButton from '@mui/material/IconButton';
+import SearchIcon from '@mui/icons-material/Search';
+import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
+import { CardActionArea } from '@mui/material';
+import TextField from '@mui/material/TextField';
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
@@ -19,8 +27,16 @@ import Link from '@mui/material/Link';
 
 function StallionGallery() {
 
-  // React Router Variables
-  const navigate = useNavigate();
+  // Redux Variables
+  const dispatch = useDispatch();
+
+  // Redux Store Variables
+  const stallions = useSelector(store => store.stallions);
+
+  // Fetch Stallions from Database
+  useEffect(() => {
+    dispatch({ type: "FETCH_STALLIONS" });
+  }, [dispatch]);
 
   // Render DOM
   return (
@@ -37,23 +53,44 @@ function StallionGallery() {
         </div>
 
         <div id="stallion-gallery-toolbar">
+          <Breadcrumbs id="stallion-gallery-toolbar-breadcrumbs">
+            <NavLink to="/home">Westwind Morgans</NavLink>
+            <NavLink to="/stallions">Stallions</NavLink>
+          </Breadcrumbs>
 
-          <div id="stallion-gallery-breadcrumbs">
-            <Breadcrumbs>
-              <Link underline="hover" onClick={()=>navigate("/home")}>
-                Westwind Morgans
-              </Link>
 
-              <Typography>
-                Stallions
-              </Typography>
+          <div id="stallion-gallery-toolbar-search-container">
 
-            </Breadcrumbs>
+            <TextField id="stallion-gallery-search-field" small variant="standard" />
+
+            <IconButton id="stallion-gallery-toolbar-search-button">
+              <SearchIcon/>
+            </IconButton>
+
           </div>
 
-          <div>
-          </div>
 
+
+
+        </div>
+
+        <div id="stallion-gallery-container">
+          {stallions.map((stallion) => {
+              return (
+                <Card className="stallion-gallery-card" key={stallion.id}>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      image="/images/placeholder_stallion.png"
+                      alt="placeholder_stallion"
+                    />
+                    <div className="stallion-gallery-card-label">
+                      <Typography className="stallion-gallery-card-label-text">{stallion.name}</Typography>
+                    </div>
+                  </CardActionArea>
+                </Card>
+              )
+          })}
         </div>
 
       </div>

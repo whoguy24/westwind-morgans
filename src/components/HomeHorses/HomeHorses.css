@@ -1,4 +1,4 @@
-@import "../../styles/global.css";
+@import "../../styles/_global.css";
 
 #home-horses-header {
   background-color: var(--color-primary-300);

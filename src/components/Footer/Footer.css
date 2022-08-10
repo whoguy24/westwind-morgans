@@ -1,4 +1,4 @@
-@import "../../styles/global.css";
+@import "../../styles/_global.css";
 
 #footer {
   background-color: var(--color-primary-300);
