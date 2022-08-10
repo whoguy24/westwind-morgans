@@ -10,6 +10,8 @@ import { useEffect } from "react";
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 
+// Import Custom Components
+import SearchBar from "../SearchBar/SearchBar";
 
 // Import MUI Components
 import Typography from '@mui/material/Typography';
@@ -53,24 +55,13 @@ function StallionGallery() {
         </div>
 
         <div id="stallion-gallery-toolbar">
+
           <Breadcrumbs id="stallion-gallery-toolbar-breadcrumbs">
             <NavLink to="/home">Westwind Morgans</NavLink>
             <NavLink to="/stallions">Stallions</NavLink>
           </Breadcrumbs>
 
-
-          <div id="stallion-gallery-toolbar-search-container">
-
-            <TextField id="stallion-gallery-search-field" small variant="standard" />
-
-            <IconButton id="stallion-gallery-toolbar-search-button">
-              <SearchIcon/>
-            </IconButton>
-
-          </div>
-
-
-
+          <SearchBar/>
 
         </div>
 
@@ -81,6 +72,7 @@ function StallionGallery() {
                   <CardActionArea>
                     <CardMedia
                       component="img"
+                      height="300px"
                       image="/images/placeholder_stallion.png"
                       alt="placeholder_stallion"
                     />

@@ -40,14 +40,16 @@
   }
 
   #stallion-gallery-toolbar {
+    /* background-color: red; */
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 98%;
+    margin: 1rem;
   }
 
   #stallion-gallery-toolbar-breadcrumbs {
-    width: 100%;
+    width: 50%;
     color: var(--color-accent-300);
   }
 
@@ -82,7 +84,7 @@
     display: grid;
     background-color: white;
     width: 100%;
-    height: 300px;
+    border-radius: 0rem !important;
   }
 
   .stallion-gallery-card-label {
@@ -103,18 +105,6 @@
     margin: auto !important;
     letter-spacing: 1.5px !important;
     font-size: clamp(0.5rem, 2vw, 1rem)!important;
-  }
-
-
-  #stallion-gallery-toolbar-search-container {
-    display: flex;
-    align-items: center;
-  }
-
-  #stallion-gallery-search-field {
-    color: var(--color-accent-300);
-    background-color: var(--color-neutral-500);
-    width: 300px;
   }
 
   @media screen and (max-width: 800px) {
