@@ -20,6 +20,7 @@ import Admin from "../Admin/Admin";
 import Placeholder from "../Placeholder/Placeholder";
 import Preloader from "../Preloader/Preloader";
 import StallionGallery from "../StallionGallery/StallionGallery";
+import StallionDetail from "../StallionDetail/StallionDetail";
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
@@ -31,18 +32,18 @@ function App() {
   const dispatch = useDispatch();
 
   // State Variables
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   // Redux Store Variables
   const user = useSelector(store => store.user);
 
   // Delay Render to Allow Preloader Time to Display
-  useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-  }, []);
+  // useEffect(() => {
+  //   setLoading(true);
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   }, 3000);
+  // }, []);
 
   // Fetch User if Logged In
   if (user.id) {
@@ -56,14 +57,19 @@ function App() {
     <>
 
       <Router>
-        { loading && <Preloader /> }
-        { !loading &&
+        {/* { loading && <Preloader /> }
+        { !loading && */}
+
           <div id="fade-in">
             <Navigation />
             <Routes>
               <Route path="/" element={<Navigate replace to="/home" />} />
               <Route exact path="/home" element={<Home />} />
+
               <Route exact path="/stallions" element={<StallionGallery />} />
+
+              <Route path="/stallions/:id" element={<StallionDetail />} />
+
               <Route exact path="/mares" element={<Placeholder />} />
               <Route exact path="/stock" element={<Placeholder />} />
               <Route exact path="/breeding" element={<Placeholder />} />
@@ -77,7 +83,8 @@ function App() {
             </Routes>
             <Footer />
           </div>
-        }
+
+        {/* } */}
       </Router>
 
     </>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
-function* fetchStallions(action) {
+function* fetchStallions() {
   try {
     const response = yield axios({
       method: 'GET',
@@ -16,8 +16,24 @@ function* fetchStallions(action) {
   }
 }
 
+function* fetchStallion(action) {
+  try {
+    const response = yield axios({
+      method: 'GET',
+      url: `/api/stallions/${action.payload}`
+    })
+    yield put({
+      type: 'LOAD_STALLION',
+      payload: response.data
+    })
+  } catch(error) {
+    console.error('ERROR:', error)
+  }
+}
+
 function* stallionsSaga() {
   yield takeLatest('FETCH_STALLIONS', fetchStallions);
+  yield takeLatest('FETCH_STALLION', fetchStallion);
 }
 
 export default stallionsSaga;

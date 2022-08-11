@@ -1,4 +1,4 @@
-@import "../../styles/global.css";
+@import "../../styles/_global.css";
 
 #navigation {
   background-color: var(--color-primary-300);
@@ -30,33 +30,4 @@
 
 #navigation-group-small-right {
   display: flex;
-}
-
-.navigation-button-home {
-  color: var(--color-accent-300) !important;
-  font-size: clamp(1.25rem, 3vw, 2rem) !important;
-  background-color: inherit !important;
-  font-family: "Royal Signage" !important;
-  text-transform: capitalize !important;
-}
-
-.navigation-button {
-  color: var(--color-accent-300) !important;
-  font-weight: var(--font-weight-light) !important;
-  font-size: var(--font-size-300) !important;
-}
-
-.navigation-button:hover {
-  background-color: var(--color-primary-500) !important;
-  color: var(--color-accent-500) !important;
-}
-
-.navigation-icon-button {
-  color: var(--color-accent-300) !important;
-  border-radius: 0.25rem !important;
-}
-
-.navigation-icon-button:hover {
-  background-color: var(--color-primary-500) !important;
-  color: var(--color-accent-500) !important;
 }

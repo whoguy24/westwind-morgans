@@ -1,4 +1,4 @@
-@import "../../styles/global.css";
+@import "../../styles/_global.css";
 
 #footer {
   background-color: var(--color-primary-300);
@@ -6,6 +6,7 @@
   justify-content: center;
   flex-direction: column;
   width: 100%;
+  margin-top: 1rem;
 }
 
 #footer-links {

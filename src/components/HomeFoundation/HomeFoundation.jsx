@@ -25,8 +25,8 @@ function HomeFoundation() {
   return (
     <>
 
-      <div id="home-foundation-header">
-        <Typography id="home-foundation-header-text">Why Foundation</Typography>
+      <div className="section-header">
+        <Typography className="section-header-text">Why Foundation</Typography>
       </div>
 
       <div id="home-foundation">
@@ -46,7 +46,7 @@ function HomeFoundation() {
                 Kansas and broodmares from the Sweet's 
                 family in Jewell County Kansas.<br/><br/>
             </Typography>
-            <Button id="home-foundation-button" onClick={()=>navigate("/foundation")}>Read More</Button>
+            <Button className="form-button" onClick={()=>navigate("/foundation")}>Read More</Button>
           </div>
 
         </div>
