@@ -16,3 +16,8 @@
     color: var(--color-accent-300) !important;
     font-weight: var(--font-weight-light) !important;
 }
+
+/* .MuiCardMedia-root {
+    object-fit: cover !important;
+    cursor: pointer !important;
+} */

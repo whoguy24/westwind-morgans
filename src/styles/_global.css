@@ -18,7 +18,7 @@
   
     --color-neutral-300: rgba(12, 12, 12);
     --color-neutral-500: rgba(0, 0, 0, 0.6);
-    --color-neutral-700: rgba(0, 0, 0, 0.3);
+    --color-neutral-700: #0000004d;
 
     --font-size-100: 0.5rem;
     --font-size-300: 1.0rem;
@@ -30,3 +30,134 @@
     --font-weight-bold: 500;
   
 }
+
+.gallery-card {
+    display: grid !important;
+    background-color: var(--color-primary-500) !important;
+    width: 100% !important;
+    border-radius: 0rem !important;
+}
+
+.gallery-card-label {
+    background-color: var(--color-neutral-500) !important;
+    color: var(--color-accent-300) !important;
+    display: flex !important;
+    position: absolute !important;
+    justify-content: center !important;
+    align-items: center !important;
+    bottom: 0rem !important;
+    width: 100% !important;
+    min-height: 18% !important;
+}
+  
+.gallery-card-label-text {
+    font-weight: var(--font-weight-light) !important;
+    display: flex !important;
+    margin: auto !important;
+    letter-spacing: 1.5px !important;
+    font-size: clamp(0.5rem, 2vw, 1rem)!important;
+}
+
+.gallery-card:hover {
+    filter: brightness(115%) !important;
+}
+
+.section-header {
+    background-color: var(--color-primary-300) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin: 1rem !important;
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+}
+  
+.section-header-text {
+    color: var(--color-accent-300) !important;
+    font-size: var(--font-size-500) !important;
+    display: flex !important;
+    font-family: "Royal Signage" !important;
+    text-transform: capitalize !important;
+}
+
+.section-header-banner {
+    background-color: var(--color-primary-300) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+}
+  
+.section-header-banner-text {
+    color: var(--color-accent-300) !important;
+    font-size: var(--font-size-500) !important;
+    display: flex !important;
+    font-family: "Royal Signage" !important;
+    text-transform: capitalize !important;
+}
+
+.content-banner {
+    display: flex !important;
+    width: 100% !important;
+    margin: auto !important;
+}
+
+.content-banner-image {
+    width: 100% !important;
+}
+
+.content-container {
+    display: flex !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+    max-width: 800px !important;
+    animation: fadeIn 2s !important;
+}
+
+.content-toolbar {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 98% !important;
+    margin: 1rem !important;
+  }
+
+  .content-toolbar-breadcrumbs {
+    width: 50% !important;
+    color: var(--color-accent-300) !important;
+  }
+
+  .content-toolbar-breadcrumbs a {
+    color: var(--color-accent-300) !important;
+    font-size: 0.75rem !important;
+  }
+
+  .content-toolbar-breadcrumbs a:hover {
+    color: var(--color-accent-500) !important;
+    text-decoration: underline !important;
+  }
+
+  .gallery-container {
+    background-color: var(--color-neutral-700) !important;
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 3fr 3fr 3fr !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    column-gap: 1rem !important;
+    row-gap: 1rem !important;
+    padding: 1rem !important;
+    min-height: 50vh !important;
+  }
+
+  @media screen and (max-width: 800px) {
+    .gallery-container {
+      grid-template-columns: 3fr !important;
+    }
+  }

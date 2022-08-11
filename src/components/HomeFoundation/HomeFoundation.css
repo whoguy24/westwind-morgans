@@ -1,24 +1,5 @@
 @import "../../styles/_global.css";
 
-#home-foundation-header {
-  background-color: var(--color-primary-300);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin: 1rem;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-}
-
-#home-foundation-header-text {
-  color: var(--color-accent-300);
-  font-size: var(--font-size-500);
-  display: flex;
-  font-family: "Royal Signage";
-  text-transform: capitalize;
-}
-
 #home-foundation {
   display: flex;
   align-items: center;

@@ -27,48 +27,48 @@ function HomeHorses() {
   return (
     <>
 
-      <div id="home-horses-header">
-        <Typography id="home-horses-header-text">Horses</Typography>
+      <div className="section-header">
+        <Typography className="section-header-text">Horses</Typography>
       </div>
 
         <div id="home-horses">
           <div id="home-horses-grid">
 
-            <Card className="home-horses-card" onClick={()=>navigate("/stallions")}>
+            <Card className="gallery-card" onClick={()=>navigate("/stallions")}>
               <CardActionArea>
                 <CardMedia
                   component="img"
                   image="/images/home_stallions.png"
                   alt="home_stallions"
                 />
-                <div className="home-horses-card-label">
-                  <Typography className="home-horses-card-label-text">STALLIONS</Typography>
+                <div className="gallery-card-label">
+                  <Typography className="gallery-card-label-text">STALLIONS</Typography>
                 </div>
               </CardActionArea>
             </Card>
 
-            <Card className="home-horses-card" onClick={()=>navigate("/mares")}>
+            <Card className="gallery-card" onClick={()=>navigate("/mares")}>
               <CardActionArea>
                 <CardMedia
                   component="img"
                   image="/images/home_mares.png"
                   alt="home_mares"
                 />
-                <div className="home-horses-card-label">
-                  <Typography className="home-horses-card-label-text">MARES</Typography>
+                <div className="gallery-card-label">
+                  <Typography className="gallery-card-label-text">MARES</Typography>
                 </div>
               </CardActionArea>
             </Card>
 
-            <Card className="home-horses-card" onClick={()=>navigate("/stock")}>
+            <Card className="gallery-card" onClick={()=>navigate("/stock")}>
               <CardActionArea>
                 <CardMedia
                   component="img"
                   image="/images/home_stock.png"
                   alt="home_stock"
                 />
-                <div className="home-horses-card-label">
-                  <Typography className="home-horses-card-label-text">STOCK FOR SALE</Typography>
+                <div className="gallery-card-label">
+                  <Typography className="gallery-card-label-text">STOCK FOR SALE</Typography>
                 </div>
               </CardActionArea>
             </Card>

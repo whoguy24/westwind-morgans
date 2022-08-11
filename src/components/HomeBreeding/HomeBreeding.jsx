@@ -25,8 +25,8 @@ function HomeBreeding() {
   return (
     <>
 
-      <div id="home-breeding-header">
-        <Typography id="home-breeding-header-text">Breeding</Typography>
+      <div className="section-header">
+        <Typography className="section-header-text">Breeding</Typography>
       </div>
 
       <div id="home-breeding">

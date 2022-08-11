@@ -25,8 +25,8 @@ function HomeFoundation() {
   return (
     <>
 
-      <div id="home-foundation-header">
-        <Typography id="home-foundation-header-text">Why Foundation</Typography>
+      <div className="section-header">
+        <Typography className="section-header-text">Why Foundation</Typography>
       </div>
 
       <div id="home-foundation">

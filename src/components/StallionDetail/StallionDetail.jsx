@@ -3,42 +3,37 @@
 ///////////////////////////////////////////////////////
 
 // Import Stylesheets
-import '../StallionGallery/StallionGallery.css';
+import '../StallionDetail/StallionDetail.css';
 
 // Import Libraries
 import { useEffect } from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 
-// Import Custom Components
-import SearchBar from "../SearchBar/SearchBar";
+import { useParams } from "react-router-dom";
 
 // Import MUI Components
 import Typography from '@mui/material/Typography';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
-import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
-import { CardActionArea } from '@mui/material';
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
 ///////////////////////////////////////////////////////
 
-function StallionGallery() {
+function StallionDetail() {
+
+  let { id } = useParams();
 
   // Redux Variables
   const dispatch = useDispatch();
 
-  // React Router Variables
-  const navigate = useNavigate();
-
   // Redux Store Variables
-  const stallions = useSelector(store => store.stallions);
+  const stallion = useSelector(store => store.stallion);
 
-  // Fetch Objects from Database on Page Load
+  // Fetch Object from Database On Page Load
   useEffect(() => {
-    dispatch({ type: "FETCH_STALLIONS" });
-  }, [dispatch]);
+    dispatch({ type: "FETCH_STALLION", payload:id });
+  }, [id]);
 
   // Render DOM
   return (
@@ -61,32 +56,10 @@ function StallionGallery() {
             <NavLink to="/stallions">Stallions</NavLink>
           </Breadcrumbs>
 
-          <SearchBar/>
-
-        </div>
-
-        <div className="gallery-container">
-          {stallions.map((stallion) => {
-              return (
-                <Card className="gallery-card" key={stallion.id} onClick={()=>navigate(`/stallions/${stallion.id}`)}>
-                  <CardActionArea>
-                    <CardMedia
-                      component="img"
-                      height="300px"
-                      image={stallion.url}
-                      alt="placeholder_stallion"
-                    />
-                    <div className="gallery-card-label">
-                      <Typography className="gallery-card-label-text">{stallion.name}</Typography>
-                    </div>
-                  </CardActionArea>
-                </Card>
-              )
-          })}
         </div>
 
       </div>
-      
+
     </>
   );
 
@@ -96,4 +69,4 @@ function StallionGallery() {
 ///// EXPORT COMPONENT FUNCTION ///////////////////////
 ///////////////////////////////////////////////////////
 
-export default StallionGallery;
+export default StallionDetail;
