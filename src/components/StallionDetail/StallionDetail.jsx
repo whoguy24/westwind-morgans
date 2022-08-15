@@ -112,14 +112,6 @@ function StallionDetail() {
         </div>
 
 
-
-
-
-
-
-
-
-
         <div className="content-detail-subheader">
           <div className="content-detail-subheader-divider"/>
           <Typography className="content-detail-subheader-text">Gallery</Typography>
