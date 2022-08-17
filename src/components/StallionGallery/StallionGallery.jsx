@@ -34,6 +34,7 @@ function StallionGallery() {
 
   // Redux Store Variables
   const stallions = useSelector(store => store.stallions);
+  const visibleStallions = stallions.filter(stallion=>stallion.visible === true);
 
   // Fetch Objects from Database on Page Load
   useEffect(() => {
@@ -66,14 +67,14 @@ function StallionGallery() {
         </div>
 
         <div className="gallery-container">
-          {stallions.map((stallion) => {
+          {visibleStallions.map((stallion) => {
               return (
                 <Card className="gallery-card" key={stallion.id} onClick={()=>navigate(`/stallions/${stallion.id}`)}>
                   <CardActionArea>
                     <CardMedia
                       component="img"
                       height="300px"
-                      image={stallion.url}
+                      image={stallion.profile_url? stallion.profile_url: "images/placeholder_profile.png"}
                       alt="placeholder_stallion"
                     />
                     <div className="gallery-card-label">
