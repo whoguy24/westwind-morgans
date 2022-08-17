@@ -63,14 +63,16 @@ function App() {
           <div id="fade-in">
             {/* <Navigation /> */}
             <Routes>
-              <Route path="/" element={<Navigate replace to="/home" />} />
-              <Route exact path="/home" element={<Placeholder />} />
 
-              <Route exact path="/stallions" element={<StallionGallery />} />
+              <Route path="/" element={<Navigate replace to="/coming_soon" />} />
+
+              <Route exact path="/coming_soon" element={<Placeholder />} />
+
+              {/* <Route exact path="/stallions" element={<StallionGallery />} />
 
               <Route path="/stallions/:id" element={<StallionDetail />} />
 
-              {/* <Route exact path="/mares" element={<Placeholder />} />
+              <Route exact path="/mares" element={<Placeholder />} />
               <Route exact path="/stock" element={<Placeholder />} />
               <Route exact path="/breeding" element={<Placeholder />} />
               <Route exact path="/foundation" element={<Placeholder />} />
