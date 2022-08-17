@@ -30,7 +30,7 @@
 .placeholder-font-v3 {
   color: var(--color-accent-300)!important;
   text-transform: uppercase !important;
-  font-size: 2.5rem !important;
+  font-size: 2.25rem !important;
   letter-spacing: 0.3rem !important;
   text-align: center !important;
 }
@@ -39,6 +39,10 @@
   color: var(--color-accent-300)!important;
   font-size: 0.8rem !important;
   text-align: center !important;
+}
+
+.placeholder-font-v4:hover {
+  color: var(--color-accent-500)!important;
 }
 
 .placeholder-font-v5 {
@@ -71,8 +75,8 @@
   color: var(--color-accent-300)!important;
   font-size: 0.5rem !important;
   text-align: center !important;
-  margin-top: 5px !important;
-  margin-bottom: 20px !important;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
 }
 
 .placeholder-font-v9 {
@@ -83,6 +87,17 @@
   text-align: center !important;
   margin-top: 5px !important;
   margin-bottom: 5px !important;
+}
+
+.placeholder-font-v10 {
+  color: var(--color-accent-300)!important;
+  font-size: 1rem !important;
+  text-align: center !important;
+  margin-top: 5px !important;
+}
+
+.placeholder-font-v10:hover {
+  color: var(--color-accent-500)!important;
 }
 
 .placeholder-column-container {
@@ -104,6 +119,7 @@
   justify-content: center;
   flex-direction: column;
   margin-bottom: 50px;
+  margin-left: 20px;
 }
 
 .placeholder-column2-container {
@@ -133,6 +149,7 @@
   }
   .placeholder-column2 {
     align-items: center;
+    margin-left: 0px;
   }
   .placeholder-column2-container {
     margin-left: 0px;
@@ -160,4 +177,8 @@
     margin-bottom: 10px !important;
   }
   
+}
+
+#placeholder a:hover {
+  color: var(--color-accent-500);
 }
