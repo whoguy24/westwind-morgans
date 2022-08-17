@@ -19,13 +19,6 @@ router.get('/', (req, res) => {
     });
 });
 
-
-
-
-
-
-
-
 router.get('/:id', async (req, res) => {
 
     const sqlQuery = `
@@ -37,50 +30,34 @@ router.get('/:id', async (req, res) => {
 
     pool.query(sqlQuery, sqlValues)
     .then(async(result) => { 
-
         const horse = result.rows[0];
-
-        horse.pedigree_graph = await buildPedigreeGraph(horse);
-
-        // horse.parents = [];
-        // horse.parents.push(await fetchParent(horse.sire_id));
-        // horse.parents.push(await fetchParent(horse.dam_id));
-
-        // const images = await fetchImages(horse.id)
-        // horse.images = images;
-
+        horse.parents = await fetchParents(horse.sire_id, horse.dam_id, 0);
+        horse.images = await fetchImages(horse.id);
         res.send(horse)
     })
     .catch((error) => {
         console.log(error);
         res.sendStatus(500);
     });
-
 });
 
-
-
-async function buildPedigreeGraph(horse) {
-
-    horse.parents = [];
-
-    if (horse.sire_id) {
-        horse.parents.push(await fetchParent(horse.sire_id));
-    }
-    
-}
-
-function fetchParent(parent_id) {
+function fetchParents(sire_id, dam_id, i) {
     return new Promise((resolve, reject )=> {
-        const queryValues = [parent_id];
+        const queryValues = [sire_id, dam_id];
         const queryText = `
             SELECT * FROM "horses"
-            WHERE "horses"."id" = $1
+            WHERE "horses"."id" = $1 OR "horses"."id" = $2
             ORDER BY "horses"."id" ASC;
         ;`
         pool.query(queryText, queryValues)
-        .then((result) => { 
-            resolve(...result.rows)
+        .then(async(result) => { 
+            const parents = result.rows
+            if (i<1) {
+                for (const parent of parents) {
+                    parent.parents = await fetchParents( parent.sire_id, parent.dam_id, i+1 )  
+                }
+            }
+            resolve(parents)
         })
         .catch((error) => { 
             reject(error);

@@ -19,92 +19,100 @@ import Typography from '@mui/material/Typography';
 
 function PedigreeGraph({horse}) {
 
+  
+
   // Render DOM
   return (
     <>
 
-        <div id="pedigree-column1">
+      { horse.id && 
 
-          <div className="pedigree-cell">
+        <>
 
-            { horse.id &&
+          <div id="pedigree-column1">
 
-            <NavLink to={horse.visible ? `/stallions/${horse.id}` : horse.pedigree_url}>
-              <Typography className="pedigree-cell-text-large">{horse.name}</Typography>
-            </NavLink>
+            <div className="pedigree-cell">
+
+
+              <NavLink to={ horse.visible ? `/stallions/${horse.id}` : horse.pedigree_url }>
+                <Typography className="pedigree-cell-text-large">{horse.name}</Typography>
+              </NavLink>
+
+
+            </div>
+
+
+            <div id="pedigree-column2">
+
+              {/* { horse.parents.sire &&
+
+                <div className="pedigree-cell">
+                  <NavLink to="/stallions">
+                    <Typography className="pedigree-cell-text">{horse.parents.sire.name}</Typography>
+                  </NavLink>
+                </div>
+
+              } */}
+
+              {/* { horse.parents.dam &&
+
+                <div className="pedigree-cell">
+                  <NavLink to="/stallions">
+                    <Typography className="pedigree-cell-text">{horse.parents.dam.name}</Typography>
+                  </NavLink>
+                </div>
+
+              } */}
+              
+            </div>
+
+            {/* <div id="pedigree-column3">
+
+            { horse.parents.sire.parents.sire &&
+
+              <div className="pedigree-cell">
+                <NavLink to="/stallions">
+                  <Typography className="pedigree-cell-text">{horse.parents.sire.parents.sire.name}</Typography>
+                </NavLink>
+              </div>
 
             }
 
-          </div>
-
-
-          <div id="pedigree-column2">
-
-            {/* { horse.parents.sire &&
+            { horse.parents.sire.parents.dam &&
 
               <div className="pedigree-cell">
                 <NavLink to="/stallions">
-                  <Typography className="pedigree-cell-text">{horse.parents.sire.name}</Typography>
+                  <Typography className="pedigree-cell-text">{horse.parents.sire.parents.dam.name}</Typography>
                 </NavLink>
               </div>
 
-            } */}
+            }
 
-            {/* { horse.parents.dam &&
+            { horse.parents.dam.parents.sire &&
 
               <div className="pedigree-cell">
                 <NavLink to="/stallions">
-                  <Typography className="pedigree-cell-text">{horse.parents.dam.name}</Typography>
+                  <Typography className="pedigree-cell-text">{horse.parents.dam.parents.sire.name}</Typography>
                 </NavLink>
               </div>
+            }
 
-            } */}
-            
+            { horse.parents.dam.parents.dam &&
+
+              <div className="pedigree-cell">
+                <NavLink to="/stallions">
+                  <Typography className="pedigree-cell-text">{horse.parents.dam.parents.dam.name}</Typography>
+                </NavLink>
+              </div>
+            }
+              
+            </div> */}
+
           </div>
 
-          {/* <div id="pedigree-column3">
+        </>
 
-          { horse.parents.sire.parents.sire &&
-
-            <div className="pedigree-cell">
-              <NavLink to="/stallions">
-                <Typography className="pedigree-cell-text">{horse.parents.sire.parents.sire.name}</Typography>
-              </NavLink>
-            </div>
-
-          }
-
-          { horse.parents.sire.parents.dam &&
-
-            <div className="pedigree-cell">
-              <NavLink to="/stallions">
-                <Typography className="pedigree-cell-text">{horse.parents.sire.parents.dam.name}</Typography>
-              </NavLink>
-            </div>
-
-          }
-
-          { horse.parents.dam.parents.sire &&
-
-            <div className="pedigree-cell">
-              <NavLink to="/stallions">
-                <Typography className="pedigree-cell-text">{horse.parents.dam.parents.sire.name}</Typography>
-              </NavLink>
-            </div>
-          }
-
-          { horse.parents.dam.parents.dam &&
-
-            <div className="pedigree-cell">
-              <NavLink to="/stallions">
-                <Typography className="pedigree-cell-text">{horse.parents.dam.parents.dam.name}</Typography>
-              </NavLink>
-            </div>
-          }
-            
-          </div> */}
-
-        </div>
+      }
 
 
     </>

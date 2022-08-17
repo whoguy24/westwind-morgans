@@ -104,9 +104,6 @@ function StallionDetail() {
 
 
 
-        { stallion.parents?.length &&
-
-        <>
 
           <div className="content-detail-subheader">
             <div className="content-detail-subheader-divider"/>
@@ -120,9 +117,6 @@ function StallionDetail() {
 
           </div>
 
-          </>
-
-        }
 
 
 
