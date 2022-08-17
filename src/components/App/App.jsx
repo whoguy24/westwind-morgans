@@ -61,16 +61,16 @@ function App() {
         { !loading && */}
 
           <div id="fade-in">
-            <Navigation />
+            {/* <Navigation /> */}
             <Routes>
               <Route path="/" element={<Navigate replace to="/home" />} />
-              <Route exact path="/home" element={<Home />} />
+              <Route exact path="/home" element={<Placeholder />} />
 
               <Route exact path="/stallions" element={<StallionGallery />} />
 
               <Route path="/stallions/:id" element={<StallionDetail />} />
 
-              <Route exact path="/mares" element={<Placeholder />} />
+              {/* <Route exact path="/mares" element={<Placeholder />} />
               <Route exact path="/stock" element={<Placeholder />} />
               <Route exact path="/breeding" element={<Placeholder />} />
               <Route exact path="/foundation" element={<Placeholder />} />
@@ -78,10 +78,11 @@ function App() {
               <Route exact path="/contact" element={<Placeholder />} />
               <Route exact path="/visit" element={<Placeholder />} />
               <Route exact path="/login" element={<Login />} />
-              <Route exact path="/admin" element={user.id?<Admin />:<Login />} />
-              <Route exact path="*" element={<NotFound />} />
+              <Route exact path="/admin" element={user.id?<Admin />:<Login />} /> */}
+
+              <Route exact path="*" element={<Placeholder />} />
             </Routes>
-            <Footer />
+            {/* <Footer /> */}
           </div>
 
         {/* } */}

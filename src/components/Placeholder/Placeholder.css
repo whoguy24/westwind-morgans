@@ -1,12 +1,163 @@
+@import "../../styles/_global.css";
+
 #placeholder {
   display: flex;
-  height: 100vh;
-  padding-top: 140px;
-  align-items:flex-start;
+  align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
-#placeholder-text {
-  color: #FFEBA6;
-  font-weight: 300;
+.placeholder-font-v1 {
+  color: var(--color-accent-300)!important;
+  font-family: "Royal Signage" !important;
+  text-transform: capitalize !important;
+  font-size: 4rem !important;
+  letter-spacing: 0.75rem !important;
+  margin-top: 50px !important;
+  text-align: center !important;
+}
+
+.placeholder-font-v2 {
+  color: var(--color-accent-300)!important;
+  font-family: "Royal Signage" !important;
+  text-transform: lowercase !important;
+  font-size: 2rem !important;
+  letter-spacing: 0.3rem !important;
+  margin-bottom: 50px !important;
+  text-align: center !important;
+}
+
+.placeholder-font-v3 {
+  color: var(--color-accent-300)!important;
+  text-transform: uppercase !important;
+  font-size: 2.5rem !important;
+  letter-spacing: 0.3rem !important;
+  text-align: center !important;
+}
+
+.placeholder-font-v4 {
+  color: var(--color-accent-300)!important;
+  font-size: 0.8rem !important;
+  text-align: center !important;
+}
+
+.placeholder-font-v5 {
+  color: var(--color-accent-300)!important;
+  font-size: 1.25rem !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+  margin-top: 10px !important;
+  margin-bottom: 50px !important;
+}
+
+.placeholder-font-v6 {
+  color: var(--color-accent-300)!important;
+  font-size: 0.8rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1rem !important;
+  text-align: center !important;
+}
+
+.placeholder-font-v7 {
+  color: var(--color-accent-300)!important;
+  text-transform: uppercase !important;
+  font-size: 1.75rem !important;
+  text-align: center !important;
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
+}
+
+.placeholder-font-v8 {
+  color: var(--color-accent-300)!important;
+  font-size: 0.5rem !important;
+  text-align: center !important;
+  margin-top: 5px !important;
+  margin-bottom: 20px !important;
+}
+
+.placeholder-font-v9 {
+  color: var(--color-accent-300)!important;
+  font-size: 0.8rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1rem !important;
+  text-align: center !important;
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
+}
+
+.placeholder-column-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.placeholder-column1 {
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 50px;
+}
+
+.placeholder-column2 {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+
+.placeholder-column2-container {
+  margin-left: 50px;
+}
+
+.placeholder-image {
+  display: flex;
+  width: 80%;
+  float: right;
+}
+
+@media screen and (max-width: 800px) {
+  #placeholder {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  .placeholder-column-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0px;
+  }
+  .placeholder-image {
+    float:none;
+    margin: auto;
+    width: 100%;
+  }
+  .placeholder-column2 {
+    align-items: center;
+  }
+  .placeholder-column2-container {
+    margin-left: 0px;
+  }
+  .placeholder-font-v1 {
+    font-size: 2.2rem !important;
+    letter-spacing: 0.2rem !important;
+  }
+  .placeholder-font-v2 {
+    font-size: 1.3rem !important;
+    letter-spacing: 0.2rem !important;
+  }
+
+  .placeholder-font-v3 {
+    font-size: 1.8rem !important;
+  }
+
+  .placeholder-font-v5 {
+    font-size: 1rem !important;
+  }
+
+  .placeholder-font-v7 {
+    font-size: 1.6rem !important;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+  }
+  
 }
