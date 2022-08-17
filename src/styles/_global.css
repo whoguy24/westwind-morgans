@@ -124,7 +124,7 @@
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
-    width: 98% !important;
+    width: 90% !important;
     margin: 1rem !important;
   }
 
@@ -160,7 +160,7 @@
     flex-direction: row !important; 
     justify-content: space-between !important;
     align-items: center;
-    width: 100%;
+    width: 90%;
     position: relative;
     margin: 1rem;
   }

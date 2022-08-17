@@ -62,7 +62,7 @@ function StallionGallery() {
             <NavLink to="/stallions">Stallions</NavLink>
           </Breadcrumbs>
 
-          <SearchBar/>
+          {/* <SearchBar/> */}
 
         </div>
 

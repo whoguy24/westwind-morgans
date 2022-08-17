@@ -6,8 +6,8 @@
 import '../PedigreeGraph/PedigreeGraph.css';
 
 // Import Libraries
-import { useEffect } from "react";
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { NavLink, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 
 // Import MUI Components
@@ -19,8 +19,15 @@ import Typography from '@mui/material/Typography';
 
 function PedigreeGraph({horse}) {
 
-  
+  const sire = horse.parents?.filter(parent=>parent.gender == "Male")[0];
+  const dam = horse.parents?.filter(parent=>parent.gender == "Female")[0];
 
+  const sireSire = horse.parents?.filter(parent=>parent.gender == "Male")[0]?.parents?.filter(parent=>parent.gender == "Male")[0];
+  const sireDam = horse.parents?.filter(parent=>parent.gender == "Male")[0]?.parents?.filter(parent=>parent.gender == "Female")[0];
+
+  const damSire = horse.parents?.filter(parent=>parent.gender == "Female")[0]?.parents?.filter(parent=>parent.gender == "Male")[0];
+  const damDam = horse.parents?.filter(parent=>parent.gender == "Female")[0]?.parents?.filter(parent=>parent.gender == "Female")[0];
+  
   // Render DOM
   return (
     <>
@@ -33,80 +40,200 @@ function PedigreeGraph({horse}) {
 
             <div className="pedigree-cell">
 
-
-              <NavLink to={ horse.visible ? `/stallions/${horse.id}` : horse.pedigree_url }>
+              <NavLink to={`/stallions/${horse.id}`}>
                 <Typography className="pedigree-cell-text-large">{horse.name}</Typography>
               </NavLink>
 
-
             </div>
-
 
             <div id="pedigree-column2">
 
-              {/* { horse.parents.sire &&
-
                 <div className="pedigree-cell">
-                  <NavLink to="/stallions">
-                    <Typography className="pedigree-cell-text">{horse.parents.sire.name}</Typography>
-                  </NavLink>
+
+                  { sire ?
+
+                    <>
+
+                      { sire.visible === true ?
+
+                        <NavLink to={`/stallions/${sire.id}`}>
+                          <Typography className="pedigree-cell-text">{sire.name}</Typography>
+                        </NavLink>
+
+                      :
+
+                        <a className="pedigree-cell-text" href={sire.pedigree_url} target="_blank">{sire.name}</a>
+
+                      }
+
+                    </>
+
+                    :
+
+                    <>
+                      <Typography className="pedigree-cell-text-disabled">N/A</Typography>
+                    </>
+
+                  }
+
                 </div>
 
-              } */}
-
-              {/* { horse.parents.dam &&
-
                 <div className="pedigree-cell">
-                  <NavLink to="/stallions">
-                    <Typography className="pedigree-cell-text">{horse.parents.dam.name}</Typography>
-                  </NavLink>
-                </div>
 
-              } */}
+                  { dam ?
+
+                    <>
+
+                      { dam.visible === true ?
+
+                        <NavLink to={`/stallions/${dam.id}`}>
+                          <Typography className="pedigree-cell-text">{dam.name}</Typography>
+                        </NavLink>
+
+                      :
+
+                        <a className="pedigree-cell-text" href={dam.pedigree_url} target="_blank">{dam.name}</a>
+
+                      }
+
+                    </>
+
+                    :
+
+                    <>
+                      <Typography className="pedigree-cell-text-disabled">N/A</Typography>
+                    </>
+
+                  }
+
+                </div>
               
             </div>
 
-            {/* <div id="pedigree-column3">
-
-            { horse.parents.sire.parents.sire &&
+            <div id="pedigree-column3">
 
               <div className="pedigree-cell">
-                <NavLink to="/stallions">
-                  <Typography className="pedigree-cell-text">{horse.parents.sire.parents.sire.name}</Typography>
-                </NavLink>
+
+                { sireSire ?
+
+                  <>
+
+                    { sireSire.visible === true ?
+
+                      <NavLink to={`/stallions/${sireSire.id}`}>
+                        <Typography className="pedigree-cell-text">{sireSire.name}</Typography>
+                      </NavLink>
+
+                    :
+
+                      <a className="pedigree-cell-text" href={sireSire.pedigree_url} target="_blank">{sireSire.name}</a>
+
+                    }
+
+                  </>
+
+                  :
+
+                  <>
+                    <Typography className="pedigree-cell-text-disabled">N/A</Typography>
+                  </>
+
+                }
+
               </div>
-
-            }
-
-            { horse.parents.sire.parents.dam &&
 
               <div className="pedigree-cell">
-                <NavLink to="/stallions">
-                  <Typography className="pedigree-cell-text">{horse.parents.sire.parents.dam.name}</Typography>
-                </NavLink>
+
+                { sireDam ?
+
+                  <>
+
+                    { sireDam.visible === true ?
+
+                      <NavLink to={`/stallions/${sireDam.id}`}>
+                        <Typography className="pedigree-cell-text">{sireDam.name}</Typography>
+                      </NavLink>
+
+                    :
+
+                      <a className="pedigree-cell-text" href={sireDam.pedigree_url} target="_blank">{sireDam.name}</a>
+
+                    }
+
+                  </>
+
+                  :
+
+                  <>
+                    <Typography className="pedigree-cell-text-disabled">N/A</Typography>
+                  </>
+
+                }
+
               </div>
-
-            }
-
-            { horse.parents.dam.parents.sire &&
 
               <div className="pedigree-cell">
-                <NavLink to="/stallions">
-                  <Typography className="pedigree-cell-text">{horse.parents.dam.parents.sire.name}</Typography>
-                </NavLink>
-              </div>
-            }
 
-            { horse.parents.dam.parents.dam &&
+                { damSire ?
+
+                  <>
+
+                    { damSire.visible === true ?
+
+                      <NavLink to={`/stallions/${damSire.id}`}>
+                        <Typography className="pedigree-cell-text">{damSire.name}</Typography>
+                      </NavLink>
+
+                    :
+
+                      <a className="pedigree-cell-text" href={damSire.pedigree_url} target="_blank">{damSire.name}</a>
+
+                    }
+
+                  </>
+
+                  :
+
+                  <>
+                    <Typography className="pedigree-cell-text-disabled">N/A</Typography>
+                  </>
+
+                }
+
+              </div>
+
 
               <div className="pedigree-cell">
-                <NavLink to="/stallions">
-                  <Typography className="pedigree-cell-text">{horse.parents.dam.parents.dam.name}</Typography>
-                </NavLink>
+
+                { damDam ?
+
+                  <>
+
+                    { damDam.visible === true ?
+
+                      <NavLink to={`/stallions/${damDam.id}`}>
+                        <Typography className="pedigree-cell-text">{damDam.name}</Typography>
+                      </NavLink>
+
+                    :
+
+                      <a className="pedigree-cell-text" href={damDam.pedigree_url} target="_blank">{damDam.name}</a>
+
+                    }
+
+                  </>
+
+                  :
+
+                  <>
+                    <Typography className="pedigree-cell-text-disabled">N/A</Typography>
+                  </>
+
+                }
+
               </div>
-            }
               
-            </div> */}
+            </div>
 
           </div>
 

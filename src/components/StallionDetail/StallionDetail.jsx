@@ -45,11 +45,6 @@ function StallionDetail() {
     dispatch({ type: "FETCH_STALLION", payload:id });
   }, [id]);
 
-
-
-
-
-
   // Render DOM
   return (
     <>
@@ -76,13 +71,13 @@ function StallionDetail() {
 
         <div className="content-detail-header">
 
-            <Button className="form-button" onClick={()=>navigate("/stallions")}>Back</Button>
+            <Button className="form-button" onClick={()=>navigate(-1)}>Back</Button>
 
             <Typography className="content-detail-header-text">
               {stallion.name}
             </Typography>
 
-            <Button className="form-button">Learn More</Button>
+            <Button className="form-button" onClick={()=>navigate("/contact")}>Learn More</Button>
 
         </div>
 
@@ -102,27 +97,23 @@ function StallionDetail() {
 
         </div>
 
+        { stallion.parents?.length > 0 && 
+          <>
 
+            <div className="content-detail-subheader">
+              <div className="content-detail-subheader-divider"/>
+              <Typography className="content-detail-subheader-text">Pedigree</Typography>
+              <div className="content-detail-subheader-divider"/>
+            </div>
 
+            <div className="content-detail-section-container">
+                <PedigreeGraph horse={stallion}/>
+            </div>
 
-          <div className="content-detail-subheader">
-            <div className="content-detail-subheader-divider"/>
-            <Typography className="content-detail-subheader-text">Pedigree</Typography>
-            <div className="content-detail-subheader-divider"/>
-          </div>
+          </>
+        }
 
-          <div className="content-detail-section-container">
-
-            <PedigreeGraph horse={stallion}/>
-
-          </div>
-
-
-
-
-
-
-        { stallion.images?.length &&
+        { stallion.images?.length > 0 &&
 
           <>
 

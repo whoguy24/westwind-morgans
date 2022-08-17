@@ -34,6 +34,12 @@
     font-weight: var(--font-weight-light) !important;
 }
 
+.pedigree-cell-text-disabled {
+    color: var(--color-accent-300) !important;
+    font-weight: var(--font-weight-light) !important;
+    opacity: 0.5 !important;
+}
+
 .pedigree-cell-text:hover {
     color: var(--color-accent-500) !important;
     cursor: pointer !important;

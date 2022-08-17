@@ -53,7 +53,7 @@ function Footer() {
                             <ul>
                             <li><NavLink to="/visit">Visit</NavLink></li>
                                 <li><NavLink to="/contact">Contact</NavLink></li>
-                                <li><NavLink to="/home">Admin</NavLink></li>
+                                {/* <li><NavLink to="/home">Admin</NavLink></li> */}
                             </ul>
                             <ul>
                                 <NavLink to="/contact">
