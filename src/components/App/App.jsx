@@ -64,9 +64,9 @@ function App() {
             {/* <Navigation /> */}
             <Routes>
 
-              <Route path="/" element={<Navigate replace to="/coming_soon" />} />
+              <Route path="/" element={<Navigate replace to="/coming-soon" />} />
 
-              <Route exact path="/coming_soon" element={<Placeholder />} />
+              <Route exact path="/coming-soon" element={<Placeholder />} />
 
               {/* <Route exact path="/stallions" element={<StallionGallery />} />
 
