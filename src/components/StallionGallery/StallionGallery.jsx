@@ -34,7 +34,7 @@ function StallionGallery() {
 
   // Redux Store Variables
   const stallions = useSelector(store => store.stallions);
-  const visibleStallions = stallions.filter(stallion=>stallion.visible === true);
+  const visibleStallions = stallions?.filter(stallion=>stallion.visible === 1);
 
   // Fetch Objects from Database on Page Load
   useEffect(() => {

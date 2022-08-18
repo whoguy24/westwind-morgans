@@ -1,11 +1,13 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-require('dotenv').config();
+
+// const bodyParser = require('body-parser');
+// require('dotenv').config();
 
 const app = express();
 
-const sessionMiddleware = require('./modules/session-middleware');
-const passport = require('./strategies/user.strategy');
+// const sessionMiddleware = require('./modules/session-middleware');
+
+// const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
@@ -13,15 +15,15 @@ const usersRouter = require('./routes/users.router');
 const stallionsRouter = require('./routes/stallions.router');
 
 // Body parser middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 
 // Passport Session Configuration //
-app.use(sessionMiddleware);
+// app.use(sessionMiddleware);
 
 // start up passport sessions
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
