@@ -59,9 +59,9 @@ function Placeholder() {
 
         <Typography className="placeholder-font-v9">Performance Horse Prospects and Young Stock Available</Typography>
         <Typography className="placeholder-font-v6">Bryan Blatt Sheridan Montana 406 451 9311</Typography>
+        <a className="placeholder-font-v6" href="mailto:bblat@westwindmorgans.com">bblatt@westwindmorgans.com</a>
         <Typography className="placeholder-font-v8">Photo by Rocking Horse Photography</Typography>
         <Typography className="placeholder-font-v7">Complete Website Coming Soon!</Typography>
-
         <a className="placeholder-font-v10" href={facebookLink} target="_blank">Westwind Morgans @Facebook</a>
 
       </div>
