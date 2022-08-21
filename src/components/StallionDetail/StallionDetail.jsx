@@ -12,6 +12,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { useParams } from "react-router-dom";
 
+import PedigreeGraph from "../PedigreeGraph/PedigreeGraph";
+
 // Import MUI Components
 import Typography from '@mui/material/Typography';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
@@ -69,13 +71,13 @@ function StallionDetail() {
 
         <div className="content-detail-header">
 
-            <Button className="form-button" onClick={()=>navigate("/stallions")}>Back</Button>
+            <Button className="form-button" onClick={()=>navigate(-1)}>Back</Button>
 
             <Typography className="content-detail-header-text">
               {stallion.name}
             </Typography>
 
-            <Button className="form-button">Learn More</Button>
+            <Button className="form-button" onClick={()=>navigate("/contact")}>Learn More</Button>
 
         </div>
 
@@ -83,7 +85,7 @@ function StallionDetail() {
 
         <div className="content-detail-section-container">
 
-            <img className="content-detail-section-image" src={stallion.url} alt="profile_stallion" />
+            <img className="content-detail-section-image" src={stallion.profile_url ? stallion.profile_url : "images/placeholder_profile.png"} alt="profile_stallion" />
 
             <div  className="content-detail-section-info">
 
@@ -95,82 +97,55 @@ function StallionDetail() {
 
         </div>
 
-        <div className="content-detail-subheader">
-          <div className="content-detail-subheader-divider"/>
-          <Typography className="content-detail-subheader-text">Pedigree</Typography>
-          <div className="content-detail-subheader-divider"/>
-        </div>
+        { stallion.parents?.length > 0 && 
+          <>
 
-        <div className="content-detail-section-container">
+            <div className="content-detail-subheader">
+              <div className="content-detail-subheader-divider"/>
+              <Typography className="content-detail-subheader-text">Pedigree</Typography>
+              <div className="content-detail-subheader-divider"/>
+            </div>
 
-            <div  className="content-detail-section-info">
+            <div className="content-detail-section-container">
+                <PedigreeGraph horse={stallion}/>
+            </div>
 
-              <Typography className="content-detail-section-basic-text">A bunch of Pedigree info here. Graphics, etc.<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></Typography>
+          </>
+        }
+
+        { stallion.images?.length > 0 &&
+
+          <>
+
+            <div className="content-detail-subheader">
+              <div className="content-detail-subheader-divider"/>
+              <Typography className="content-detail-subheader-text">Gallery</Typography>
+              <div className="content-detail-subheader-divider"/>
+            </div>
+
+            <div className="content-detail-section-gallery">
+
+                { stallion.images.map((image) => {
+                  return (
+                    <Card className="gallery-card" key={image.id} >
+                    <CardActionArea>
+                      <a href={image.url} target="_blank">
+                        <CardMedia
+                          component="img"
+                          image={image.url}
+                          alt="home_stallions"
+                        />
+                      </a>
+                    </CardActionArea>
+                  </Card>
+                  )
+              })}
 
             </div>
 
-        </div>
+          </>
 
-
-        <div className="content-detail-subheader">
-          <div className="content-detail-subheader-divider"/>
-          <Typography className="content-detail-subheader-text">Gallery</Typography>
-          <div className="content-detail-subheader-divider"/>
-        </div>
-
-        <div className="content-detail-section-gallery">
-
-          <Card className="gallery-card" >
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  image="https://res.cloudinary.com/wobrien-cloud/image/upload/v1660259844/westwind-morgans/4_qtw4wo.png"
-                  alt="home_stallions"
-                />
-              </CardActionArea>
-            </Card>
-
-            <Card className="gallery-card" >
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  image="https://res.cloudinary.com/wobrien-cloud/image/upload/v1660259844/westwind-morgans/5_umbso8.png"
-                  alt="home_stallions"
-                />
-              </CardActionArea>
-            </Card>
-
-            <Card className="gallery-card" >
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  image="https://res.cloudinary.com/wobrien-cloud/image/upload/v1660259844/westwind-morgans/6_r7gn1p.png"
-                  alt="home_stallions"
-                />
-              </CardActionArea>
-            </Card>
-
-            <Card className="gallery-card" >
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  image="https://res.cloudinary.com/wobrien-cloud/image/upload/v1660259844/westwind-morgans/7_cc78e8.png"
-                  alt="home_stallions"
-                />
-              </CardActionArea>
-            </Card>
-
-            <Card className="gallery-card" >
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  image="https://res.cloudinary.com/wobrien-cloud/image/upload/v1660259844/westwind-morgans/8_ivtixp.png"
-                  alt="home_stallions"
-                />
-              </CardActionArea>
-            </Card>
-
-        </div>
+        }
 
       </div>
 
