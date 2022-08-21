@@ -85,15 +85,15 @@ function StallionDetail() {
 
         <div className="content-detail-section-container">
 
+          <a className="content-detail-section-image-link" href={stallion.profile_url} target="_blank">
             <img className="content-detail-section-image" src={stallion.profile_url ? stallion.profile_url : "images/placeholder_profile.png"} alt="profile_stallion" />
+          </a>
 
-            <div  className="content-detail-section-info">
-
-              <Typography className="content-detail-section-basic-header">{stallion.name}</Typography>
-              <Typography className="content-detail-section-basic-text">{stallion.color}</Typography>
-              <Typography className="content-detail-section-basic-text">{stallion.year}</Typography>
-
-            </div>
+          <div  className="content-detail-section-info">
+            <Typography className="content-detail-section-basic-header">{stallion.name}</Typography>
+            <Typography className="content-detail-section-basic-text">{stallion.color}</Typography>
+            <Typography className="content-detail-section-basic-text">{stallion.year}</Typography>
+          </div>
 
         </div>
 

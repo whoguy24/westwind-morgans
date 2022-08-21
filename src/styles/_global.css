@@ -152,7 +152,6 @@
     column-gap: 1rem !important;
     row-gap: 1rem !important;
     padding: 1rem !important;
-    min-height: 50vh !important;
   }
 
   .content-detail-header {
@@ -191,8 +190,16 @@
     box-sizing: border-box !important;
   }
 
-  .content-detail-section-image {
+  .content-detail-section-image-link {
     width: 50%;
+  }
+
+  .content-detail-section-image-link:hover {
+    filter: brightness(115%) !important;
+  }
+
+  .content-detail-section-image {
+    width: 100%;
   }
 
   .content-detail-section-info {
@@ -327,7 +334,7 @@
     display: flex;
     flex-direction: column;
   }
-  .content-detail-section-image {
+  .content-detail-section-image-link {
     width: 100%;
   }
   .content-detail-section-info {
