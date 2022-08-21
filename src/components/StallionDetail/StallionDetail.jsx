@@ -129,11 +129,13 @@ function StallionDetail() {
                   return (
                     <Card className="gallery-card" key={image.id} >
                     <CardActionArea>
-                      <CardMedia
-                        component="img"
-                        image={image.url}
-                        alt="home_stallions"
-                      />
+                      <a href={image.url} target="_blank">
+                        <CardMedia
+                          component="img"
+                          image={image.url}
+                          alt="home_stallions"
+                        />
+                      </a>
                     </CardActionArea>
                   </Card>
                   )
