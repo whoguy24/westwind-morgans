@@ -317,11 +317,17 @@
   .content-toolbar-breadcrumbs {
     width: 100% !important;
   }
+  .gallery-card-label-text {
+    font-size: 0.75rem !important;
+  }
 }
 
 @media screen and (max-width: 500px) {
   .gallery-container {
     grid-template-columns: 3fr !important;
+  }
+  .gallery-card-label-text {
+    font-size: 0.5rem !important;
   }
   .content-detail-header-text {
     font-size: var(--font-size-300) !important;
