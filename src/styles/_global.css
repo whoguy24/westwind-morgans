@@ -145,7 +145,7 @@
 
   .gallery-container {
     background-color: var(--color-neutral-700) !important;
-    width: 100% !important;
+    width: 90% !important;
     display: grid !important;
     grid-template-columns: 3fr 3fr 3fr !important;
     box-sizing: border-box !important;
