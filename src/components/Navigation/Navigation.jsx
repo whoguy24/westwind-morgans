@@ -77,7 +77,7 @@ function Navigation() {
                 navigate("/breeding")
                 break;
             case "stock":
-                navigate("/stock")
+                navigate("/stock_for_sale")
                 break;
             case "contact":
                 navigate("/contact")

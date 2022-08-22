@@ -60,7 +60,7 @@ function HomeHorses() {
               </CardActionArea>
             </Card>
 
-            <Card className="gallery-card" onClick={()=>navigate("/stock")}>
+            <Card className="gallery-card" onClick={()=>navigate("/stock_for_sale")}>
               <CardActionArea>
                 <CardMedia
                   component="img"

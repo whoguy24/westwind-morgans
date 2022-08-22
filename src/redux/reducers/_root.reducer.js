@@ -2,15 +2,15 @@ import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
 import users from './users.reducer';
-import stallions from './stallions.reducer';
-import stallion from './stallion.reducer';
+import horses from './horses.reducer';
+import horse from './horse.reducer';
 
 const rootReducer = combineReducers({
   errors,
   user,
   users,
-  stallions,
-  stallion,
+  horses,
+  horse,
 });
 
 export default rootReducer;
