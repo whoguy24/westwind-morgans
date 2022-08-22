@@ -2,14 +2,28 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/:route', (req, res) => {
+
+    let category = "";
+
+    switch (req.params.route) {
+        case "stallions": category = "Stallion"
+        break;
+        case "mares": category = "Mare"
+        break;
+        case "stock_for_sale": category = "Stock"
+        break;
+    }
+    
     const queryText = `
         SELECT * FROM "horses"
-        WHERE "horses"."category" = 'Stallion'
+        WHERE "horses"."category" = $1
         ORDER BY "horses"."id" ASC;
     `;
+
+    const sqlValues = [ category ];
     
-    pool.query(queryText)
+    pool.query(queryText, sqlValues)
     .then((result) => { 
         res.send(result.rows)
     })
@@ -19,14 +33,25 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:route/:id', async (req, res) => {
+
+    let category = "";
+
+    switch (req.params.route) {
+        case "stallions": category = "Stallion"
+        break;
+        case "mares": category = "Mare"
+        break;
+        case "stock_for_sale": category = "Stock"
+        break;
+    }
 
     const sqlQuery = `
         SELECT * FROM "horses"
-        WHERE "horses"."id" = $1
+        WHERE "horses"."category" = $1 AND "horses"."id" = $2
         ORDER BY "horses"."id" ASC;
     `;
-    const sqlValues = [ req.params.id ];
+    const sqlValues = [ category, req.params.id ];
 
     pool.query(sqlQuery, sqlValues)
     .then(async(result) => { 
@@ -64,23 +89,6 @@ function fetchParents(sire_id, dam_id, i) {
         });
     })
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function fetchImages(id) {
     return new Promise((resolve, reject )=> {

@@ -1,11 +1,11 @@
-const stallionReducer = (state = {}, action) => {
+const horseReducer = (state = {}, action) => {
     switch (action.type) {
-      case 'LOAD_STALLION':
+      case 'LOAD_HORSE':
         return {...action.payload};
       default:
         return state;
     }
 };
   
-export default stallionReducer;
+export default horseReducer;
   

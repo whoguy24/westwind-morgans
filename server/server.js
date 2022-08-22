@@ -5,12 +5,12 @@ require('dotenv').config();
 const app = express();
 
 const sessionMiddleware = require('./modules/session-middleware');
-const passport = require('./strategies/user.strategy');
+// const passport = require('./strategies/user.strategy');
 
 // Route includes
-const userRouter = require('./routes/user.router');
-const usersRouter = require('./routes/users.router');
-const stallionsRouter = require('./routes/stallions.router');
+// const userRouter = require('./routes/user.router');
+// const usersRouter = require('./routes/users.router');
+const horsesRouter = require('./routes/horses.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -20,13 +20,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(sessionMiddleware);
 
 // start up passport sessions
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 /* Routes */
-app.use('/api/user', userRouter);
-app.use('/api/users', usersRouter);
-app.use('/api/stallions', stallionsRouter);
+// app.use('/api/user', userRouter);
+// app.use('/api/users', usersRouter);
+app.use('/api/horses', horsesRouter);
 
 // Serve static files
 app.use(express.static('build'));

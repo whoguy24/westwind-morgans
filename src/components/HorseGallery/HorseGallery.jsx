@@ -3,7 +3,7 @@
 ///////////////////////////////////////////////////////
 
 // Import Stylesheets
-import '../StallionGallery/StallionGallery.css';
+import './HorseGallery.css';
 
 // Import Libraries
 import { useEffect } from "react";
@@ -24,7 +24,7 @@ import { CardActionArea } from '@mui/material';
 ///// COMPONENT FUNCTION //////////////////////////////
 ///////////////////////////////////////////////////////
 
-function StallionGallery() {
+function HorseGallery({category}) {
 
   // Redux Variables
   const dispatch = useDispatch();
@@ -32,14 +32,28 @@ function StallionGallery() {
   // React Router Variables
   const navigate = useNavigate();
 
-  // Redux Store Variables
-  const stallions = useSelector(store => store.stallions);
-  const visibleStallions = stallions.filter(stallion=>stallion.visible === true);
-
   // Fetch Objects from Database on Page Load
   useEffect(() => {
-    dispatch({ type: "FETCH_STALLIONS" });
-  }, [dispatch]);
+    dispatch({ type: "FETCH_HORSES", route:category });
+  }, [category]);
+
+  let category_title = ""
+
+  switch (category) {
+    case "stallions": 
+      category_title = "Stallions"
+      break;
+    case "mares": 
+      category_title = "Mares"
+      break;
+    case "stock_for_sale": 
+      category_title = "Stock for Sale"
+      break;
+  }
+
+  // Redux Store Variables
+  const horses = useSelector(store => store.horses);
+  const visibleHorses = horses.filter(horse=>horse.visible === true);
 
   // Render DOM
   return (
@@ -48,44 +62,43 @@ function StallionGallery() {
       <div className="content-container">
 
         <div className="content-banner">
-          <img className="content-banner-image" src="/images/stallion_banner.png" alt="stallion"/>
+          <img className="content-banner-image" src={`/images/banner_${category}.png`}/>
         </div>
 
         <div className="section-header-banner">
-          <Typography className="section-header-banner-text">Stallions</Typography>
+            <Typography className="section-header-banner-text">{category_title}</Typography>
         </div>
 
         <div className="content-toolbar">
 
-          <Breadcrumbs className="content-toolbar-breadcrumbs">
-            <NavLink to="/home">Westwind Morgans</NavLink>
-            <NavLink to="/stallions">Stallions</NavLink>
-          </Breadcrumbs>
+            <Breadcrumbs className="content-toolbar-breadcrumbs">
+              <NavLink to="/home">Westwind Morgans</NavLink>
+              <NavLink to={`/${category}`}>{category_title}</NavLink>
+            </Breadcrumbs>
 
           {/* <SearchBar/> */}
 
         </div>
 
         <div className="gallery-container">
-          {visibleStallions.map((stallion) => {
+          {visibleHorses.map((horse) => {
               return (
-                <Card className="gallery-card" key={stallion.id} onClick={()=>navigate(`/stallions/${stallion.id}`)}>
+                <Card className="gallery-card" key={horse.id} onClick={()=>navigate(`/${category}/${horse.id}`)}>
                   <CardActionArea>
                     <CardMedia
                       component="img"
                       height="300px"
-                      image={stallion.profile_url? stallion.profile_url: "images/placeholder_profile.png"}
+                      image={horse.profile_url? horse.profile_url: "images/placeholder_profile.png"}
                       alt="placeholder_stallion"
                     />
                     <div className="gallery-card-label">
-                      <Typography className="gallery-card-label-text">{stallion.name}</Typography>
+                      <Typography className="gallery-card-label-text">{horse.name}</Typography>
                     </div>
                   </CardActionArea>
                 </Card>
               )
           })}
         </div>
-
       </div>
       
     </>
@@ -97,4 +110,4 @@ function StallionGallery() {
 ///// EXPORT COMPONENT FUNCTION ///////////////////////
 ///////////////////////////////////////////////////////
 
-export default StallionGallery;
+export default HorseGallery;

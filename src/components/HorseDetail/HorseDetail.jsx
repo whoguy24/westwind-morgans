@@ -3,7 +3,7 @@
 ///////////////////////////////////////////////////////
 
 // Import Stylesheets
-import '../StallionDetail/StallionDetail.css';
+import '../HorseDetail/HorseDetail.css';
 
 // Import Libraries
 import { useEffect } from "react";
@@ -27,7 +27,7 @@ import { CardActionArea } from '@mui/material';
 ///// COMPONENT FUNCTION //////////////////////////////
 ///////////////////////////////////////////////////////
 
-function StallionDetail() {
+function HorseDetail({category}) {
 
   let { id } = useParams();
 
@@ -38,11 +38,25 @@ function StallionDetail() {
   const navigate = useNavigate();
 
   // Redux Store Variables
-  const stallion = useSelector(store => store.stallion);
+  const horse = useSelector(store => store.horse);
+
+  let category_title = ""
+
+  switch (category) {
+    case "stallions": 
+      category_title = "Stallions"
+      break;
+    case "mares": 
+      category_title = "Mares"
+      break;
+    case "stock_for_sale": 
+      category_title = "Stock for Sale"
+      break;
+  }
 
   // Fetch Object from Database On Page Load
   useEffect(() => {
-    dispatch({ type: "FETCH_STALLION", payload:id });
+    dispatch({ type: "FETCH_HORSE", route:category, id: id });
   }, [id]);
 
   // Render DOM
@@ -52,30 +66,26 @@ function StallionDetail() {
       <div className="content-container">
 
         <div className="content-banner">
-          <img className="content-banner-image" src="/images/stallion_banner.png" alt="stallion"/>
+          <img className="content-banner-image" src={`/images/banner_${category}.png`}/>
         </div>
 
         <div className="section-header-banner">
-          <Typography className="section-header-banner-text">Stallions</Typography>
+          <Typography className="section-header-banner-text">{category_title}</Typography>
         </div>
 
         <div className="content-toolbar">
-
           <Breadcrumbs className="content-toolbar-breadcrumbs">
             <NavLink to="/home">Westwind Morgans</NavLink>
-            <NavLink to="/stallions">Stallions</NavLink>
-            <NavLink to={`/stallions/${stallion.id}`}>{stallion.name}</NavLink>
+            <NavLink to={`/${category}`}>{category_title}</NavLink>
+            <NavLink to={`/${category}/${horse.id}`}>{horse.name}</NavLink>
           </Breadcrumbs>
-
         </div>
 
         <div className="content-detail-header">
 
             <Button className="form-button" onClick={()=>navigate(-1)}>Back</Button>
 
-            <Typography className="content-detail-header-text">
-              {stallion.name}
-            </Typography>
+            <Typography className="content-detail-header-text">{horse.name}</Typography>
 
             <Button className="form-button" onClick={()=>navigate("/contact")}>Learn More</Button>
 
@@ -85,19 +95,19 @@ function StallionDetail() {
 
         <div className="content-detail-section-container">
 
-          <a className="content-detail-section-image-link" href={stallion.profile_url} target="_blank">
-            <img className="content-detail-section-image" src={stallion.profile_url ? stallion.profile_url : "images/placeholder_profile.png"} alt="profile_stallion" />
+          <a className="content-detail-section-image-link" href={horse.profile_url} target="_blank">
+            <img className="content-detail-section-image" src={horse.profile_url ? horse.profile_url : "images/placeholder_profile.png"} />
           </a>
 
-          <div  className="content-detail-section-info">
-            <Typography className="content-detail-section-basic-header">{stallion.name}</Typography>
-            <Typography className="content-detail-section-basic-text">{stallion.color}</Typography>
-            <Typography className="content-detail-section-basic-text">{stallion.year}</Typography>
+          <div className="content-detail-section-info">
+            <Typography className="content-detail-section-basic-header">{horse.name}</Typography>
+            <Typography className="content-detail-section-basic-text">{horse.color}</Typography>
+            <Typography className="content-detail-section-basic-text">{horse.year}</Typography>
           </div>
 
         </div>
 
-        { stallion.parents?.length > 0 && 
+        { horse.parents?.length > 0 && 
           <>
 
             <div className="content-detail-subheader">
@@ -107,13 +117,13 @@ function StallionDetail() {
             </div>
 
             <div className="content-detail-section-container">
-                <PedigreeGraph horse={stallion}/>
+                <PedigreeGraph horse={horse}/>
             </div>
 
           </>
         }
 
-        { stallion.images?.length > 0 &&
+        { horse.images?.length > 0 &&
 
           <>
 
@@ -125,7 +135,7 @@ function StallionDetail() {
 
             <div className="content-detail-section-gallery">
 
-                { stallion.images.map((image) => {
+                { horse.images.map((image) => {
                   return (
                     <Card className="gallery-card" key={image.id} >
                     <CardActionArea>
@@ -133,7 +143,6 @@ function StallionDetail() {
                         <CardMedia
                           component="img"
                           image={image.url}
-                          alt="home_stallions"
                         />
                       </a>
                     </CardActionArea>
@@ -158,4 +167,4 @@ function StallionDetail() {
 ///// EXPORT COMPONENT FUNCTION ///////////////////////
 ///////////////////////////////////////////////////////
 
-export default StallionDetail;
+export default HorseDetail;

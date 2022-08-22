@@ -19,8 +19,8 @@ import Login from "../Login/Login";
 import Admin from "../Admin/Admin";
 import Placeholder from "../Placeholder/Placeholder";
 import Preloader from "../Preloader/Preloader";
-import StallionGallery from "../StallionGallery/StallionGallery";
-import StallionDetail from "../StallionDetail/StallionDetail";
+import HorseGallery from "../HorseGallery/HorseGallery";
+import HorseDetail from "../HorseDetail/HorseDetail";
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
@@ -66,12 +66,15 @@ function App() {
               <Route path="/" element={<Navigate replace to="/home" />} />
               <Route exact path="/home" element={<Home />} />
 
-              <Route exact path="/stallions" element={<StallionGallery />} />
+              <Route exact path="/stallions" element={<HorseGallery category="stallions" />} />
+              <Route path="/stallions/:id" element={<HorseDetail category="stallions" />} />
 
-              <Route path="/stallions/:id" element={<StallionDetail />} />
+              <Route exact path="/mares" element={<HorseGallery category="mares" />} />
+              <Route path="/mares/:id" element={<HorseDetail category="mares" />} />
 
-              <Route exact path="/mares" element={<Placeholder />} />
-              <Route exact path="/stock" element={<Placeholder />} />
+              <Route exact path="/stock_for_sale" element={<HorseGallery category="stock_for_sale" />} />
+              <Route path="/stock_for_sale/:id" element={<HorseDetail category="stock_for_sale" />} />
+
               <Route exact path="/breeding" element={<Placeholder />} />
               <Route exact path="/foundation" element={<Placeholder />} />
               <Route exact path="/testimonials" element={<Placeholder />} />
