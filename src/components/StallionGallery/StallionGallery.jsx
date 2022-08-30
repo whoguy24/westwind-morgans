@@ -6,7 +6,7 @@
 import '../StallionGallery/StallionGallery.css';
 
 // Import Libraries
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 
@@ -34,7 +34,7 @@ function StallionGallery() {
 
   // Redux Store Variables
   const stallions = useSelector(store => store.stallions);
-  const visibleStallions = stallions?.filter(stallion=>stallion.visible === 1);
+  // const visibleStallions = stallions?.filter(stallion=>stallion.visible === 1);
 
   // Fetch Objects from Database on Page Load
   useEffect(() => {
@@ -66,8 +66,8 @@ function StallionGallery() {
 
         </div>
 
-        <div className="gallery-container">
-          {visibleStallions.map((stallion) => {
+        {/* <div className="gallery-container">
+          {stallions.map((stallion) => {
               return (
                 <Card className="gallery-card" key={stallion.id} onClick={()=>navigate(`/stallions/${stallion.id}`)}>
                   <CardActionArea>
@@ -84,7 +84,7 @@ function StallionGallery() {
                 </Card>
               )
           })}
-        </div>
+        </div> */}
 
       </div>
       

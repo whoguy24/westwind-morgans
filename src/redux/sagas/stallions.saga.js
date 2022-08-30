@@ -11,6 +11,7 @@ function* fetchStallions() {
       type: 'LOAD_STALLIONS',
       payload: response.data
     })
+    console.log(response);
   } catch(error) {
     console.error('ERROR:', error)
   }

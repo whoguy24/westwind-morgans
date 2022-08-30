@@ -5,7 +5,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
     
     db.query(
-        `SELECT * FROM horses WHERE horses.category = "Stallion";`,
+        `SELECT * FROM horses;`,
         (error, result) => {
             if (error) {
                 console.log(error);
