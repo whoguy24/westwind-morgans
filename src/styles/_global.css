@@ -55,7 +55,7 @@
     display: flex !important;
     margin: auto !important;
     letter-spacing: 1.5px !important;
-    font-size: 1rem !important;
+    font-size: 0.75rem !important;
 }
 
 .gallery-card:hover {
@@ -317,17 +317,14 @@
   .content-toolbar-breadcrumbs {
     width: 100% !important;
   }
-  .gallery-card-label-text {
-    font-size: 0.75rem !important;
+  .content-detail-section-gallery {
+    grid-template-columns: 3fr 3fr !important;
   }
 }
 
 @media screen and (max-width: 500px) {
   .gallery-container {
     grid-template-columns: 3fr !important;
-  }
-  .gallery-card-label-text {
-    font-size: 0.5rem !important;
   }
   .content-detail-header-text {
     font-size: var(--font-size-300) !important;

@@ -57,6 +57,7 @@ router.get('/:route/:id', async (req, res) => {
     .then(async(result) => { 
         const horse = result.rows[0];
         horse.parents = await fetchParents(horse.sire_id, horse.dam_id, 0);
+        horse.progeny = await fetchProgeny(horse.id);
         horse.images = await fetchImages(horse.id);
         res.send(horse)
     })
@@ -97,6 +98,24 @@ function fetchImages(id) {
             SELECT * FROM "images"
             WHERE "images"."horse_id" = $1
             ORDER BY "images"."id" ASC;
+        ;`
+        pool.query(queryText, queryValues)
+        .then((result) => { 
+            resolve(result.rows)
+        })
+        .catch((error) => { 
+            reject(error);
+        });
+    })
+}
+
+function fetchProgeny(id) {
+    return new Promise((resolve, reject )=> {
+        const queryValues = [id];
+        const queryText = `
+            SELECT * FROM "horses"
+            WHERE "horses"."sire_id" = $1 OR "horses"."dam_id" = $1
+            ORDER BY "horses"."id" ASC;
         ;`
         pool.query(queryText, queryValues)
         .then((result) => { 

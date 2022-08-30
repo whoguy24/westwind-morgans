@@ -123,6 +123,42 @@ function HorseDetail({category}) {
           </>
         }
 
+        { horse.progeny?.length > 0 &&
+
+          <>
+
+            <div className="content-detail-subheader">
+              <div className="content-detail-subheader-divider"/>
+              <Typography className="content-detail-subheader-text">Progeny</Typography>
+              <div className="content-detail-subheader-divider"/>
+            </div>
+
+            <div className="content-detail-section-gallery">
+
+              {horse.progeny.map((horse) => {
+                  return (
+                    <Card className="gallery-card" key={horse.id} onClick={()=>navigate(`/${category}/${horse.id}`)}>
+                      <CardActionArea>
+                        <CardMedia
+                          component="img"
+                          height="300px"
+                          image={horse.profile_url? horse.profile_url: "images/placeholder_profile.png"}
+                          alt="placeholder_stallion"
+                        />
+                        <div className="gallery-card-label">
+                          <Typography className="gallery-card-label-text">{horse.name}</Typography>
+                        </div>
+                      </CardActionArea>
+                    </Card>
+                  )
+              })}
+
+            </div>
+
+          </>
+
+        }
+
         { horse.images?.length > 0 &&
 
           <>

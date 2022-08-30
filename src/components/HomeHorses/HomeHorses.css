@@ -18,12 +18,14 @@
   padding: 1rem;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 500px) {
   #home-horses-header-text {
     font-size: var(--font-size-500);
   }
   #home-horses-grid {
-    column-gap: 0.5rem;
-    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 2rem;
   }
 }

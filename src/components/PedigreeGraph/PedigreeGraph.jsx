@@ -19,14 +19,14 @@ import Typography from '@mui/material/Typography';
 
 function PedigreeGraph({horse}) {
 
-  const sire = horse.parents?.filter(parent=>parent.gender == "Male")[0];
-  const dam = horse.parents?.filter(parent=>parent.gender == "Female")[0];
+  const sire = horse.parents?.filter(parent=>parent.sex == "Male")[0];
+  const dam = horse.parents?.filter(parent=>parent.sex == "Female")[0];
 
-  const sireSire = horse.parents?.filter(parent=>parent.gender == "Male")[0]?.parents?.filter(parent=>parent.gender == "Male")[0];
-  const sireDam = horse.parents?.filter(parent=>parent.gender == "Male")[0]?.parents?.filter(parent=>parent.gender == "Female")[0];
+  const sireSire = horse.parents?.filter(parent=>parent.sex == "Male")[0]?.parents?.filter(parent=>parent.sex == "Male")[0];
+  const sireDam = horse.parents?.filter(parent=>parent.sex == "Male")[0]?.parents?.filter(parent=>parent.sex == "Female")[0];
 
-  const damSire = horse.parents?.filter(parent=>parent.gender == "Female")[0]?.parents?.filter(parent=>parent.gender == "Male")[0];
-  const damDam = horse.parents?.filter(parent=>parent.gender == "Female")[0]?.parents?.filter(parent=>parent.gender == "Female")[0];
+  const damSire = horse.parents?.filter(parent=>parent.sex == "Female")[0]?.parents?.filter(parent=>parent.sex == "Male")[0];
+  const damDam = horse.parents?.filter(parent=>parent.sex == "Female")[0]?.parents?.filter(parent=>parent.sex == "Female")[0];
   
   // Render DOM
   return (
