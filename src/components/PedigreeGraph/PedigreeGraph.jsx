@@ -40,7 +40,7 @@ function PedigreeGraph({horse}) {
 
             <div className="pedigree-cell">
 
-              <NavLink to={`/stallions/${horse.id}`}>
+              <NavLink to={`/${horse.route}/${horse.id}`}>
                 <Typography className="pedigree-cell-text-large">{horse.name}</Typography>
               </NavLink>
 
@@ -56,7 +56,7 @@ function PedigreeGraph({horse}) {
 
                       { sire.visible === true ?
 
-                        <NavLink to={`/stallions/${sire.id}`}>
+                        <NavLink to={`/${sire.route}/${sire.id}`}>
                           <Typography className="pedigree-cell-text">{sire.name}</Typography>
                         </NavLink>
 
@@ -86,7 +86,7 @@ function PedigreeGraph({horse}) {
 
                       { dam.visible === true ?
 
-                        <NavLink to={`/stallions/${dam.id}`}>
+                        <NavLink to={`/${dam.route}/${dam.id}`}>
                           <Typography className="pedigree-cell-text">{dam.name}</Typography>
                         </NavLink>
 
@@ -120,7 +120,7 @@ function PedigreeGraph({horse}) {
 
                     { sireSire.visible === true ?
 
-                      <NavLink to={`/stallions/${sireSire.id}`}>
+                      <NavLink to={`/${sireSire.route}/${sireSire.id}`}>
                         <Typography className="pedigree-cell-text">{sireSire.name}</Typography>
                       </NavLink>
 
@@ -150,7 +150,7 @@ function PedigreeGraph({horse}) {
 
                     { sireDam.visible === true ?
 
-                      <NavLink to={`/stallions/${sireDam.id}`}>
+                      <NavLink to={`/${sireDam.route}/${sireDam.id}`}>
                         <Typography className="pedigree-cell-text">{sireDam.name}</Typography>
                       </NavLink>
 
@@ -180,7 +180,7 @@ function PedigreeGraph({horse}) {
 
                     { damSire.visible === true ?
 
-                      <NavLink to={`/stallions/${damSire.id}`}>
+                      <NavLink to={`/${damSire.route}/${damSire.id}`}>
                         <Typography className="pedigree-cell-text">{damSire.name}</Typography>
                       </NavLink>
 
@@ -211,7 +211,7 @@ function PedigreeGraph({horse}) {
 
                     { damDam.visible === true ?
 
-                      <NavLink to={`/stallions/${damDam.id}`}>
+                      <NavLink to={`/${damDam.route}/${damDam.id}`}>
                         <Typography className="pedigree-cell-text">{damDam.name}</Typography>
                       </NavLink>
 
