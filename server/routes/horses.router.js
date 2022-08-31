@@ -56,9 +56,9 @@ router.get('/:route/:id', async (req, res) => {
     pool.query(sqlQuery, sqlValues)
     .then(async(result) => { 
         const horse = result.rows[0];
-        horse.parents = await fetchParents(horse.sire_id, horse.dam_id, 0);
-        horse.progeny = await fetchProgeny(horse.id);
-        horse.images = await fetchImages(horse.id);
+        horse.parents = await fetchParents(horse.sire_id, horse.dam_id, 0) || [];
+        horse.progeny = await fetchProgeny(horse.id) || [];
+        horse.images = await fetchImages(horse.id) || [];
         res.send(horse)
     })
     .catch((error) => {

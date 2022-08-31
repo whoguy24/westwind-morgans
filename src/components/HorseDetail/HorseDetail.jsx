@@ -76,8 +76,8 @@ function HorseDetail({category}) {
         <div className="content-toolbar">
           <Breadcrumbs className="content-toolbar-breadcrumbs">
             <NavLink to="/home">Westwind Morgans</NavLink>
-            <NavLink to={`/${category}`}>{category_title}</NavLink>
-            <NavLink to={`/${category}/${horse.id}`}>{horse.name}</NavLink>
+            <NavLink to={`/${horse.route}`}>{category_title}</NavLink>
+            <NavLink to={`/${horse.route}/${horse.id}`}>{horse.name}</NavLink>
           </Breadcrumbs>
         </div>
 
@@ -137,7 +137,7 @@ function HorseDetail({category}) {
 
               {horse.progeny.map((horse) => {
                   return (
-                    <Card className="gallery-card" key={horse.id} onClick={()=>navigate(`/${category}/${horse.id}`)}>
+                    <Card className="gallery-card" key={horse.id} onClick={()=>navigate(`/${horse.route}/${horse.id}`)}>
                       <CardActionArea>
                         <CardMedia
                           component="img"
