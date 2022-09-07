@@ -7,6 +7,10 @@
   flex-direction: column;
   width: 100%;
   margin-top: 1rem;
+  opacity: 0;
+  animation: fadeIn 3s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
 }
 
 #footer-links {

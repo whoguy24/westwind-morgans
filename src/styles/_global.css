@@ -71,6 +71,10 @@
     margin: 1rem !important;
     padding-top: 0.25rem !important;
     padding-bottom: 0.25rem !important;
+    animation: fadeIn 3s !important;
+    animation-delay: 1s !important;
+    animation-fill-mode: forwards !important;
+    opacity: 0;
 }
   
 .section-header-text {

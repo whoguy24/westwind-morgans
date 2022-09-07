@@ -4,6 +4,10 @@
   background-color: var(--color-primary-300);
   display: flex;
   justify-content: space-around;
+  opacity: 0;
+  animation: fadeIn 3s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
 }
 
 #navigation-group-left {

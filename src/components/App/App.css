@@ -9,7 +9,3 @@ body {
   background-size: 30%;
   background-color: #0c0c0c;
 }
-
-#fade-in {
-    animation: fadeIn 2s;
-}

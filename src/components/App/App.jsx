@@ -62,8 +62,10 @@ function App() {
         
         :
 
-          <div id="fade-in">
+          <>
+
             <Navigation />
+
             <Routes>
               <Route path="/" element={<Navigate replace to="/home" />} />
               <Route exact path="/home" element={<Home />} />
@@ -82,8 +84,10 @@ function App() {
               <Route exact path="/admin" element={user.id?<Admin />:<Login />} />
               <Route exact path="*" element={<NotFound />} />
             </Routes>
+            
             <Footer />
-          </div>
+
+          </>
 
         }
       </Router>
