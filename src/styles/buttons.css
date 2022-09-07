@@ -10,7 +10,7 @@
 
 .navigation-button {
     color: var(--color-accent-300) !important;
-    font-weight: var(--font-weight-light) !important;
+    font-weight: var(--font-weight-medium) !important;
     font-size: var(--font-size-300) !important;
 }
 
