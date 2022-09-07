@@ -123,6 +123,39 @@ function HorseDetail({category}) {
           </>
         }
 
+        { horse.images?.length > 0 &&
+
+        <>
+
+          <div className="content-detail-subheader">
+            <div className="content-detail-subheader-divider"/>
+            <Typography className="content-detail-subheader-text">Gallery</Typography>
+            <div className="content-detail-subheader-divider"/>
+          </div>
+
+          <div className="content-detail-section-gallery">
+
+              { horse.images.map((image) => {
+                return (
+                  <Card className="gallery-card" key={image.id} >
+                  <CardActionArea>
+                    <a href={image.url} target="_blank">
+                      <CardMedia
+                        component="img"
+                        image={image.url}
+                      />
+                    </a>
+                  </CardActionArea>
+                </Card>
+                )
+            })}
+
+          </div>
+
+        </>
+
+        }
+
         { horse.progeny?.length > 0 &&
 
           <>
@@ -150,39 +183,6 @@ function HorseDetail({category}) {
                         </div>
                       </CardActionArea>
                     </Card>
-                  )
-              })}
-
-            </div>
-
-          </>
-
-        }
-
-        { horse.images?.length > 0 &&
-
-          <>
-
-            <div className="content-detail-subheader">
-              <div className="content-detail-subheader-divider"/>
-              <Typography className="content-detail-subheader-text">Gallery</Typography>
-              <div className="content-detail-subheader-divider"/>
-            </div>
-
-            <div className="content-detail-section-gallery">
-
-                { horse.images.map((image) => {
-                  return (
-                    <Card className="gallery-card" key={image.id} >
-                    <CardActionArea>
-                      <a href={image.url} target="_blank">
-                        <CardMedia
-                          component="img"
-                          image={image.url}
-                        />
-                      </a>
-                    </CardActionArea>
-                  </Card>
                   )
               })}
 
