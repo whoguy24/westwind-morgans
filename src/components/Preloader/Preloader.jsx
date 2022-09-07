@@ -16,6 +16,7 @@ function Preloader() {
         <>
 
             <div id="preloader">
+                <img id="preloader-logo" src="/images/westwind_logo.svg"/>
             </div>
 
         </>

@@ -31,19 +31,17 @@ function App() {
   // Redux Variables
   const dispatch = useDispatch();
 
-  // State Variables
-  // const [loading, setLoading] = useState(false);
-
   // Redux Store Variables
   const user = useSelector(store => store.user);
 
   // Delay Render to Allow Preloader Time to Display
-  // useEffect(() => {
-  //   setLoading(true);
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //   }, 3000);
-  // }, []);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 4000);
+  }, []);
 
   // Fetch User if Logged In
   if (user.id) {
@@ -57,24 +55,24 @@ function App() {
     <>
 
       <Router>
-        {/* { loading && <Preloader /> }
-        { !loading && */}
+
+        { loading ? 
+        
+        <Preloader />
+        
+        :
 
           <div id="fade-in">
             <Navigation />
             <Routes>
               <Route path="/" element={<Navigate replace to="/home" />} />
               <Route exact path="/home" element={<Home />} />
-
               <Route exact path="/stallions" element={<HorseGallery category="stallions" />} />
               <Route path="/stallions/:id" element={<HorseDetail category="stallions" />} />
-
               <Route exact path="/mares" element={<HorseGallery category="mares" />} />
               <Route path="/mares/:id" element={<HorseDetail category="mares" />} />
-
               <Route exact path="/stock_for_sale" element={<HorseGallery category="stock_for_sale" />} />
               <Route path="/stock_for_sale/:id" element={<HorseDetail category="stock_for_sale" />} />
-
               <Route exact path="/breeding" element={<Placeholder />} />
               <Route exact path="/foundation" element={<Placeholder />} />
               <Route exact path="/testimonials" element={<Placeholder />} />
@@ -87,7 +85,7 @@ function App() {
             <Footer />
           </div>
 
-        {/* } */}
+        }
       </Router>
 
     </>
