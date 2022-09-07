@@ -6,8 +6,8 @@
   justify-content: center;
   flex-direction: column;
   /* max-width: 1440px; */
-
   margin: auto;
+  animation: fadeIn 5s;
 }
 
 .placeholder-font-v1 {
