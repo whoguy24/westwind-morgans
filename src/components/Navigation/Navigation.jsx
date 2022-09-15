@@ -73,11 +73,17 @@ function Navigation() {
             case "mares":
                 navigate("/mares")
                 break;
+            case "colts":
+                navigate("/colts")
+                break;
+            case "fillies":
+                navigate("/fillies")
+                break;
+            case "geldings":
+                navigate("/geldings")
+                break;
             case "breeding":
                 navigate("/breeding")
-                break;
-            case "stock":
-                navigate("/stock_for_sale")
                 break;
             case "contact":
                 navigate("/contact")
@@ -149,7 +155,9 @@ function Navigation() {
                                     >
                                     <MenuItem onClick={(path)=>handleMenuClick("stallions")}>Stallions</MenuItem>
                                     <MenuItem onClick={(path)=>handleMenuClick("mares")}>Mares</MenuItem>
-                                    <MenuItem onClick={(path)=>handleMenuClick("stock")}>Stock for Sale</MenuItem>
+                                    <MenuItem onClick={(path)=>handleMenuClick("colts")}>Colts</MenuItem>
+                                    <MenuItem onClick={(path)=>handleMenuClick("fillies")}>Fillies</MenuItem>
+                                    <MenuItem onClick={(path)=>handleMenuClick("geldings")}>Geldings</MenuItem>
                                 </Menu>
 
                                 {/* ABOUT BUTTON & MENU */}

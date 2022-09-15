@@ -60,15 +60,41 @@ function HomeHorses() {
               </CardActionArea>
             </Card>
 
-            <Card className="gallery-card" onClick={()=>navigate("/stock_for_sale")}>
+            <Card className="gallery-card" onClick={()=>navigate("/colts")}>
               <CardActionArea>
                 <CardMedia
                   component="img"
-                  image="/images/home_stock.png"
-                  alt="home_stock"
+                  image="/images/home_colts.png"
+                  alt="home_colts"
                 />
                 <div className="gallery-card-label">
-                  <Typography className="gallery-card-label-text">STOCK FOR SALE</Typography>
+                  <Typography className="gallery-card-label-text">COLTS</Typography>
+                </div>
+              </CardActionArea>
+            </Card>
+
+            <Card className="gallery-card" onClick={()=>navigate("/fillies")}>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  image="/images/home_fillies.png"
+                  alt="home_fillies"
+                />
+                <div className="gallery-card-label">
+                  <Typography className="gallery-card-label-text">FILLIES</Typography>
+                </div>
+              </CardActionArea>
+            </Card>
+
+            <Card className="gallery-card" onClick={()=>navigate("/geldings")}>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  image="/images/home_geldings.png"
+                  alt="home_geldings"
+                />
+                <div className="gallery-card-label">
+                  <Typography className="gallery-card-label-text">GELDINGS</Typography>
                 </div>
               </CardActionArea>
             </Card>

@@ -3,25 +3,14 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 router.get('/:route', (req, res) => {
-
-    let category = "";
-
-    switch (req.params.route) {
-        case "stallions": category = "Stallion"
-        break;
-        case "mares": category = "Mare"
-        break;
-        case "stock_for_sale": category = "Stock"
-        break;
-    }
     
     const queryText = `
         SELECT * FROM "horses"
-        WHERE "horses"."category" = $1
+        WHERE "horses"."type" = $1
         ORDER BY "horses"."id" ASC;
     `;
 
-    const sqlValues = [ category ];
+    const sqlValues = [ req.params.route ];
     
     pool.query(queryText, sqlValues)
     .then((result) => { 
@@ -35,23 +24,12 @@ router.get('/:route', (req, res) => {
 
 router.get('/:route/:id', async (req, res) => {
 
-    let category = "";
-
-    switch (req.params.route) {
-        case "stallions": category = "Stallion"
-        break;
-        case "mares": category = "Mare"
-        break;
-        case "stock_for_sale": category = "Stock"
-        break;
-    }
-
     const sqlQuery = `
         SELECT * FROM "horses"
-        WHERE "horses"."category" = $1 AND "horses"."id" = $2
+        WHERE "horses"."type" = $1 AND "horses"."id" = $2
         ORDER BY "horses"."id" ASC;
     `;
-    const sqlValues = [ category, req.params.id ];
+    const sqlValues = [ req.params.route, req.params.id ];
 
     pool.query(sqlQuery, sqlValues)
     .then(async(result) => { 

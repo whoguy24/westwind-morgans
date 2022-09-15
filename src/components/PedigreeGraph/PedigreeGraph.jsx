@@ -19,14 +19,14 @@ import Typography from '@mui/material/Typography';
 
 function PedigreeGraph({horse}) {
 
-  const sire = horse.parents?.filter(parent=>parent.sex == "Male")[0];
-  const dam = horse.parents?.filter(parent=>parent.sex == "Female")[0];
+  const sire = horse.parents?.filter(parent=>parent.sex == "M")[0];
+  const dam = horse.parents?.filter(parent=>parent.sex == "F")[0];
 
-  const sireSire = horse.parents?.filter(parent=>parent.sex == "Male")[0]?.parents?.filter(parent=>parent.sex == "Male")[0];
-  const sireDam = horse.parents?.filter(parent=>parent.sex == "Male")[0]?.parents?.filter(parent=>parent.sex == "Female")[0];
+  const sireSire = horse.parents?.filter(parent=>parent.sex == "M")[0]?.parents?.filter(parent=>parent.sex == "M")[0];
+  const sireDam = horse.parents?.filter(parent=>parent.sex == "M")[0]?.parents?.filter(parent=>parent.sex == "F")[0];
 
-  const damSire = horse.parents?.filter(parent=>parent.sex == "Female")[0]?.parents?.filter(parent=>parent.sex == "Male")[0];
-  const damDam = horse.parents?.filter(parent=>parent.sex == "Female")[0]?.parents?.filter(parent=>parent.sex == "Female")[0];
+  const damSire = horse.parents?.filter(parent=>parent.sex == "F")[0]?.parents?.filter(parent=>parent.sex == "M")[0];
+  const damDam = horse.parents?.filter(parent=>parent.sex == "F")[0]?.parents?.filter(parent=>parent.sex == "F")[0];
   
   // Render DOM
   return (
@@ -40,7 +40,7 @@ function PedigreeGraph({horse}) {
 
             <div className="pedigree-cell">
 
-              <NavLink to={`/${horse.route}/${horse.id}`}>
+              <NavLink to={`/${horse.type}/${horse.id}`}>
                 <Typography className="pedigree-cell-text-large">{horse.name}</Typography>
               </NavLink>
 
@@ -56,7 +56,7 @@ function PedigreeGraph({horse}) {
 
                       { sire.visible === true ?
 
-                        <NavLink to={`/${sire.route}/${sire.id}`}>
+                        <NavLink to={`/${sire.type}/${sire.id}`}>
                           <Typography className="pedigree-cell-text">{sire.name}</Typography>
                         </NavLink>
 
@@ -86,7 +86,7 @@ function PedigreeGraph({horse}) {
 
                       { dam.visible === true ?
 
-                        <NavLink to={`/${dam.route}/${dam.id}`}>
+                        <NavLink to={`/${dam.type}/${dam.id}`}>
                           <Typography className="pedigree-cell-text">{dam.name}</Typography>
                         </NavLink>
 
@@ -120,7 +120,7 @@ function PedigreeGraph({horse}) {
 
                     { sireSire.visible === true ?
 
-                      <NavLink to={`/${sireSire.route}/${sireSire.id}`}>
+                      <NavLink to={`/${sireSire.type}/${sireSire.id}`}>
                         <Typography className="pedigree-cell-text">{sireSire.name}</Typography>
                       </NavLink>
 
@@ -150,7 +150,7 @@ function PedigreeGraph({horse}) {
 
                     { sireDam.visible === true ?
 
-                      <NavLink to={`/${sireDam.route}/${sireDam.id}`}>
+                      <NavLink to={`/${sireDam.type}/${sireDam.id}`}>
                         <Typography className="pedigree-cell-text">{sireDam.name}</Typography>
                       </NavLink>
 
@@ -180,7 +180,7 @@ function PedigreeGraph({horse}) {
 
                     { damSire.visible === true ?
 
-                      <NavLink to={`/${damSire.route}/${damSire.id}`}>
+                      <NavLink to={`/${damSire.type}/${damSire.id}`}>
                         <Typography className="pedigree-cell-text">{damSire.name}</Typography>
                       </NavLink>
 
@@ -211,7 +211,7 @@ function PedigreeGraph({horse}) {
 
                     { damDam.visible === true ?
 
-                      <NavLink to={`/${damDam.route}/${damDam.id}`}>
+                      <NavLink to={`/${damDam.type}/${damDam.id}`}>
                         <Typography className="pedigree-cell-text">{damDam.name}</Typography>
                       </NavLink>
 

@@ -47,9 +47,20 @@ function Navigation({drawerActive, setDrawerActive, handleMenuClick}) {
                             <ListItemText primary="Mares" />
                         </ListItemButton>
                     </ListItem>
+
                     <ListItem disablePadding>
-                        <ListItemButton onClick={(path)=>handleMenuClick("stock")}>
-                            <ListItemText primary="Stock for Sale" />
+                        <ListItemButton onClick={(path)=>handleMenuClick("colts")}>
+                            <ListItemText primary="Colts" />
+                        </ListItemButton>
+                    </ListItem>
+                    <ListItem disablePadding>
+                        <ListItemButton onClick={(path)=>handleMenuClick("fillies")}>
+                            <ListItemText primary="Fillies" />
+                        </ListItemButton>
+                    </ListItem>
+                    <ListItem disablePadding>
+                        <ListItemButton onClick={(path)=>handleMenuClick("geldings")}>
+                            <ListItemText primary="Geldings" />
                         </ListItemButton>
                     </ListItem>
                     <Divider className="navigation-divider" />

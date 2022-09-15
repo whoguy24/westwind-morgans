@@ -24,7 +24,7 @@ import { CardActionArea } from '@mui/material';
 ///// COMPONENT FUNCTION //////////////////////////////
 ///////////////////////////////////////////////////////
 
-function HorseGallery({category}) {
+function HorseGallery({type, title}) {
 
   // Redux Variables
   const dispatch = useDispatch();
@@ -34,22 +34,8 @@ function HorseGallery({category}) {
 
   // Fetch Objects from Database on Page Load
   useEffect(() => {
-    dispatch({ type: "FETCH_HORSES", route:category });
-  }, [category]);
-
-  let category_title = ""
-
-  switch (category) {
-    case "stallions": 
-      category_title = "Stallions"
-      break;
-    case "mares": 
-      category_title = "Mares"
-      break;
-    case "stock_for_sale": 
-      category_title = "Stock for Sale"
-      break;
-  }
+    dispatch({ type: "FETCH_HORSES", route:type });
+  }, [type]);
 
   // Redux Store Variables
   const horses = useSelector(store => store.horses);
@@ -62,28 +48,25 @@ function HorseGallery({category}) {
       <div className="content-container">
 
         <div className="content-banner">
-          <img className="content-banner-image" src={`/images/banner_${category}.png`}/>
+          <img className="content-banner-image" src={`/images/banner_${type}.png`}/>
         </div>
 
         <div className="section-header-banner">
-            <Typography className="section-header-banner-text">{category_title}</Typography>
+            <Typography className="section-header-banner-text">{title}</Typography>
         </div>
 
         <div className="content-toolbar">
-
             <Breadcrumbs className="content-toolbar-breadcrumbs">
               <NavLink to="/home">Westwind Morgans</NavLink>
-              <NavLink to={`/${category}`}>{category_title}</NavLink>
+              <NavLink to={`/${type}`}>{title}</NavLink>
             </Breadcrumbs>
-
           {/* <SearchBar/> */}
-
         </div>
 
         <div className="gallery-container">
           {visibleHorses.map((horse) => {
               return (
-                <Card className="gallery-card" key={horse.id} onClick={()=>navigate(`/${category}/${horse.id}`)}>
+                <Card className="gallery-card" key={horse.id} onClick={()=>navigate(`/${type}/${horse.id}`)}>
                   <CardActionArea>
                     <CardMedia
                       component="img"

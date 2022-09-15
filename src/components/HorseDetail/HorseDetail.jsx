@@ -27,7 +27,7 @@ import { CardActionArea } from '@mui/material';
 ///// COMPONENT FUNCTION //////////////////////////////
 ///////////////////////////////////////////////////////
 
-function HorseDetail({category}) {
+function HorseDetail({type, title}) {
 
   let { id } = useParams();
 
@@ -40,23 +40,9 @@ function HorseDetail({category}) {
   // Redux Store Variables
   const horse = useSelector(store => store.horse);
 
-  let category_title = ""
-
-  switch (category) {
-    case "stallions": 
-      category_title = "Stallions"
-      break;
-    case "mares": 
-      category_title = "Mares"
-      break;
-    case "stock_for_sale": 
-      category_title = "Stock for Sale"
-      break;
-  }
-
   // Fetch Object from Database On Page Load
   useEffect(() => {
-    dispatch({ type: "FETCH_HORSE", route:category, id: id });
+    dispatch({ type: "FETCH_HORSE", route: type, id: id });
   }, [id]);
 
   // Render DOM
@@ -66,18 +52,18 @@ function HorseDetail({category}) {
       <div className="content-container">
 
         <div className="content-banner">
-          <img className="content-banner-image" src={`/images/banner_${category}.png`}/>
+          <img className="content-banner-image" src={`/images/banner_${type}.png`}/>
         </div>
 
         <div className="section-header-banner">
-          <Typography className="section-header-banner-text">{category_title}</Typography>
+          <Typography className="section-header-banner-text">{title}</Typography>
         </div>
 
         <div className="content-toolbar">
           <Breadcrumbs className="content-toolbar-breadcrumbs">
             <NavLink to="/home">Westwind Morgans</NavLink>
-            <NavLink to={`/${horse.route}`}>{category_title}</NavLink>
-            <NavLink to={`/${horse.route}/${horse.id}`}>{horse.name}</NavLink>
+            <NavLink to={`/${horse.type}`}>{title}</NavLink>
+            <NavLink to={`/${horse.type}/${horse.id}`}>{horse.name}</NavLink>
           </Breadcrumbs>
         </div>
 
@@ -170,7 +156,7 @@ function HorseDetail({category}) {
 
               {horse.progeny.map((horse) => {
                   return (
-                    <Card className="gallery-card" key={horse.id} onClick={()=>navigate(`/${horse.route}/${horse.id}`)}>
+                    <Card className="gallery-card" key={horse.id} onClick={()=>navigate(`/${horse.type}/${horse.id}`)}>
                       <CardActionArea>
                         <CardMedia
                           component="img"
