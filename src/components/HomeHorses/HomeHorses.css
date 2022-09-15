@@ -19,7 +19,45 @@
   position: relative;
   width: 100%;
   column-gap: 1rem;
+  row-gap: 1rem;
   padding: 1rem;
+}
+
+.home-horses-card {
+  display: grid !important;
+  background-color: var(--color-primary-500) !important;
+  width: 100% !important;
+  border-radius: 0rem !important;
+}
+
+.home-horses-card-label {
+  background-color: var(--color-neutral-500) !important;
+  color: var(--color-accent-300) !important;
+  display: flex !important;
+  position: absolute !important;
+  justify-content: center !important;
+  align-items: center !important;
+  bottom: 0rem !important;
+  width: 100% !important;
+  min-height: 18% !important;
+}
+
+.home-horses-card-label-text {
+  font-weight: var(--font-weight-light) !important;
+  display: flex !important;
+  margin: auto !important;
+  letter-spacing: 2px !important;
+  font-size: var(--font-size-200) !important;
+}
+
+.home-horses-card:hover {
+  filter: brightness(115%) !important;
+}
+
+@media screen and (max-width: 800px) {
+  #home-horses-grid {
+    grid-template-columns: 3fr 3fr;
+  }
 }
 
 @media screen and (max-width: 500px) {

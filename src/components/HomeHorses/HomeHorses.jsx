@@ -34,67 +34,67 @@ function HomeHorses() {
         <div id="home-horses">
           <div id="home-horses-grid">
 
-            <Card className="gallery-card" onClick={()=>navigate("/stallions")}>
+            <Card className="home-horses-card" onClick={()=>navigate("/stallions")}>
               <CardActionArea>
                 <CardMedia
                   component="img"
                   image="/images/home_stallions.png"
                   alt="home_stallions"
                 />
-                <div className="gallery-card-label">
-                  <Typography className="gallery-card-label-text">STALLIONS</Typography>
+                <div className="home-horses-card-label">
+                  <Typography className="home-horses-card-label-text">STALLIONS</Typography>
                 </div>
               </CardActionArea>
             </Card>
 
-            <Card className="gallery-card" onClick={()=>navigate("/mares")}>
+            <Card className="home-horses-card" onClick={()=>navigate("/mares")}>
               <CardActionArea>
                 <CardMedia
                   component="img"
                   image="/images/home_mares.png"
                   alt="home_mares"
                 />
-                <div className="gallery-card-label">
-                  <Typography className="gallery-card-label-text">MARES</Typography>
+                <div className="home-horses-card-label">
+                  <Typography className="home-horses-card-label-text">MARES</Typography>
                 </div>
               </CardActionArea>
             </Card>
 
-            <Card className="gallery-card" onClick={()=>navigate("/colts")}>
+            <Card className="home-horses-card" onClick={()=>navigate("/colts")}>
               <CardActionArea>
                 <CardMedia
                   component="img"
                   image="/images/home_colts.png"
                   alt="home_colts"
                 />
-                <div className="gallery-card-label">
-                  <Typography className="gallery-card-label-text">COLTS</Typography>
+                <div className="home-horses-card-label">
+                  <Typography className="home-horses-card-label-text">COLTS</Typography>
                 </div>
               </CardActionArea>
             </Card>
 
-            <Card className="gallery-card" onClick={()=>navigate("/fillies")}>
+            <Card className="home-horses-card" onClick={()=>navigate("/fillies")}>
               <CardActionArea>
                 <CardMedia
                   component="img"
                   image="/images/home_fillies.png"
                   alt="home_fillies"
                 />
-                <div className="gallery-card-label">
-                  <Typography className="gallery-card-label-text">FILLIES</Typography>
+                <div className="home-horses-card-label">
+                  <Typography className="home-horses-card-label-text">FILLIES</Typography>
                 </div>
               </CardActionArea>
             </Card>
 
-            <Card className="gallery-card" onClick={()=>navigate("/geldings")}>
+            <Card className="home-horses-card" onClick={()=>navigate("/geldings")}>
               <CardActionArea>
                 <CardMedia
                   component="img"
                   image="/images/home_geldings.png"
                   alt="home_geldings"
                 />
-                <div className="gallery-card-label">
-                  <Typography className="gallery-card-label-text">GELDINGS</Typography>
+                <div className="home-horses-card-label">
+                  <Typography className="home-horses-card-label-text">GELDINGS</Typography>
                 </div>
               </CardActionArea>
             </Card>
