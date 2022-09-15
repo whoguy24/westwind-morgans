@@ -33,7 +33,7 @@ function HomeFoundation() {
 
         <div id="home-foundation-container">
           
-          <img id="home-foundation-image" src="/images/home_foundation.png" alt="home"/>
+          <img id="home-foundation-image" src="/assets/static/home_foundation.png" alt="home"/>
 
           <div id="home-foundation-info">
             <Typography id="home-foundation-text">

@@ -2,12 +2,22 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
+
+
 router.get('/:route', (req, res) => {
-    
+
     const queryText = `
         SELECT * FROM "horses"
         WHERE "horses"."type" = $1
-        ORDER BY "horses"."id" ASC;
+        ORDER BY CASE 
+            WHEN "horses"."category" = 'Stud' THEN 0
+            WHEN "horses"."category" = 'Brood Mare' THEN 1
+            WHEN "horses"."category" = 'Gelding' THEN 2
+            WHEN "horses"."category" = 'Colt' THEN 3
+            WHEN "horses"."category" = 'Filly' THEN 4
+        END,
+        "horses"."birth_date",
+        "horses"."id"
     `;
 
     const sqlValues = [ req.params.route ];
@@ -27,7 +37,15 @@ router.get('/:route/:id', async (req, res) => {
     const sqlQuery = `
         SELECT * FROM "horses"
         WHERE "horses"."type" = $1 AND "horses"."id" = $2
-        ORDER BY "horses"."id" ASC;
+        ORDER BY CASE 
+            WHEN "horses"."category" = 'Stud' THEN 0
+            WHEN "horses"."category" = 'Brood Mare' THEN 1
+            WHEN "horses"."category" = 'Gelding' THEN 2
+            WHEN "horses"."category" = 'Colt' THEN 3
+            WHEN "horses"."category" = 'Filly' THEN 4
+        END,
+        "horses"."birth_date",
+        "horses"."id"
     `;
     const sqlValues = [ req.params.route, req.params.id ];
 
@@ -51,7 +69,15 @@ function fetchParents(sire_id, dam_id, i) {
         const queryText = `
             SELECT * FROM "horses"
             WHERE "horses"."id" = $1 OR "horses"."id" = $2
-            ORDER BY "horses"."id" ASC;
+            ORDER BY CASE 
+                WHEN "horses"."category" = 'Stud' THEN 0
+                WHEN "horses"."category" = 'Brood Mare' THEN 1
+                WHEN "horses"."category" = 'Gelding' THEN 2
+                WHEN "horses"."category" = 'Colt' THEN 3
+                WHEN "horses"."category" = 'Filly' THEN 4
+            END,
+            "horses"."birth_date",
+            "horses"."id"
         ;`
         pool.query(queryText, queryValues)
         .then(async(result) => { 
@@ -93,7 +119,15 @@ function fetchProgeny(id) {
         const queryText = `
             SELECT * FROM "horses"
             WHERE "horses"."sire_id" = $1 OR "horses"."dam_id" = $1
-            ORDER BY "horses"."id" ASC;
+            ORDER BY CASE 
+                WHEN "horses"."category" = 'Stud' THEN 0
+                WHEN "horses"."category" = 'Brood Mare' THEN 1
+                WHEN "horses"."category" = 'Gelding' THEN 2
+                WHEN "horses"."category" = 'Colt' THEN 3
+                WHEN "horses"."category" = 'Filly' THEN 4
+            END,
+            "horses"."birth_date",
+            "horses"."id"
         ;`
         pool.query(queryText, queryValues)
         .then((result) => { 

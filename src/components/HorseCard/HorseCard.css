@@ -1,16 +1,17 @@
 @import "../../styles/_global.css";
 
-.gallery-card {
+.horse-card {
     display: grid !important;
     background-color: var(--color-primary-500) !important;
     width: 100% !important;
     border-radius: 0rem !important;
 }
 
-.gallery-card-label {
+.horse-card-label {
     background-color: var(--color-neutral-500) !important;
     color: var(--color-accent-300) !important;
     display: flex !important;
+    flex-direction: column !important;
     position: absolute !important;
     justify-content: center !important;
     align-items: center !important;
@@ -19,14 +20,22 @@
     min-height: 18% !important;
 }
   
-.gallery-card-label-text {
+.horse-card-label-text {
+    font-weight: var(--font-weight-medium) !important;
+    display: flex !important;
+    letter-spacing: 1.5px !important;
+    font-size: 0.9rem !important;
+}
+
+.horse-card-label-text-small {
     font-weight: var(--font-weight-light) !important;
     display: flex !important;
-    margin: auto !important;
     letter-spacing: 1.5px !important;
     font-size: 0.75rem !important;
 }
 
-.gallery-card:hover {
+.horse-card:hover {
     filter: brightness(115%) !important;
 }
+
+

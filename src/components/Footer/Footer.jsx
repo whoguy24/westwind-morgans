@@ -42,7 +42,11 @@ function Footer() {
                             <ul>
                                 <li><NavLink to="/stallions">Stallions</NavLink></li>
                                 <li><NavLink to="/mares">Mares</NavLink></li>
-                                <li><NavLink to="/stock_for_sale">Stock for Sale</NavLink></li>
+                                <li><NavLink to="/geldings">Geldings</NavLink></li>
+                            </ul>
+                            <ul>
+                                <li><NavLink to="/colts">Colts</NavLink></li>
+                                <li><NavLink to="/fillies">Fillies</NavLink></li>
                             </ul>
                             <ul>
                                 <li><NavLink to="/foundation">Why Foundation</NavLink></li>

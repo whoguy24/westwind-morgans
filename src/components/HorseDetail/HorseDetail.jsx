@@ -12,6 +12,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { useParams } from "react-router-dom";
 
+// Import Custom Components
+import HorseCard from "../HorseCard/HorseCard";
 import PedigreeGraph from "../PedigreeGraph/PedigreeGraph";
 
 // Import MUI Components
@@ -43,7 +45,10 @@ function HorseDetail({type, title}) {
   // Fetch Object from Database On Page Load
   useEffect(() => {
     dispatch({ type: "FETCH_HORSE", route: type, id: id });
+    window.scrollTo(0, 0);
   }, [id]);
+
+  let year = new Date(horse.birth_date)
 
   // Render DOM
   return (
@@ -52,7 +57,7 @@ function HorseDetail({type, title}) {
       <div className="content-container">
 
         <div className="content-banner">
-          <img className="content-banner-image" src={`/images/banner_${type}.png`}/>
+          <img className="content-banner-image" src={`/assets/static/banner_${type}.png`}/>
         </div>
 
         <div className="section-header-banner">
@@ -82,7 +87,7 @@ function HorseDetail({type, title}) {
         <div className="content-detail-section-container">
 
           <a className="content-detail-section-image-link" href={horse.profile_url} target="_blank">
-            <img className="content-detail-section-image" src={horse.profile_url ? horse.profile_url : "images/placeholder_profile.png"} />
+            <img className="content-detail-section-image" src={horse.profile_url ? horse.profile_url : "/assets/static/profile.png"} />
           </a>
 
           <div className="content-detail-section-info">
@@ -156,19 +161,7 @@ function HorseDetail({type, title}) {
 
               {horse.progeny.map((horse) => {
                   return (
-                    <Card className="gallery-card" key={horse.id} onClick={()=>navigate(`/${horse.type}/${horse.id}`)}>
-                      <CardActionArea>
-                        <CardMedia
-                          component="img"
-                          height="300px"
-                          image={horse.profile_url? horse.profile_url: "images/placeholder_profile.png"}
-                          alt="placeholder_stallion"
-                        />
-                        <div className="gallery-card-label">
-                          <Typography className="gallery-card-label-text">{horse.name}</Typography>
-                        </div>
-                      </CardActionArea>
-                    </Card>
+                    <HorseCard key={horse.id} horse={horse}/>
                   )
               })}
 

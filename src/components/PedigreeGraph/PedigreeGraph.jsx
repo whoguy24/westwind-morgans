@@ -61,9 +61,7 @@ function PedigreeGraph({horse}) {
                         </NavLink>
 
                       :
-
                         <a className="pedigree-cell-text" href={sire.pedigree_url} target="_blank">{sire.name}</a>
-
                       }
 
                     </>

@@ -23,7 +23,7 @@ function HomeHero() {
       </div>
 
       <div id="home-hero">
-        <img id="home-hero-image" src="/images/home_hero.png" alt="home"/>
+        <img id="home-hero-image" src="/assets/static/home_hero.png" alt="home"/>
         <Typography id="home-hero-caption">
             National Reined<br/>
             Cowhorse Association<br/>

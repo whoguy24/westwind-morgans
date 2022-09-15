@@ -5,7 +5,7 @@ body {
   font-family: "Roboto", sans-serif;
   align-items: center;
   justify-content: center;
-  background: url("../../../public/images/background2.png") repeat top center fixed; 
+  background: url("../../../public/assets/static/background.png") repeat top center fixed; 
   background-size: 30%;
   background-color: #0c0c0c;
 }

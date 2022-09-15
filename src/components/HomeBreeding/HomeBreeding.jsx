@@ -33,7 +33,7 @@ function HomeBreeding() {
 
         <div id="home-breeding-container">
           
-          <img id="home-breeding-image" src="/images/home_breeding.png" alt="home"/>
+          <img id="home-breeding-image" src="/assets/static/home_breeding.png" alt="home"/>
 
           <div id="home-breeding-info">
             <Typography id="home-breeding-text">

@@ -1,6 +1,6 @@
 #preloader {
   display: flex;
-  background: black url("../../animations/loading_spinner.gif") no-repeat center center;
+  background: black url("../../../public/assets/animations/loading_spinner.gif") no-repeat center center;
   height: 100vh;
   width: 100%;
   position: fixed;

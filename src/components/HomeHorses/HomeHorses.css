@@ -30,6 +30,10 @@
   border-radius: 0rem !important;
 }
 
+.home-horses-card:hover {
+  filter: brightness(115%) !important;
+}
+
 .home-horses-card-label {
   background-color: var(--color-neutral-500) !important;
   color: var(--color-accent-300) !important;
@@ -48,10 +52,6 @@
   margin: auto !important;
   letter-spacing: 2px !important;
   font-size: var(--font-size-200) !important;
-}
-
-.home-horses-card:hover {
-  filter: brightness(115%) !important;
 }
 
 @media screen and (max-width: 800px) {
