@@ -91,8 +91,11 @@ function HorseDetail({type, title}) {
           <div className="content-detail-section-info">
             <Typography className="content-detail-section-basic-header">{horse.name}</Typography>
             <Typography className="content-detail-section-basic-text">{horse.calc_year}</Typography>
+            <Typography className="content-detail-section-basic-text">{horse.breed}</Typography>
             <Typography className="content-detail-section-basic-text">{horse.color}</Typography>
             <Typography className="content-detail-section-basic-text">{horse.category}</Typography>
+            <a className="content-detail-section-basic-text" href={horse.pedigree_url} target="_blank">View Pedigree</a>
+            <Typography className="content-detail-section-basic-text">{horse.description}</Typography>
           </div>
 
         </div>
