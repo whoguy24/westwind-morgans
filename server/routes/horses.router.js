@@ -24,7 +24,11 @@ router.get('/:route', (req, res) => {
     
     pool.query(queryText, sqlValues)
     .then((result) => { 
-        res.send(result.rows)
+        const horses = result.rows
+        for (const horse of horses) {
+            horse.calc_year = horse.birth_date ? new Date(horse.birth_date).getUTCFullYear() : null;
+        }
+        res.send(horses)
     })
     .catch((error) => {
         console.log(error);
@@ -52,6 +56,7 @@ router.get('/:route/:id', async (req, res) => {
     pool.query(sqlQuery, sqlValues)
     .then(async(result) => { 
         const horse = result.rows[0];
+        horse.calc_year = horse.birth_date ? new Date(horse.birth_date).getUTCFullYear() : null;
         horse.parents = await fetchParents(horse.sire_id, horse.dam_id, 0) || [];
         horse.progeny = await fetchProgeny(horse.id) || [];
         horse.images = await fetchImages(horse.id) || [];
@@ -84,6 +89,7 @@ function fetchParents(sire_id, dam_id, i) {
             const parents = result.rows
             if (i<1) {
                 for (const parent of parents) {
+                    parent.calc_year = parent.birth_date ? new Date(parent.birth_date).getUTCFullYear() : null;
                     parent.parents = await fetchParents( parent.sire_id, parent.dam_id, i+1 )  
                 }
             }
@@ -131,7 +137,11 @@ function fetchProgeny(id) {
         ;`
         pool.query(queryText, queryValues)
         .then((result) => { 
-            resolve(result.rows)
+            const horses = result.rows
+            for (const horse of horses) {
+                horse.calc_year = horse.birth_date ? new Date(horse.birth_date).getUTCFullYear() : null;
+            }
+            resolve(horses)
         })
         .catch((error) => { 
             reject(error);

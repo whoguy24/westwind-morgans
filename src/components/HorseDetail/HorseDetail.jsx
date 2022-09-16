@@ -48,8 +48,6 @@ function HorseDetail({type, title}) {
     window.scrollTo(0, 0);
   }, [id]);
 
-  let year = new Date(horse.birth_date)
-
   // Render DOM
   return (
     <>
@@ -92,8 +90,9 @@ function HorseDetail({type, title}) {
 
           <div className="content-detail-section-info">
             <Typography className="content-detail-section-basic-header">{horse.name}</Typography>
+            <Typography className="content-detail-section-basic-text">{horse.calc_year}</Typography>
             <Typography className="content-detail-section-basic-text">{horse.color}</Typography>
-            <Typography className="content-detail-section-basic-text">{horse.year}</Typography>
+            <Typography className="content-detail-section-basic-text">{horse.category}</Typography>
           </div>
 
         </div>

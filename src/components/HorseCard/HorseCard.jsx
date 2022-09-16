@@ -22,8 +22,6 @@ function HorseCard({horse}) {
   // React Router Variables
   const navigate = useNavigate();
 
-  let year = new Date(horse.birth_date).getUTCFullYear()
-
   // Render DOM
   return (
     <>
@@ -38,7 +36,7 @@ function HorseCard({horse}) {
           />
           <div className="horse-card-label">
             <Typography className="horse-card-label-text">{horse.name}</Typography>
-            <Typography className="horse-card-label-text-small">{`${year ? year : ""} ${horse.category ? horse.category : ""}`}</Typography>
+            <Typography className="horse-card-label-text-small">{`${horse.calc_year ? horse.calc_year : ""} ${horse.category ? horse.category : ""}`}</Typography>
           </div>
         </CardActionArea>
       </Card>
