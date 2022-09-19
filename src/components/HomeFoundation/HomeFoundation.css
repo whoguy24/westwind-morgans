@@ -5,6 +5,10 @@
   align-items: center;
   justify-content: center;
   width: 90%;
+  opacity: 0;
+  animation: fadeIn 3s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
 }
 
 #home-foundation-container {
