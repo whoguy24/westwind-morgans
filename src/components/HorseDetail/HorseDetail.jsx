@@ -93,21 +93,21 @@ function HorseDetail({type, title}) {
 
             { horse.type != "testimonials" ?
 
-            <>
-              <Typography className="content-detail-section-basic-header">{horse.name}</Typography>
-              <Typography className="content-detail-section-basic-text">{horse.calc_year}</Typography>
-              <Typography className="content-detail-section-basic-text">{horse.breed}</Typography>
-              <Typography className="content-detail-section-basic-text">{horse.color}</Typography>
-              <Typography className="content-detail-section-basic-text">{horse.category}</Typography>
-              <a className="content-detail-section-basic-text" href={horse.pedigree_url} target="_blank">View Pedigree</a>
-              <Typography className="content-detail-section-basic-text">{horse.description}</Typography>
-            </>
+              <>
+                <Typography className="content-detail-section-basic-header">{horse.name}</Typography>
+                <Typography className="content-detail-section-basic-text">{horse.calc_year}</Typography>
+                <Typography className="content-detail-section-basic-text">{horse.breed}</Typography>
+                <Typography className="content-detail-section-basic-text">{horse.color}</Typography>
+                <Typography className="content-detail-section-basic-text">{horse.category}</Typography>
+                <a className="content-detail-section-basic-text" href={horse.pedigree_url} target="_blank">View Pedigree</a>
+                <Typography className="content-detail-section-basic-text">{horse.description}</Typography>
+              </>
 
-            :
+              :
 
-            <>
-              <Typography className="content-detail-section-basic-text">{horse.testimonial}</Typography>
-            </>
+              <>
+                <Typography className="content-detail-section-basic-text">{horse.testimonial}</Typography>
+              </>
 
             }
 
