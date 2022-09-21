@@ -12,9 +12,10 @@ import { useSelector, useDispatch } from "react-redux";
 
 // Import Custom Components
 import HorseCard from "../HorseCard/HorseCard";
+import SectionHeader from "../SectionHeader/SectionHeader";
+import SectionBanner from "../SectionBanner/SectionBanner";
 
 // Import MUI Components
-import Typography from '@mui/material/Typography';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 
 ///////////////////////////////////////////////////////
@@ -45,13 +46,9 @@ function HorseGallery({type, title}) {
 
       <div className="content-container">
 
-        <div className="content-banner">
-          <img className="content-banner-image" src={`/assets/static/banner_${type}.png`}/>
-        </div>
+        <SectionBanner image={`banner_${type}`}/>
 
-        <div className="section-header-banner">
-          <Typography className="section-header-banner-text">{title}</Typography>
-        </div>
+        <SectionHeader style="banner" title={title}/>
 
         <div className="content-toolbar">
             <Breadcrumbs className="content-toolbar-breadcrumbs">

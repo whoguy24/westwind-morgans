@@ -14,6 +14,8 @@ import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
 
+import SectionHeader from "../SectionHeader/SectionHeader";
+
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
 ///////////////////////////////////////////////////////
@@ -27,9 +29,7 @@ function HomeHorses() {
   return (
     <>
 
-      <div className="section-header">
-        <Typography className="section-header-text">Horses</Typography>
-      </div>
+        <SectionHeader style ="content" title="Horses"/>
 
         <div id="home-horses">
           <div id="home-horses-grid">

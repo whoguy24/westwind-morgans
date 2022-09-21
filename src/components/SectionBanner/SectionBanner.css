@@ -1,0 +1,11 @@
+@import "../../styles/_global.css";
+
+.content-banner {
+    display: flex !important;
+    width: 100% !important;
+    margin: auto !important;
+}
+
+.content-banner-image {
+    width: 100% !important;
+}

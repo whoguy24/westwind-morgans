@@ -7,6 +7,8 @@ import '../Visit/Visit.css';
 
 // Import Custom Components
 import GoogleMaps from "../GoogleMaps/GoogleMaps";
+import SectionHeader from "../SectionHeader/SectionHeader";
+import SectionBanner from "../SectionBanner/SectionBanner";
 
 // Import MUI Components
 import Typography from '@mui/material/Typography';
@@ -20,7 +22,7 @@ function Visit() {
   const location = {
     address: 'Sheridan, Montana',
     lat: 45.4584315,
-    lng: -112.2093181,
+    lng: -112.2093181
   }
 
   return (
@@ -28,13 +30,9 @@ function Visit() {
 
       <div id="home-container">
 
-        <div className="content-banner">
-          <img className="content-banner-image" src={`/assets/static/banner_stallions.png`}/>
-        </div>
+        <SectionBanner image="banner_stallions"/>
 
-        <div className="section-header">
-          <Typography className="section-header-text">Visit Us</Typography>
-        </div>
+        <SectionHeader style ="banner" title="Visit Us"/>
 
         <div id="visit">
 
@@ -49,12 +47,8 @@ function Visit() {
                   Augue lacus viverra vitae congue eu consequat ac.<br/><br/>
                   Address Line 1<br/>
                   Address Line 2<br/>
-                  City,  ST Zipcode<br/><br/>
-                  Habitant morbi tristique senectus et netus et malesuada. 
-                  Condimentum mattis pellentesque id nibh tortor id aliquet lectus proin. 
-                  Augue lacus viverra vitae congue eu consequat ac.
+                  City,  ST Zipcode
               </Typography>
-
             </div>
 
             <div id="visit-google-map">

@@ -12,6 +12,8 @@ import { useNavigate } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
+import SectionHeader from "../SectionHeader/SectionHeader";
+
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
 ///////////////////////////////////////////////////////
@@ -25,9 +27,7 @@ function HomeBreeding() {
   return (
     <>
 
-      <div className="section-header">
-        <Typography className="section-header-text">Breeding</Typography>
-      </div>
+      <SectionHeader style ="content" title="Breeding"/>
 
       <div id="home-breeding">
 

@@ -15,6 +15,8 @@ import { useParams } from "react-router-dom";
 // Import Custom Components
 import HorseCard from "../HorseCard/HorseCard";
 import PedigreeGraph from "../PedigreeGraph/PedigreeGraph";
+import SectionHeader from "../SectionHeader/SectionHeader";
+import SectionBanner from "../SectionBanner/SectionBanner";
 
 // Import MUI Components
 import Typography from '@mui/material/Typography';
@@ -54,13 +56,8 @@ function HorseDetail({type, title}) {
 
       <div className="content-container">
 
-        <div className="content-banner">
-          <img className="content-banner-image" src={`/assets/static/banner_${type}.png`}/>
-        </div>
-
-        <div className="section-header-banner">
-          <Typography className="section-header-banner-text">{title}</Typography>
-        </div>
+        <SectionBanner image={`banner_${type}`}/>
+        <SectionHeader style="banner" title={title}/>
 
         <div className="content-toolbar">
           <Breadcrumbs className="content-toolbar-breadcrumbs">
