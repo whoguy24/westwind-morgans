@@ -6,9 +6,7 @@
 import '../PedigreeGraph/PedigreeGraph.css';
 
 // Import Libraries
-import { useState, useEffect } from "react";
-import { NavLink, useParams } from 'react-router-dom';
-import { useSelector, useDispatch } from "react-redux";
+import { NavLink } from 'react-router-dom';
 
 // Import MUI Components
 import Typography from '@mui/material/Typography';
