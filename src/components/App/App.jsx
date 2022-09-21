@@ -59,7 +59,7 @@ function App() {
 
         { loading ? 
         
-        <Preloader />
+          <Preloader />
         
         :
 
@@ -67,29 +67,31 @@ function App() {
 
             <Navigation />
 
-            <Routes>
-              <Route path="/" element={<Navigate replace to="/home" />} />
-              <Route exact path="/home" element={<Home />} />
-              <Route exact path="/stallions" element={<HorseGallery type="stallions" title="Stallions" />} />
-              <Route path="/stallions/:id" element={<HorseDetail type="stallions" title="Stallions" />} />
-              <Route exact path="/mares" element={<HorseGallery type="mares" title="Mares" />} />
-              <Route path="/mares/:id" element={<HorseDetail type="mares" title="Mares" />} />
-              <Route exact path="/colts" element={<HorseGallery type="colts" title="Colts" />} />
-              <Route path="/colts/:id" element={<HorseDetail type="colts" title="Colts" />} />
-              <Route exact path="/fillies" element={<HorseGallery type="fillies" title="Fillies" />} />
-              <Route path="/fillies/:id" element={<HorseDetail type="fillies" title="Fillies" />} />
-              <Route exact path="/geldings" element={<HorseGallery type="geldings" title="Geldings" />} />
-              <Route path="/geldings/:id" element={<HorseDetail type="geldings" title="Geldings" />} />
-              <Route exact path="/testimonials" element={<HorseGallery type="testimonials" title="Testimonials" />} />
-              <Route path="/testimonials/:id" element={<HorseDetail type="testimonials" title="Testimonials" />} />
-              <Route exact path="/breeding" element={<Placeholder />} />
-              <Route exact path="/foundation" element={<Placeholder />} />
-              <Route exact path="/contact" element={<Placeholder />} />
-              <Route exact path="/visit" element={<Visit />} />
-              <Route exact path="/login" element={<Login />} />
-              <Route exact path="/admin" element={user.id?<Admin />:<Login />} />
-              <Route exact path="*" element={<NotFound />} />
-            </Routes>
+            <div id="content">
+              <Routes>
+                <Route path="/" element={<Navigate replace to="/home" />} />
+                <Route exact path="/home" element={<Home />} />
+                <Route exact path="/stallions" element={<HorseGallery type="stallions" title="Stallions" />} />
+                <Route path="/stallions/:id" element={<HorseDetail type="stallions" title="Stallions" />} />
+                <Route exact path="/mares" element={<HorseGallery type="mares" title="Mares" />} />
+                <Route path="/mares/:id" element={<HorseDetail type="mares" title="Mares" />} />
+                <Route exact path="/colts" element={<HorseGallery type="colts" title="Colts" />} />
+                <Route path="/colts/:id" element={<HorseDetail type="colts" title="Colts" />} />
+                <Route exact path="/fillies" element={<HorseGallery type="fillies" title="Fillies" />} />
+                <Route path="/fillies/:id" element={<HorseDetail type="fillies" title="Fillies" />} />
+                <Route exact path="/geldings" element={<HorseGallery type="geldings" title="Geldings" />} />
+                <Route path="/geldings/:id" element={<HorseDetail type="geldings" title="Geldings" />} />
+                <Route exact path="/testimonials" element={<HorseGallery type="testimonials" title="Testimonials" />} />
+                <Route path="/testimonials/:id" element={<HorseDetail type="testimonials" title="Testimonials" />} />
+                <Route exact path="/breeding" element={<Placeholder />} />
+                <Route exact path="/foundation" element={<Placeholder />} />
+                <Route exact path="/contact" element={<Placeholder />} />
+                <Route exact path="/visit" element={<Visit />} />
+                <Route exact path="/login" element={<Login />} />
+                <Route exact path="/admin" element={user.id?<Admin />:<Login />} />
+                <Route exact path="*" element={<NotFound />} />
+              </Routes>
+            </div>
             
             <Footer />
 

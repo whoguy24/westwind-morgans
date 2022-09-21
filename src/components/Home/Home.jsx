@@ -19,14 +19,10 @@ function Home() {
 
   return (
     <>
-
-      <div id="home-container">
-        <HomeHero />
-        <HomeHorses />
-        <HomeFoundation />
-        <HomeBreeding />
-      </div>
-
+      <HomeHero />
+      <HomeHorses />
+      <HomeFoundation />
+      <HomeBreeding />
     </>
   );
 

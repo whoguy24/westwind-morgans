@@ -47,7 +47,6 @@ function HorseGallery({type, title}) {
       <div className="content-container">
 
         <SectionBanner image={`banner_${type}`}/>
-
         <SectionHeader style="banner" title={title}/>
 
         <div className="content-toolbar">

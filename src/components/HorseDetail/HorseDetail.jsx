@@ -87,7 +87,6 @@ function HorseDetail({type, title}) {
 
           <div className="content-detail-section-info">
 
-
             { horse.type != "testimonials" ?
 
               <>

@@ -28,11 +28,10 @@ function Visit() {
   return (
     <>
 
-      <div id="home-container">
+
 
         <SectionBanner image="banner_stallions"/>
-
-        <SectionHeader style ="banner" title="Visit Us"/>
+        <SectionHeader style="banner" title="Visit Us"/>
 
         <div id="visit">
 
@@ -59,7 +58,8 @@ function Visit() {
 
         </div>
 
-      </div>
+
+
 
     </>
   );
