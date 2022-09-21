@@ -3,35 +3,34 @@
 ///////////////////////////////////////////////////////
 
 // Import Stylesheets
-import '../Visit/Visit.css';
+import '../GoogleMaps/GoogleMaps.css';
 
 // Import Custom Components
+import GoogleMapsPin from "../GoogleMapsPin/GoogleMapsPin";
 
-import IconButton from '@mui/material/IconButton';
-import PlaceIcon from '@mui/icons-material/Place';
-
-import GoogleMaps from "../GoogleMaps/GoogleMaps";
+import GoogleMapReact from 'google-map-react'
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
 ///////////////////////////////////////////////////////
 
-function Visit() {
-
-  const location = {
-    address: 'Sheridan, Montana',
-    lat: 45.4584315,
-    lng: -112.2093181,
-  }
+function GoogleMaps({location, zoomLevel}) {
 
   return (
     <>
 
-        <div className="map">
-          <div className="google-map">
-            <GoogleMaps location={location} zoomLevel={10} />
-          </div>
-        </div>
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: 'AIzaSyCuUUy3gWCkKXiuod-2dby6MDgZ96zlZqE' }}
+        defaultCenter={location}
+        defaultZoom={zoomLevel}
+      >
+        <GoogleMapsPin
+          lat={location.lat}
+          lng={location.lng}
+          text={location.address}
+        />
+
+      </GoogleMapReact>
 
     </>
   );
@@ -42,4 +41,4 @@ function Visit() {
 ///// EXPORT COMPONENT FUNCTION ///////////////////////
 ///////////////////////////////////////////////////////
 
-export default Visit;
+export default GoogleMaps;
