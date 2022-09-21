@@ -50,7 +50,7 @@ function HorseGallery({type, title}) {
         </div>
 
         <div className="section-header-banner">
-            <Typography className="section-header-banner-text">{title}</Typography>
+          <Typography className="section-header-banner-text">{title}</Typography>
         </div>
 
         <div className="content-toolbar">
