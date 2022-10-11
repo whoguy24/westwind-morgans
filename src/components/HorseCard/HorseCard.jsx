@@ -30,8 +30,8 @@ function HorseCard({horse}) {
         <CardActionArea>
           <CardMedia
             component="img"
-            height="300px"
-            image={horse.profile_url? horse.profile_url : "/assets/static/profile.png"}
+            height="250px"
+            image={horse.profile_url? `/assets/database/${horse.id}.jpg` : `/assets/static/profile.png`}
             alt="placeholder_stallion"
           />
           <div className="horse-card-label">

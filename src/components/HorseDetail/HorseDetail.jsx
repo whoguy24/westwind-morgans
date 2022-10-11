@@ -83,7 +83,7 @@ function HorseDetail({type, title}) {
         <div className="content-detail-section-container">
 
           <a className="content-detail-section-image-link" href={horse.profile_url} target="_blank">
-            <img className="content-detail-section-image" src={horse.profile_url ? horse.profile_url : "/assets/static/profile.png"} />
+            <img className="content-detail-section-image" src={horse.profile_url ? `/assets/database/${horse.id}.jpg` : "/assets/static/profile.png"} />
           </a>
 
           <div className="content-detail-section-info">
