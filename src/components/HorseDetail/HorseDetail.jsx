@@ -17,6 +17,7 @@ import HorseCard from "../HorseCard/HorseCard";
 import PedigreeGraph from "../PedigreeGraph/PedigreeGraph";
 import SectionHeader from "../SectionHeader/SectionHeader";
 import SectionBanner from "../SectionBanner/SectionBanner";
+import SectionSubheader from "../SectionSubheader/SectionSubheader";
 
 // Import MUI Components
 import Typography from '@mui/material/Typography';
@@ -114,11 +115,7 @@ function HorseDetail({type, title}) {
         { horse.parents?.length > 0 && 
           <>
 
-            <div className="content-detail-subheader">
-              <div className="content-detail-subheader-divider"/>
-              <Typography className="content-detail-subheader-text">Pedigree</Typography>
-              <div className="content-detail-subheader-divider"/>
-            </div>
+            <SectionSubheader title="Pedigree"/>
 
             <div className="content-detail-section-container">
                 <PedigreeGraph horse={horse}/>
@@ -131,11 +128,7 @@ function HorseDetail({type, title}) {
 
         <>
 
-          <div className="content-detail-subheader">
-            <div className="content-detail-subheader-divider"/>
-            <Typography className="content-detail-subheader-text">Gallery</Typography>
-            <div className="content-detail-subheader-divider"/>
-          </div>
+          <SectionSubheader title="Gallery"/>
 
           <div className="content-detail-section-gallery">
 
@@ -164,11 +157,7 @@ function HorseDetail({type, title}) {
 
           <>
 
-            <div className="content-detail-subheader">
-              <div className="content-detail-subheader-divider"/>
-              <Typography className="content-detail-subheader-text">Progeny</Typography>
-              <div className="content-detail-subheader-divider"/>
-            </div>
+            <SectionSubheader title="Progeny"/>
 
             <div className="content-detail-section-gallery">
 

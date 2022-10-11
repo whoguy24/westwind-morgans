@@ -51,6 +51,11 @@ function App() {
     }, [dispatch]);
   }
 
+  // App is rendered inside React Router DOM component. 
+  // If the application is in the process of loading, then show only the Preloader component. (Spinning Startup Logo)
+  // If the app is loaded, render components based on route.
+  // Navigation and Footer components render globally.
+
   // Render DOM
   return (
     <>

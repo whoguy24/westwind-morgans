@@ -28,6 +28,9 @@
   position: relative;
   justify-content: center;
   align-items: center;
+  animation: fadeIn 1.5s !important;
+  animation-fill-mode: forwards !important;
+  opacity: 0;
 }
 
 #home-hero-image {

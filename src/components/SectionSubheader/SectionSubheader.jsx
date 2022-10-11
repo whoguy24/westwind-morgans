@@ -3,7 +3,7 @@
 ///////////////////////////////////////////////////////
 
 // Import Stylesheets
-import '../SectionHeader/SectionHeader.css';
+import '../SectionSubheader/SectionSubheader.css';
 
 // Import Custom Components
 
@@ -14,23 +14,15 @@ import Typography from '@mui/material/Typography';
 ///// COMPONENT FUNCTION //////////////////////////////
 ///////////////////////////////////////////////////////
 
-function SectionHeader({style, title}) {
+function SectionSubheader({title}) {
 
   return (
     <>
-
-    { style === "content" &&
-      <div className="section-header">
-        <Typography className="section-header-text">{title}</Typography>
+      <div className="content-detail-subheader">
+        <div className="content-detail-subheader-divider"/>
+        <Typography className="content-detail-subheader-text">{title}</Typography>
+        <div className="content-detail-subheader-divider"/>
       </div>
-    }
-
-    { style === "banner" &&
-      <div className="section-header-banner">
-        <Typography className="section-header-banner-text">{title}</Typography>
-      </div>
-    }
-
     </>
   );
 
@@ -40,4 +32,4 @@ function SectionHeader({style, title}) {
 ///// EXPORT COMPONENT FUNCTION ///////////////////////
 ///////////////////////////////////////////////////////
 
-export default SectionHeader;
+export default SectionSubheader;
