@@ -31,7 +31,7 @@ function HorseCard({horse}) {
           <CardMedia
             component="img"
             height="250px"
-            image={horse.profile_url? `/assets/database/${horse.id}.jpg` : `/assets/static/profile.png`}
+            image={horse.profile_id? `/assets/database/${horse.profile_id}.jpg` : `/assets/static/profile.png`}
             alt="placeholder_stallion"
           />
           <div className="horse-card-label">

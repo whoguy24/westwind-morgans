@@ -83,7 +83,7 @@ function HorseDetail({type, title}) {
         <div className="content-detail-section-container">
 
           <a className="content-detail-section-image-link" href={horse.profile_url} target="_blank">
-            <img className="content-detail-section-image" src={horse.profile_url ? `/assets/database/${horse.id}.jpg` : "/assets/static/profile.png"} />
+            <img className="content-detail-section-image" src={horse.profile_id ? `/assets/database/${horse.profile_id}.jpg` : "/assets/static/profile.png"} />
           </a>
 
           <div className="content-detail-section-info">
@@ -136,10 +136,10 @@ function HorseDetail({type, title}) {
                 return (
                   <Card className="gallery-card" key={image.id} >
                   <CardActionArea>
-                    <a href={image.url} target="_blank">
+                    <a href={`/assets/database/${image.id}.jpg`} target="_blank">
                       <CardMedia
                         component="img"
-                        image={image.url}
+                        image={`/assets/database/${image.id}.jpg`}
                       />
                     </a>
                   </CardActionArea>
