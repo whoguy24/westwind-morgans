@@ -22,10 +22,6 @@ function PedigreeCell({horse}) {
 
     <>
 
-      { horse.id && 
-
-        <>
-
           <div className="pedigree-cell">
 
             { horse ?
@@ -53,10 +49,6 @@ function PedigreeCell({horse}) {
             }
 
           </div>
-
-        </>
-
-      }
 
     </>
 

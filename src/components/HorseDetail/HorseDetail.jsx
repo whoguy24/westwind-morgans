@@ -133,19 +133,28 @@ function HorseDetail({type, title}) {
           <div className="content-detail-section-gallery">
 
               { horse.images.map((image) => {
+
                 return (
-                  <Card className="gallery-card" key={image.id} >
-                  <CardActionArea>
-                    <a href={`/assets/database/${image.id}.jpg`} target="_blank">
-                      <CardMedia
-                        component="img"
-                        image={`/assets/database/${image.id}.jpg`}
-                      />
-                    </a>
-                  </CardActionArea>
-                </Card>
+
+                  image.id == horse.profile_id? null :
+
+                    <Card className="gallery-card" key={image.id} >
+                      <CardActionArea>
+                        <a href={`/assets/database/${image.id}.jpg`} target="_blank">
+                          <CardMedia
+                            className="gallery-card-image"
+                            component="img"
+                            image={`/assets/database/${image.id}.jpg`}
+                          />
+                        </a>
+                      </CardActionArea>
+                    </Card>
+
                 )
-            })}
+                
+              }
+
+            )}
 
           </div>
 

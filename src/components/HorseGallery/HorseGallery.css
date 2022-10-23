@@ -7,6 +7,12 @@
     border-radius: 0rem !important;
 }
 
+.gallery-card-image {
+    width: 100% !important;
+    height: 160px !important;
+    object-fit: cover !important;
+}
+
 .gallery-card-label {
     background-color: var(--color-neutral-500) !important;
     color: var(--color-accent-300) !important;

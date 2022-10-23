@@ -58,7 +58,7 @@ router.get('/:route/:id', async (req, res) => {
         horse.parents = await fetchParents(horse.sire_id, horse.dam_id, 0) || [];
         horse.progeny = await fetchProgeny(horse.id) || [];
         horse.images = await fetchImages(horse.id) || [];
-        res.send(horse)
+        res.send(horse);
     })
     .catch((error) => {
         console.log(error);
