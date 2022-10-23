@@ -74,7 +74,7 @@ function HorseDetail({type, title}) {
 
             <Typography className="content-detail-header-text">{horse.name}</Typography>
 
-            <Button className="form-button" onClick={()=>navigate("/contact")}>Learn More</Button>
+            {/* <Button className="form-button" onClick={()=>navigate("/contact")}>Learn More</Button> */}
 
         </div>
 

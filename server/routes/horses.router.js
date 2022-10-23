@@ -14,7 +14,7 @@ router.get('/:route', (req, res) => {
             WHEN "horses"."category" = 'Colt' THEN 3
             WHEN "horses"."category" = 'Filly' THEN 4
         END,
-        "horses"."birth_date",
+        "horses"."birth_date" DESC,
         "horses"."id"
     `;
 
@@ -46,7 +46,7 @@ router.get('/:route/:id', async (req, res) => {
             WHEN "horses"."category" = 'Colt' THEN 3
             WHEN "horses"."category" = 'Filly' THEN 4
         END,
-        "horses"."birth_date",
+        "horses"."birth_date" DESC,
         "horses"."id"
     `;
     const sqlValues = [ req.params.route, req.params.id ];
@@ -79,7 +79,7 @@ function fetchParents(sire_id, dam_id, i) {
                 WHEN "horses"."category" = 'Colt' THEN 3
                 WHEN "horses"."category" = 'Filly' THEN 4
             END,
-            "horses"."birth_date",
+            "horses"."birth_date" DESC,
             "horses"."id"
         ;`
         pool.query(queryText, queryValues)
@@ -130,7 +130,7 @@ function fetchProgeny(id) {
                 WHEN "horses"."category" = 'Colt' THEN 3
                 WHEN "horses"."category" = 'Filly' THEN 4
             END,
-            "horses"."birth_date",
+            "horses"."birth_date" DESC,
             "horses"."id"
         ;`
         pool.query(queryText, queryValues)
