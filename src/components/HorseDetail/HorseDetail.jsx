@@ -82,7 +82,7 @@ function HorseDetail({type, title}) {
 
         <div className="content-detail-section-container">
 
-          <a className="content-detail-section-image-link" href={horse.profile_url} target="_blank">
+          <a className="content-detail-section-image-link" href={`/assets/database/${horse.profile_id}.jpg`} target="_blank">
             <img className="content-detail-section-image" src={horse.profile_id ? `/assets/database/${horse.profile_id}.jpg` : "/assets/static/profile.png"} />
           </a>
 
@@ -124,7 +124,7 @@ function HorseDetail({type, title}) {
           </>
         }
 
-        { horse.images?.length > 0 &&
+        {  horse.images?.filter(image=>image.id != horse.profile_id).length > 0 &&
 
         <>
 
