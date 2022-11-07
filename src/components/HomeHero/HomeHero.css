@@ -1,4 +1,4 @@
-@import "../../styles/_global.css";
+@import "../App/App.css";
 
 #home-hero-header {
   display: flex;

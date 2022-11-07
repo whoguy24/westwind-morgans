@@ -1,4 +1,4 @@
-@import "../../styles/_global.css";
+@import "../App/App.css";
 
 #navigation {
   background-color: var(--color-primary-300);

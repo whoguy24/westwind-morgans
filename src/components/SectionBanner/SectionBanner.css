@@ -1,4 +1,4 @@
-@import "../../styles/_global.css";
+@import "../App/App.css";
 
 .content-banner {
     display: flex !important;
