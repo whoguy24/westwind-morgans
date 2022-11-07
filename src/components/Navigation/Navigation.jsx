@@ -113,9 +113,9 @@ function Navigation() {
 
                     {/* 
                     
-                    ////////////////////////////////////
-                    /// RENDER DOM - LARGE / DESKTOP ///
-                    ////////////////////////////////////
+                    ///////////////////////
+                    /// LARGE / DESKTOP ///
+                    ///////////////////////
                     
                     */}
 
@@ -124,7 +124,7 @@ function Navigation() {
 
                             <div id="navigation-group-left">
                                 <Button 
-                                    className="navigation-button-home"
+                                    id="navigation-button-home"
                                     variant="text" 
                                     disableRipple 
                                     onClick={()=>navigate("/home")}
@@ -138,7 +138,7 @@ function Navigation() {
                                 {/* HORSES BUTTON & MENU */}
                                 
                                 <Button 
-                                    className="navigation-button"
+                                    className="navigation-button-toolbar"
                                     aria-controls={ horsesMenuActive ? 'horses' : false } 
                                     aria-haspopup="true" 
                                     aria-expanded={ horsesMenuActive ? 'true' : false } 
@@ -163,7 +163,7 @@ function Navigation() {
                                 {/* ABOUT BUTTON & MENU */}
 
                                 <Button 
-                                    className="navigation-button"
+                                    className="navigation-button-toolbar"
                                     aria-controls={ aboutMenuActive ? 'about' : false } 
                                     aria-haspopup="true" 
                                     aria-expanded={ aboutMenuActive ? 'true' : false } 
@@ -187,7 +187,7 @@ function Navigation() {
                                 {/* CONTACT BUTTON */}
 
                                 <Button 
-                                    className="navigation-button"
+                                    className="navigation-button-toolbar"
                                     variant="text" 
                                     onClick={(path)=>handleMenuClick("contact")}
                                     >
@@ -198,7 +198,7 @@ function Navigation() {
 
                                 { user.id && 
                                     <Button 
-                                        className="navigation-button"
+                                        className="navigation-button-toolbar"
                                         variant="text" 
                                         onClick={(path)=>handleMenuClick("admin")}
                                         >
@@ -209,7 +209,7 @@ function Navigation() {
                                 {/* SOCIAL BUTTON */}
 
                                 <IconButton 
-                                    className="navigation-icon-button" 
+                                    className="navigation-button-toolbar-icon" 
                                     href={facebookLink}
                                     target="_blank"
                                     >
@@ -227,9 +227,9 @@ function Navigation() {
 
                     {/* 
                         
-                    ///////////////////////////////////
-                    /// RENDER DOM - SMALL / MOBILE ///
-                    ///////////////////////////////////
+                    //////////////////////
+                    /// SMALL / MOBILE ///
+                    //////////////////////
                     
                     */}
 
@@ -241,7 +241,7 @@ function Navigation() {
                                 {/* MENU BUTTON */}
 
                                 <IconButton 
-                                    className="navigation-icon-button" 
+                                    className="navigation-button-toolbar-icon" 
                                     onClick={()=>setDrawerActive(true)}
                                     >
                                     <MenuIcon />
@@ -254,7 +254,7 @@ function Navigation() {
                                 {/* HOME BUTTON */}
 
                                 <Button 
-                                    className="navigation-button-home"
+                                    id="navigation-button-home"
                                     variant="text" 
                                     disableRipple 
                                     onClick={handleMenuClick}
@@ -269,7 +269,7 @@ function Navigation() {
                                 {/* SOCIAL BUTTON */}
 
                                 <IconButton 
-                                    className="navigation-icon-button" 
+                                    className="navigation-button-toolbar-icon" 
                                     href={facebookLink} 
                                     target="_blank"
                                     >

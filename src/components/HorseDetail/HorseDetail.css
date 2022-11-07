@@ -1,5 +1,115 @@
 @import "../App/App.css";
 
+#horse-detail-header {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    position: relative;
+    margin: 1rem;
+}
 
+#horse-detail-header-text {
+    color: var(--color-accent-300);
+    font-size: var(--font-size-500);
+    text-align: center;
+    text-transform: uppercase;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
 
+#horse-detail-divider {
+    background-color: var(--color-accent-300);
+    height: 2px;
+    width: 100%;
+}
+  
+#horse-detail-form-link {
+    width: 50%;
+}
+  
+#horse-detail-form-link:hover {
+    filter: brightness(115%);
+}
+  
+#horse-detail-form-image {
+    width: 100%;
+}
 
+#horse-detail-form {
+    margin-left: 1rem;
+}
+
+#horse-detail-image-gallery {
+    background-color: var(--color-neutral-700);
+    width: 90%;
+    display: grid;
+    grid-template-columns: 3fr 3fr 3fr;
+    box-sizing: border-box;
+    column-gap: 1rem;
+    row-gap: 1rem;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+#horse-detail-progeny-gallery {
+    background-color: var(--color-neutral-700);
+    width: 90%;
+    display: grid;
+    grid-template-columns: 3fr 3fr 3fr;
+    box-sizing: border-box;
+    column-gap: 1rem;
+    row-gap: 1rem;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+#form-button {
+    background-color: var(--color-primary-300);
+    color: var(--color-accent-300);
+    border-radius: 0rem;
+    text-transform: initial;
+    font-size: 0.75rem;
+}
+
+#form-button:hover {
+    background-color: var(--color-primary-700);
+    color: var(--color-accent-500);
+}
+
+.horse-detail-section {
+    background-color: var(--color-neutral-700);
+    width: 90%;
+    display: flex;
+    margin: 1rem !important;
+    padding: 1rem !important;
+    box-sizing: border-box !important;
+}
+  
+.horse-detail-form-text {
+    color: var(--color-accent-300) !important;
+    font-size: var(--font-size-300) !important;
+}
+
+.horse-detail-form-subheader {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.horse-detail-form-subheader-divider {
+    background-color: var(--color-accent-300);
+    height: 1px;
+    width: 100%;
+}
+
+.horse-detail-form-subheader-text {
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+    color: var(--color-accent-300) !important;
+    font-size: var(--font-size-300) !important;
+    text-transform: uppercase !important;
+}

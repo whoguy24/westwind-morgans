@@ -1,4 +1,6 @@
-/* BASE ELEMENT OVERRIDES */
+/* ################################# */
+/*  BASE ELEMENT OVERRIDES           */
+/* ################################# */
 
 body {
   margin: 0px;
@@ -10,7 +12,9 @@ body {
   background-color: #0c0c0c;
 }
 
-/* CUSTOM PROPERTIES */
+/* ################################# */
+/*  CUSTOM PROPERTIES                */
+/* ################################# */
 
 :root {
 
@@ -26,8 +30,11 @@ body {
   --color-neutral-700: #0000004d;
 
   --font-size-100: 0.5rem;
+  --font-size-200: 0.75rem;
   --font-size-300: 1.0rem;
+  --font-size-400: 1.25rem;
   --font-size-500: 1.5rem;
+  --font-size-600: 1.75rem;
   --font-size-700: 2.0rem;
 
   --font-weight-light: 300;
@@ -36,23 +43,29 @@ body {
 
 }
 
-/* CUSTOM FONTS */
+/* ################################# */
+/*  CUSTOM FONTS                     */
+/* ################################# */
 
 @font-face {
     font-family: "Royal Signage";
     src: url("../../fonts/RoyalSignage-Rg.otf");
 }
 
-/* ANIMATIONS */
+/* ################################# */
+/*  ANIMATIONS                       */
+/* ################################# */
 
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
 
-/* GLOBAL CLASSES */
+/* ################################# */
+/*  GLOBAL CONTENT CONTAINER         */
+/* ################################# */
 
-.app-content {
+#app-content {
   display: flex;
   margin-left: auto;
   margin-right: auto;
@@ -60,231 +73,12 @@ body {
   justify-content: center;
   flex-direction: column;
   max-width: 1000px;
+  animation: fadeIn 1s;
 }
 
-.content-banner {
-  display: flex !important;
-  width: 100% !important;
-  margin: auto !important;
-}
-
-.content-banner-image {
-  width: 100% !important;
-}
-
-.content-container {
-  display: flex !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-direction: column !important;
-  max-width: 1200px !important;
-  animation: fadeIn 1s !important;
-}
-
-.content-toolbar {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  width: 90% !important;
-  margin: 1rem !important;
-}
-
-.content-toolbar-breadcrumbs {
-  width: 50% !important;
-  color: var(--color-accent-300) !important;
-}
-
-.content-toolbar-breadcrumbs a {
-  color: var(--color-accent-300) !important;
-  font-size: 0.75rem !important;
-}
-
-.content-toolbar-breadcrumbs a:hover {
-  color: var(--color-accent-500) !important;
-  text-decoration: underline !important;
-}
-
-.content-detail-header {
-  display: flex !important;
-  flex-direction: row !important; 
-  justify-content: space-between !important;
-  align-items: center;
-  width: 90%;
-  position: relative;
-  margin: 1rem;
-}
-
-.content-detail-header-text {
-  color: var(--color-accent-300) !important;
-  font-size: var(--font-size-500) !important;
-  text-align: center !important;
-  text-transform: uppercase !important;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%);
-}
-
-.content-detail-header-divider {
-  background-color: var(--color-accent-300);
-  height: 2px;
-  width: 100%;
-}
-
-.content-detail-section-container {
-  background-color: var(--color-neutral-700);
-  width: 90%;
-  display: flex;
-  margin: 1rem !important;
-  padding: 1rem !important;
-  box-sizing: border-box !important;
-}
-
-.content-detail-section-image-link {
-  width: 50%;
-}
-
-.content-detail-section-image-link:hover {
-  filter: brightness(115%) !important;
-}
-
-.content-detail-section-image {
-  width: 100%;
-}
-
-.content-detail-section-info {
-  margin-left: 1rem;
-}
-
-.content-detail-section-basic-header {
-  color: var(--color-accent-300) !important;
-  font-size: var(--font-size-500) !important;
-}
-
-.content-detail-section-basic-text {
-  color: var(--color-accent-300) !important;
-  font-size: var(--font-size-300) !important;
-}
-
-.content-detail-section-gallery {
-  background-color: var(--color-neutral-700);
-  width: 90%;
-  display: grid;
-  grid-template-columns: 3fr 3fr 3fr !important;
-  box-sizing: border-box !important;
-  column-gap: 1rem !important;
-  row-gap: 1rem !important;
-  margin: 1rem;
-  padding: 1rem !important;
-}
-
-
-
-
-
-.section-header {
-    background-color: var(--color-primary-300) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    margin: 1rem !important;
-    padding-top: 0.25rem !important;
-    padding-bottom: 0.25rem !important;
-    animation: fadeIn 3s !important;
-    animation-delay: 1s !important;
-    animation-fill-mode: forwards !important;
-    opacity: 0;
-}
-  
-.section-header-text {
-    color: var(--color-accent-300) !important;
-    font-size: var(--font-size-500) !important;
-    display: flex !important;
-    font-family: "Royal Signage" !important;
-    text-transform: capitalize !important;
-}
-
-.section-header-banner {
-    background-color: var(--color-primary-300) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    padding-top: 0.25rem !important;
-    padding-bottom: 0.25rem !important;
-}
-  
-.section-header-banner-text {
-    color: var(--color-accent-300) !important;
-    font-size: var(--font-size-500) !important;
-    display: flex !important;
-    font-family: "Royal Signage" !important;
-    text-transform: capitalize !important;
-}
-
-
-
-
-  .gallery-container {
-    background-color: var(--color-neutral-700) !important;
-    width: 90% !important;
-    display: grid !important;
-    grid-template-columns: 3fr 3fr 3fr !important;
-    box-sizing: border-box !important;
-    column-gap: 1rem !important;
-    row-gap: 1rem !important;
-    padding: 1rem !important;
-  }
-
-
-
-
-.navigation-button-home {
-  color: var(--color-accent-300) !important;
-  font-size: clamp(1.25rem, 3vw, 2rem) !important;
-  background-color: inherit !important;
-  font-family: "Royal Signage" !important;
-  text-transform: capitalize !important;
-}
-
-.navigation-button {
-  color: var(--color-accent-300) !important;
-  font-weight: var(--font-weight-light) !important;
-  font-size: var(--font-size-300) !important;
-}
-
-.navigation-button:hover {
-  background-color: var(--color-primary-500) !important;
-  color: var(--color-accent-500) !important;
-}
-
-.navigation-icon-button {
-  color: var(--color-accent-300) !important;
-  border-radius: 0.25rem !important;
-}
-
-.navigation-icon-button:hover {
-  background-color: var(--color-primary-500) !important;
-  color: var(--color-accent-500) !important;
-}
-
-/* FORM BUTTONS */
-
-.form-button {
-  background-color: var(--color-primary-300)!important;
-  color: var(--color-accent-300)!important;
-  border-radius: 0rem!important;
-  text-transform: initial!important;
-  font-size: 0.75rem!important;
-}
-
-.form-button:hover {
-  background-color: var(--color-primary-700)!important;
-  color: var(--color-accent-500)!important;
-}
+/* ################################# */
+/*  MATERIAL-UI COMPONENT OVERRIDES  */
+/* ################################# */
 
 .MuiMenu-paper {
   background-color: var(--color-primary-700) !important;
@@ -303,45 +97,4 @@ body {
 .MuiListItemText-primary {
   color: var(--color-accent-300) !important;
   font-weight: var(--font-weight-light) !important;
-}
-
-@media screen and (max-width: 800px) {
-  .gallery-container {
-    grid-template-columns: 3fr 3fr !important;
-  }
-  .content-toolbar-breadcrumbs {
-    width: 100% !important;
-  }
-  .content-detail-section-gallery {
-    grid-template-columns: 3fr 3fr !important;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .gallery-container {
-    grid-template-columns: 3fr !important;
-  }
-  .content-detail-header-text {
-    font-size: var(--font-size-300) !important;
-  }
-  .pedigree-cell-text {
-    text-align: center;
-  }
-  .content-detail-section-container {
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-  }
-  .content-detail-section-image-link {
-    width: 100%;
-  }
-  .content-detail-section-info {
-    margin-top: 1rem;
-    min-height: 200px;
-  }
-  .content-detail-section-gallery {
-    display: flex;
-    box-sizing: border-box !important;
-    flex-direction: column;
-  }
 }

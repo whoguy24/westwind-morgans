@@ -51,7 +51,7 @@
   animation-fill-mode: forwards;
 }
 
-#home-westwind-otto {
+#home-hero-header-otto {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -63,22 +63,11 @@
   animation-fill-mode: forwards;
 }
 
-#home-westwind-otto-text {
+#home-hero-header-otto-text {
   color: var(--color-accent-300);
   font-size: clamp(1rem, 3vw, 2rem);
   font-family: "Royal Signage";
   text-transform: lowercase;
-}
-
-@keyframes slide {
-  0% {
-    transform: translateX(100%);
-    overflow: hidden;
-  }
-  100% {
-    transform: translateX(0);
-    overflow: hidden;
-  }
 }
 
 @media screen and (max-width: 800px) {

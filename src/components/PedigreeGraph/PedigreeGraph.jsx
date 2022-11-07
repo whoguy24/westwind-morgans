@@ -5,13 +5,7 @@
 // Import Stylesheets
 import '../PedigreeGraph/PedigreeGraph.css';
 
-// Import Libraries
-import { NavLink } from 'react-router-dom';
-
 import PedigreeCell from "../PedigreeCell/PedigreeCell";
-
-// Import MUI Components
-import Typography from '@mui/material/Typography';
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
@@ -34,7 +28,7 @@ function PedigreeGraph({horse}) {
 
       { horse.id && 
 
-        <>
+        <div id="pedigree">
 
           <div id="pedigree-column1">
             
@@ -54,7 +48,7 @@ function PedigreeGraph({horse}) {
 
           </div>
 
-        </>
+        </div>
 
       }
 

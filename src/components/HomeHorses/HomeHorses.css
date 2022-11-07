@@ -61,9 +61,6 @@
 }
 
 @media screen and (max-width: 500px) {
-  #home-horses-header-text {
-    font-size: var(--font-size-500);
-  }
   #home-horses-grid {
     display: flex;
     flex-direction: column;
