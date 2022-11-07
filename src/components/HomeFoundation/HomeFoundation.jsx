@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
-import SectionHeader from "../SectionHeader/SectionHeader";
+import Header from "../Header/Header";
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
@@ -27,7 +27,7 @@ function HomeFoundation() {
   return (
     <>
 
-      <SectionHeader style ="content" title="Why Foundation"/>
+      <Header style ="content" title="Why Foundation"/>
 
       <div id="home-foundation">
 
@@ -46,7 +46,7 @@ function HomeFoundation() {
                 Kansas and broodmares from the Sweet's 
                 family in Jewell County Kansas.<br/><br/>
             </Typography>
-            <Button className="form-button" onClick={()=>navigate("/foundation")}>Read More</Button>
+            <Button id="form-button" onClick={()=>navigate("/foundation")}>Read More</Button>
           </div>
 
         </div>

@@ -72,7 +72,7 @@ function App() {
 
             <Navigation />
 
-            <div id="content">
+            <div id="app-content">
               <Routes>
                 <Route path="/" element={<Navigate replace to="/home" />} />
                 <Route exact path="/home" element={<Home />} />

@@ -1,11 +1,11 @@
-@import "../../styles/_global.css";
+@import "../App/App.css";
 
-.content-banner {
+#banner {
     display: flex !important;
     width: 100% !important;
     margin: auto !important;
-}
-
-.content-banner-image {
+  }
+  
+#banner-image {
     width: 100% !important;
 }

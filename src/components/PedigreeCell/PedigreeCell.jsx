@@ -22,7 +22,7 @@ function PedigreeCell({horse}) {
 
     <>
 
-          <div className="pedigree-cell">
+          <div id="pedigree-cell">
 
             { horse ?
 
@@ -31,11 +31,11 @@ function PedigreeCell({horse}) {
                 { horse.visible === true ?
 
                   <NavLink to={`/${horse.type}/${horse.id}`}>
-                    <Typography className="pedigree-cell-text">{horse.name}</Typography>
+                    <Typography id="pedigree-cell-text">{horse.name}</Typography>
                   </NavLink>
 
                 :
-                  <a className="pedigree-cell-text" href={horse.pedigree_url} target="_blank">{horse.name}</a>
+                  <a id="pedigree-cell-text" href={horse.pedigree_url} target="_blank">{horse.name}</a>
                 }
 
               </>
@@ -43,7 +43,7 @@ function PedigreeCell({horse}) {
               :
 
               <>
-                <Typography className="pedigree-cell-text-disabled">N/A</Typography>
+                <Typography id="pedigree-cell-text-disabled">N/A</Typography>
               </>
 
             }

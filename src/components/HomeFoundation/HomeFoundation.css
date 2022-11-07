@@ -1,4 +1,4 @@
-@import "../../styles/_global.css";
+@import "../App/App.css";
 
 #home-foundation {
   display: flex;
@@ -35,6 +35,19 @@
   color: var(--color-accent-300);
   font-weight: var(--font-weight-light);
   font-size: 0.75rem;
+}
+
+#form-button {
+  background-color: var(--color-primary-300);
+  color: var(--color-accent-300);
+  border-radius: 0rem;
+  text-transform: initial;
+  font-size: 0.75rem;
+}
+
+#form-button:hover {
+  background-color: var(--color-primary-700);
+  color: var(--color-accent-500);
 }
 
 @media screen and (max-width: 800px) {

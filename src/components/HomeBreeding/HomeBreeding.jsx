@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
-import SectionHeader from "../SectionHeader/SectionHeader";
+import Header from "../Header/Header";
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
@@ -27,7 +27,7 @@ function HomeBreeding() {
   return (
     <>
 
-      <SectionHeader style ="content" title="Breeding"/>
+      <Header style ="content" title="Breeding"/>
 
       <div id="home-breeding">
 
@@ -43,7 +43,7 @@ function HomeBreeding() {
               If you are looking for a Morgan horse that goes back to the 
               original stock horse of the West you have come to the right place.<br/><br/>
             </Typography>
-            <Button className="form-button" onClick={()=>navigate("/breeding")}>Read More</Button>
+            <Button id="form-button" onClick={()=>navigate("/breeding")}>Read More</Button>
           </div>
 
         </div>

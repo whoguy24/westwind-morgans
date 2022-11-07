@@ -3,25 +3,19 @@
 ///////////////////////////////////////////////////////
 
 // Import Stylesheets
-import '../SectionSubheader/SectionSubheader.css';
-
-// Import Custom Components
-
-// Import MUI Components
-import Typography from '@mui/material/Typography';
+import '../Banner/Banner.css';
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
 ///////////////////////////////////////////////////////
 
-function SectionSubheader({title}) {
+function SectionBanner({image}) {
+
 
   return (
     <>
-      <div className="content-detail-subheader">
-        <div className="content-detail-subheader-divider"/>
-        <Typography className="content-detail-subheader-text">{title}</Typography>
-        <div className="content-detail-subheader-divider"/>
+      <div id="banner">
+        <img id="banner-image" src={`/assets/static/${image}.png`}/>
       </div>
     </>
   );
@@ -32,4 +26,4 @@ function SectionSubheader({title}) {
 ///// EXPORT COMPONENT FUNCTION ///////////////////////
 ///////////////////////////////////////////////////////
 
-export default SectionSubheader;
+export default SectionBanner;

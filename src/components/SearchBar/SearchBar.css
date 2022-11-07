@@ -1,4 +1,4 @@
-@import "../../styles/_global.css";
+@import "../App/App.css";
 
 #search-bar-container {
   background-color: var(--color-neutral-300);

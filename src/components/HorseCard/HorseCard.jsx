@@ -26,7 +26,7 @@ function HorseCard({horse}) {
   return (
     <>
 
-      <Card className="horse-card" key={horse.id} onClick={()=>navigate(`/${horse.type}/${horse.id}`)}>
+      <Card id="horse-card" key={horse.id} onClick={()=>navigate(`/${horse.type}/${horse.id}`)}>
         <CardActionArea>
           <CardMedia
             component="img"
@@ -34,9 +34,9 @@ function HorseCard({horse}) {
             image={horse.profile_id? `/assets/database/${horse.profile_id}.jpg` : `/assets/static/profile.png`}
             alt="placeholder_stallion"
           />
-          <div className="horse-card-label">
-            <Typography className="horse-card-label-text">{horse.name}</Typography>
-            <Typography className="horse-card-label-text-small">{`${horse.calc_year ? horse.calc_year : ""} ${horse.category ? horse.category : ""}`}</Typography>
+          <div id="horse-card-label">
+            <Typography id="horse-card-label-text">{horse.name}</Typography>
+            <Typography id="horse-card-label-text-small">{`${horse.calc_year ? horse.calc_year : ""} ${horse.category ? horse.category : ""}`}</Typography>
           </div>
         </CardActionArea>
       </Card>

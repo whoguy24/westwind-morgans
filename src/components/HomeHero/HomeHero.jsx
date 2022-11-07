@@ -34,8 +34,8 @@ function HomeHero() {
         </Typography>
       </div>
 
-      <div id="home-westwind-otto">
-        <Typography id="home-westwind-otto-text">Home of Westwind Otto</Typography>
+      <div id="home-hero-header-otto">
+        <Typography id="home-hero-header-otto-text">Home of Westwind Otto</Typography>
       </div>
 
     </>

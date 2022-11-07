@@ -1,6 +1,6 @@
-@import "../../styles/_global.css";
+@import "../App/App.css";
 
-.section-header {
+#header-content {
     background-color: var(--color-primary-300) !important;
     display: flex !important;
     align-items: center !important;
@@ -11,7 +11,7 @@
     padding-bottom: 0.25rem !important;
 }
   
-.section-header-text {
+#header-content-text {
     color: var(--color-accent-300) !important;
     font-size: var(--font-size-500) !important;
     display: flex !important;
@@ -19,7 +19,7 @@
     text-transform: capitalize !important;
 }
 
-.section-header-banner {
+#header-banner {
     background-color: var(--color-primary-300) !important;
     display: flex !important;
     align-items: center !important;
@@ -29,10 +29,30 @@
     padding-bottom: 0.25rem !important;
 }
   
-.section-header-banner-text {
+#header-banner-text {
     color: var(--color-accent-300) !important;
     font-size: var(--font-size-500) !important;
     display: flex !important;
     font-family: "Royal Signage" !important;
     text-transform: capitalize !important;
+}
+
+#header-subheading {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#header-subheading-text {
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+    color: var(--color-accent-300) !important;
+    font-size: var(--font-size-300) !important;
+    text-transform: uppercase !important;
+}
+
+.header-subheading-divider {
+    background-color: var(--color-accent-300);
+    height: 1px;
+    width: 100%;
 }

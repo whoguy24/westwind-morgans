@@ -3,33 +3,33 @@
 ///////////////////////////////////////////////////////
 
 // Import Stylesheets
-import '../SectionHeader/SectionHeader.css';
-
-// Import Custom Components
+import '../ImageCard/ImageCard.css';
 
 // Import MUI Components
-import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
+import { CardActionArea } from '@mui/material';
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
 ///////////////////////////////////////////////////////
 
-function SectionHeader({style, title}) {
+function ImageCard({image}) {
 
   return (
     <>
 
-    { style === "content" &&
-      <div className="section-header">
-        <Typography className="section-header-text">{title}</Typography>
-      </div>
-    }
-
-    { style === "banner" &&
-      <div className="section-header-banner">
-        <Typography className="section-header-banner-text">{title}</Typography>
-      </div>
-    }
+      <Card id="image-card" key={image.id} >
+        <CardActionArea>
+          <a href={`/assets/database/${image.id}.jpg`} target="_blank">
+            <CardMedia
+              id="image-card-image"
+              component="img"
+              image={`/assets/database/${image.id}.jpg`}
+            />
+          </a>
+        </CardActionArea>
+      </Card>
 
     </>
   );
@@ -40,4 +40,4 @@ function SectionHeader({style, title}) {
 ///// EXPORT COMPONENT FUNCTION ///////////////////////
 ///////////////////////////////////////////////////////
 
-export default SectionHeader;
+export default ImageCard;

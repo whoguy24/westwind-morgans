@@ -7,26 +7,22 @@ import '../HorseDetail/HorseDetail.css';
 
 // Import Libraries
 import { useEffect } from "react";
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 
 import { useParams } from "react-router-dom";
 
 // Import Custom Components
-import HorseCard from "../HorseCard/HorseCard";
+import Header from "../Header/Header";
+import Banner from "../Banner/Banner";
+import Toolbar from "../Toolbar/Toolbar";
 import PedigreeGraph from "../PedigreeGraph/PedigreeGraph";
-import SectionHeader from "../SectionHeader/SectionHeader";
-import SectionBanner from "../SectionBanner/SectionBanner";
-import SectionSubheader from "../SectionSubheader/SectionSubheader";
+import ImageCard from "../ImageCard/ImageCard";
+import HorseCard from "../HorseCard/HorseCard";
 
 // Import MUI Components
 import Typography from '@mui/material/Typography';
-import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Button from '@mui/material/Button';
-
-import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
-import { CardActionArea } from '@mui/material';
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
@@ -55,58 +51,33 @@ function HorseDetail({type, title}) {
   return (
     <>
 
-      <div className="content-container">
+        <Banner image={`banner_${type}`}/>
+        <Header style="banner" title={title}/>
 
-        <SectionBanner image={`banner_${type}`}/>
-        <SectionHeader style="banner" title={title}/>
+        <Toolbar type={type} title={title} horse={horse}/>
 
-        <div className="content-toolbar">
-          <Breadcrumbs className="content-toolbar-breadcrumbs">
-            <NavLink to="/home">Westwind Morgans</NavLink>
-            <NavLink to={`/${horse.type}`}>{title}</NavLink>
-            <NavLink to={`/${horse.type}/${horse.id}`}>{horse.name}</NavLink>
-          </Breadcrumbs>
+        <div id="horse-detail-header">
+            <Button id="form-button" onClick={()=>navigate(-1)}>Back</Button>
+            <Typography id="horse-detail-header-text">{horse.name}</Typography>
         </div>
 
-        <div className="content-detail-header">
+        <div id="horse-detail-divider"/>
 
-            <Button className="form-button" onClick={()=>navigate(-1)}>Back</Button>
+        <div className="horse-detail-section">
 
-            <Typography className="content-detail-header-text">{horse.name}</Typography>
-
-            {/* <Button className="form-button" onClick={()=>navigate("/contact")}>Learn More</Button> */}
-
-        </div>
-
-        <div className="content-detail-header-divider"/>
-
-        <div className="content-detail-section-container">
-
-          <a className="content-detail-section-image-link" href={`/assets/database/${horse.profile_id}.jpg`} target="_blank">
-            <img className="content-detail-section-image" src={horse.profile_id ? `/assets/database/${horse.profile_id}.jpg` : "/assets/static/profile.png"} />
+          <a id="horse-detail-form-link" href={`/assets/database/${horse.profile_id}.jpg`} target="_blank">
+            <img id="horse-detail-form-image" src={horse.profile_id ? `/assets/database/${horse.profile_id}.jpg` : "/assets/static/profile.png"} />
           </a>
 
-          <div className="content-detail-section-info">
+          <div id="horse-detail-form">
 
-            { horse.type != "testimonials" ?
-
-              <>
-                <Typography className="content-detail-section-basic-header">{horse.name}</Typography>
-                <Typography className="content-detail-section-basic-text">{horse.calc_year}</Typography>
-                <Typography className="content-detail-section-basic-text">{horse.breed}</Typography>
-                <Typography className="content-detail-section-basic-text">{horse.color}</Typography>
-                <Typography className="content-detail-section-basic-text">{horse.category}</Typography>
-                <a className="content-detail-section-basic-text" href={horse.pedigree_url} target="_blank">View Pedigree</a>
-                <Typography className="content-detail-section-basic-text">{horse.description}</Typography>
-              </>
-
-              :
-
-              <>
-                <Typography className="content-detail-section-basic-text">{horse.testimonial}</Typography>
-              </>
-
-            }
+            <Typography className="horse-detail-form-text">{horse.name}</Typography>
+            <Typography className="horse-detail-form-text">{horse.calc_year}</Typography>
+            <Typography className="horse-detail-form-text">{horse.breed}</Typography>
+            <Typography className="horse-detail-form-text">{horse.color}</Typography>
+            <Typography className="horse-detail-form-text">{horse.category}</Typography>
+            <a className="horse-detail-form-text" href={horse.pedigree_url} target="_blank">View Pedigree</a>
+            <Typography className="horse-detail-form-text">{horse.description}</Typography>
 
           </div>
 
@@ -115,11 +86,8 @@ function HorseDetail({type, title}) {
         { horse.parents?.length > 0 && 
           <>
 
-            <SectionSubheader title="Pedigree"/>
-
-            <div className="content-detail-section-container">
-                <PedigreeGraph horse={horse}/>
-            </div>
+            <Header style="subheading" title="Pedigree" />
+            <PedigreeGraph horse={horse}/>
 
           </>
         }
@@ -128,34 +96,14 @@ function HorseDetail({type, title}) {
 
         <>
 
-          <SectionSubheader title="Gallery"/>
-
-          <div className="content-detail-section-gallery">
-
+          <Header style="subheading" title="Gallery"/>
+          <div id="horse-detail-image-gallery">
               { horse.images.map((image) => {
-
                 return (
-
-                  image.id == horse.profile_id? null :
-
-                    <Card className="gallery-card" key={image.id} >
-                      <CardActionArea>
-                        <a href={`/assets/database/${image.id}.jpg`} target="_blank">
-                          <CardMedia
-                            className="gallery-card-image"
-                            component="img"
-                            image={`/assets/database/${image.id}.jpg`}
-                          />
-                        </a>
-                      </CardActionArea>
-                    </Card>
-
+                  image.id == horse.profile_id? null : <ImageCard key={image.id} image={image}/>
                 )
-                
               }
-
             )}
-
           </div>
 
         </>
@@ -166,9 +114,9 @@ function HorseDetail({type, title}) {
 
           <>
 
-            <SectionSubheader title="Progeny"/>
+            <Header style="subheading" title="Progeny"/>
 
-            <div className="content-detail-section-gallery">
+            <div id="horse-detail-progeny-gallery">
 
               {horse.progeny.map((horse) => {
                   return (
@@ -181,8 +129,6 @@ function HorseDetail({type, title}) {
           </>
 
         }
-
-      </div>
 
     </>
   );

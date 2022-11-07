@@ -7,9 +7,9 @@ import '../Visit/Visit.css';
 
 // Import Custom Components
 import GoogleMaps from "../GoogleMaps/GoogleMaps";
-import SectionHeader from "../SectionHeader/SectionHeader";
-import SectionBanner from "../SectionBanner/SectionBanner";
-import SectionSubheader from "../SectionSubheader/SectionSubheader";
+// import SectionHeader from "../Header/Header";
+// import SectionBanner from "../SectionBanner/SectionBanner";
+// import SectionSubheader from "../SectionSubheader/SectionSubheader";
 
 // Import MUI Components
 import Typography from '@mui/material/Typography';
@@ -29,7 +29,7 @@ function Visit() {
   return (
     <>
 
-        <SectionBanner image="banner_stallions"/>
+        {/* <SectionBanner image="banner_stallions"/>
         <SectionHeader style="banner" title="Visit Us"/>
 
         <div id="visit">
@@ -67,7 +67,7 @@ function Visit() {
           
           <div className="visit-locations-column"></div>
 
-        </div>
+        </div> */}
 
         
 

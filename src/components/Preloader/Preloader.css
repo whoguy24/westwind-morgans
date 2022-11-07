@@ -1,3 +1,5 @@
+@import "../App/App.css";
+
 #preloader {
   display: flex;
   background: black url("../../../public/assets/animations/loading_spinner.gif") no-repeat center center;
