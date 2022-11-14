@@ -5,10 +5,6 @@
   align-items: center;
   justify-content: center;
   width: 90%;
-  opacity: 0;
-  animation: fadeIn 3s;
-  animation-delay: 1s;
-  animation-fill-mode: forwards;
 }
 
 #home-horses-grid {
@@ -51,20 +47,28 @@
   display: flex !important;
   margin: auto !important;
   letter-spacing: 2px !important;
-  font-size: var(--font-size-200) !important;
+  font-size: var(--font-size-300) !important;
 }
 
 @media screen and (max-width: 800px) {
   #home-horses-grid {
     grid-template-columns: 3fr 3fr;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 }
 
 @media screen and (max-width: 500px) {
+  .home-horses-card {
+    width: 90% !important;
+    margin: auto auto auto auto !important;
+  }
   #home-horses-grid {
     display: flex;
     flex-direction: column;
     padding: 2rem;
     gap: 2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 }

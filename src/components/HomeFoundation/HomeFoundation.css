@@ -5,10 +5,6 @@
   align-items: center;
   justify-content: center;
   width: 90%;
-  opacity: 0;
-  animation: fadeIn 3s;
-  animation-delay: 1s;
-  animation-fill-mode: forwards;
 }
 
 #home-foundation-container {
@@ -28,13 +24,13 @@
 }
 
 #home-foundation-info {
-  padding: 1.5rem;
+  padding: 1rem;
 }
 
 #home-foundation-text {
   color: var(--color-accent-300);
   font-weight: var(--font-weight-light);
-  font-size: 0.75rem;
+  font-size: 1rem;
 }
 
 #form-button {
@@ -57,9 +53,17 @@
     gap: 2rem;
   }
   #home-foundation-image {
-    width: 100%;
+    width: 90%;
+    margin-top: 1rem;
   }
   #home-foundation-info {
     padding: 0rem;
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #home-foundation-text {
+    font-size: 0.75rem;
   }
 }

@@ -19,10 +19,10 @@ function Home() {
 
   return (
     <>
-      <HomeHero />
-      <HomeHorses />
-      <HomeFoundation />
-      <HomeBreeding />
+      <HomeHero className="home-hero"/>
+      <HomeHorses className="home-section"/>
+      <HomeFoundation className="home-section"/>
+      <HomeBreeding className="home-section"/>
     </>
   );
 

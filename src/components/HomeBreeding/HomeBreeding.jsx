@@ -43,7 +43,7 @@ function HomeBreeding() {
               If you are looking for a Morgan horse that goes back to the 
               original stock horse of the West you have come to the right place.<br/><br/>
             </Typography>
-            <Button id="form-button" onClick={()=>navigate("/breeding")}>Read More</Button>
+            {/* <Button id="form-button" onClick={()=>navigate("/breeding")}>Read More</Button> */}
           </div>
 
         </div>
