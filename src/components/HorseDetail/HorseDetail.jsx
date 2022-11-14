@@ -47,6 +47,9 @@ function HorseDetail({type, title}) {
     window.scrollTo(0, 0);
   }, [id]);
 
+  const sire = horse.parents?.filter(parent=>parent.sex == "M")[0];
+  const dam = horse.parents?.filter(parent=>parent.sex == "F")[0];
+
   // Render DOM
   return (
     <>
@@ -71,13 +74,16 @@ function HorseDetail({type, title}) {
 
           <div id="horse-detail-form">
 
-            <Typography className="horse-detail-form-text">{horse.name}</Typography>
-            <Typography className="horse-detail-form-text">{horse.calc_year}</Typography>
-            <Typography className="horse-detail-form-text">{horse.breed}</Typography>
-            <Typography className="horse-detail-form-text">{horse.color}</Typography>
-            <Typography className="horse-detail-form-text">{horse.category}</Typography>
-            <a className="horse-detail-form-text" href={horse.pedigree_url} target="_blank">View Pedigree</a>
-            <Typography className="horse-detail-form-text">{horse.description}</Typography>
+            <Typography id="horse-detail-form-text-name">{horse.name}</Typography>
+            { horse.color ? 
+              <Typography id="horse-detail-form-text-desc">{horse.calc_year} {horse.color} {horse.category}</Typography>
+            :
+              <Typography id="horse-detail-form-text-desc">{horse.calc_year} {horse.category}</Typography>
+            }
+
+            { sire && dam &&
+              <a id="horse-detail-form-text-pedigree" href={horse.pedigree_url} target="_blank">{sire.name} x {dam.name}</a>
+            }
 
           </div>
 
