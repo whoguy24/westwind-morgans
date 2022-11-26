@@ -30,25 +30,37 @@ function PedigreeGraph({horse}) {
 
         <div id="pedigree">
 
-          <div id="pedigree-column1">
-            
+          <div id="pedigree-cell1">
             <PedigreeCell horse={horse}/>
+          </div>
 
-            <div id="pedigree-column2">
-              <PedigreeCell horse={sire}/>
-              <PedigreeCell horse={dam}/>
-            </div>
+          <div id="pedigree-cell2">
+            <PedigreeCell horse={sire}/>
+          </div>
 
-            <div id="pedigree-column3">
-              <PedigreeCell horse={sireSire}/>
-              <PedigreeCell horse={sireDam}/>
-              <PedigreeCell horse={damSire}/>
-              <PedigreeCell horse={damDam}/>
-            </div>
+          <div id="pedigree-cell3">
+            <PedigreeCell horse={dam}/>
+          </div>
 
+          <div id="pedigree-cell4">
+            <PedigreeCell horse={sireSire}/>
+          </div>
+
+          <div id="pedigree-cell5">
+            <PedigreeCell horse={sireDam}/>
+          </div>
+
+          <div id="pedigree-cell6">
+            <PedigreeCell horse={damSire}/>
+          </div>
+
+          <div id="pedigree-cell7">
+            <PedigreeCell horse={damDam}/>
           </div>
 
         </div>
+
+
 
       }
 

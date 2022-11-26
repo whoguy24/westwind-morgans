@@ -25,6 +25,7 @@
     background-color: var(--color-accent-300);
     height: 2px;
     width: 100%;
+    margin: 0.5rem;
 }
   
 #horse-detail-form-link {
@@ -134,4 +135,78 @@
     color: var(--color-accent-300) !important;
     font-size: var(--font-size-300) !important;
     text-transform: uppercase !important;
+}
+
+@media screen and (max-width: 800px) {
+
+    #horse-detail-form-text-name {
+        font-size: var(--font-size-500);
+    }
+    
+    #horse-detail-form-text-desc {
+        font-size: var(--font-size-300);
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    #horse-detail-form-text-pedigree {
+        font-size: var(--font-size-200);
+    }
+
+    #horse-detail-image-gallery {
+        display: grid;
+        grid-template-columns: 3fr 3fr;
+    }
+
+    #horse-detail-progeny-gallery {
+        display: grid;
+        grid-template-columns: 3fr 3fr;
+    }
+
+}
+    
+@media screen and (max-width: 500px) {
+
+    #horse-detail-image-gallery {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #horse-detail-progeny-gallery {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #horse-detail-form-text-name {
+        font-size: var(--font-size-600);
+    }
+    
+    #horse-detail-form-text-desc {
+        font-size: var(--font-size-400);
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    #horse-detail-form-text-pedigree {
+        font-size: var(--font-size-300);
+    }
+
+    #horse-detail-form {
+        width: 100%;
+        padding: 0.5rem;
+    }
+
+    #horse-detail-header-text {
+        font-size: var(--font-size-300);
+    }
+
+    #horse-detail-form-link {
+        width: 100%;
+    }
+
+    .horse-detail-section {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
 }

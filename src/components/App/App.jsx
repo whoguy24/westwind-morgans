@@ -88,10 +88,10 @@ function App() {
                 <Route path="/geldings/:id" element={<HorseDetail type="geldings" title="Geldings" />} />
                 <Route exact path="/testimonials" element={<HorseGallery type="testimonials" title="Testimonials" />} />
                 <Route path="/testimonials/:id" element={<HorseDetail type="testimonials" title="Testimonials" />} />
-                <Route exact path="/breeding" element={<Placeholder />} />
-                <Route exact path="/foundation" element={<Placeholder />} />
+                {/* <Route exact path="/breeding" element={<Placeholder />} /> */}
+                {/* <Route exact path="/foundation" element={<Placeholder />} /> */}
                 <Route exact path="/contact" element={<Placeholder />} />
-                <Route exact path="/visit" element={<Visit />} />
+                {/* <Route exact path="/visit" element={<Visit />} /> */}
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/admin" element={user.id?<Admin />:<Login />} />
                 <Route exact path="*" element={<NotFound />} />

@@ -162,7 +162,7 @@ function Navigation() {
 
                                 {/* ABOUT BUTTON & MENU */}
 
-                                <Button 
+                                {/* <Button 
                                     className="navigation-button-toolbar"
                                     aria-controls={ aboutMenuActive ? 'about' : false } 
                                     aria-haspopup="true" 
@@ -182,7 +182,7 @@ function Navigation() {
                                     <MenuItem onClick={(path)=>handleMenuClick("breeding")}>Breeding</MenuItem>
                                     <MenuItem onClick={(path)=>handleMenuClick("testimonials")}>Testimonials</MenuItem>
                                     <MenuItem onClick={(path)=>handleMenuClick("visit")}>Visit</MenuItem>
-                                </Menu>
+                                </Menu> */}
 
                                 {/* CONTACT BUTTON */}
 

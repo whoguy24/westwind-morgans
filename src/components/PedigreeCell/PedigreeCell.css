@@ -48,9 +48,11 @@
   font-size: 0.75rem;
 }
 
-@media screen and (max-width: 500px) {
-  #pedigree-cell {
-    width: 100%;
-    min-height: 100px;
+@media screen and (max-width: 800px) {
+
+  #pedigree-cell-text {
+    font-size: var(--font-size-200);
+    text-align: center;
   }
+
 }

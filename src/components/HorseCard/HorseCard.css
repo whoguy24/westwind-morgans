@@ -2,7 +2,7 @@
 
 #horse-card {
     display: grid;
-    background-color: var(--color-primary-500);
+    background-color: transparent;
     width: 100%;
     border-radius: 0rem;
 }
@@ -37,5 +37,3 @@
 #horse-card:hover {
     filter: brightness(115%);
 }
-
-

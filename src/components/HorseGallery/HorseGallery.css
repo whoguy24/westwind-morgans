@@ -35,18 +35,18 @@
 }
 
 @media screen and (max-width: 800px) {
-    #horse-gallery {
-      grid-template-columns: 3fr 3fr !important;
-    }
+  #horse-gallery {
+    grid-template-columns: 3fr 3fr !important;
   }
+}
   
-  @media screen and (max-width: 500px) {
-    #horse-gallery {
-      display: flex !important;
-      flex-direction: column !important;
-      padding: 2rem !important;
-      gap: 2rem !important;
-      margin-top: 0.5rem !important;
-      margin-bottom: 0.5rem !important;
-    }
+@media screen and (max-width: 500px) {
+  #horse-gallery {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 2rem !important;
+    gap: 2rem !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
   }
+}

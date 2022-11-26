@@ -64,7 +64,7 @@ function Navigation({drawerActive, setDrawerActive, handleMenuClick}) {
                         </ListItemButton>
                     </ListItem>
                     <Divider className="navigation-divider" />
-                    <ListItem disablePadding>
+                    {/* <ListItem disablePadding>
                         <ListItemButton onClick={(path)=>handleMenuClick("foundation")}>
                             <ListItemText primary="Foundation" />
                         </ListItemButton>
@@ -84,7 +84,7 @@ function Navigation({drawerActive, setDrawerActive, handleMenuClick}) {
                             <ListItemText primary="Visit" />
                         </ListItemButton>
                     </ListItem>
-                    <Divider className="navigation-divider" />
+                    <Divider className="navigation-divider" /> */}
                     <ListItem disablePadding>
                         <ListItemButton onClick={(path)=>handleMenuClick("contact")}>
                             <ListItemText primary="Contact" />
