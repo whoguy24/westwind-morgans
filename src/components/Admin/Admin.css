@@ -1,5 +1,6 @@
+@import "../App/App.css";
+
 #admin-background {
-    background-color: #fef3cc;
     display: inline-flex;
     width: 100%;
     height: 500px;

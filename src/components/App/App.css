@@ -98,3 +98,38 @@ body {
   color: var(--color-accent-300) !important;
   font-weight: var(--font-weight-light) !important;
 }
+
+.MuiInputBase-root {
+  color: var(--color-accent-300) !important;
+}
+
+.MuiInputBase-root::before {
+  color: var(--color-accent-300) !important;
+  border-color: var(--color-accent-300) !important;
+}
+
+.MuiInputBase-root::after {
+  color: var(--color-accent-300) !important;
+  border-color: var(--color-accent-300) !important;
+}
+
+.MuiFormLabel-root {
+  color: var(--color-accent-300) !important;
+  font-weight: var(--font-weight-light) !important;
+}
+
+.Mui-focused-root {
+  color: var(--color-accent-300) !important;
+}
+
+.MuiFormHelperText-root {
+  color: red !important;
+}
+
+.MuiDialog-paper {
+  background-color: var(--color-accent-300) !important;
+}
+
+.MuiDialogContentText-root {
+  color: var(--color-primary-700) !important;
+}

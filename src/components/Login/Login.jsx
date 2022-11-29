@@ -6,8 +6,8 @@
 import '../Login/Login.css';
 
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux";
 
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
@@ -16,6 +16,11 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
@@ -26,48 +31,103 @@ function Login() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    const [usernameError, setUsernameError] = useState("");
+    const [passwordError, setPasswordError] = useState("");
 
     const [showPassword, setShowPassword] = useState(false);
 
+    const [showErrorDialog, setShowErrorDialog] = useState(false);
+
+    // Redux Store Variables
+    const user = useSelector(store => store.user);
+
     function handleLoginButton(event) {
+
         event.preventDefault();
+
+        if (!username) {
+            setUsernameError("Required Field")
+        } else {
+            setUsernameError("")
+        }
+
+        if (!password) {
+            setPasswordError("Required Field")
+        } else {
+            setPasswordError("")
+        }
+
         if (username && password) {
             dispatch({
-                type: 'LOGIN',
+                type: "LOGIN",
                 payload: {
                     username: username,
                     password: password,
                 },
             });
-            setUsername("")
-            setPassword("")
-            navigate('/admin')
+            if (user.id) {
+                navigate("/admin")
+            } else {
+                setUsername("")
+                setPassword("")
+                setUsernameError("Invalid Username")
+                setPasswordError("Invalid Password")
+                setShowErrorDialog(true)
+            }
         } else {
-            alert('Please populate all required fields.')
             dispatch({ type: 'LOGIN_INPUT_ERROR' });
         }
+
     };
 
     const handleShowPassordButton = () => {
-          setShowPassword(!showPassword)
-      };
+        setShowPassword(!showPassword)
+    };
 
-      const handleMouseDownShowPassword = (event) => {
+    const handleCloseDialogButton = () => {
+        setShowErrorDialog(false)
+    };
+
+    const handleMouseDownShowPassword = (event) => {
         event.preventDefault();
-      };
+    };
+
+    function debugRegister() {
+        console.log(username, password);
+        dispatch({
+            type: 'REGISTER',
+            payload: {
+              username: username,
+              password: password,
+            },
+          });
+    }
+
+    function debugLogOut() {
+        dispatch({ type: 'LOGOUT' })
+        console.log('FINISHED');
+    }
 
     // Render DOM
     return (
         
-        <div id="login-background">
-            <Box component="form" id="login-input-container">
-                <h2 id="login-header">Owner Login</h2>
+        <div id="login">
+            
+            <Box component="form" id="login-inputs">
+                <h2 id="login-header">Admin Login</h2>
+
+                {/* TO BE REMOVED */}
+                <Button onClick={debugRegister}>Register</Button>
+                <Button onClick={debugLogOut}>Log Out</Button>
+
                 <TextField 
                     className="login-input" 
                     label="Username " 
                     variant="standard" 
+                    helperText={usernameError}
                     required 
                     value={username} 
                     onChange={(event) => setUsername(event.target.value)} 
@@ -75,6 +135,7 @@ function Login() {
                 <TextField 
                     className="login-input" 
                     label="Password" variant="standard" 
+                    helperText={passwordError}
                     required 
                     value={password}
                     type= {showPassword ? "text" : "password"}
@@ -83,7 +144,9 @@ function Login() {
                         endAdornment: (
                             <InputAdornment position="end">
                                 <IconButton 
+                                    id="login-input-toggle-visibility-button"
                                     aria-label="toggle password visibility" 
+                                    disableRipple
                                     onClick={handleShowPassordButton} 
                                     onMouseDown={handleMouseDownShowPassword}>
                                     {showPassword ? <Visibility /> : <VisibilityOff />}
@@ -94,6 +157,19 @@ function Login() {
                 />
                 <Button id="login-button" onClick={handleLoginButton}>Log In</Button>
             </Box>
+
+            <Dialog open={showErrorDialog} onClose={handleCloseDialogButton}>
+
+                <DialogContent>
+                    <DialogContentText>Invalid Username or Password</DialogContentText>
+                </DialogContent>
+
+                <DialogActions>
+                    <Button id="dialog-close-button" onClick={handleCloseDialogButton} autoFocus>Close</Button>
+                </DialogActions>
+
+            </Dialog>
+
         </div>
 
     );
