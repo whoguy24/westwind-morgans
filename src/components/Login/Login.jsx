@@ -48,18 +48,6 @@ function Login() {
 
         event.preventDefault();
 
-        if (!username) {
-            setUsernameError("Required Field")
-        } else {
-            setUsernameError("")
-        }
-
-        if (!password) {
-            setPasswordError("Required Field")
-        } else {
-            setPasswordError("")
-        }
-
         if (username && password) {
             dispatch({
                 type: "LOGIN",
@@ -68,17 +56,17 @@ function Login() {
                     password: password,
                 },
             });
-            if (user.id) {
-                navigate("/admin")
-            } else {
-                setUsername("")
-                setPassword("")
-                setUsernameError("Invalid Username")
-                setPasswordError("Invalid Password")
-                setShowErrorDialog(true)
-            }
+            setUsername("")
+            setPassword("")
+            setUsernameError("")
+            setPasswordError("")
         } else {
             dispatch({ type: 'LOGIN_INPUT_ERROR' });
+            setUsername("")
+            setPassword("")
+            setUsernameError("Required Field")
+            setPasswordError("Required Field")
+            // setShowErrorDialog(true)
         }
 
     };
@@ -108,7 +96,6 @@ function Login() {
 
     function debugLogOut() {
         dispatch({ type: 'LOGOUT' })
-        console.log('FINISHED');
     }
 
     // Render DOM

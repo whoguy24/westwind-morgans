@@ -37,6 +37,7 @@ function App() {
 
   // Delay Render to Allow Preloader Time to Display
   const [loading, setLoading] = useState(false);
+  
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
@@ -45,11 +46,12 @@ function App() {
   }, []);
 
   // Fetch User if Logged In
-  if (user.id) {
-    useEffect(() => {
+  useEffect(() => {
+    if (user.id) {
       dispatch({ type: "FETCH_USER" });
-    }, [dispatch]);
-  }
+    }
+  }, [dispatch]);
+
 
   // App is rendered inside React Router DOM component. 
   // If the application is in the process of loading, then show only the Preloader component. (Spinning Startup Logo)
