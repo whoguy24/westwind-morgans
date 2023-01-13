@@ -5,7 +5,7 @@
 // Import Stylesheets
 import '../Login/Login.css';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 
@@ -44,30 +44,54 @@ function Login() {
     // Redux Store Variables
     const user = useSelector(store => store.user);
 
+    useEffect(() => {
+        
+    }, []);
+
+    
+
     function handleLoginButton(event) {
 
         event.preventDefault();
 
-        if (username && password) {
-            dispatch({
-                type: "LOGIN",
-                payload: {
-                    username: username,
-                    password: password,
-                },
-            });
-            setUsername("")
-            setPassword("")
-            setUsernameError("")
-            setPasswordError("")
-        } else {
-            dispatch({ type: 'LOGIN_INPUT_ERROR' });
-            setUsername("")
-            setPassword("")
-            setUsernameError("Required Field")
-            setPasswordError("Required Field")
-            // setShowErrorDialog(true)
-        }
+
+        dispatch({
+            type: "LOGIN",
+            payload: {
+                username: username,
+                password: password,
+            },
+        });
+
+        
+        
+
+
+
+        // if (username && password) {
+        //     dispatch({
+        //         type: "LOGIN",
+        //         payload: {
+        //             username: username,
+        //             password: password,
+        //         },
+        //     });
+        //     console.log(user.id)
+        //     if(user.id) {
+        //         setUsername("")
+        //         setPassword("")
+        //         setUsernameError("")
+        //         setPasswordError("")
+        //         navigate("/admin")
+        //     };
+        // } else {
+        //     dispatch({ type: 'LOGIN_INPUT_ERROR' });
+        //     setUsername("")
+        //     setPassword("")
+        //     setUsernameError("Required Field")
+        //     setPasswordError("Required Field")
+        //     // setShowErrorDialog(true)
+        // }
 
     };
 
@@ -107,8 +131,8 @@ function Login() {
                 <h2 id="login-header">Admin Login</h2>
 
                 {/* TO BE REMOVED */}
-                <Button onClick={debugRegister}>Register</Button>
-                <Button onClick={debugLogOut}>Log Out</Button>
+                {/* <Button onClick={debugRegister}>Register</Button>
+                <Button onClick={debugLogOut}>Log Out</Button> */}
 
                 <TextField 
                     className="login-input" 

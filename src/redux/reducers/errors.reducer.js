@@ -28,7 +28,25 @@ const registrationMessage = (state = '', action) => {
   }
 };
 
+const errorMessage = (state = '', action) => {
+  switch (action.type) {
+    case 'ERROR_CLEAR':
+      return '';
+    case 'ERROR_LOGIN_INVALID':
+      return 'Enter your username and password!';
+    case 'ERROR_LOGIN_FAILED':
+      return "Login Failed";
+    case 'ERROR_REGISTRATION_INVALID':
+      return 'Enter your username and password!';
+    case 'ERROR_REGISTRATION_FAILED':
+      return "Registration Failed";
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   loginMessage,
   registrationMessage,
+  errorMessage,
 });

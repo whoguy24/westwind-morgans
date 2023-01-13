@@ -95,8 +95,8 @@ function App() {
                 <Route exact path="/contact" element={<Placeholder />} />
                 {/* <Route exact path="/visit" element={<Visit />} /> */}
                 <Route exact path="/login" element={<Login />} />
-                {/* <Route exact path="/admin" element={user.id?<Admin />:<Login />} /> */}
-                <Route exact path="/admin" element={<Login />} />
+                <Route exact path="/admin" element={user.id?<Admin />:<Login />} />
+                {/* <Route exact path="/admin" element={<Login />} /> */}
                 <Route exact path="*" element={<NotFound />} />
               </Routes>
             </div>
