@@ -22,6 +22,7 @@ import Preloader from "../Preloader/Preloader";
 import HorseGallery from "../HorseGallery/HorseGallery";
 import HorseDetail from "../HorseDetail/HorseDetail";
 import Visit from "../Visit/Visit";
+import UserBar from "../UserBar/UserBar";
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
@@ -73,6 +74,8 @@ function App() {
           <>
 
             <Navigation />
+
+            { user?.id && <UserBar /> }
 
             <div id="app-content">
               <Routes>

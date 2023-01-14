@@ -1,0 +1,30 @@
+@import "../App/App.css";
+
+#userbar {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-neutral-700);
+    height: 30px;
+}
+
+#userbar-username-text {
+    color: var(--color-accent-300);
+    font-size: 0.75rem;
+    margin-left: 1rem;
+}
+
+#userbar-logout-button {
+    color: var(--color-accent-300);
+    margin-right: 1rem;
+    font-size: 0.75rem;
+    text-transform: capitalize;
+    padding: 0px;
+}
+
+#userbar-logout-button:hover {
+    background-color: var(--color-primary-700);
+    color: var(--color-accent-500);
+}

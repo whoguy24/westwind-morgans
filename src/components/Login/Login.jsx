@@ -17,11 +17,6 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
 ///////////////////////////////////////////////////////
@@ -39,22 +34,44 @@ function Login() {
 
     const [showPassword, setShowPassword] = useState(false);
 
-    const [showErrorDialog, setShowErrorDialog] = useState(false);
-
     // Redux Store Variables
-    const user = useSelector(store => store.user);
+    const error = useSelector(store => store.error);
 
     useEffect(() => {
-        
-    }, []);
-
-    
+        switch (error?.code) {
+            case 400:
+                setUsername("");
+                setPassword("");
+                setUsernameError("Required Field");
+                setPasswordError("Required Field");
+            break;
+            case 401:
+                setUsernameError("");
+                setPasswordError("Invalid username and password combination.");
+            break;
+            case 404:
+                setUsername("");
+                setPassword("");
+                setUsernameError("");
+                setPasswordError("Could not connect to server. Please contact your administrator.");
+            break;
+            case 500:
+                setUsername("");
+                setPassword("");
+                setUsernameError("");
+                setPasswordError("There was a problem communicating with the server. Please contact your administrator.");
+            break;
+            default:
+                setUsername("");
+                setPassword("");
+                setUsernameError("");
+                setPasswordError("");
+            break;
+        }
+    }, [error]);
 
     function handleLoginButton(event) {
-
         event.preventDefault();
-
-
         dispatch({
             type: "LOGIN",
             payload: {
@@ -62,65 +79,16 @@ function Login() {
                 password: password,
             },
         });
-
-        
-        
-
-
-
-        // if (username && password) {
-        //     dispatch({
-        //         type: "LOGIN",
-        //         payload: {
-        //             username: username,
-        //             password: password,
-        //         },
-        //     });
-        //     console.log(user.id)
-        //     if(user.id) {
-        //         setUsername("")
-        //         setPassword("")
-        //         setUsernameError("")
-        //         setPasswordError("")
-        //         navigate("/admin")
-        //     };
-        // } else {
-        //     dispatch({ type: 'LOGIN_INPUT_ERROR' });
-        //     setUsername("")
-        //     setPassword("")
-        //     setUsernameError("Required Field")
-        //     setPasswordError("Required Field")
-        //     // setShowErrorDialog(true)
-        // }
-
+        navigate("/admin");
     };
 
     const handleShowPassordButton = () => {
         setShowPassword(!showPassword)
     };
 
-    const handleCloseDialogButton = () => {
-        setShowErrorDialog(false)
-    };
-
     const handleMouseDownShowPassword = (event) => {
         event.preventDefault();
     };
-
-    function debugRegister() {
-        console.log(username, password);
-        dispatch({
-            type: 'REGISTER',
-            payload: {
-              username: username,
-              password: password,
-            },
-          });
-    }
-
-    function debugLogOut() {
-        dispatch({ type: 'LOGOUT' })
-    }
 
     // Render DOM
     return (
@@ -129,11 +97,6 @@ function Login() {
             
             <Box component="form" id="login-inputs">
                 <h2 id="login-header">Admin Login</h2>
-
-                {/* TO BE REMOVED */}
-                {/* <Button onClick={debugRegister}>Register</Button>
-                <Button onClick={debugLogOut}>Log Out</Button> */}
-
                 <TextField 
                     className="login-input" 
                     label="Username " 
@@ -168,18 +131,6 @@ function Login() {
                 />
                 <Button id="login-button" onClick={handleLoginButton}>Log In</Button>
             </Box>
-
-            <Dialog open={showErrorDialog} onClose={handleCloseDialogButton}>
-
-                <DialogContent>
-                    <DialogContentText>Invalid Username or Password</DialogContentText>
-                </DialogContent>
-
-                <DialogActions>
-                    <Button id="dialog-close-button" onClick={handleCloseDialogButton} autoFocus>Close</Button>
-                </DialogActions>
-
-            </Dialog>
 
         </div>
 

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function* registerUser(action) {
   try {
-    yield put({ type: 'CLEAR_REGISTRATION_ERROR' });
+    yield put({ type: 'ERROR_CLEAR' });
 
     yield axios.post('api/user/register', action.payload);
 
@@ -15,7 +15,7 @@ function* registerUser(action) {
 
     console.log('Error with user registration:', error);
 
-    yield put({ type: 'REGISTRATION_FAILED' });
+    yield put({ type: 'ERROR_SERVER' });
 
   }
 }
