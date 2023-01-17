@@ -1,8 +1,40 @@
 @import "../App/App.css";
 
-#admin-background {
-    display: inline-flex;
+#admin {
+    display: flex;
     width: 100%;
-    height: 500px;
     justify-content: center;
+    align-items: center;
+    height: 80vh;
+    min-height: 400px;
+}
+
+.admin-card {
+    background-color: transparent !important;
+    border-radius: 0rem !important;
+    margin: 50px !important;
+}
+
+.admin-card:hover {
+    filter: brightness(115%) !important;
+}
+
+.admin-card-label {
+    background-color: var(--color-neutral-500)  !important;
+    color: var(--color-accent-300)  !important;
+    display: flex  !important;
+    flex-direction: column  !important;
+    justify-content: center  !important;
+    align-items: center  !important;
+    width: 100%  !important;
+    min-height: 18% !important;
+    position: absolute !important;
+    bottom: 0px !important;
+}
+  
+.admin-card-label-text {
+    font-weight: var(--font-weight-medium)  !important;
+    display: flex  !important;
+    letter-spacing: 1.5px  !important;
+    font-size: 0.9rem  !important;
 }

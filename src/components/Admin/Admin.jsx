@@ -6,16 +6,15 @@
 import '../Admin/Admin.css';
 
 // Import Libraries
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 // Import MUI Components
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
+import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
+import { CardActionArea } from '@mui/material';
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
@@ -25,8 +24,6 @@ function Users() {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    const [addUserDialog, setAddUserDialog] = useState(false);
 
     // Redux Store Variables
     const user = useSelector(store => store.user);
@@ -40,35 +37,39 @@ function Users() {
         }
     }, []);
 
-    function logOut() {
-        dispatch({ type: 'LOGOUT' })
-        navigate('/login')
-    }
-
-    const handleDialogButton = () => {
-        setAddUserDialog(!addUserDialog)
-    };
-
     // Render DOM
     return (
         <>
         
-            <div id="admin-background">
-                <Button onClick={logOut}>Log Out</Button>
-                <Button onClick={handleDialogButton}>Add User</Button>
+            <div id="admin">
+
+                <Card className="admin-card" onClick={()=>navigate("/users")}>
+                    <CardActionArea>
+                        <CardMedia
+                            component="img"
+                            height="200px"
+                            image={"/assets/static/profile.png"}
+                        />
+                        <div className="admin-card-label">
+                            <Typography className="admin-card-label-text">Users</Typography>
+                        </div>
+                    </CardActionArea>
+                </Card>
+
+                <Card className="admin-card" onClick={()=>navigate("/users")}>
+                    <CardActionArea>
+                        <CardMedia
+                            component="img"
+                            height="200px"
+                            image={"/assets/static/profile.png"}
+                        />
+                        <div className="admin-card-label">
+                            <Typography className="admin-card-label-text">Horses</Typography>
+                        </div>
+                    </CardActionArea>
+                </Card>
+
             </div>
-
-            <Dialog open={addUserDialog} onClose={handleDialogButton}>
-
-                <DialogContent>
-                    <DialogContentText>Add a User</DialogContentText>
-                </DialogContent>
-
-                <DialogActions>
-                    <Button id="dialog-close-button" onClick={handleDialogButton} autoFocus>Cancel</Button>
-                </DialogActions>
-
-            </Dialog>
 
         </>
     );

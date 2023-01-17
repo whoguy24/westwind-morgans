@@ -23,6 +23,7 @@ import HorseGallery from "../HorseGallery/HorseGallery";
 import HorseDetail from "../HorseDetail/HorseDetail";
 import Visit from "../Visit/Visit";
 import UserBar from "../UserBar/UserBar";
+import Users from "../Users/Users";
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
@@ -99,6 +100,7 @@ function App() {
                 {/* <Route exact path="/visit" element={<Visit />} /> */}
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/admin" element={user.id?<Admin />:<Login />} />
+                <Route exact path="/users" element={user.id?<Users />:<Login />} />
                 <Route exact path="*" element={<NotFound />} />
               </Routes>
             </div>
