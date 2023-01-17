@@ -1,1 +1,38 @@
 @import "../App/App.css";
+
+#users {
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+}
+
+#users-toolbar {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#users-add-user-button {
+    display: flex;
+    margin-left: auto;
+    background-color: var(--color-primary-500);
+    color: var(--color-accent-300);
+    border-radius: 0rem;
+    text-transform: initial;
+    font-size: 0.75rem;
+}
+
+#users-add-user-button:hover {
+    background-color: var(--color-primary-700);
+    color: var(--color-accent-500);
+}
+
+#users-grid {
+    width: 100%;
+    min-height: 400px;
+    height: 50vh;
+    margin-bottom: 50px;
+    background-color: var(--color-neutral-700);
+}

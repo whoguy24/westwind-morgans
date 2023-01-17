@@ -133,3 +133,20 @@ body {
 .MuiDialogContentText-root {
   color: var(--color-primary-700) !important;
 }
+
+/* .MuiDataGrid-root {
+  color: var(--color-accent-300) !important;
+  border-color: var(--color-accent-300) !important;
+  border-radius: 0px !important;
+  border-width: 0.5px !important;
+} */
+
+/* .MuiDataGrid-columnHeaders {
+  border-color: var(--color-accent-300) !important;
+} */
+
+.MuiDataGrid-cell {
+  color: var(--color-accent-300) !important;
+  border-bottom: 0.5 !important;
+  border-color: var(--color-accent-300) !important;
+}
