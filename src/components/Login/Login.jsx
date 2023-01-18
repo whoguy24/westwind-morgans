@@ -94,8 +94,7 @@ function Login() {
     return (
         
         <div id="login">
-            
-            <Box component="form" id="login-inputs">
+            <Box component="form" id="login-inputs" onSubmit={handleLoginButton}>
                 <h2 id="login-header">Admin Login</h2>
                 <TextField 
                     className="login-input" 
@@ -130,8 +129,8 @@ function Login() {
                     }}
                 />
                 <Button id="login-button" onClick={handleLoginButton}>Log In</Button>
+                <input type="submit" hidden />
             </Box>
-
         </div>
 
     );

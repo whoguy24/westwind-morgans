@@ -5,9 +5,6 @@
 // Import Stylesheets
 import '../Admin/Admin.css';
 
-// Import Libraries
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 // Import MUI Components
@@ -22,20 +19,7 @@ import { CardActionArea } from '@mui/material';
 
 function Users() {
 
-    const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    // Redux Store Variables
-    const user = useSelector(store => store.user);
-    const error = useSelector(store => store.errors);
-
-    useEffect(() => {
-        if(!error?.code && user?.id) {
-            dispatch({ type: 'FETCH_USERS' });
-        } else {
-            navigate('/login')
-        }
-    }, []);
 
     // Render DOM
     return (

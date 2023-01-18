@@ -127,26 +127,30 @@ body {
 }
 
 .MuiDialog-paper {
-  background-color: var(--color-accent-300) !important;
+  background-color: var(--color-primary-700) !important;
+  color: var(--color-accent-300) !important;
 }
 
 .MuiDialogContentText-root {
   color: var(--color-primary-700) !important;
 }
 
-/* .MuiDataGrid-root {
-  color: var(--color-accent-300) !important;
-  border-color: var(--color-accent-300) !important;
-  border-radius: 0px !important;
-  border-width: 0.5px !important;
-} */
-
-/* .MuiDataGrid-columnHeaders {
-  border-color: var(--color-accent-300) !important;
-} */
-
 .MuiDataGrid-cell {
+  color: var(--color-accent-300) !important;
+  border-bottom: 0.25 !important;
+  border-color: var(--color-accent-300) !important;
+  border-width: 0.25px !important;
+  font-weight: var(--font-weight-light) !important;
+  font-size: var(--font-size-200) !important;
+}
+
+.MuiDataGrid-columnHeaders {
   color: var(--color-accent-300) !important;
   border-bottom: 0.5 !important;
   border-color: var(--color-accent-300) !important;
+  font-size: var(--font-size-200) !important;
+}
+
+.MuiDataGrid-iconSeparator {
+  color: var(--color-accent-300) !important;
 }
