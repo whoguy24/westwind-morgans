@@ -182,6 +182,35 @@ function Users() {
   };
 
 
+  function handleRegisterNewUser(event) {
+    event.preventDefault();
+    if (
+      !addUserFirstNameError &&
+      !addUserLastNameError &&
+      !addUserUsernameError &&
+      !addUserEmailError &&
+      !addUserRoleError  &&
+      !addUserPasswordError &&
+      !addUserConfirmPasswordError
+    ) {
+      dispatch({
+          type: "REGISTER",
+          payload: {
+              firstName: addUserFirstName,
+              lastName: addUserLastName,
+              username: addUserUsername,
+              role: addUserRole,
+              email: addUserEmail,
+              password: addUserPassword,
+          },
+      });
+      handleAddUserDialogClose();
+    } else {
+      return false;
+    }
+  }
+
+
   return (
     <>
       <div id ="users">
@@ -195,7 +224,7 @@ function Users() {
           <DataGrid
             rows={users}
             columns={columns}
-            pageSize={5}
+            pageSize={users.length}
             rowsPerPageOptions={[5]}
             disableSelectionOnClick={true}
             hideFooter={true}
@@ -344,7 +373,7 @@ function Users() {
           </DialogContent>
           <DialogActions>
             <Button className="users-dialog-button" onClick={handleAddUserDialogClose}>Cancel</Button>
-            <Button className="users-dialog-button" onClick={()=>setAddUserDialogActive(false)}>Register</Button>
+            <Button className="users-dialog-button" onClick={handleRegisterNewUser}>Register</Button>
           </DialogActions>
         </Dialog>
 
