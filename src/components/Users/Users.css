@@ -15,31 +15,31 @@
 }
 
 .users-button {
-    display: flex;
-    background-color: var(--color-primary-500);
-    color: var(--color-accent-300);
-    border-radius: 0rem;
-    text-transform: initial;
-    font-size: 0.75rem;
+    display: flex !important;
+    background-color: var(--color-primary-500) !important;
+    color: var(--color-accent-300) !important;
+    border-radius: 0rem !important;
+    text-transform: initial !important;
+    font-size: 0.75rem !important;
 }
 
 .users-button:hover {
-    background-color: var(--color-primary-700);
-    color: var(--color-accent-500);
+    background-color: var(--color-primary-700) !important;
+    color: var(--color-accent-500) !important;
 }
 
 .users-dialog-button {
     display: flex;
-    background-color: var(--color-primary-500);
-    color: var(--color-accent-300);
-    border-radius: 0rem;
-    text-transform: initial;
-    font-size: 0.75rem;
+    background-color: var(--color-primary-500) !important;
+    color: var(--color-accent-300) !important;
+    border-radius: 0rem !important;
+    text-transform: initial !important;
+    font-size: 0.75rem !important;
 }
 
 .users-dialog-button:hover {
-    background-color: var(--color-primary-300);
-    color: var(--color-accent-500);
+    background-color: var(--color-primary-300) !important;
+    color: var(--color-accent-500) !important;
 }
 
 #users-grid {
@@ -56,37 +56,37 @@
 }
 
 .users-dialog-textfield-group {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
 }
 
 .users-dialog-textfield {
-    width: 100%;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    margin-left: 16px;
-    margin-right: 16px;
-    color: var(--color-accent-300) !important;
-    border-color: var(--color-accent-300) !important;
+    width: 100% !important;
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+    margin-left: 16px !important;
+    margin-right: 16px !important;
+    /* color: var(--color-accent-300) !important;
+    border-color: var(--color-accent-300) !important; */
 }
 
-.users-dialog-textfield::before {
+/* .users-dialog-textfield::before {
   color: var(--color-accent-300) !important;
   border-color: var(--color-accent-300) !important;
-}
+} */
 
-.users-dialog-textfield::after {
+/* .users-dialog-textfield::after {
   color: var(--color-accent-300) !important;
   border-color: var(--color-accent-300) !important;
-}
+} */
 
-.users-dialog-textfield-error {
-    width: 100%;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    margin-left: 16px;
-    margin-right: 16px;
+/* .users-dialog-textfield-error {
+    width: 100% !important;
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+    margin-left: 16px !important;
+    margin-right: 16px !important;
     color: red !important;
     border-color: red !important;
-}
+} */
