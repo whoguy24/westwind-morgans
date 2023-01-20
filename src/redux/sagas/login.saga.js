@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function* loginUser(action) {
   try {
-    yield put({ type: 'ERROR_CLEAR' });
+    yield put({ type: 'ERROR_LOGIN_CLEAR' });
     const config = {
       headers: { 'Content-Type': 'application/json' },
       withCredentials: true,
@@ -12,23 +12,23 @@ function* loginUser(action) {
       yield axios.post('api/user/login', action.payload, config);
       yield put({ type: 'FETCH_USER' });
     } else {
-      yield put({ type: 'ERROR_BAD_REQUEST' });
+      yield put({ type: 'ERROR_LOGIN_BAD_REQUEST' });
     }
   } catch (error) {
     console.log('Error with user login:', error);
     if (error.response.status === 404) {
-      yield put({ type: 'ERROR_NOT_FOUND' });
+      yield put({ type: 'ERROR_LOGIN_NOT_FOUND' });
     } else if (error.response.status === 401) {
-      yield put({ type: 'ERROR_UNAUTHORIZED' });
+      yield put({ type: 'ERROR_LOGIN_UNAUTHORIZED' });
     } else {
-      yield put({ type: 'ERROR_SERVER' });
+      yield put({ type: 'ERROR_LOGIN_SERVER' });
     }
   }
 }
 
 function* logoutUser(action) {
   try {
-    yield put({ type: 'ERROR_CLEAR' });
+    yield put({ type: 'ERROR_LOGIN_CLEAR' });
     const config = {
       headers: { 'Content-Type': 'application/json' },
       withCredentials: true,

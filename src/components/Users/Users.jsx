@@ -25,6 +25,8 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
@@ -60,6 +62,7 @@ function Users() {
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showSnackbar, setShowSnackbar] = useState(false);
 
   useEffect(() => {
       if(!error?.code && user?.id) {
@@ -68,6 +71,30 @@ function Users() {
           navigate('/login')
       }
   }, []);
+
+  useEffect(() => {
+    switch (error?.code) {
+        case 400:
+            setUsernameError("Required Field");
+            setPasswordError("Required Field");
+        break;
+        case 401:
+            setPasswordError("Invalid username and password combination.");
+        break;
+        case 404:
+            setUsernameError("");
+            setPasswordError("Could not connect to server. Please contact your administrator.");
+        break;
+        case 500:
+            setUsernameError("");
+            setPasswordError("There was a problem communicating with the server. Please contact your administrator.");
+        break;
+        default:
+            setUsernameError("");
+            setPasswordError("");
+        break;
+    }
+}, [error]);
 
   const columns = [
     { field: "first_name", headerName: "First Name", width: 120 },
@@ -125,6 +152,9 @@ function Users() {
     if ( addUserUsername.length < 1 ) {
       setAddUserUsernameError("Required Field");
     }
+    else if ( addUserUsername.length < 1 ) {
+      setAddUserUsernameError("Username already exists.");
+    }
     else {
       setAddUserUsernameError("");
     }
@@ -180,7 +210,7 @@ function Users() {
   const handleMouseDownShowConfirmPassword = (event) => {
       event.preventDefault();
   };
-
+  
 
   function handleRegisterNewUser(event) {
     event.preventDefault();
@@ -205,11 +235,11 @@ function Users() {
           },
       });
       handleAddUserDialogClose();
+      setShowSnackbar(true)
     } else {
       return false;
     }
   }
-
 
   return (
     <>
@@ -224,10 +254,9 @@ function Users() {
           <DataGrid
             rows={users}
             columns={columns}
-            pageSize={users.length}
-            rowsPerPageOptions={[5]}
+            pageSize={10}
+            rowsPerPageOptions={[10]}
             disableSelectionOnClick={true}
-            hideFooter={true}
             sx={{
               boxShadow: 2,
               border: 0.5,
@@ -248,7 +277,7 @@ function Users() {
                   required
                   label="First Name" 
                   variant="standard" 
-                  error={addUserFirstNameError}
+                  error={addUserFirstNameError.length > 0}
                   helperText={addUserFirstNameError} 
                   value={addUserFirstName} 
                   onChange={(event)=>setAddUserFirstName(event.target.value)} 
@@ -259,7 +288,7 @@ function Users() {
                   required
                   label="Last Name" 
                   variant="standard"
-                  error={addUserLastNameError}
+                  error={addUserLastNameError.length > 0}
                   helperText={addUserLastNameError} 
                   value={addUserLastName} 
                   onChange={(event)=>setAddUserLastName(event.target.value)} 
@@ -273,7 +302,7 @@ function Users() {
                     required
                     label="Email" 
                     variant="standard" 
-                    error={addUserEmailError}
+                    error={addUserEmailError.length > 0}
                     helperText={addUserEmailError} 
                     value={addUserEmail} 
                     onChange={(event)=>setAddUserEmail(event.target.value)} 
@@ -287,7 +316,7 @@ function Users() {
                   required
                   label="Username" 
                   variant="standard" 
-                  error={addUserUsernameError}
+                  error={addUserUsernameError.length > 0}
                   helperText={addUserUsernameError} 
                   value={addUserUsername} 
                   onChange={(event)=>setAddUserUsername(event.target.value)} 
@@ -298,7 +327,7 @@ function Users() {
                   labelId="demo-simple-select-label"
                   className="users-dialog-textfield"
                   variant="standard"
-                  error={addUserRoleError}
+                  error={addUserRoleError.length > 0}
                   helperText={addUserRoleError} 
                   value={addUserRole} 
                   label="Role"
@@ -318,7 +347,7 @@ function Users() {
                   type= {showPassword ? "text" : "password"}
                   label="Password" 
                   variant="standard" 
-                  error={addUserPasswordError}
+                  error={addUserPasswordError.length > 0}
                   helperText={addUserPasswordError} 
                   value={addUserPassword} 
                   onChange={(event)=>setAddUserPassword(event.target.value)} 
@@ -347,7 +376,7 @@ function Users() {
                   type= {showConfirmPassword ? "text" : "password"}
                   label="Confirm Password" 
                   variant="standard" 
-                  error={addUserConfirmPasswordError}
+                  error={addUserConfirmPasswordError.length > 0}
                   helperText={addUserConfirmPasswordError} 
                   value={addUserConfirmPassword} 
                   onChange={(event)=>setAddUserConfirmPassword(event.target.value)} 
@@ -376,6 +405,12 @@ function Users() {
             <Button className="users-dialog-button" onClick={handleRegisterNewUser}>Register</Button>
           </DialogActions>
         </Dialog>
+
+        <Snackbar open={showSnackbar} autoHideDuration={6000} onClose={()=>setShowSnackbar(false)}>
+          <Alert onClose={()=>setShowSnackbar(false)} severity="success" sx={{ width: '100%' }}>
+            This is a success message!
+          </Alert>
+        </Snackbar>
 
       </div>
     </>
