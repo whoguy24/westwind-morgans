@@ -16,6 +16,9 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import Alert from '@mui/material/Alert';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
@@ -34,53 +37,53 @@ function Login() {
 
     const [showPassword, setShowPassword] = useState(false);
 
+    const [showAlert, setShowAlert] = useState(false);
+    const [loading, setLoading] = useState(false);
+
     // Redux Store Variables
     const error = useSelector(store => store.error);
 
-    useEffect(() => {
-        switch (error?.code) {
-            case 400:
+    useEffect(() => { 
+        setUsernameError("")
+        setPasswordError("")
+        if (error?.code) {
+            setLoading(true)
+            setTimeout(() => {
+                setShowAlert("Username and password combination entered does not match our records. Please try again.")
                 setUsername("");
                 setPassword("");
-                setUsernameError("Required Field");
-                setPasswordError("Required Field");
-            break;
-            case 401:
-                setUsernameError("");
-                setPasswordError("Invalid username and password combination.");
-            break;
-            case 404:
-                setUsername("");
-                setPassword("");
-                setUsernameError("");
-                setPasswordError("Could not connect to server. Please contact your administrator.");
-            break;
-            case 500:
-                setUsername("");
-                setPassword("");
-                setUsernameError("");
-                setPasswordError("There was a problem communicating with the server. Please contact your administrator.");
-            break;
-            default:
-                setUsername("");
-                setPassword("");
-                setUsernameError("");
-                setPasswordError("");
-            break;
+                setLoading(false)
+            }, 1000);
         }
     }, [error]);
 
     function handleLoginButton(event) {
         event.preventDefault();
-        dispatch({
-            type: "LOGIN",
-            payload: {
-                username: username,
-                password: password,
-            },
-        });
-        navigate("/admin");
+        if(username.length > 0 || password.length > 0) {
+            setLoading(true)
+            setTimeout(() => {
+                dispatch({
+                    type: "LOGIN",
+                    payload: {
+                        username: username,
+                        password: password,
+                    },
+                });
+                navigate("/admin");
+                setLoading(false)
+            }, 1000);
+        } else {
+            setUsernameError("Required Field")
+            setPasswordError("Required Field")
+        }
     };
+
+    function handleAlertClose() {
+        setUsernameError("")
+        setPasswordError("")
+        setShowAlert(false)
+        dispatch({ type: "ERROR_CLEAR" });
+    }
 
     const handleShowPassordButton = () => {
         setShowPassword(!showPassword)
@@ -94,6 +97,11 @@ function Login() {
     return (
         
         <div id="login">
+            { showAlert.length > 0 && 
+                <Alert id="login-alert" onClose={handleAlertClose} variant="filled" severity="error">
+                    {showAlert}
+                </Alert>
+            }
             <Box component="form" id="login-inputs" onSubmit={handleLoginButton}>
                 <h2 id="login-header">Admin Login</h2>
                 <TextField 
@@ -104,15 +112,17 @@ function Login() {
                     required 
                     value={username} 
                     onChange={(event) => setUsername(event.target.value)} 
+                    onBlur={handleAlertClose}
                 />
                 <TextField 
                     className="login-input" 
                     label="Password" variant="standard" 
-                    helperText={passwordError}
                     required 
+                    helperText={passwordError}
                     value={password}
                     type= {showPassword ? "text" : "password"}
                     onChange={(event) => setPassword(event.target.value)}
+                    onBlur={handleAlertClose}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="end">
@@ -131,6 +141,13 @@ function Login() {
                 <Button id="login-button" onClick={handleLoginButton}>Log In</Button>
                 <input type="submit" hidden />
             </Box>
+            <Backdrop
+                sx={{ color: '#fff', zIndex: 1 }}
+                open={loading}
+                onClick={()=>setLoading(false)}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
         </div>
 
     );

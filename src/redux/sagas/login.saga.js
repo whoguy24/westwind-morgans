@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function* loginUser(action) {
   try {
-    yield put({ type: 'ERROR_LOGIN_CLEAR' });
+    yield put({ type: 'ERROR_CLEAR' });
     const config = {
       headers: { 'Content-Type': 'application/json' },
       withCredentials: true,
@@ -12,17 +12,11 @@ function* loginUser(action) {
       yield axios.post('api/user/login', action.payload, config);
       yield put({ type: 'FETCH_USER' });
     } else {
-      yield put({ type: 'ERROR_LOGIN_BAD_REQUEST' });
+      yield put({ type: 'ERROR_400' });
     }
   } catch (error) {
-    console.log('Error with user login:', error);
-    if (error.response.status === 404) {
-      yield put({ type: 'ERROR_LOGIN_NOT_FOUND' });
-    } else if (error.response.status === 401) {
-      yield put({ type: 'ERROR_LOGIN_UNAUTHORIZED' });
-    } else {
-      yield put({ type: 'ERROR_LOGIN_SERVER' });
-    }
+    console.log("Error with user login:", error);
+    yield put({ type: `ERROR_${error.response.status}` });
   }
 }
 
@@ -36,7 +30,8 @@ function* logoutUser(action) {
     yield axios.post('api/user/logout', config);
     yield put({ type: 'UNSET_USER' });
   } catch (error) {
-    console.log('Error with user logout:', error);
+    console.log("Error with user logout:", error);
+    yield put({ type: `ERROR_${error.response.status}` });
   }
 }
 

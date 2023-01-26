@@ -27,6 +27,8 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
@@ -40,7 +42,7 @@ function Users() {
   // Redux Store Variables
   const user = useSelector(store => store.user);
   const users = useSelector(store => store.users);
-  const error = useSelector(store => store.errors);
+  const error = useSelector(store => store.error);
 
   const [addUserDialogActive, setAddUserDialogActive] = useState(false);
 
@@ -62,39 +64,61 @@ function Users() {
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [showSnackbar, setShowSnackbar] = useState(false);
+
+  const [showSnackbarSuccess, setShowSnackbarSuccess] = useState(false);
+  const [showSnackbarError, setShowSnackbarError] = useState(false);
+
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-      if(!error?.code && user?.id) {
+
+      if(user?.id) {
+
+
+        if (!loading) {
+          setLoading(true)
+          setTimeout(() => {
+
+            if (error?.code === 201) {
+              setShowSnackbarSuccess(true)
+              dispatch({ type: "ERROR_CLEAR" });
+            } else if (error?.code) {
+              setShowSnackbarError(true)
+              dispatch({ type: "ERROR_CLEAR" });
+            }
+  
+            setLoading(false)
+          }, 3000);
+        } else {
           dispatch({ type: 'FETCH_USERS' });
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
       } else {
           navigate('/login')
       }
-  }, []);
 
-  useEffect(() => {
-    switch (error?.code) {
-        case 400:
-            setUsernameError("Required Field");
-            setPasswordError("Required Field");
-        break;
-        case 401:
-            setPasswordError("Invalid username and password combination.");
-        break;
-        case 404:
-            setUsernameError("");
-            setPasswordError("Could not connect to server. Please contact your administrator.");
-        break;
-        case 500:
-            setUsernameError("");
-            setPasswordError("There was a problem communicating with the server. Please contact your administrator.");
-        break;
-        default:
-            setUsernameError("");
-            setPasswordError("");
-        break;
-    }
-}, [error]);
+
+
+  }, [error]);
 
   const columns = [
     { field: "first_name", headerName: "First Name", width: 120 },
@@ -235,7 +259,6 @@ function Users() {
           },
       });
       handleAddUserDialogClose();
-      setShowSnackbar(true)
     } else {
       return false;
     }
@@ -328,7 +351,6 @@ function Users() {
                   className="users-dialog-textfield"
                   variant="standard"
                   error={addUserRoleError.length > 0}
-                  helperText={addUserRoleError} 
                   value={addUserRole} 
                   label="Role"
                   onChange={(event)=>setAddUserRole(event.target.value)} 
@@ -406,11 +428,25 @@ function Users() {
           </DialogActions>
         </Dialog>
 
-        <Snackbar open={showSnackbar} autoHideDuration={6000} onClose={()=>setShowSnackbar(false)}>
-          <Alert onClose={()=>setShowSnackbar(false)} severity="success" sx={{ width: '100%' }}>
-            This is a success message!
+        <Snackbar open={showSnackbarSuccess} autoHideDuration={6000} onClose={()=>setShowSnackbarSuccess(false)}>
+          <Alert onClose={()=>setShowSnackbarSuccess(false)} severity="success" variant="filled" >
+            User was created successfully.
           </Alert>
         </Snackbar>
+
+        <Snackbar open={showSnackbarError} autoHideDuration={6000} onClose={()=>setShowSnackbarError(false)}>
+          <Alert onClose={()=>setShowSnackbarError(false)} severity="error" variant="filled" >
+            User could not be created. Please contact your administrator for details.
+          </Alert>
+        </Snackbar>
+
+        <Backdrop
+                sx={{ color: '#fff', zIndex: 1 }}
+                open={loading}
+                onClick={()=>setLoading(false)}
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
 
       </div>
     </>
