@@ -22,6 +22,7 @@ import Preloader from "../Preloader/Preloader";
 import HorseGallery from "../HorseGallery/HorseGallery";
 import HorseDetail from "../HorseDetail/HorseDetail";
 import Visit from "../Visit/Visit";
+import Contact from "../Contact/Contact";
 import UserBar from "../UserBar/UserBar";
 import Users from "../Users/Users";
 
@@ -39,6 +40,8 @@ function App() {
 
   // Delay Render to Allow Preloader Time to Display
   const [loading, setLoading] = useState(false);
+
+  const facebookLink = "https://www.facebook.com/people/Westwind-Morgans/100063575859271/";
   
   useEffect(() => {
     setLoading(true);
@@ -74,7 +77,7 @@ function App() {
 
           <>
 
-            <Navigation />
+            <Navigation facebookLink={facebookLink} />
 
             { user?.id && <UserBar /> }
 
@@ -96,7 +99,7 @@ function App() {
                 <Route path="/testimonials/:id" element={<HorseDetail type="testimonials" title="Testimonials" />} />
                 {/* <Route exact path="/breeding" element={<Placeholder />} /> */}
                 {/* <Route exact path="/foundation" element={<Placeholder />} /> */}
-                <Route exact path="/contact" element={<Placeholder />} />
+                <Route exact path="/contact" element={<Contact type="contact" title="Contact" facebookLink={facebookLink}/>} />
                 {/* <Route exact path="/visit" element={<Visit />} /> */}
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/admin" element={user.id?<Admin />:<Login />} />

@@ -27,7 +27,7 @@ import MenuItem from '@mui/material/MenuItem';
 ///// COMPONENT FUNCTION //////////////////////////////
 ///////////////////////////////////////////////////////
 
-function Navigation() {
+function Navigation({facebookLink}) {
 
     // React Router Variables
     const navigate = useNavigate();
@@ -40,9 +40,6 @@ function Navigation() {
 
     // Redux Store Variables
     const user = useSelector(store => store.user);
-
-    // Misc Variables
-    const facebookLink = "https://www.facebook.com/people/Westwind-Morgans/100063575859271/";
 
     // Event Listener for Responsive Rendering
     window.addEventListener('resize', handleViewportChange)

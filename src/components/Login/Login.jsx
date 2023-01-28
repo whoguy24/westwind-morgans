@@ -41,37 +41,72 @@ function Login() {
     const [loading, setLoading] = useState(false);
 
     // Redux Store Variables
-    const error = useSelector(store => store.error);
+    const user = useSelector(store => store.user);
+    const server = useSelector(store => store.server);
 
     useEffect(() => { 
-        setUsernameError("")
-        setPasswordError("")
-        if (error?.code) {
+
+
+
+        if (user.id && server.status === 200) {
             setLoading(true)
             setTimeout(() => {
-                setShowAlert("Username and password combination entered does not match our records. Please try again.")
-                setUsername("");
-                setPassword("");
                 setLoading(false)
-            }, 1000);
+                // navigate("/admin");
+            }, 3000);
         }
-    }, [error]);
+
+
+        // else if (server.status >= 400) {
+        //     setLoading(true)
+        //     setTimeout(() => {
+        //         setShowAlert("Username and password combination entered does not match our records. Please try again.")
+        //         setUsername("");
+        //         setPassword("");
+        //     }, server.timeout);
+        // }
+
+
+        // if (user?.id) {
+
+
+        //     navigate("/admin");
+        // } else if (server.status >= 400) {
+
+
+
+
+
+        // }
+
+
+        // if (server.status != 200) {
+        //     setLoading(true)
+        //     setTimeout(() => {
+
+
+        //         if (server.status >= 400) {
+                    
+        //             setShowAlert("Username and password combination entered does not match our records. Please try again.")
+        //             setUsername("");
+        //             setPassword("");
+
+        //         }
+
+
+        //         setLoading(false)
+        //     }, server.timeout);
+        // }
+
+
+
+
+    }, [server]);
 
     function handleLoginButton(event) {
         event.preventDefault();
         if(username.length > 0 || password.length > 0) {
-            setLoading(true)
-            setTimeout(() => {
-                dispatch({
-                    type: "LOGIN",
-                    payload: {
-                        username: username,
-                        password: password,
-                    },
-                });
-                navigate("/admin");
-                setLoading(false)
-            }, 1000);
+            dispatch({ type: "LOGIN", payload: { username: username, password: password }});
         } else {
             setUsernameError("Required Field")
             setPasswordError("Required Field")
@@ -82,7 +117,6 @@ function Login() {
         setUsernameError("")
         setPasswordError("")
         setShowAlert(false)
-        dispatch({ type: "ERROR_CLEAR" });
     }
 
     const handleShowPassordButton = () => {
@@ -112,7 +146,6 @@ function Login() {
                     required 
                     value={username} 
                     onChange={(event) => setUsername(event.target.value)} 
-                    onBlur={handleAlertClose}
                 />
                 <TextField 
                     className="login-input" 
@@ -122,7 +155,6 @@ function Login() {
                     value={password}
                     type= {showPassword ? "text" : "password"}
                     onChange={(event) => setPassword(event.target.value)}
-                    onBlur={handleAlertClose}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="end">

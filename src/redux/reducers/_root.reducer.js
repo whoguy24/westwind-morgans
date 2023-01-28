@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import error from './error.reducer';
+import server from './server.reducer';
 import user from './user.reducer';
 import users from './users.reducer';
 import horses from './horses.reducer';
 import horse from './horse.reducer';
 
 const rootReducer = combineReducers({
-  error,
+  server,
   user,
   users,
   horses,

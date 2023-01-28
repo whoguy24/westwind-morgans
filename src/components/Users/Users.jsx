@@ -40,9 +40,8 @@ function Users() {
   const navigate = useNavigate();
 
   // Redux Store Variables
-  const user = useSelector(store => store.user);
   const users = useSelector(store => store.users);
-  const error = useSelector(store => store.error);
+  const server = useSelector(store => store.server);
 
   const [addUserDialogActive, setAddUserDialogActive] = useState(false);
 
@@ -71,54 +70,28 @@ function Users() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true)
+    setTimeout(() => {
+      dispatch({ type: 'FETCH_USERS' });
+      setLoading(false)
+    }, server.timeout);
+  }, []);
 
-      if(user?.id) {
-
-
-        if (!loading) {
-          setLoading(true)
-          setTimeout(() => {
-
-            if (error?.code === 201) {
-              setShowSnackbarSuccess(true)
-              dispatch({ type: "ERROR_CLEAR" });
-            } else if (error?.code) {
-              setShowSnackbarError(true)
-              dispatch({ type: "ERROR_CLEAR" });
-            }
-  
-            setLoading(false)
-          }, 3000);
+  useEffect(() => {
+    if (server.status != 200) {
+      setLoading(true)
+      setTimeout(() => {
+        if (server.status === 201) {
+          setShowSnackbarSuccess(true)
         } else {
-          dispatch({ type: 'FETCH_USERS' });
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-      } else {
-          navigate('/login')
-      }
-
-
-
-  }, [error]);
+          setShowSnackbarError(true)
+        } 
+        dispatch({ type: 'FETCH_USERS' });
+      setLoading(false)
+      }, server.timeout);
+      
+    }
+  }, [server]);
 
   const columns = [
     { field: "first_name", headerName: "First Name", width: 120 },
