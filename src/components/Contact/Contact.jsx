@@ -30,25 +30,15 @@ function Contact({type, title, facebookLink}) {
 
             <Typography id="contact-info-text-header">Contact Westwind Morgans</Typography>
 
-            <div id="contact-info-container">
-
               <div>
                 <Typography id="contact-info-text">
                   Bryan Blatt, Owner <br />
-                  Sheridan, MT <br />
-                </Typography>
-              </div>
-
-              <div>
-                <Typography id="contact-info-text">
                   (406) 451-9311 <br />
                   <a href="mailto:bblatt@westwindmorgans.com?subject=Westwindmorgans.com" target="_blank">bblatt@westwindmorgans.com</a> <br /> <br />
                   <a href={facebookLink} target="_blank">Follow Bryan on Facebook →</a>
                 </Typography>
               </div>
 
-            </div>
-            
           </div>
         </div>
     </>

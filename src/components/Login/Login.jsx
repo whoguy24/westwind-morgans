@@ -9,6 +9,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 
+import Toast from "../Toast/Toast";
+
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -16,7 +18,6 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import Alert from '@mui/material/Alert';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
@@ -37,24 +38,22 @@ function Login() {
 
     const [showPassword, setShowPassword] = useState(false);
 
-    const [showAlert, setShowAlert] = useState(false);
     const [loading, setLoading] = useState(false);
 
     // Redux Store Variables
     const user = useSelector(store => store.user);
-    const server = useSelector(store => store.server);
 
     useEffect(() => { 
 
 
 
-        if (user.id && server.status === 200) {
-            setLoading(true)
-            setTimeout(() => {
-                setLoading(false)
-                // navigate("/admin");
-            }, 3000);
-        }
+        // if (user.id && server.status === 200) {
+        //     setLoading(true)
+        //     setTimeout(() => {
+        //         setLoading(false)
+        //         navigate("/admin");
+        //     }, 3000);
+        // }
 
 
         // else if (server.status >= 400) {
@@ -101,7 +100,7 @@ function Login() {
 
 
 
-    }, [server]);
+    }, []);
 
     function handleLoginButton(event) {
         event.preventDefault();
@@ -131,11 +130,11 @@ function Login() {
     return (
         
         <div id="login">
-            { showAlert.length > 0 && 
+            {/* { showAlert.length > 0 && 
                 <Alert id="login-alert" onClose={handleAlertClose} variant="filled" severity="error">
                     {showAlert}
                 </Alert>
-            }
+            } */}
             <Box component="form" id="login-inputs" onSubmit={handleLoginButton}>
                 <h2 id="login-header">Admin Login</h2>
                 <TextField 
@@ -173,13 +172,17 @@ function Login() {
                 <Button id="login-button" onClick={handleLoginButton}>Log In</Button>
                 <input type="submit" hidden />
             </Box>
-            <Backdrop
+
+            {/* <Backdrop
                 sx={{ color: '#fff', zIndex: 1 }}
                 open={loading}
                 onClick={()=>setLoading(false)}
             >
                 <CircularProgress color="inherit" />
-            </Backdrop>
+            </Backdrop> */}
+
+            <Toast />
+
         </div>
 
     );

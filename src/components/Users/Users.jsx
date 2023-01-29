@@ -14,6 +14,8 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
+import Toast from "../Toast/Toast";
+
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -25,8 +27,6 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
@@ -41,7 +41,6 @@ function Users() {
 
   // Redux Store Variables
   const users = useSelector(store => store.users);
-  const server = useSelector(store => store.server);
 
   const [addUserDialogActive, setAddUserDialogActive] = useState(false);
 
@@ -64,34 +63,31 @@ function Users() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const [showSnackbarSuccess, setShowSnackbarSuccess] = useState(false);
-  const [showSnackbarError, setShowSnackbarError] = useState(false);
-
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    setLoading(true)
-    setTimeout(() => {
-      dispatch({ type: 'FETCH_USERS' });
-      setLoading(false)
-    }, server.timeout);
-  }, []);
+  // useEffect(() => {
+  //   setLoading(true)
+  //   setTimeout(() => {
+  //     dispatch({ type: 'FETCH_USERS' });
+  //     setLoading(false)
+  //   }, server.timeout);
+  // }, []);
 
-  useEffect(() => {
-    if (server.status != 200) {
-      setLoading(true)
-      setTimeout(() => {
-        if (server.status === 201) {
-          setShowSnackbarSuccess(true)
-        } else {
-          setShowSnackbarError(true)
-        } 
-        dispatch({ type: 'FETCH_USERS' });
-      setLoading(false)
-      }, server.timeout);
+  // useEffect(() => {
+  //   if (server.status != 200) {
+  //     setLoading(true)
+  //     setTimeout(() => {
+  //       if (server.status === 201) {
+  //         setShowSnackbarSuccess(true)
+  //       } else {
+  //         setShowSnackbarError(true)
+  //       } 
+  //       dispatch({ type: 'FETCH_USERS' });
+  //     setLoading(false)
+  //     }, server.timeout);
       
-    }
-  }, [server]);
+  //   }
+  // }, [server]);
 
   const columns = [
     { field: "first_name", headerName: "First Name", width: 120 },
@@ -221,15 +217,15 @@ function Users() {
       !addUserConfirmPasswordError
     ) {
       dispatch({
-          type: "REGISTER",
-          payload: {
-              firstName: addUserFirstName,
-              lastName: addUserLastName,
-              username: addUserUsername,
-              role: addUserRole,
-              email: addUserEmail,
-              password: addUserPassword,
-          },
+        type: "REGISTER",
+        payload: {
+            firstName: addUserFirstName,
+            lastName: addUserLastName,
+            username: addUserUsername,
+            role: addUserRole,
+            email: addUserEmail,
+            password: addUserPassword,
+        },
       });
       handleAddUserDialogClose();
     } else {
@@ -401,25 +397,21 @@ function Users() {
           </DialogActions>
         </Dialog>
 
-        <Snackbar open={showSnackbarSuccess} autoHideDuration={6000} onClose={()=>setShowSnackbarSuccess(false)}>
+        {/* <Snackbar open={showSnackbarSuccess} autoHideDuration={6000} onClose={()=>setShowSnackbarSuccess(false)}>
           <Alert onClose={()=>setShowSnackbarSuccess(false)} severity="success" variant="filled" >
             User was created successfully.
           </Alert>
-        </Snackbar>
+        </Snackbar> */}
 
-        <Snackbar open={showSnackbarError} autoHideDuration={6000} onClose={()=>setShowSnackbarError(false)}>
-          <Alert onClose={()=>setShowSnackbarError(false)} severity="error" variant="filled" >
-            User could not be created. Please contact your administrator for details.
-          </Alert>
-        </Snackbar>
+        <Toast />
 
-        <Backdrop
+        {/* <Backdrop
                 sx={{ color: '#fff', zIndex: 1 }}
                 open={loading}
                 onClick={()=>setLoading(false)}
         >
           <CircularProgress color="inherit" />
-        </Backdrop>
+        </Backdrop> */}
 
       </div>
     </>
