@@ -7,6 +7,9 @@ import '../Admin/Admin.css';
 
 import { useNavigate } from 'react-router-dom';
 
+import Toast from "../Toast/Toast";
+import Loading from "../Loading/Loading";
+
 // Import MUI Components
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
@@ -20,6 +23,26 @@ import { CardActionArea } from '@mui/material';
 function Users() {
 
     const navigate = useNavigate();
+
+    function openLink() {
+        navigate("/users")
+        dispatch({ 
+            type: 'SET_SERVER', 
+            payload: {
+              loading:true, 
+              duration:server.duration,
+              result:server.result,
+              toast_open:server.toast_open,
+              toast_autoHideDuration:server.toast_autoHideDuration, 
+              toast_severity:server.toast_severity, 
+              toast_variant:server.toast_variant,
+              toast_description:server.toast_description
+            }
+        });
+        setTimeout(() => {
+            navigate("/users");
+        }, server.duration);
+    }
 
     // Render DOM
     return (
@@ -52,6 +75,9 @@ function Users() {
                         </div>
                     </CardActionArea>
                 </Card>
+
+                <Toast />
+                <Loading />
 
             </div>
 

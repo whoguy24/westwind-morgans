@@ -3,11 +3,11 @@
 ///////////////////////////////////////////////////////
 
 // Import Stylesheets
-import '../Toast/Toast.css';
+import '../Loading/Loading.css';
 
 // Import Custom Components
-import Alert from '@mui/material/Alert';
-import Snackbar from '@mui/material/Snackbar';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -15,20 +15,20 @@ import { useSelector, useDispatch } from "react-redux";
 ///// COMPONENT FUNCTION //////////////////////////////
 ///////////////////////////////////////////////////////
 
-function Toast() {
+function Loading() {
 
   const dispatch = useDispatch();
 
   const server = useSelector(store => store.server);
 
-  function closeToast() {
+  function setLoading() {
     dispatch({ 
       type: 'SET_SERVER', 
       payload: {
-        loading:server.loading, 
+        loading:false, 
         duration:server.duration,
         result:server.result,
-        toast_open:false,
+        toast_open:server.toast_open,
         toast_autoHideDuration:server.toast_autoHideDuration, 
         toast_severity:server.toast_severity, 
         toast_variant:server.toast_variant,
@@ -40,11 +40,9 @@ function Toast() {
   return (
     <>
 
-      <Snackbar open={server?.toast_open || false} autoHideDuration={server?.toast_autoHideDuration} onClose={closeToast}>
-          <Alert onClose={closeToast} severity={server?.toast_severity} variant={server?.toast_variant} >
-              {server?.toast_description}
-          </Alert>
-      </Snackbar>
+      <Backdrop sx={{ color: '#fff', zIndex: 1 }} open={server.loading || false} onClick={setLoading}>
+          <CircularProgress color="inherit" />
+      </Backdrop>
 
     </>
   );
@@ -55,4 +53,4 @@ function Toast() {
 ///// EXPORT COMPONENT FUNCTION ///////////////////////
 ///////////////////////////////////////////////////////
 
-export default Toast;
+export default Loading;

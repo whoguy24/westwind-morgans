@@ -9,24 +9,50 @@ function* loginUser(action) {
     };
     if (action.payload.username && action.payload.password) {
       yield axios.post('api/user/login', action.payload, config);
-      // yield put({ type: 'SERVER_200' });
       yield put({ type: 'FETCH_USER' });
       yield put({ 
-        type: 'OPEN_SNACKBAR', 
+        type: 'SET_SERVER', 
         payload: {
-          open:true, 
-          autoHideDuration:6000, 
-          severity:"success", 
-          variant:"filled",
-          description:"Successfully Logged In."
+          loading:true, 
+          duration:3000,
+          result:200,
+          toast_open:false,
+          toast_autoHideDuration:6000, 
+          toast_severity:"success", 
+          toast_variant:"filled",
+          toast_description:"Successfully Logged In."
         }
       })
     } else {
-      // yield put({ type: 'SERVER_400' });
+      yield put({ 
+        type: 'SET_SERVER', 
+        payload: {
+          loading:true, 
+          duration:3000,
+          result:400,
+          toast_open:false,
+          toast_autoHideDuration:6000, 
+          toast_severity:"error", 
+          toast_variant:"filled",
+          toast_description:"A valid username and password are required to log in. Please try again."
+        }
+      })
     }
   } catch (error) {
     console.log("Error with user login:", error);
-    // yield put({ type: `SERVER_${error.response.status}` });
+    yield put({ 
+      type: 'SET_SERVER', 
+      payload: {
+        loading:true, 
+        duration:3000,
+        result:400,
+        toast_open:false,
+        toast_autoHideDuration:6000, 
+        toast_severity:"error", 
+        toast_variant:"filled",
+        toast_description:"Provided username and password do not match our records. Please try again."
+      }
+    })
   }
 }
 

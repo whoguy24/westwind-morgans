@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 
 import Toast from "../Toast/Toast";
+import Loading from "../Loading/Loading";
 
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
@@ -18,8 +19,7 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import Backdrop from '@mui/material/Backdrop';
-import CircularProgress from '@mui/material/CircularProgress';
+import serverReducer from '../../redux/reducers/server.reducer';
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
@@ -38,69 +38,31 @@ function Login() {
 
     const [showPassword, setShowPassword] = useState(false);
 
-    const [loading, setLoading] = useState(false);
-
     // Redux Store Variables
-    const user = useSelector(store => store.user);
+    const server = useSelector(store => store.server);
 
     useEffect(() => { 
-
-
-
-        // if (user.id && server.status === 200) {
-        //     setLoading(true)
-        //     setTimeout(() => {
-        //         setLoading(false)
-        //         navigate("/admin");
-        //     }, 3000);
-        // }
-
-
-        // else if (server.status >= 400) {
-        //     setLoading(true)
-        //     setTimeout(() => {
-        //         setShowAlert("Username and password combination entered does not match our records. Please try again.")
-        //         setUsername("");
-        //         setPassword("");
-        //     }, server.timeout);
-        // }
-
-
-        // if (user?.id) {
-
-
-        //     navigate("/admin");
-        // } else if (server.status >= 400) {
-
-
-
-
-
-        // }
-
-
-        // if (server.status != 200) {
-        //     setLoading(true)
-        //     setTimeout(() => {
-
-
-        //         if (server.status >= 400) {
-                    
-        //             setShowAlert("Username and password combination entered does not match our records. Please try again.")
-        //             setUsername("");
-        //             setPassword("");
-
-        //         }
-
-
-        //         setLoading(false)
-        //     }, server.timeout);
-        // }
-
-
-
-
-    }, []);
+        if( server.loading === true ) {
+            setTimeout(() => {
+                dispatch({ 
+                    type: 'SET_SERVER', 
+                    payload: {
+                      loading:false, 
+                      duration:server.duration,
+                      result:server.result,
+                      toast_open:true,
+                      toast_autoHideDuration:server.toast_autoHideDuration, 
+                      toast_severity:server.toast_severity, 
+                      toast_variant:server.toast_variant,
+                      toast_description:server.toast_description
+                    }
+                });
+                if (server.result === 200) {
+                    navigate("/admin");
+                }
+            }, server.duration);
+        }
+    }, [server.loading]);
 
     function handleLoginButton(event) {
         event.preventDefault();
@@ -173,14 +135,7 @@ function Login() {
                 <input type="submit" hidden />
             </Box>
 
-            {/* <Backdrop
-                sx={{ color: '#fff', zIndex: 1 }}
-                open={loading}
-                onClick={()=>setLoading(false)}
-            >
-                <CircularProgress color="inherit" />
-            </Backdrop> */}
-
+            <Loading />
             <Toast />
 
         </div>

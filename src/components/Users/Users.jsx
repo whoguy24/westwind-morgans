@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import Toast from "../Toast/Toast";
+import Loading from "../Loading/Loading";
 
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -41,6 +42,7 @@ function Users() {
 
   // Redux Store Variables
   const users = useSelector(store => store.users);
+  const server = useSelector(store => store.server);
 
   const [addUserDialogActive, setAddUserDialogActive] = useState(false);
 
@@ -63,31 +65,12 @@ function Users() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    dispatch({type:"FETCH_USERS"})
+  }, []);
 
   // useEffect(() => {
-  //   setLoading(true)
-  //   setTimeout(() => {
-  //     dispatch({ type: 'FETCH_USERS' });
-  //     setLoading(false)
-  //   }, server.timeout);
-  // }, []);
-
-  // useEffect(() => {
-  //   if (server.status != 200) {
-  //     setLoading(true)
-  //     setTimeout(() => {
-  //       if (server.status === 201) {
-  //         setShowSnackbarSuccess(true)
-  //       } else {
-  //         setShowSnackbarError(true)
-  //       } 
-  //       dispatch({ type: 'FETCH_USERS' });
-  //     setLoading(false)
-  //     }, server.timeout);
-      
-  //   }
-  // }, [server]);
+  // }, [server.loading]);
 
   const columns = [
     { field: "first_name", headerName: "First Name", width: 120 },
@@ -397,21 +380,8 @@ function Users() {
           </DialogActions>
         </Dialog>
 
-        {/* <Snackbar open={showSnackbarSuccess} autoHideDuration={6000} onClose={()=>setShowSnackbarSuccess(false)}>
-          <Alert onClose={()=>setShowSnackbarSuccess(false)} severity="success" variant="filled" >
-            User was created successfully.
-          </Alert>
-        </Snackbar> */}
-
         <Toast />
-
-        {/* <Backdrop
-                sx={{ color: '#fff', zIndex: 1 }}
-                open={loading}
-                onClick={()=>setLoading(false)}
-        >
-          <CircularProgress color="inherit" />
-        </Backdrop> */}
+        <Loading />
 
       </div>
     </>
