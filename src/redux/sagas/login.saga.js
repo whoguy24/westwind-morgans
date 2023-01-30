@@ -1,7 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
-import {select} from 'redux-saga/effects';
+import { select } from 'redux-saga/effects';
 import { serverStore } from '../reducers/server.reducer.js'
 
 function* loginUser(action) {
@@ -18,7 +18,7 @@ function* loginUser(action) {
           userbar:true,
           loading:false, 
           loading_duration:server.loading_duration,
-          toast_open:true,
+          toast_open:false,
           toast_autoHideDuration:server.toast_autoHideDuration, 
           toast_severity:"success", 
           toast_variant:server.toast_variant,

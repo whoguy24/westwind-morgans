@@ -66,30 +66,11 @@ function Users() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   useEffect(() => {
-    dispatch({type:"FETCH_USERS"})
+    dispatch({ type: "LOADING_TRUE" });
+    setTimeout(() => {
+      dispatch({type:"FETCH_USERS"})
+    }, server.loading_duration);
   }, []);
-
-  useEffect(() => { 
-    if( server.loading === true && server.action === "FETCH_USERS" ) {
-      setTimeout(() => {
-        dispatch({ 
-          type: 'SET_SERVER', 
-          payload: {
-            action:server.action,
-            loading:false,
-            userbar:server.userbar, 
-            duration:server.duration,
-            result:server.result,
-            toast_open: server.result >= 400 ? true : false,
-            toast_autoHideDuration:server.toast_autoHideDuration, 
-            toast_severity:server.toast_severity, 
-            toast_variant:server.toast_variant,
-            toast_description:server.toast_description
-          }
-        });
-      }, server.duration);
-    }
-}, [server.loading]);
 
   const columns = [
     { field: "first_name", headerName: "First Name", width: 120 },
@@ -218,18 +199,21 @@ function Users() {
       !addUserPasswordError &&
       !addUserConfirmPasswordError
     ) {
-      dispatch({
-        type: "REGISTER",
-        payload: {
-            firstName: addUserFirstName,
-            lastName: addUserLastName,
-            username: addUserUsername,
-            role: addUserRole,
-            email: addUserEmail,
-            password: addUserPassword,
-        },
-      });
+      dispatch({ type: "LOADING_TRUE" });
       handleAddUserDialogClose();
+      setTimeout(() => {
+        dispatch({
+          type: "REGISTER",
+          payload: {
+              firstName: addUserFirstName,
+              lastName: addUserLastName,
+              username: addUserUsername,
+              role: addUserRole,
+              email: addUserEmail,
+              password: addUserPassword,
+          },
+        });
+      }, server.loading_duration);
     } else {
       return false;
     }
@@ -246,7 +230,7 @@ function Users() {
 
         <div id="users-grid">
           <DataGrid
-            rows={!server.loading ? users : [] }
+            rows={users}
             columns={columns}
             pageSize={10}
             rowsPerPageOptions={[10]}

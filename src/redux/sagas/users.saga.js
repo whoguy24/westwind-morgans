@@ -1,39 +1,42 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
+import { select } from 'redux-saga/effects';
+import { serverStore } from '../reducers/server.reducer.js'
+
 function* fetchUsers(action) {
     try {
+      const server = yield select(serverStore)
       const response = yield axios({ method: 'GET', url: '/api/users' });
       yield put({ type: 'LOAD_USERS', payload: response.data });
       yield put({ 
         type: 'SET_SERVER', 
         payload: {
-          action:"FETCH_USERS",
-          loading:true, 
-          userbar:true,
-          duration:1000,
           result:200,
-          toast_open:false,
-          toast_autoHideDuration:6000, 
+          userbar:server.userbar,
+          loading:false, 
+          loading_duration:server.loading_duration,
+          toast_open:false, 
+          toast_autoHideDuration:server.toast_autoHideDuration, 
           toast_severity:"success", 
-          toast_variant:"filled",
+          toast_variant:server.toast_variant,
           toast_description:"Successfully loaded users."
         }
       })
     } catch(error) {
       console.error('ERROR:', error)
+      const server = yield select(serverStore)
       yield put({ 
         type: 'SET_SERVER', 
         payload: {
-          action:"FETCH_USERS",
-          loading:true, 
-          userbar:true,
-          duration:1000,
-          result:500,
-          toast_open:false,
-          toast_autoHideDuration:6000, 
+          result:error.response.status,
+          userbar:server.userbar,
+          loading:false, 
+          loading_duration:server.loading_duration,
+          toast_open:true,
+          toast_autoHideDuration:server.toast_autoHideDuration, 
           toast_severity:"error", 
-          toast_variant:"filled",
+          toast_variant:server.toast_variant,
           toast_description:"There was a problem loading users. Please log out and try again."
         }
       })
