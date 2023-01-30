@@ -97,77 +97,77 @@ function Users() {
     setAddUserConfirmPasswordError("")
   }
 
-  function validateFirstName() {
-    if ( addUserFirstName.length < 1 ) {
-      setAddUserFirstNameError("Required Field");
-    } else {
-      setAddUserFirstNameError("");
-    }
-  }
-
-  function validateLastName() {
-    if ( addUserLastName.length < 1 ) {
-      setAddUserLastNameError("Required Field");
-    } else {
-      setAddUserLastNameError("");
-    }
-  }
-
-  function validateEmail() {
-    var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    if (addUserEmail.length < 1 ) {
-      setAddUserEmailError("Required Field");
-    } else if ( !addUserEmail.match(validRegex)) {
-      setAddUserEmailError("Please enter a valid email address.")
-    } else {
-      setAddUserEmailError("")
-    }
-  }
-
-  function validateUsername() {
-    if ( addUserUsername.length < 1 ) {
-      setAddUserUsernameError("Required Field");
-    }
-    else if ( addUserUsername.length < 1 ) {
-      setAddUserUsernameError("Username already exists.");
-    }
-    else {
-      setAddUserUsernameError("");
-    }
-  }
-
-  function validateRole() {
-    if ( addUserRole.length < 1 ) {
-      setAddUserRoleError("Required Field");
-    }
-    else if (addUserRole != "ADMIN" && addUserRole != "USER") {
-      setAddUserRoleError("Invalid Selection");
-    }
-    else {
-      setAddUserRoleError("");
-    }
-  }
-
-  function validatePassword() {
-    if ( addUserPassword.length < 1 ) {
-      setAddUserPasswordError("Required Field");
-    }
-    else {
-      setAddUserPasswordError("");
-    }
-  }
-  
-  function validateConfirmPassword() {
-    if ( addUserConfirmPassword.length < 1 ) {
-      setAddUserConfirmPasswordError("Required Field");
-    }
-    else if (addUserConfirmPassword != addUserPassword) {
-      setAddUserPasswordError("Passwords do not match.");
-      setAddUserConfirmPasswordError("Passwords do not match.");
-    }
-    else {
-      setAddUserPasswordError("");
-      setAddUserConfirmPasswordError("");
+  function validateInput (field) {
+    switch (field) {
+      case "addUserFirstName":
+        if ( addUserFirstName.length < 1 ) {
+          setAddUserFirstNameError("Required Field");
+        } else {
+          setAddUserFirstNameError("");
+        }
+        break;
+      case "addUserLastName":
+        if ( addUserLastName.length < 1 ) {
+          setAddUserLastNameError("Required Field");
+        } else {
+          setAddUserLastNameError("");
+        }
+        break;
+      case "addUserEmail":
+        var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if (addUserEmail.length < 1 ) {
+          setAddUserEmailError("Required Field");
+        } else if ( !addUserEmail.match(validRegex)) {
+          setAddUserEmailError("Please enter a valid email address.")
+        } else {
+          setAddUserEmailError("")
+        }
+        break;
+      case "addUserUsername":
+        if ( addUserUsername.length < 1 ) {
+          setAddUserUsernameError("Required Field");
+        }
+        else if ( users.find(user => user.username === addUserUsername) ) {
+          setAddUserUsernameError("User already exists.");
+        }
+        else {
+          setAddUserUsernameError("");
+        }
+        break;
+      case "addUserRole":
+        if ( addUserRole.length < 1 ) {
+          setAddUserRoleError("Required Field");
+        }
+        else if (addUserRole != "ADMIN" && addUserRole != "USER") {
+          setAddUserRoleError("Invalid Selection");
+        }
+        else {
+          setAddUserRoleError("");
+        }
+        break;
+      case "addUserPassword":
+        if ( addUserPassword.length < 1 ) {
+          setAddUserPasswordError("Required Field");
+        }
+        else {
+          setAddUserPasswordError("");
+        }
+        break;
+      case "addUserConfirmPassword":
+        if ( addUserConfirmPassword.length < 1 ) {
+          setAddUserConfirmPasswordError("Required Field");
+        }
+        else if (addUserConfirmPassword != addUserPassword) {
+          setAddUserPasswordError("Passwords do not match.");
+          setAddUserConfirmPasswordError("Passwords do not match.");
+        }
+        else {
+          setAddUserPasswordError("");
+          setAddUserConfirmPasswordError("");
+        }
+        break;
+      default:
+        break;
     }
   }
 
@@ -259,7 +259,7 @@ function Users() {
                   helperText={addUserFirstNameError} 
                   value={addUserFirstName} 
                   onChange={(event)=>setAddUserFirstName(event.target.value)} 
-                  onBlur={validateFirstName}
+                  onBlur={()=>validateInput("addUserFirstName")}
                 />
                 <TextField 
                   className="users-dialog-textfield" 
@@ -270,7 +270,7 @@ function Users() {
                   helperText={addUserLastNameError} 
                   value={addUserLastName} 
                   onChange={(event)=>setAddUserLastName(event.target.value)} 
-                  onBlur={validateLastName}
+                  onBlur={()=>validateInput("addUserLastName")}
                 />
               </div>
 
@@ -284,7 +284,7 @@ function Users() {
                     helperText={addUserEmailError} 
                     value={addUserEmail} 
                     onChange={(event)=>setAddUserEmail(event.target.value)} 
-                    onBlur={validateEmail}
+                    onBlur={()=>validateInput("addUserEmail")}
                   />
               </div>
               
@@ -298,7 +298,7 @@ function Users() {
                   helperText={addUserUsernameError} 
                   value={addUserUsername} 
                   onChange={(event)=>setAddUserUsername(event.target.value)} 
-                  onBlur={validateUsername}
+                  onBlur={()=>validateInput("addUserUsername")}
                 />
 
                 <Select
@@ -309,7 +309,7 @@ function Users() {
                   value={addUserRole} 
                   label="Role"
                   onChange={(event)=>setAddUserRole(event.target.value)} 
-                  onBlur={validateRole}
+                  onBlur={()=>validateInput("addUserRole")}
                 >
                   <MenuItem value={"USER"}>USER</MenuItem>
                   <MenuItem value={"ADMIN"}>ADMIN</MenuItem>
@@ -328,7 +328,7 @@ function Users() {
                   helperText={addUserPasswordError} 
                   value={addUserPassword} 
                   onChange={(event)=>setAddUserPassword(event.target.value)} 
-                  onBlur={validatePassword}
+                  onBlur={()=>validateInput("addUserPassword")}
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -357,7 +357,7 @@ function Users() {
                   helperText={addUserConfirmPasswordError} 
                   value={addUserConfirmPassword} 
                   onChange={(event)=>setAddUserConfirmPassword(event.target.value)} 
-                  onBlur={validateConfirmPassword}
+                  onBlur={()=>validateInput("addUserConfirmPassword")}
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">

@@ -38,11 +38,7 @@ function* registerUser(action) {
         toast_autoHideDuration:server.toast_autoHideDuration, 
         toast_severity:"error", 
         toast_variant:server.toast_variant,
-        ...( error.response.status === 400 ? 
-          { toast_description: "Could not register user with the details provided. Please try again." } 
-          : 
-          { toast_description: "There was a problem communicating with the server. Please try again." }
-        )
+        toast_description: "Could not register user with the details provided. Please try again."
       }
     })
   }
