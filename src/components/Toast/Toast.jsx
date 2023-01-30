@@ -22,20 +22,7 @@ function Toast() {
   const server = useSelector(store => store.server);
 
   function closeToast() {
-    dispatch({ 
-      type: 'SET_SERVER', 
-      payload: {
-        loading:server.loading, 
-        userbar:server.userbar,
-        duration:server.duration,
-        result:server.result,
-        toast_open:false,
-        toast_autoHideDuration:server.toast_autoHideDuration, 
-        toast_severity:server.toast_severity, 
-        toast_variant:server.toast_variant,
-        toast_description:server.toast_description
-      }
-    })
+    dispatch({ type: 'TOAST_CLOSE' })
   }
 
   return (

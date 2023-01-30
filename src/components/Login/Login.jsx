@@ -5,8 +5,7 @@
 // Import Stylesheets
 import '../Login/Login.css';
 
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 
 import Toast from "../Toast/Toast";
@@ -27,7 +26,6 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 function Login() {
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -40,44 +38,27 @@ function Login() {
     // Redux Store Variables
     const server = useSelector(store => store.server);
 
-    useEffect(() => { 
-        if( server.loading === true && server.action === "LOGIN_USER" ) {
-            setTimeout(() => {
-                dispatch({ 
-                    type: 'SET_SERVER', 
-                    payload: {
-                        action:server.action,
-                        loading:false, 
-                        userbar:server.userbar,
-                        duration:server.duration,
-                        result:server.result,
-                        toast_open:true,
-                        toast_autoHideDuration:server.toast_autoHideDuration, 
-                        toast_severity:server.toast_severity, 
-                        toast_variant:server.toast_variant,
-                        toast_description:server.toast_description
-                    }
-                });
-                navigate("/admin");
-            }, server.duration);
-        }
-    }, [server.loading]);
-
     function handleLoginButton(event) {
         event.preventDefault();
-        if(username.length > 0 || password.length > 0) {
-            dispatch({ type: "LOGIN", payload: { username: username, password: password }});
-        } else {
+        if (!username.length) {
             setUsernameError("Required Field")
+        } else {
+            setUsernameError("")
+        }
+        if (!password.length) {
             setPasswordError("Required Field")
+        } else {
+            setPasswordError("")
+        }
+        if (username.length > 0 && password.length > 0) {
+            setUsernameError("")
+            setPasswordError("")
+            dispatch({ type: "LOADING_TRUE" });
+            setTimeout(() => {
+                dispatch({ type: "LOGIN", payload: { username: username, password: password }});
+            }, server.loading_duration);
         }
     };
-
-    function handleAlertClose() {
-        setUsernameError("")
-        setPasswordError("")
-        setShowAlert(false)
-    }
 
     const handleShowPassordButton = () => {
         setShowPassword(!showPassword)

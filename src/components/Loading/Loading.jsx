@@ -21,27 +21,14 @@ function Loading() {
 
   const server = useSelector(store => store.server);
 
-  function setLoading() {
-    dispatch({ 
-      type: 'SET_SERVER', 
-      payload: {
-        loading:false, 
-        userbar:server.userbar,
-        duration:server.duration,
-        result:server.result,
-        toast_open:server.toast_open,
-        toast_autoHideDuration:server.toast_autoHideDuration, 
-        toast_severity:server.toast_severity, 
-        toast_variant:server.toast_variant,
-        toast_description:server.toast_description
-      }
-    })
+  function setLoadingFalse() {
+    dispatch({ type: "LOADING_FALSE" })
   }
 
   return (
     <>
 
-      <Backdrop sx={{ color: '#fff', zIndex: 1 }} open={server.loading || false} onClick={setLoading}>
+      <Backdrop sx={{ color: '#fff', zIndex: 1 }} open={server?.loading || false} onClick={setLoadingFalse}>
           <CircularProgress color="inherit" />
       </Backdrop>
 

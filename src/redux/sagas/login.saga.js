@@ -1,45 +1,45 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
+import {select} from 'redux-saga/effects';
+import { serverStore } from '../reducers/server.reducer.js'
+
 function* loginUser(action) {
   try {
-    const config = {
-      headers: { 'Content-Type': 'application/json' },
-      withCredentials: true,
-    };
+    const config = { headers: { 'Content-Type': 'application/json' }, withCredentials: true };
+    const server = yield select(serverStore)
     if (action.payload.username && action.payload.password) {
       yield axios.post('api/user/login', action.payload, config);
       yield put({ type: 'FETCH_USER' });
       yield put({ 
         type: 'SET_SERVER', 
         payload: {
-          action:"LOGIN_USER",
-          loading:true, 
-          userbar:true,
-          duration:1000,
           result:200,
-          toast_open:false,
-          toast_autoHideDuration:6000, 
+          userbar:true,
+          loading:false, 
+          loading_duration:server.loading_duration,
+          toast_open:true,
+          toast_autoHideDuration:server.toast_autoHideDuration, 
           toast_severity:"success", 
-          toast_variant:"filled",
+          toast_variant:server.toast_variant,
           toast_description:`Login successful: ${action.payload.username}`
         }
       })
     }
   } catch (error) {
     console.log("Error with user login:", error);
+    const server = yield select(serverStore)
     yield put({ 
       type: 'SET_SERVER', 
       payload: {
-        action:"LOGIN_USER",
-        loading:true, 
-        userbar:true,
-        duration:1000,
         result:error.response.status,
-        toast_open:false,
-        toast_autoHideDuration:6000, 
+        userbar:false,
+        loading:false, 
+        loading_duration:server.loading_duration,
+        toast_open:true,
+        toast_autoHideDuration:server.toast_autoHideDuration, 
         toast_severity:"error", 
-        toast_variant:"filled",
+        toast_variant:server.toast_variant,
         ...( error.response.status === 401 ? 
           { toast_description: "Invalid username and password combination. Please try again." } 
           : 
@@ -52,24 +52,21 @@ function* loginUser(action) {
 
 function* logoutUser(action) {
   try {
-    const config = {
-      headers: { 'Content-Type': 'application/json' },
-      withCredentials: true,
-    };
+    const config = { headers: { 'Content-Type': 'application/json' }, withCredentials: true };
+    const server = yield select(serverStore)
     yield axios.post('api/user/logout', config);
     yield put({ type: 'UNSET_USER' });
     yield put({ 
       type: 'SET_SERVER', 
       payload: {
-        action:"LOGOUT_USER",
-        loading:true, 
-        userbar:true,
-        duration:1000,
         result:200,
-        toast_open:false,
-        toast_autoHideDuration:6000, 
+        userbar:false,
+        loading:false, 
+        loading_duration:server.loading_duration,
+        toast_open:true,
+        toast_autoHideDuration:server.toast_autoHideDuration, 
         toast_severity:"success", 
-        toast_variant:"filled",
+        toast_variant:server.toast_variant,
         toast_description:"Logout successful."
       }
     })
@@ -78,16 +75,15 @@ function* logoutUser(action) {
     yield put({ 
       type: 'SET_SERVER', 
       payload: {
-        action:"LOGOUT_USER",
-        loading:true, 
-        userbar:true,
-        duration:1000,
         result:error.response.status,
-        toast_open:false,
-        toast_autoHideDuration:6000, 
+        userbar:server.userbar,
+        loading:false, 
+        loading_duration:server.loading_duration,
+        toast_open:true,
+        toast_autoHideDuration:server.toast_autoHideDuration, 
         toast_severity:"error", 
-        toast_variant:"filled",
-        toast_description: "There was a problem logging out. Please try again."
+        toast_variant:server.toast_variant,
+        toast_description:"There was a problem logging out. Please try again."
       }
     })
   }

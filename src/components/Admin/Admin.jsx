@@ -5,7 +5,9 @@
 // Import Stylesheets
 import '../Admin/Admin.css';
 
+import React from "react";
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux";
 
 import Toast from "../Toast/Toast";
 import Loading from "../Loading/Loading";
@@ -23,6 +25,17 @@ import { CardActionArea } from '@mui/material';
 function Users() {
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const server = useSelector(store => store.server);
+
+    function handleLinkClick(route) {
+        dispatch({ type: "LOADING_TRUE" });
+        setTimeout(() => {
+            dispatch({ type: "LOADING_FALSE" });
+            navigate(route);
+        }, server.loading_duration);
+    }
 
     // Render DOM
     return (
@@ -30,7 +43,7 @@ function Users() {
         
             <div id="admin">
 
-                <Card className="admin-card" onClick={()=>navigate("/users")}>
+                <Card className="admin-card" onClick={()=>handleLinkClick("/users")}>
                     <CardActionArea>
                         <CardMedia
                             component="img"
@@ -43,7 +56,7 @@ function Users() {
                     </CardActionArea>
                 </Card>
 
-                <Card className="admin-card" onClick={()=>navigate("/users")}>
+                <Card className="admin-card" onClick={()=>handleLinkClick("/users")}>
                     <CardActionArea>
                         <CardMedia
                             component="img"

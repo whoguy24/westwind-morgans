@@ -48,6 +48,20 @@ function App() {
     setTimeout(() => {
       setLoading(false);
     }, 4000);
+      dispatch({ 
+        type: 'SET_SERVER', 
+        payload: {
+            result:200,
+            userbar:false,
+            loading:false, 
+            loading_duration:1000,
+            toast_open:false,
+            toast_autoHideDuration:6000, 
+            toast_severity:"info", 
+            toast_variant:"filled",
+            toast_description:""
+        }
+    });
   }, []);
 
   // Fetch User if Logged In
@@ -102,7 +116,7 @@ function App() {
                 <Route exact path="/contact" element={<Contact type="contact" title="Contact" facebookLink={facebookLink}/>} />
                 {/* <Route exact path="/visit" element={<Visit />} /> */}
                 <Route exact path="/login" element={<Login />} />
-                <Route exact path="/admin" element={<Admin />} />
+                <Route exact path="/admin" element={ user?.id ? <Admin /> : <Login /> } />
                 <Route exact path="/users" element={<Users /> } />
                 <Route exact path="*" element={<NotFound />} />
               </Routes>
