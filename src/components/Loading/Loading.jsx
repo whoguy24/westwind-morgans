@@ -26,6 +26,7 @@ function Loading() {
       type: 'SET_SERVER', 
       payload: {
         loading:false, 
+        userbar:server.userbar,
         duration:server.duration,
         result:server.result,
         toast_open:server.toast_open,

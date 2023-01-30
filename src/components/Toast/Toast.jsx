@@ -26,6 +26,7 @@ function Toast() {
       type: 'SET_SERVER', 
       payload: {
         loading:server.loading, 
+        userbar:server.userbar,
         duration:server.duration,
         result:server.result,
         toast_open:false,
@@ -40,8 +41,8 @@ function Toast() {
   return (
     <>
 
-      <Snackbar open={server?.toast_open || false} autoHideDuration={server?.toast_autoHideDuration} onClose={closeToast}>
-          <Alert onClose={closeToast} severity={server?.toast_severity} variant={server?.toast_variant} >
+      <Snackbar open={server?.toast_open || false} autoHideDuration={server?.toast_autoHideDuration || 6000} onClose={closeToast}>
+          <Alert onClose={closeToast} severity={server?.toast_severity || "success"} variant={server?.toast_variant || "filled"} >
               {server?.toast_description}
           </Alert>
       </Snackbar>

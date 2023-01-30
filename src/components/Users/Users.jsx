@@ -69,8 +69,27 @@ function Users() {
     dispatch({type:"FETCH_USERS"})
   }, []);
 
-  // useEffect(() => {
-  // }, [server.loading]);
+  useEffect(() => { 
+    if( server.loading === true && server.action === "FETCH_USERS" ) {
+      setTimeout(() => {
+        dispatch({ 
+          type: 'SET_SERVER', 
+          payload: {
+            action:server.action,
+            loading:false,
+            userbar:server.userbar, 
+            duration:server.duration,
+            result:server.result,
+            toast_open: server.result >= 400 ? true : false,
+            toast_autoHideDuration:server.toast_autoHideDuration, 
+            toast_severity:server.toast_severity, 
+            toast_variant:server.toast_variant,
+            toast_description:server.toast_description
+          }
+        });
+      }, server.duration);
+    }
+}, [server.loading]);
 
   const columns = [
     { field: "first_name", headerName: "First Name", width: 120 },
@@ -227,7 +246,7 @@ function Users() {
 
         <div id="users-grid">
           <DataGrid
-            rows={users}
+            rows={!server.loading ? users : [] }
             columns={columns}
             pageSize={10}
             rowsPerPageOptions={[10]}

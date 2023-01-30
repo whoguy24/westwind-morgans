@@ -19,7 +19,6 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import serverReducer from '../../redux/reducers/server.reducer';
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
@@ -42,24 +41,24 @@ function Login() {
     const server = useSelector(store => store.server);
 
     useEffect(() => { 
-        if( server.loading === true ) {
+        if( server.loading === true && server.action === "LOGIN_USER" ) {
             setTimeout(() => {
                 dispatch({ 
                     type: 'SET_SERVER', 
                     payload: {
-                      loading:false, 
-                      duration:server.duration,
-                      result:server.result,
-                      toast_open:true,
-                      toast_autoHideDuration:server.toast_autoHideDuration, 
-                      toast_severity:server.toast_severity, 
-                      toast_variant:server.toast_variant,
-                      toast_description:server.toast_description
+                        action:server.action,
+                        loading:false, 
+                        userbar:server.userbar,
+                        duration:server.duration,
+                        result:server.result,
+                        toast_open:true,
+                        toast_autoHideDuration:server.toast_autoHideDuration, 
+                        toast_severity:server.toast_severity, 
+                        toast_variant:server.toast_variant,
+                        toast_description:server.toast_description
                     }
                 });
-                if (server.result === 200) {
-                    navigate("/admin");
-                }
+                navigate("/admin");
             }, server.duration);
         }
     }, [server.loading]);
@@ -92,11 +91,6 @@ function Login() {
     return (
         
         <div id="login">
-            {/* { showAlert.length > 0 && 
-                <Alert id="login-alert" onClose={handleAlertClose} variant="filled" severity="error">
-                    {showAlert}
-                </Alert>
-            } */}
             <Box component="form" id="login-inputs" onSubmit={handleLoginButton}>
                 <h2 id="login-header">Admin Login</h2>
                 <TextField 

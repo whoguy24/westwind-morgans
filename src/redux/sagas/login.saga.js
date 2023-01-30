@@ -13,28 +13,16 @@ function* loginUser(action) {
       yield put({ 
         type: 'SET_SERVER', 
         payload: {
+          action:"LOGIN_USER",
           loading:true, 
-          duration:3000,
+          userbar:true,
+          duration:1000,
           result:200,
           toast_open:false,
           toast_autoHideDuration:6000, 
           toast_severity:"success", 
           toast_variant:"filled",
-          toast_description:"Successfully Logged In."
-        }
-      })
-    } else {
-      yield put({ 
-        type: 'SET_SERVER', 
-        payload: {
-          loading:true, 
-          duration:3000,
-          result:400,
-          toast_open:false,
-          toast_autoHideDuration:6000, 
-          toast_severity:"error", 
-          toast_variant:"filled",
-          toast_description:"A valid username and password are required to log in. Please try again."
+          toast_description:`Login successful: ${action.payload.username}`
         }
       })
     }
@@ -43,14 +31,20 @@ function* loginUser(action) {
     yield put({ 
       type: 'SET_SERVER', 
       payload: {
+        action:"LOGIN_USER",
         loading:true, 
-        duration:3000,
-        result:400,
+        userbar:true,
+        duration:1000,
+        result:error.response.status,
         toast_open:false,
         toast_autoHideDuration:6000, 
         toast_severity:"error", 
         toast_variant:"filled",
-        toast_description:"Provided username and password do not match our records. Please try again."
+        ...( error.response.status === 401 ? 
+          { toast_description: "Invalid username and password combination. Please try again." } 
+          : 
+          { toast_description: "There was a problem communicating with the server. Please try again." }
+        )
       }
     })
   }
@@ -63,11 +57,39 @@ function* logoutUser(action) {
       withCredentials: true,
     };
     yield axios.post('api/user/logout', config);
-    yield put({ type: 'SERVER_200' });
     yield put({ type: 'UNSET_USER' });
+    yield put({ 
+      type: 'SET_SERVER', 
+      payload: {
+        action:"LOGOUT_USER",
+        loading:true, 
+        userbar:true,
+        duration:1000,
+        result:200,
+        toast_open:false,
+        toast_autoHideDuration:6000, 
+        toast_severity:"success", 
+        toast_variant:"filled",
+        toast_description:"Logout successful."
+      }
+    })
   } catch (error) {
     console.log("Error with user logout:", error);
-    yield put({ type: `SERVER_${error.response.status}` });
+    yield put({ 
+      type: 'SET_SERVER', 
+      payload: {
+        action:"LOGOUT_USER",
+        loading:true, 
+        userbar:true,
+        duration:1000,
+        result:error.response.status,
+        toast_open:false,
+        toast_autoHideDuration:6000, 
+        toast_severity:"error", 
+        toast_variant:"filled",
+        toast_description: "There was a problem logging out. Please try again."
+      }
+    })
   }
 }
 

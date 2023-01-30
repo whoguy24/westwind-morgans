@@ -24,26 +24,6 @@ function Users() {
 
     const navigate = useNavigate();
 
-    function openLink() {
-        navigate("/users")
-        dispatch({ 
-            type: 'SET_SERVER', 
-            payload: {
-              loading:true, 
-              duration:server.duration,
-              result:server.result,
-              toast_open:server.toast_open,
-              toast_autoHideDuration:server.toast_autoHideDuration, 
-              toast_severity:server.toast_severity, 
-              toast_variant:server.toast_variant,
-              toast_description:server.toast_description
-            }
-        });
-        setTimeout(() => {
-            navigate("/users");
-        }, server.duration);
-    }
-
     // Render DOM
     return (
         <>
