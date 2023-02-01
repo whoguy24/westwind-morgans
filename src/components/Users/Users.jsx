@@ -28,8 +28,7 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import Backdrop from '@mui/material/Backdrop';
-import CircularProgress from '@mui/material/CircularProgress';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
@@ -45,6 +44,8 @@ function Users() {
   const server = useSelector(store => store.server);
 
   const [addUserDialogActive, setAddUserDialogActive] = useState(false);
+  const [deleteUserDialogActive, setDeleteUserDialogActive] = useState(false);
+  const [deleteUser, setDeleteUser] = useState({});
 
   const [addUserFirstName, setAddUserFirstName] = useState("");
   const [addUserLastName, setAddUserLastName] = useState("");
@@ -77,7 +78,42 @@ function Users() {
     { field: "last_name", headerName: "Last Name", width: 120 },
     { field: "email", headerName: "Email", width: 300 },
     { field: "username", headerName: "Username", width: 120 },
+    {
+      field: 'delete',
+      headerName: 'Delete',
+      width: 80,
+      align: 'center',
+      renderCell: (cellValues) => {
+          return (
+              <IconButton color='error' onClick={(event) => { handleDeleteButton(event, cellValues.row);}}>
+                  <DeleteIcon />
+              </IconButton>
+          );
+      }
+  }
   ];
+
+  function handleDeleteButton(event, user) {
+    setDeleteUser(user);
+    setDeleteUserDialogActive(true);
+  }
+
+  function handleDeleteUser(user) {
+    setDeleteUserDialogActive(false);
+    dispatch({ type: "LOADING_TRUE" });
+    setTimeout(() => {
+      dispatch({
+        type: 'DELETE_USER',
+        payload: user
+      })
+      setDeleteUser({});
+    }, server.loading_duration);
+  }
+
+  function handleDeleteUserCancel() {
+    setDeleteUser({});
+    setDeleteUserDialogActive(false);
+  }
   
   function handleAddUserDialogClose() {
     setAddUserDialogActive(false)
@@ -187,7 +223,6 @@ function Users() {
       event.preventDefault();
   };
   
-
   function handleRegisterNewUser(event) {
     event.preventDefault();
     if (
@@ -380,6 +415,18 @@ function Users() {
           <DialogActions>
             <Button className="users-dialog-button" onClick={handleAddUserDialogClose}>Cancel</Button>
             <Button className="users-dialog-button" onClick={handleRegisterNewUser}>Register</Button>
+          </DialogActions>
+        </Dialog>
+
+        <Dialog open={deleteUserDialogActive} onClose={()=>setDeleteUserDialogActive(false)}>
+          <DialogTitle id="users-dialog-title">Delete User</DialogTitle>
+            <DialogContent>
+              Are you sure you want to permanently delete this user?<br/><br/>
+              You cannot undo this action.
+          </DialogContent>
+          <DialogActions>
+            <Button className="users-dialog-button" onClick={handleDeleteUserCancel}>Cancel</Button>
+            <Button className="users-dialog-button" onClick={()=>handleDeleteUser(deleteUser)}>Delete</Button>
           </DialogActions>
         </Dialog>
 
