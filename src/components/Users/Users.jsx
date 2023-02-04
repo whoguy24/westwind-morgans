@@ -29,6 +29,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import DeleteIcon from '@mui/icons-material/Delete';
+import KeyIcon from '@mui/icons-material/Key';
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
@@ -45,7 +46,8 @@ function Users() {
 
   const [addUserDialogActive, setAddUserDialogActive] = useState(false);
   const [deleteUserDialogActive, setDeleteUserDialogActive] = useState(false);
-  const [deleteUser, setDeleteUser] = useState({});
+  const [changePasswordDialogActive, setChangePasswordDialogActive] = useState(false);
+  const [tempUser, setTempUser] = useState({});
 
   const [addUserFirstName, setAddUserFirstName] = useState("");
   const [addUserLastName, setAddUserLastName] = useState("");
@@ -54,6 +56,10 @@ function Users() {
   const [addUserRole, setAddUserRole] = useState("USER");
   const [addUserPassword, setAddUserPassword] = useState("");
   const [addUserConfirmPassword, setAddUserConfirmPassword] = useState("");
+
+  const [changePasswordCurrent, setChangePasswordCurrent] = useState("");
+  const [changePasswordNew, setChangePasswordNew] = useState("");
+  const [changePasswordConfirm, setChangePasswordConfirm] = useState("");
 
   const [addUserFirstNameError, setAddUserFirstNameError] = useState("");
   const [addUserLastNameError, setAddUserLastNameError] = useState("");
@@ -90,11 +96,45 @@ function Users() {
               </IconButton>
           );
       }
-  }
+  },
+  {
+    field: 'change_password',
+    headerName: 'Password',
+    width: 80,
+    align: 'center',
+    renderCell: (cellValues) => {
+        return (
+            <IconButton color='error' onClick={(event) => { handleChangePasswordButton(event, cellValues.row);}}>
+                <KeyIcon />
+            </IconButton>
+        );
+    }
+}
   ];
 
+  function changePassword(username, oldPassword, newPassword) {
+    dispatch({ type: "LOADING_TRUE" });
+    setChangePasswordDialogActive(false);
+    setTimeout(() => {
+      dispatch({
+        type: 'CHANGE_USER_PASSWORD',
+        payload: {
+          username: username,
+          oldPassword: oldPassword,
+          newPassword: newPassword
+        }
+      })
+      setTempUser({});
+    }, server.loading_duration);
+  }
+
+  function handleChangePasswordButton(event, user) {
+    setTempUser(user);
+    setChangePasswordDialogActive(true);
+  }
+
   function handleDeleteButton(event, user) {
-    setDeleteUser(user);
+    setTempUser(user);
     setDeleteUserDialogActive(true);
   }
 
@@ -106,12 +146,12 @@ function Users() {
         type: 'DELETE_USER',
         payload: user
       })
-      setDeleteUser({});
+      setTempUser({});
     }, server.loading_duration);
   }
 
   function handleDeleteUserCancel() {
-    setDeleteUser({});
+    setTempUser({});
     setDeleteUserDialogActive(false);
   }
   
@@ -426,7 +466,41 @@ function Users() {
           </DialogContent>
           <DialogActions>
             <Button className="users-dialog-button" onClick={handleDeleteUserCancel}>Cancel</Button>
-            <Button className="users-dialog-button" onClick={()=>handleDeleteUser(deleteUser)}>Delete</Button>
+            <Button className="users-dialog-button" onClick={()=>handleDeleteUser(tempUser)}>Delete</Button>
+          </DialogActions>
+        </Dialog>
+
+        <Dialog open={changePasswordDialogActive} onClose={()=>setChangePasswordDialogActive(false)}>
+          <DialogTitle id="users-dialog-title">Change Password</DialogTitle>
+            <DialogContent>
+              <TextField 
+                className="users-dialog-textfield" 
+                required
+                label="Current Password" 
+                variant="standard"
+                value={changePasswordCurrent} 
+                onChange={(event)=>setChangePasswordCurrent(event.target.value)} 
+              />
+              <TextField 
+                className="users-dialog-textfield" 
+                required
+                label="New Password" 
+                variant="standard"
+                value={changePasswordNew} 
+                onChange={(event)=>setChangePasswordNew(event.target.value)} 
+              />
+              <TextField 
+                className="users-dialog-textfield" 
+                required
+                label="Confirm New Password" 
+                variant="standard"
+                value={changePasswordConfirm} 
+                onChange={(event)=>setChangePasswordConfirm(event.target.value)} 
+              />
+            </DialogContent>
+          <DialogActions>
+            <Button className="users-dialog-button" onClick={()=>setChangePasswordDialogActive(false)}>Cancel</Button>
+            <Button className="users-dialog-button" onClick={()=>changePassword(tempUser.username, changePasswordCurrent, changePasswordNew)}>Change Password</Button>
           </DialogActions>
         </Dialog>
 

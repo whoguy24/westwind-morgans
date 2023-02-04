@@ -9,6 +9,7 @@ function* loginUser(action) {
     const config = { headers: { 'Content-Type': 'application/json' }, withCredentials: true };
     const server = yield select(serverStore)
     if (action.payload.username && action.payload.password) {
+      console.log(action.payload)
       yield axios.post('api/user/login', action.payload, config);
       yield put({ type: 'FETCH_USER' });
       yield put({ 

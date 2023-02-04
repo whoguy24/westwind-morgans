@@ -30,6 +30,28 @@ router.post('/register', (req, res, next) => {
     });
 });
 
+router.put('/changePassword', rejectUnauthenticated, async (req, res) => {
+  const user = req.user;
+  const username = req.body.username;
+  const oldPassword = req.body.oldPassword;
+  const newPassword = encryptLib.encryptPassword(req.body.newPassword);
+  const passwordsMatch = await comparePasswords(username, oldPassword);
+  if ( user.role === "ADMIN" || user.username === username && passwordsMatch ) {
+    const queryValues = [username, newPassword]
+    const queryText = `UPDATE "users" SET "password" = $2 WHERE "users"."username" = $1;`;
+    pool.query(queryText, queryValues)
+      .then((result) => {
+        res.sendStatus(200)
+      })
+      .catch((err) => {
+        console.log('Failed: ', err);
+        res.sendStatus(500);
+    });
+  } else {
+    res.sendStatus(403);
+  }
+});
+
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
   const sqlText = "DELETE FROM users WHERE id = $1"
   const sqlValues = [ req.params.id ]
@@ -53,5 +75,21 @@ router.post('/logout', (req, res) => {
   req.logout();
   res.sendStatus(200);
 });
+
+function comparePasswords(username, password) {
+  return new Promise((resolve, reject )=> {
+      const queryValues = [username];
+      const queryText = `SELECT "password" FROM "users" WHERE "users"."username" = $1;`;
+      pool.query(queryText, queryValues)
+      .then(async(result) => { 
+          const storedPassword = result.rows[0].password;
+          resolve(encryptLib.comparePassword(password, storedPassword));
+      })
+      .catch((error) => { 
+          reject(error);
+      });
+
+  })
+}
 
 module.exports = router;
