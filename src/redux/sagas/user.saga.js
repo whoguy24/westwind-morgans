@@ -70,7 +70,7 @@ function* changeUserPassword(action) {
         toast_autoHideDuration:server.toast_autoHideDuration, 
         toast_severity:"success", 
         toast_variant:server.toast_variant,
-        toast_description:`Password successfully changed: ${action.payload.username}`
+        toast_description:`Password successfully changed for user: "${action.payload.username}"`
       }
     })
   } catch (error) {
@@ -87,7 +87,7 @@ function* changeUserPassword(action) {
         toast_autoHideDuration:server.toast_autoHideDuration, 
         toast_severity:"error", 
         toast_variant:server.toast_variant,
-        ...( error.response.status === 404 ? 
+        ...( error.response.status === 403 ? 
           { toast_description: "Only administrators can change this password. Please contact your administrator, or try again." } 
           : 
           { toast_description: "There was a problem communicating with the server. Please try again." }

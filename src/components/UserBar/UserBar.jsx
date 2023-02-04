@@ -31,7 +31,6 @@ function UserBar() {
   function handleLogoutButton() {
     dispatch({ type: "LOADING_TRUE" });
     setTimeout(() => {
-      dispatch({ type: "LOADING_FALSE" });
       dispatch({ type: "LOGOUT" });
     }, server.loading_duration);
   };
@@ -40,7 +39,7 @@ function UserBar() {
     <>
       { user?.id && server.userbar &&
         <div id="userbar">
-          <Typography id="userbar-username-text">Logged in: {user.username}</Typography>
+          <Typography id="userbar-username-text">Logged in: {`${user.first_name} ${user.last_name} (${user.username})`}</Typography>
           <Button id="userbar-logout-button" onClick={handleLogoutButton}>Log Out</Button>
         </div>
       }
