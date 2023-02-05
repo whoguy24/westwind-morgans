@@ -1,1 +1,10 @@
 @import "../App/App.css";
+
+#users-dialog-collapse {
+    width: 100%;
+}
+
+#users-dialog-alert {
+    color: var(--color-accent-300);
+    margin-bottom: 16px;
+}

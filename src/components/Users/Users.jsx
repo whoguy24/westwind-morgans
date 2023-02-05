@@ -17,6 +17,11 @@ import { useNavigate } from 'react-router-dom';
 import Toast from "../Toast/Toast";
 import Loading from "../Loading/Loading";
 
+import UsersChangePassword from "../UsersChangePassword/UsersChangePassword";
+import UsersDelete from "../UsersDelete/UsersDelete";
+import UsersEdit from "../UsersEdit/UsersEdit";
+import UsersRegister from "../UsersRegister/UsersRegister";
+
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -44,33 +49,42 @@ function Users() {
   const users = useSelector(store => store.users);
   const server = useSelector(store => store.server);
 
-  const [addUserDialogActive, setAddUserDialogActive] = useState(false);
-  const [deleteUserDialogActive, setDeleteUserDialogActive] = useState(false);
-  const [changePasswordDialogActive, setChangePasswordDialogActive] = useState(false);
-  const [tempUser, setTempUser] = useState({});
+  // const [addUserDialogActive, setAddUserDialogActive] = useState(false);
+  // const [deleteUserDialogActive, setDeleteUserDialogActive] = useState(false);
+  // const [changePasswordDialogActive, setChangePasswordDialogActive] = useState(false);
 
-  const [addUserFirstName, setAddUserFirstName] = useState("");
-  const [addUserLastName, setAddUserLastName] = useState("");
-  const [addUserEmail, setAddUserEmail] = useState("");
-  const [addUserUsername, setAddUserUsername] = useState("");
-  const [addUserRole, setAddUserRole] = useState("USER");
-  const [addUserPassword, setAddUserPassword] = useState("");
-  const [addUserConfirmPassword, setAddUserConfirmPassword] = useState("");
+  // const [tempUser, setTempUser] = useState({});
 
-  const [changePasswordCurrent, setChangePasswordCurrent] = useState("");
-  const [changePasswordNew, setChangePasswordNew] = useState("");
-  const [changePasswordConfirm, setChangePasswordConfirm] = useState("");
+  const [dialog, setDialog] = useState(null);
+  const [user, setUser] = useState(null);
 
-  const [addUserFirstNameError, setAddUserFirstNameError] = useState("");
-  const [addUserLastNameError, setAddUserLastNameError] = useState("");
-  const [addUserEmailError, setAddUserEmailError] = useState("");
-  const [addUserUsernameError, setAddUserUsernameError] = useState("");
-  const [addUserRoleError, setAddUserRoleError] = useState("");
-  const [addUserPasswordError, setAddUserPasswordError] = useState("");
-  const [addUserConfirmPasswordError, setAddUserConfirmPasswordError] = useState("");
+  function openDialog(dialog, user) {
+    setUser(user);
+    setDialog(dialog);
+  }
 
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  // const [addUserFirstName, setAddUserFirstName] = useState("");
+  // const [addUserLastName, setAddUserLastName] = useState("");
+  // const [addUserEmail, setAddUserEmail] = useState("");
+  // const [addUserUsername, setAddUserUsername] = useState("");
+  // const [addUserRole, setAddUserRole] = useState("USER");
+  // const [addUserPassword, setAddUserPassword] = useState("");
+  // const [addUserConfirmPassword, setAddUserConfirmPassword] = useState("");
+
+  // const [changePasswordCurrent, setChangePasswordCurrent] = useState("");
+  // const [changePasswordNew, setChangePasswordNew] = useState("");
+  // const [changePasswordConfirm, setChangePasswordConfirm] = useState("");
+
+  // const [addUserFirstNameError, setAddUserFirstNameError] = useState("");
+  // const [addUserLastNameError, setAddUserLastNameError] = useState("");
+  // const [addUserEmailError, setAddUserEmailError] = useState("");
+  // const [addUserUsernameError, setAddUserUsernameError] = useState("");
+  // const [addUserRoleError, setAddUserRoleError] = useState("");
+  // const [addUserPasswordError, setAddUserPasswordError] = useState("");
+  // const [addUserConfirmPasswordError, setAddUserConfirmPasswordError] = useState("");
+
+  // const [showPassword, setShowPassword] = useState(false);
+  // const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   useEffect(() => {
     dispatch({ type: "LOADING_TRUE" });
@@ -91,7 +105,7 @@ function Users() {
       align: 'center',
       renderCell: (cellValues) => {
           return (
-              <IconButton color='error' onClick={(event) => { handleDeleteButton(event, cellValues.row);}}>
+              <IconButton color='error' onClick={() => { openDialog("DELETE", cellValues.row) }}>
                   <DeleteIcon />
               </IconButton>
           );
@@ -104,7 +118,7 @@ function Users() {
     align: 'center',
     renderCell: (cellValues) => {
         return (
-            <IconButton color='error' onClick={(event) => { handleChangePasswordButton(event, cellValues.row);}}>
+            <IconButton color='error' onClick={() => { openDialog("CHANGE_PASSWORD", cellValues.row) }}>
                 <KeyIcon />
             </IconButton>
         );
@@ -112,187 +126,189 @@ function Users() {
 }
   ];
 
-  function changePassword(username, oldPassword, newPassword) {
-    dispatch({ type: "LOADING_TRUE" });
-    setChangePasswordDialogActive(false);
-    setTimeout(() => {
-      dispatch({
-        type: 'CHANGE_USER_PASSWORD',
-        payload: {
-          username: username,
-          oldPassword: oldPassword,
-          newPassword: newPassword
-        }
-      })
-      setTempUser({});
-    }, server.loading_duration);
-  }
+  // function changePassword(username, oldPassword, newPassword) {
+  //   dispatch({ type: "LOADING_TRUE" });
+  //   setChangePasswordDialogActive(false);
+  //   setTimeout(() => {
+  //     dispatch({
+  //       type: 'CHANGE_USER_PASSWORD',
+  //       payload: {
+  //         username: username,
+  //         oldPassword: oldPassword,
+  //         newPassword: newPassword
+  //       }
+  //     })
+  //     setTempUser({});
+  //   }, server.loading_duration);
+  // }
 
-  function handleChangePasswordButton(event, user) {
-    setTempUser(user);
-    setChangePasswordDialogActive(true);
-  }
 
-  function handleDeleteButton(event, user) {
-    setTempUser(user);
-    setDeleteUserDialogActive(true);
-  }
 
-  function handleDeleteUser(user) {
-    setDeleteUserDialogActive(false);
-    dispatch({ type: "LOADING_TRUE" });
-    setTimeout(() => {
-      dispatch({
-        type: 'DELETE_USER',
-        payload: user
-      })
-      setTempUser({});
-    }, server.loading_duration);
-  }
+  // function handleChangePasswordButton(event, user) {
+  //   setTempUser(user);
+  //   setChangePasswordDialogActive(true);
+  // }
 
-  function handleDeleteUserCancel() {
-    setTempUser({});
-    setDeleteUserDialogActive(false);
-  }
+  // function handleDeleteButton(event, user) {
+  //   setTempUser(user);
+  //   setDeleteUserDialogActive(true);
+  // }
+
+  // function handleDeleteUser(user) {
+  //   setDeleteUserDialogActive(false);
+  //   dispatch({ type: "LOADING_TRUE" });
+  //   setTimeout(() => {
+  //     dispatch({
+  //       type: 'DELETE_USER',
+  //       payload: user
+  //     })
+  //     setTempUser({});
+  //   }, server.loading_duration);
+  // }
+
+  // function handleDeleteUserCancel() {
+  //   setTempUser({});
+  //   setDeleteUserDialogActive(false);
+  // }
   
-  function handleAddUserDialogClose() {
-    setAddUserDialogActive(false)
-    setAddUserFirstName("")
-    setAddUserLastName("")
-    setAddUserEmail("")
-    setAddUserUsername("")
-    setAddUserRole("USER")
-    setAddUserPassword("")
-    setAddUserConfirmPassword("")
-    setAddUserFirstNameError("")
-    setAddUserLastNameError("")
-    setAddUserEmailError("")
-    setAddUserUsernameError("")
-    setAddUserRoleError("")
-    setAddUserPasswordError("")
-    setAddUserConfirmPasswordError("")
-  }
+  // function handleAddUserDialogClose() {
+  //   setAddUserDialogActive(false)
+  //   setAddUserFirstName("")
+  //   setAddUserLastName("")
+  //   setAddUserEmail("")
+  //   setAddUserUsername("")
+  //   setAddUserRole("USER")
+  //   setAddUserPassword("")
+  //   setAddUserConfirmPassword("")
+  //   setAddUserFirstNameError("")
+  //   setAddUserLastNameError("")
+  //   setAddUserEmailError("")
+  //   setAddUserUsernameError("")
+  //   setAddUserRoleError("")
+  //   setAddUserPasswordError("")
+  //   setAddUserConfirmPasswordError("")
+  // }
 
-  function validateInput (field) {
-    switch (field) {
-      case "addUserFirstName":
-        if ( addUserFirstName.length < 1 ) {
-          setAddUserFirstNameError("Required Field");
-        } else {
-          setAddUserFirstNameError("");
-        }
-        break;
-      case "addUserLastName":
-        if ( addUserLastName.length < 1 ) {
-          setAddUserLastNameError("Required Field");
-        } else {
-          setAddUserLastNameError("");
-        }
-        break;
-      case "addUserEmail":
-        var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-        if (addUserEmail.length < 1 ) {
-          setAddUserEmailError("Required Field");
-        } else if ( !addUserEmail.match(validRegex)) {
-          setAddUserEmailError("Please enter a valid email address.")
-        } else {
-          setAddUserEmailError("")
-        }
-        break;
-      case "addUserUsername":
-        if ( addUserUsername.length < 1 ) {
-          setAddUserUsernameError("Required Field");
-        }
-        else if ( users.find(user => user.username === addUserUsername) ) {
-          setAddUserUsernameError("User already exists.");
-        }
-        else {
-          setAddUserUsernameError("");
-        }
-        break;
-      case "addUserRole":
-        if ( addUserRole.length < 1 ) {
-          setAddUserRoleError("Required Field");
-        }
-        else if (addUserRole != "ADMIN" && addUserRole != "USER") {
-          setAddUserRoleError("Invalid Selection");
-        }
-        else {
-          setAddUserRoleError("");
-        }
-        break;
-      case "addUserPassword":
-        if ( addUserPassword.length < 1 ) {
-          setAddUserPasswordError("Required Field");
-        }
-        else {
-          setAddUserPasswordError("");
-        }
-        break;
-      case "addUserConfirmPassword":
-        if ( addUserConfirmPassword.length < 1 ) {
-          setAddUserConfirmPasswordError("Required Field");
-        }
-        else if (addUserConfirmPassword != addUserPassword) {
-          setAddUserPasswordError("Passwords do not match.");
-          setAddUserConfirmPasswordError("Passwords do not match.");
-        }
-        else {
-          setAddUserPasswordError("");
-          setAddUserConfirmPasswordError("");
-        }
-        break;
-      default:
-        break;
-    }
-  }
+  // function validateInput (field) {
+  //   switch (field) {
+  //     case "addUserFirstName":
+  //       if ( addUserFirstName.length < 1 ) {
+  //         setAddUserFirstNameError("Required Field");
+  //       } else {
+  //         setAddUserFirstNameError("");
+  //       }
+  //       break;
+  //     case "addUserLastName":
+  //       if ( addUserLastName.length < 1 ) {
+  //         setAddUserLastNameError("Required Field");
+  //       } else {
+  //         setAddUserLastNameError("");
+  //       }
+  //       break;
+  //     case "addUserEmail":
+  //       var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  //       if (addUserEmail.length < 1 ) {
+  //         setAddUserEmailError("Required Field");
+  //       } else if ( !addUserEmail.match(validRegex)) {
+  //         setAddUserEmailError("Please enter a valid email address.")
+  //       } else {
+  //         setAddUserEmailError("")
+  //       }
+  //       break;
+  //     case "addUserUsername":
+  //       if ( addUserUsername.length < 1 ) {
+  //         setAddUserUsernameError("Required Field");
+  //       }
+  //       else if ( users.find(user => user.username === addUserUsername) ) {
+  //         setAddUserUsernameError("User already exists.");
+  //       }
+  //       else {
+  //         setAddUserUsernameError("");
+  //       }
+  //       break;
+  //     case "addUserRole":
+  //       if ( addUserRole.length < 1 ) {
+  //         setAddUserRoleError("Required Field");
+  //       }
+  //       else if (addUserRole != "ADMIN" && addUserRole != "USER") {
+  //         setAddUserRoleError("Invalid Selection");
+  //       }
+  //       else {
+  //         setAddUserRoleError("");
+  //       }
+  //       break;
+  //     case "addUserPassword":
+  //       if ( addUserPassword.length < 1 ) {
+  //         setAddUserPasswordError("Required Field");
+  //       }
+  //       else {
+  //         setAddUserPasswordError("");
+  //       }
+  //       break;
+  //     case "addUserConfirmPassword":
+  //       if ( addUserConfirmPassword.length < 1 ) {
+  //         setAddUserConfirmPasswordError("Required Field");
+  //       }
+  //       else if (addUserConfirmPassword != addUserPassword) {
+  //         setAddUserPasswordError("Passwords do not match.");
+  //         setAddUserConfirmPasswordError("Passwords do not match.");
+  //       }
+  //       else {
+  //         setAddUserPasswordError("");
+  //         setAddUserConfirmPasswordError("");
+  //       }
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // }
 
-  const handleShowPassordButton = () => {
-    setShowPassword(!showPassword)
-  };
+  // const handleShowPassordButton = () => {
+  //   setShowPassword(!showPassword)
+  // };
 
-  const handleMouseDownShowPassword = (event) => {
-      event.preventDefault();
-  };
+  // const handleMouseDownShowPassword = (event) => {
+  //     event.preventDefault();
+  // };
 
-  const handleShowConfirmPassordButton = () => {
-    setShowConfirmPassword(!showConfirmPassword)
-  };
+  // const handleShowConfirmPassordButton = () => {
+  //   setShowConfirmPassword(!showConfirmPassword)
+  // };
 
-  const handleMouseDownShowConfirmPassword = (event) => {
-      event.preventDefault();
-  };
+  // const handleMouseDownShowConfirmPassword = (event) => {
+  //     event.preventDefault();
+  // };
   
-  function handleRegisterNewUser(event) {
-    event.preventDefault();
-    if (
-      !addUserFirstNameError &&
-      !addUserLastNameError &&
-      !addUserUsernameError &&
-      !addUserEmailError &&
-      !addUserRoleError  &&
-      !addUserPasswordError &&
-      !addUserConfirmPasswordError
-    ) {
-      dispatch({ type: "LOADING_TRUE" });
-      handleAddUserDialogClose();
-      setTimeout(() => {
-        dispatch({
-          type: "REGISTER",
-          payload: {
-              firstName: addUserFirstName,
-              lastName: addUserLastName,
-              username: addUserUsername,
-              role: addUserRole,
-              email: addUserEmail,
-              password: addUserPassword,
-          },
-        });
-      }, server.loading_duration);
-    } else {
-      return false;
-    }
-  }
+  // function handleRegisterNewUser(event) {
+  //   event.preventDefault();
+  //   if (
+  //     !addUserFirstNameError &&
+  //     !addUserLastNameError &&
+  //     !addUserUsernameError &&
+  //     !addUserEmailError &&
+  //     !addUserRoleError  &&
+  //     !addUserPasswordError &&
+  //     !addUserConfirmPasswordError
+  //   ) {
+  //     dispatch({ type: "LOADING_TRUE" });
+  //     handleAddUserDialogClose();
+  //     setTimeout(() => {
+  //       dispatch({
+  //         type: "REGISTER",
+  //         payload: {
+  //             firstName: addUserFirstName,
+  //             lastName: addUserLastName,
+  //             username: addUserUsername,
+  //             role: addUserRole,
+  //             email: addUserEmail,
+  //             password: addUserPassword,
+  //         },
+  //       });
+  //     }, server.loading_duration);
+  //   } else {
+  //     return false;
+  //   }
+  // }
 
   return (
     <>
@@ -300,7 +316,7 @@ function Users() {
 
         <div id="users-toolbar">
           <Button className="users-button" onClick={()=>navigate(-1)}>Back</Button>
-          <Button className="users-button" onClick={()=>setAddUserDialogActive(true)}>Add User</Button>
+          <Button className="users-button" onClick={()=>openDialog("REGISTER", null)}>Add User</Button>
         </div>
 
         <div id="users-grid">
@@ -319,7 +335,12 @@ function Users() {
           />
         </div>
 
-        <Dialog open={addUserDialogActive} onClose={handleAddUserDialogClose}>
+        <UsersChangePassword dialog={dialog} user={user} setDialog={()=>setDialog()} setUser={()=>setUser()} />
+        <UsersDelete dialog={dialog} user={user} setDialog={()=>setDialog()} setUser={()=>setUser()} />
+        <UsersEdit dialog={dialog} user={user} setDialog={()=>setDialog()} setUser={()=>setUser()} />
+        <UsersRegister dialog={dialog} user={user} setDialog={()=>setDialog()} setUser={()=>setUser()} />
+
+        {/* <Dialog open={addUserDialogActive} onClose={handleAddUserDialogClose}>
           <DialogTitle id="users-dialog-title">New User Registration</DialogTitle>
             <DialogContent>
             <div id="users-add-user-dialog-form">
@@ -456,9 +477,9 @@ function Users() {
             <Button className="users-dialog-button" onClick={handleAddUserDialogClose}>Cancel</Button>
             <Button className="users-dialog-button" onClick={handleRegisterNewUser}>Register</Button>
           </DialogActions>
-        </Dialog>
+        </Dialog> */}
 
-        <Dialog open={deleteUserDialogActive} onClose={()=>setDeleteUserDialogActive(false)}>
+        {/* <Dialog open={deleteUserDialogActive} onClose={()=>setDeleteUserDialogActive(false)}>
           <DialogTitle id="users-dialog-title">Delete User</DialogTitle>
             <DialogContent>
               Are you sure you want to permanently delete this user?<br/><br/>
@@ -468,9 +489,9 @@ function Users() {
             <Button className="users-dialog-button" onClick={handleDeleteUserCancel}>Cancel</Button>
             <Button className="users-dialog-button" onClick={()=>handleDeleteUser(tempUser)}>Delete</Button>
           </DialogActions>
-        </Dialog>
+        </Dialog> */}
 
-        <Dialog open={changePasswordDialogActive} onClose={()=>setChangePasswordDialogActive(false)}>
+        {/* <Dialog open={changePasswordDialogActive} onClose={()=>setChangePasswordDialogActive(false)}>
           <DialogTitle id="users-dialog-title">Change Password</DialogTitle>
             <DialogContent>
               <TextField 
@@ -502,7 +523,7 @@ function Users() {
             <Button className="users-dialog-button" onClick={()=>setChangePasswordDialogActive(false)}>Cancel</Button>
             <Button className="users-dialog-button" onClick={()=>changePassword(tempUser.username, changePasswordCurrent, changePasswordNew)}>Change Password</Button>
           </DialogActions>
-        </Dialog>
+        </Dialog> */}
 
         <Toast />
         <Loading />
