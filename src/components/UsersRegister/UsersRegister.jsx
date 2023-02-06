@@ -29,13 +29,16 @@ import Collapse from '@mui/material/Collapse';
 ///// COMPONENT FUNCTION //////////////////////////////
 ///////////////////////////////////////////////////////
 
-function UsersRegister({ dialog, user, setDialog, setUser }) {
+function UsersRegister({ dialog, setDialog, setUser }) {
 
   const dispatch = useDispatch();
 
   // Redux Store Variables
   const users = useSelector(store => store.users);
   const server = useSelector(store => store.server);
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [formError, setFormError] = useState(null);
 
   const [newUserData, setNewUserData] = useState({
     firstName: {value:"", error:null},
@@ -46,9 +49,6 @@ function UsersRegister({ dialog, user, setDialog, setUser }) {
     password: {value:"", error:null},
     confirmPassword: {value:"", error:null}
   });
-
-  const [showPassword, setShowPassword] = useState(false);
-  const [formError, setFormError] = useState(null);
 
   useEffect(() => {
     if (
