@@ -1,0 +1,9 @@
+@import "../App/App.css";
+
+#users-table {
+    width: 100%;
+}
+
+#users-table-body {
+    width: 100%;
+}

@@ -1,0 +1,20 @@
+@import "../App/App.css";
+
+#users-table-row {
+    display: flex;
+    background-color: red;
+    width: 100%;
+}
+
+#users-table-row-data {
+    display: flex;
+    width: 100%;
+}
+
+#users-table-row-header{
+    color: white;
+}
+
+#users-table-row-text{
+    color: white;
+}
