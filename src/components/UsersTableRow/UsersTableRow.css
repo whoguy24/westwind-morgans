@@ -2,19 +2,106 @@
 
 #users-table-row {
     display: flex;
-    background-color: red;
+    flex-direction: column;
+    background-color: var(--color-neutral-700);
+    width: 100%;
+    padding: 12px;
+    border: 0.5px solid var(--color-accent-300);
+}
+
+#users-table-row-group1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    white-space: nowrap;
+    /* border: 0.5px solid red; */
+}
+
+#users-table-row-group2 {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    /* border: 0.5px solid red; */
+}
+
+#users-table-row-button-group {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+    /* border: 0.5px solid red; */
+}
+
+#users-table-row-button {
+    display: flex;
+    color: var(--color-accent-300);
+    text-transform: none;
+    border-radius: 0px;
+    padding: 0px;
+    font-size: var(--font-size-200);
+    min-width: 36px;
+}
+
+#users-table-row-button:hover {
+    color: var(--color-accent-500);
+}
+
+.users-table-row-text-large {
+    color: var(--color-accent-300) !important;
+    font-size: var(--font-size-400) !important;
+    /* border: 0.5px solid green; */
+}
+
+.users-table-row-text {
+    display: flex !important;
+    height: 100% !important;
+    color: var(--color-accent-300) !important;
+    font-weight: var(--font-weight-light) !important;
+    font-size: var(--font-size-200) !important;
+    /* border: 0.5px solid green; */
+    min-height: 30px !important;
+    align-items: center !important;
+}
+
+.users-table-row-text-alias {
+    display: flex !important;
+    height: 100% !important;
+    color: var(--color-accent-300) !important;
+    font-weight: var(--font-weight-light) !important;
+    font-size: var(--font-size-200) !important;
+    /* border: 0.5px solid green; */
+    align-items: center !important;
+    font-style: italic !important;
+}
+
+#users-table-row-editable-group1 {
+    display: flex;
+    flex-direction: column;
     width: 100%;
 }
 
-#users-table-row-data {
+#users-table-row-editable-group2 {
     display: flex;
     width: 100%;
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: 12px;
 }
 
-#users-table-row-header{
-    color: white;
+#users-table-row-editable {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
 
-#users-table-row-text{
-    color: white;
+.users-table-row-text-input {
+    display: flex !important;
+    height: 100% !important;
+    color: var(--color-accent-300) !important;
+    font-weight: var(--font-weight-light) !important;
+    min-height: 30px !important;
+    margin: 8px !important;
 }
