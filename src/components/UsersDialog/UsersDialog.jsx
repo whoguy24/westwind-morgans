@@ -10,6 +10,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // Import Custom Components
+import UsersDialogRegister from "../UsersDialogRegister/UsersDialogRegister";
 import UsersDialogEdit from "../UsersDialogEdit/UsersDialogEdit";
 import UsersDialogPassword from "../UsersDialogPassword/UsersDialogPassword";
 import UsersDialogDelete from "../UsersDialogDelete/UsersDialogDelete";
@@ -26,6 +27,7 @@ function UsersDialog({dialog, resetDialog}) {
 
   // Redux Store Variables
   const users = useSelector(store => store.users);
+  const user = useSelector(store => store.user);
   const server = useSelector(store => store.server);
 
   const [userData, setUserData] = useState({
@@ -53,6 +55,19 @@ function UsersDialog({dialog, resetDialog}) {
         last_name: { value: dialog.user.last_name, error: null }, 
         phone: { value: dialog.user.phone, error: null },
         comments: { value: dialog.user.comments, error: null },
+        password_current: { value: "", error: null },
+        password_new: { value: "", error: null },
+        password_confirm: { value: "", error: null }
+      })
+    } else if (dialog.mode === "REGISTER") {
+      setUserData({
+        username: { value: "", error: null },
+        role: { value: "USER", error: null },
+        email: { value: "", error: null },
+        first_name: { value: "", error: null },
+        last_name: { value: "", error: null }, 
+        phone: { value: "", error: null },
+        comments: { value: "", error: null },
         password_current: { value: "", error: null },
         password_new: { value: "", error: null },
         password_confirm: { value: "", error: null }
@@ -128,10 +143,6 @@ function UsersDialog({dialog, resetDialog}) {
           else if ( userData.role.value != "ADMIN" && userData.role.value != "USER" ) {
             editedUserData.role.error = "Invalid Selection";
           }
-          // else if ( userData.role.value === "USER" && users.filter(user => user.role === "ADMIN" ).length === 1 ) {
-          //   console.log(users.filter(user => user.role === "ADMIN" ).length)
-          //   editedUserData.role.error = "Cannot reassign last administrator as a user.";
-          // }
           else {
             editedUserData.role.error = null;
           }
@@ -205,6 +216,14 @@ function UsersDialog({dialog, resetDialog}) {
       await validateInput("PASSWORD_CONFIRM");
     }
 
+    if ( mode === "REGISTER" ) {
+      await validateInput("EMAIL");
+      await validateInput("USERNAME");
+      await validateInput("ROLE");
+      await validateInput("PASSWORD_NEW");
+      await validateInput("PASSWORD_CONFIRM");
+    }
+
     if (      
       !Boolean(userData.email.error) &&
       !Boolean(userData.username.error) &&
@@ -249,6 +268,39 @@ function UsersDialog({dialog, resetDialog}) {
     })
   };
 
+  function registerUser() {
+
+    console.log("We made it")
+
+    validateForm("REGISTER").then((result)=> {
+      if (result) {
+        dispatch({ type: "LOADING_TRUE" });
+        resetDialog(false, dialog.mode, dialog.user);
+        setTimeout(() => {
+          dispatch({
+            type: "REGISTER_USER",
+            payload: {
+                username: userData.username.value,
+                email: userData.email.value,
+                role: userData.role.value,
+                first_name: userData.first_name.value,
+                last_name: userData.last_name.value,
+                phone: userData.phone.value,
+                comments: userData.comments.value,
+                password: userData.password_new.value,
+                created_by: user.username
+            },
+          });
+          resetDialog(false, "", {});
+        }, server.loading_duration);
+      }
+      else {
+        setFormError("Please resolve errors before continuing.");
+      };
+
+    })
+  };
+
   function deleteUser() {
     resetDialog(false, dialog.mode, dialog.user);
     dispatch({ type: "LOADING_TRUE" });
@@ -279,6 +331,22 @@ function UsersDialog({dialog, resetDialog}) {
 
   return (
     <>
+
+      { dialog.mode === "REGISTER" && 
+
+        <UsersDialogRegister 
+          dialog={dialog} 
+          resetDialog={resetDialog} 
+          userData={userData} 
+          editUserData={editUserData} 
+          validateInput={validateInput} 
+          registerUser={registerUser}
+          validateForm={validateForm}
+          setFormError={setFormError}
+          formError={formError}
+        />
+
+      }
 
       { dialog.mode === "EDIT" && 
 
@@ -317,11 +385,6 @@ function UsersDialog({dialog, resetDialog}) {
         />
 
       }
-
-
-
-
-
 
     </>
   );

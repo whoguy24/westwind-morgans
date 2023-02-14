@@ -16,12 +16,7 @@ import { useNavigate } from 'react-router-dom';
 import Toast from "../Toast/Toast";
 import Loading from "../Loading/Loading";
 
-import UsersChangePassword from "../UsersChangePassword/UsersChangePassword";
-import UsersDelete from "../UsersDelete/UsersDelete";
-
 import UsersDialog from "../UsersDialog/UsersDialog";
-
-import UsersRegister from "../UsersRegister/UsersRegister";
 import UsersTable from "../UsersTable/UsersTable";
 
 ///////////////////////////////////////////////////////
@@ -51,6 +46,8 @@ function Users() {
       user: user
     }
 
+    console.log(resetDialog)
+
     setDialog({...resetDialog})
 
   }
@@ -68,17 +65,11 @@ function Users() {
 
         <div id="users-toolbar">
           <Button className="users-button" onClick={()=>navigate(-1)}>Back</Button>
-          <Button className="users-button" onClick={()=>setDialog("REGISTER")}>Add User</Button>
+          <Button className="users-button" onClick={()=>resetDialog(true, "REGISTER", {})}>Add User</Button>
         </div>
 
         <UsersTable users={users} resetDialog={resetDialog} />
-
         <UsersDialog dialog={dialog} resetDialog={resetDialog} />
-
-        {/* <UsersChangePassword dialog={dialog} user={user} setDialog={()=>setDialog()} setUser={()=>setUser()} />
-        <UsersDelete dialog={dialog} user={user} setDialog={()=>setDialog()} setUser={()=>setUser()} />
-        <UsersEdit dialog={dialog} user={user} setDialog={()=>setDialog()} setUser={()=>setUser()} />
-        <UsersRegister dialog={dialog} user={user} setDialog={()=>setDialog()} setUser={()=>setUser()} /> */}
 
         <Toast />
         <Loading />

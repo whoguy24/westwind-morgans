@@ -10,24 +10,40 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   res.send(req.user);
 });
 
-router.post('/register', (req, res, next) => {
+router.post('/register', async (req, res, next) => {
 
-  const firstName = req.body.firstName;
-  const lastName = req.body.lastName;
-  const username = req.body.username;
-  const role = req.body.role;
-  const email = req.body.email;
-  const password = encryptLib.encryptPassword(req.body.password);
+  const users = await fetchUsernames();
 
-  const queryText = `INSERT INTO "users" (first_name, last_name, username, role, email, password)
-    VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`;
-  pool
-    .query(queryText, [firstName, lastName, username, role, email, password])
-    .then(() => res.sendStatus(201))
-    .catch((err) => {
-      console.log('User registration failed: ', err);
-      res.sendStatus(500);
-    });
+  if ( users.filter(user=>user.username === req.body.username).length === 0 ) {
+
+    const queryValues = [
+      req.body.username,
+      req.body.email,
+      req.body.role,
+      req.body.first_name,
+      req.body.last_name,
+      req.body.phone,
+      req.body.comments,
+      encryptLib.encryptPassword(req.body.password),
+      req.body.created_by
+    ];
+
+    const queryText = `INSERT INTO "users" (username, email, role, first_name, last_name, phone, comments, password, created_by)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id`;
+    pool
+      .query(queryText, queryValues)
+      .then(() => res.sendStatus(201))
+      .catch((err) => {
+        console.log('User registration failed: ', err);
+        res.sendStatus(500);
+      });
+      
+    }
+    else {
+      res.sendStatus(400);
+    }
+
+
 });
 
 router.put('/:id', rejectUnauthenticated, (req, res) => {
@@ -105,6 +121,12 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
   const loggedInUser = req.user
   const userToDelete = req.body
 
+  console.log(loggedInUser)
+  console.log(userToDelete)
+
+  console.log(loggedInUser.username === userToDelete.username)
+  console.log(loggedInUser.role != "ADMIN" && userToDelete.created_by != loggedInUser.username)
+
   if ( loggedInUser.username != userToDelete.username && loggedInUser.role === "ADMIN" || userToDelete.created_by === loggedInUser.username ) {
     pool.query(sqlText, sqlValues)
     .then((result) => {
@@ -120,6 +142,9 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
   } 
   else if (loggedInUser.role != "ADMIN" && userToDelete.created_by != loggedInUser.username) {
       res.sendStatus(401);
+  } 
+  else {
+    res.sendStatus(500);
   }
 
 })
@@ -141,6 +166,20 @@ function comparePasswords(username, password) {
       .then(async(result) => { 
           const storedPassword = result.rows[0].password;
           resolve(encryptLib.comparePassword(password, storedPassword));
+      })
+      .catch((error) => { 
+          reject(error);
+      });
+
+  })
+}
+
+function fetchUsernames() {
+  return new Promise((resolve, reject )=> {
+      const queryText = `SELECT "username" FROM users;`;
+      pool.query(queryText)
+      .then(async(result) => { 
+          resolve(result.rows);
       })
       .catch((error) => { 
           reject(error);

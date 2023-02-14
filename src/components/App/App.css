@@ -21,6 +21,7 @@ body {
   --color-primary-300: rgba(223, 71, 37, 0.2);
   --color-primary-500: rgba(223, 71, 37, 0.3);
   --color-primary-700: rgba(100, 30, 20);
+  --color-primary-900: rgb(147, 35, 18);
 
   --color-accent-100: hsla(50, 100%, 80%, 0.5);
   --color-accent-200: hsla(50, 100%, 80%, 0.8);
@@ -165,4 +166,28 @@ body {
 
 .MuiOutlinedInput-root:hover fieldset {
   border: 1px solid var(--color-accent-200) !important;
+}
+
+.MuiStepper-root .MuiStepLabel-label.Mui-active{
+  color: var(--color-accent-300) !important;
+}
+
+.MuiStepper-root .MuiStepLabel-label.Mui-disabled{
+  color: var(--color-accent-100) !important;
+}
+
+.MuiStepIcon{
+  color: var(--color-accent-100) !important;
+}
+
+.Mui-active {
+  color: var(--color-primary-900) !important;
+}
+
+.Mui-completed {
+  color: var(--color-accent-300) !important;
+}
+
+.Mui-StepIcon-text {
+  color: green !important;
 }
