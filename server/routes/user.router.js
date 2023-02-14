@@ -65,24 +65,19 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
 
 });
 
-router.put('/changePassword', rejectUnauthenticated, async (req, res) => {
+router.put('/:id/changePassword', rejectUnauthenticated, async (req, res) => {
   
-  const user = req.user;
-  const username = req.body.username;
-  const passwordCurrent = req.body.password_current;
+  const loggedInUsername = req.user.username;
+  const requestUsername = req.body.username
+
+  const passwordCandidate = req.body.password_current;
   const passwordNew = encryptLib.encryptPassword(req.body.password_new);
 
-  console.log("WE ARE HERE");
+  const passwordsMatch = await comparePasswords(loggedInUsername, passwordCandidate);
 
-  console.log(passwordCurrent);
-  console.log(passwordNew);
+  if ( loggedInUsername === requestUsername && passwordsMatch ) {
 
-  const passwordsMatch = await comparePasswords(username, passwordCurrent);
-
-
-
-  if ( user.role === "ADMIN" || user.username === username && passwordsMatch ) {
-    const queryValues = [username, passwordNew]
+    const queryValues = [loggedInUsername, passwordNew]
     const queryText = `UPDATE "users" SET "password" = $2 WHERE "users"."username" = $1;`;
     pool.query(queryText, queryValues)
       .then((result) => {
@@ -92,16 +87,26 @@ router.put('/changePassword', rejectUnauthenticated, async (req, res) => {
         console.log('Failed: ', err);
         res.sendStatus(500);
     });
-  } else {
-    res.sendStatus(403);
+
+    }
+    else if (!passwordsMatch) {
+      res.sendStatus(401);
+    }
+  else {
+    res.sendStatus(500);
   }
+
 });
 
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
   const sqlText = "DELETE FROM users WHERE id = $1"
   const sqlValues = [ req.params.id ]
 
-  pool.query(sqlText, sqlValues)
+  const loggedInUser = req.user
+  const userToDelete = req.body
+
+  if ( loggedInUser.username != userToDelete.username && loggedInUser.role === "ADMIN" || userToDelete.created_by === loggedInUser.username ) {
+    pool.query(sqlText, sqlValues)
     .then((result) => {
       res.sendStatus(200);
     })
@@ -109,6 +114,13 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
       console.error('DELETE database error', error)
       res.sendStatus(500);
     })
+  }
+  else if (loggedInUser.username === userToDelete.username) {
+      res.sendStatus(400);
+  } 
+  else if (loggedInUser.role != "ADMIN" && userToDelete.created_by != loggedInUser.username) {
+      res.sendStatus(401);
+  }
 
 })
 

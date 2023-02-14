@@ -52,7 +52,7 @@ function App() {
         type: 'SET_SERVER', 
         payload: {
             result:200,
-            userbar:false,
+            userbar:true,
             loading:false, 
             loading_duration:1000,
             toast_open:false,

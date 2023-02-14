@@ -18,7 +18,7 @@ function* fetchUser() {
 function* deleteUser(action) {
   try {
     const server = yield select(serverStore)
-    yield axios({ method: 'DELETE', url: `/api/user/${action.payload.id}`})
+    yield axios({ method: 'DELETE', url: `/api/user/${action.payload.id}`, data: action.payload})
     const response = yield axios({ method: 'GET', url: '/api/users' });
     yield put({ type: 'LOAD_USERS', payload: response.data });
     yield put({ 
@@ -36,7 +36,6 @@ function* deleteUser(action) {
       }
     })
   } catch (error) {
-    console.log(error)
     const server = yield select(serverStore)
     yield put({ 
       type: 'SET_SERVER', 
@@ -49,7 +48,15 @@ function* deleteUser(action) {
         toast_autoHideDuration:server.toast_autoHideDuration, 
         toast_severity:"error", 
         toast_variant:server.toast_variant,
-        toast_description: "There was a problem deleting this user. Please try again."
+        ...( 
+          error.response.status === 400 ? 
+          { toast_description: "Cannot delete a user that is currently logged in. Please log in as a different user and try again." } 
+          : 
+          error.response.status === 401 ?
+          { toast_description: "Users can only be deleted by an administrator, or the user that created them. Please try again." }
+          :
+          { toast_description: "There was a problem deleting this user. Please try again." }
+        )
       }
     })
   }
@@ -152,8 +159,8 @@ function* changeUserPassword(action) {
         toast_autoHideDuration:server.toast_autoHideDuration, 
         toast_severity:"error", 
         toast_variant:server.toast_variant,
-        ...( error.response.status === 403 ? 
-          { toast_description: "Only administrators can change this password. Please contact your administrator, or try again." } 
+        ...( error.response.status === 401 ? 
+          { toast_description: "The password submitted does not match our records. Please try again." } 
           : 
           { toast_description: "There was a problem communicating with the server. Please try again." }
         )

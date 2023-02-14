@@ -269,8 +269,8 @@ function UsersDialog({dialog, resetDialog}) {
         type: 'CHANGE_USER_PASSWORD',
         payload: {
           username: dialog.user.username,
-          password_current: userData.password_current,
-          password_new: userData.password_new
+          password_current: userData.password_current.value,
+          password_new: userData.password_new.value
         }
       })
       resetDialog(false, "", {});

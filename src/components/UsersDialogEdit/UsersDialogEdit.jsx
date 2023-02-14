@@ -125,7 +125,8 @@ function UsersDialogEdit({ dialog, resetDialog, userData, editUserData, validate
                   onChange={(event)=>editUserData("COMMENTS", event.target.value)}
                 />
 
-                <Button className="dialog-button-inline" disableRipple onClick={()=>resetDialog(true, "CHANGE_PASSWORD", dialog.user)}>Change Password</Button>
+                { dialog.user.username === user.username && <Button className="dialog-button-inline" disableRipple onClick={()=>resetDialog(true, "CHANGE_PASSWORD", dialog.user)}>Change Password</Button> }
+                
                 <Button className="dialog-button-inline" disableRipple onClick={()=>resetDialog(true, "DELETE", dialog.user)}>Delete User</Button>         
 
               </div>
