@@ -2,6 +2,8 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 import { select } from 'redux-saga/effects';
 import { serverStore } from '../reducers/server.reducer.js'
+import { usersStore } from '../reducers/users.reducer.js'
+import { userStore } from '../reducers/user.reducer.js'
 
 function* fetchUser() {
   try {
@@ -56,23 +58,47 @@ function* deleteUser(action) {
 function* editUser(action) {
   try {
     const server = yield select(serverStore)
-    yield axios({ method: 'PUT', url: `/api/user/${action.payload.id}`, data: action.payload })
-    const response = yield axios({ method: 'GET', url: '/api/users' });
-    yield put({ type: 'LOAD_USERS', payload: response.data });
-    yield put({ 
-      type: 'SET_SERVER', 
-      payload: {
-        result:200,
-        userbar:server.loading_duration,
-        loading:false, 
-        loading_duration:server.loading_duration,
-        toast_open:true,
-        toast_autoHideDuration:server.toast_autoHideDuration, 
-        toast_severity:"success", 
-        toast_variant:server.toast_variant,
-        toast_description:`Successfully edited user: ${action.payload.username}`
+    const users = yield select(usersStore)
+    const user = yield select(userStore)
+    if (
+      users.find(user=>user.id===action.payload.id).role === "ADMIN" && action.payload.role === "USER" && users.filter(user => user.role === "ADMIN" ).length <= 1
+    ) { 
+      yield put({ 
+        type: 'SET_SERVER', 
+        payload: {
+          result:400,
+          userbar:server.userbar,
+          loading:false, 
+          loading_duration:server.loading_duration,
+          toast_open:true,
+          toast_autoHideDuration:server.toast_autoHideDuration, 
+          toast_severity:"error", 
+          toast_variant:server.toast_variant,
+          toast_description: "There must be at least one administrator account. Please try again."
+        }
+      })
+    } else {
+      yield axios({ method: 'PUT', url: `/api/user/${action.payload.id}`, data: action.payload })
+      if ( user.id === action.payload.id ) {
+        yield put({ type: 'SET_USER', payload: action.payload });
       }
-    })
+      const response = yield axios({ method: 'GET', url: '/api/users' });
+      yield put({ type: 'LOAD_USERS', payload: response.data });
+      yield put({ 
+        type: 'SET_SERVER', 
+        payload: {
+          result:200,
+          userbar:server.loading_duration,
+          loading:false, 
+          loading_duration:server.loading_duration,
+          toast_open:true,
+          toast_autoHideDuration:server.toast_autoHideDuration, 
+          toast_severity:"success", 
+          toast_variant:server.toast_variant,
+          toast_description:`Successfully edited user: ${action.payload.username}`
+        }
+      })
+    }
   } catch (error) {
     const server = yield select(serverStore)
     yield put({ 
@@ -97,7 +123,7 @@ function* changeUserPassword(action) {
     const server = yield select(serverStore)
     const config = { headers: { 'Content-Type': 'application/json' }, withCredentials: true };
     console.log(action.payload)
-    yield axios({ method: 'PUT', url: "/api/user/changePassword", data: action.payload, config})
+    yield axios({ method: 'PUT', url: `/api/user/${action.payload.id}/changePassword`, data: action.payload, config})
     yield put({ 
       type: 'SET_SERVER', 
       payload: {

@@ -10,3 +10,4 @@ const usersReducer = (state = [], action) => {
 };
   
 export default usersReducer;
+export const usersStore = state => state.users

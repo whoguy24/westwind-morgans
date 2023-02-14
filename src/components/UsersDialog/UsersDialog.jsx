@@ -128,10 +128,10 @@ function UsersDialog({dialog, resetDialog}) {
           else if ( userData.role.value != "ADMIN" && userData.role.value != "USER" ) {
             editedUserData.role.error = "Invalid Selection";
           }
-          else if ( userData.role.value === "USER" && users.filter(user => user.role === "ADMIN" ).length === 1 ) {
-            console.log(users.filter(user => user.role === "ADMIN" ).length)
-            editedUserData.role.error = "Cannot reassign last administrator as a user.";
-          }
+          // else if ( userData.role.value === "USER" && users.filter(user => user.role === "ADMIN" ).length === 1 ) {
+          //   console.log(users.filter(user => user.role === "ADMIN" ).length)
+          //   editedUserData.role.error = "Cannot reassign last administrator as a user.";
+          // }
           else {
             editedUserData.role.error = null;
           }
@@ -242,8 +242,6 @@ function UsersDialog({dialog, resetDialog}) {
           });
           resetDialog(false, "", {});
         }, server.loading_duration);
-      } else if ( userData.role.error === "Cannot reassign last administrator as a user." ) {
-        setFormError("Cannot reassign last administrator as a user.");
       }
       else {
         setFormError("Please resolve errors before continuing.");
@@ -264,19 +262,19 @@ function UsersDialog({dialog, resetDialog}) {
   }
 
   function changePassword() {
-    // dispatch({ type: "LOADING_TRUE" });
-    // setDialog(null);
-    // setTimeout(() => {
-    //   dispatch({
-    //     type: 'CHANGE_USER_PASSWORD',
-    //     payload: {
-    //       username: user.username,
-    //       oldPassword: changePasswordCurrent,
-    //       newPassword: changePasswordConfirm
-    //     }
-    //   })
-    //   setUser(null);
-    // }, server.loading_duration);
+    dispatch({ type: "LOADING_TRUE" });
+    resetDialog(false, dialog.mode, dialog.user);
+    setTimeout(() => {
+      dispatch({
+        type: 'CHANGE_USER_PASSWORD',
+        payload: {
+          username: dialog.user.username,
+          password_current: userData.password_current,
+          password_new: userData.password_new
+        }
+      })
+      resetDialog(false, "", {});
+    }, server.loading_duration);
   }
 
   return (

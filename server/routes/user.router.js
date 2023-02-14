@@ -66,13 +66,23 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
 });
 
 router.put('/changePassword', rejectUnauthenticated, async (req, res) => {
+  
   const user = req.user;
   const username = req.body.username;
-  const oldPassword = req.body.oldPassword;
-  const newPassword = encryptLib.encryptPassword(req.body.newPassword);
-  const passwordsMatch = await comparePasswords(username, oldPassword);
+  const passwordCurrent = req.body.password_current;
+  const passwordNew = encryptLib.encryptPassword(req.body.password_new);
+
+  console.log("WE ARE HERE");
+
+  console.log(passwordCurrent);
+  console.log(passwordNew);
+
+  const passwordsMatch = await comparePasswords(username, passwordCurrent);
+
+
+
   if ( user.role === "ADMIN" || user.username === username && passwordsMatch ) {
-    const queryValues = [username, newPassword]
+    const queryValues = [username, passwordNew]
     const queryText = `UPDATE "users" SET "password" = $2 WHERE "users"."username" = $1;`;
     pool.query(queryText, queryValues)
       .then((result) => {
