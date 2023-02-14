@@ -4,7 +4,6 @@
     display: flex;
     flex-direction: column;
     background-color: var(--color-neutral-700);
-    width: 100%;
     padding: 12px;
     border: 0.5px solid var(--color-accent-300);
 }
@@ -43,10 +42,13 @@
     padding: 0px;
     font-size: var(--font-size-200);
     min-width: 36px;
+    font-weight: var(--font-weight-light);
+    background-color: transparent;
 }
 
 #users-table-row-button:hover {
     color: var(--color-accent-500);
+    font-weight: var(--font-weight-medium);
 }
 
 .users-table-row-text-large {

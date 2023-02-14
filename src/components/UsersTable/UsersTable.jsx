@@ -14,7 +14,7 @@ import List from '@mui/material/List';
 ///// COMPONENT FUNCTION //////////////////////////////
 ///////////////////////////////////////////////////////
 
-function UsersTable({users}) {
+function UsersTable({users, resetDialog}) {
 
   return (
     <>
@@ -22,7 +22,7 @@ function UsersTable({users}) {
         <tbody id="users-table-body">
           { users.map((user)=> {
               return(
-                <UsersTableRow key={user.id} user={user} />
+                <UsersTableRow key={user.id} user={user} resetDialog={resetDialog} />
               )
           })}
         </tbody>

@@ -2,7 +2,7 @@
 
 #users {
     display: flex;
-    width: 90%;
+    width: 100%;
     flex-direction: column;
 }
 
@@ -59,16 +59,6 @@
     width: 100% !important;
     display: flex !important;
     flex-direction: row !important;
-}
-
-.users-dialog-textfield {
-    width: 100% !important;
-    margin-top: 8px !important;
-    margin-bottom: 8px !important;
-    margin-left: 16px !important;
-    margin-right: 16px !important;
-    /* color: var(--color-accent-300) !important;
-    border-color: var(--color-accent-300) !important; */
 }
 
 /* .users-dialog-textfield::before {

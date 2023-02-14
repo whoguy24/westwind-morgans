@@ -1,0 +1,38 @@
+@import "../App/App.css";
+
+#users-dialog-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    width: 400px;
+}
+
+#users-dialog-buttons {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    justify-content: flex-end;
+    margin: 0px 14px 14px 14px;
+}
+
+#users-dialog-collapse {
+    width: 100%;
+}
+
+#users-dialog-alert {
+    color: var(--color-accent-300);
+    margin-bottom: 16px;
+}
+
+.users-dialog-textfield-username {
+    grid-column: 1 / span 2 !important;
+}
+
+.users-dialog-textfield {
+    grid-column: 1 / span 3 !important;
+}
+
+.users-dialog-textfield-multiline {
+    grid-column: 1 / span 3 !important;
+    margin-top: 8px !important;
+}

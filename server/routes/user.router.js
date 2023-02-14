@@ -30,6 +30,41 @@ router.post('/register', (req, res, next) => {
     });
 });
 
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+  const sqlText = `
+    UPDATE "users" 
+      SET 
+        "username" = $2,
+        "email" = $3,
+        "role" = $4,
+        "first_name" = $5,
+        "last_name" = $6,
+        "phone" = $7,
+        "comments" = $8
+      WHERE "id" = $1;
+  `;
+  const sqlValues = [
+    req.body.id,
+    req.body.username,
+    req.body.email,
+    req.body.role,
+    req.body.first_name,
+    req.body.last_name,
+    req.body.phone,
+    req.body.comments
+  ];
+  
+  pool.query(sqlText, sqlValues)
+    .then((result) => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log('UPDATE database error', error);
+      res.sendStatus(500);
+    });
+
+});
+
 router.put('/changePassword', rejectUnauthenticated, async (req, res) => {
   const user = req.user;
   const username = req.body.username;

@@ -66,9 +66,9 @@ function App() {
 
   // Fetch User if Logged In
   useEffect(() => {
-    if (user.id) {
+    // if (user.id) {
       dispatch({ type: "FETCH_USER" });
-    }
+    // }
   }, [dispatch]);
 
 
