@@ -216,12 +216,22 @@ function* registerUser(action) {
   }
 }
 
+function* resetPassword(action) {
+  try {
+    console.log(action.payload)
+    yield axios({ method: 'POST', url: `/api/user/resetPassword`, data: action.payload })
+  } catch (error) {
+    console.log("Error with user registration:", error);
+  }
+}
+
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
   yield takeLatest('REGISTER_USER', registerUser);
   yield takeLatest('EDIT_USER', editUser);
   yield takeLatest('DELETE_USER', deleteUser);
   yield takeLatest('CHANGE_USER_PASSWORD', changeUserPassword);
+  yield takeLatest('RESET_PASSWORD', resetPassword);
 }
 
 export default userSaga;

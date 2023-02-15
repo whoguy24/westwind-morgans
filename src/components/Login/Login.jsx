@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import Toast from "../Toast/Toast";
 import Loading from "../Loading/Loading";
+import LoginResetPassword from "../LoginResetPassword/LoginResetPassword";
 
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
@@ -34,6 +35,8 @@ function Login() {
     const [passwordError, setPasswordError] = useState("");
 
     const [showPassword, setShowPassword] = useState(false);
+
+    const [dialogResetPassword, setDialogResetPassword] = useState(false);
 
     // Redux Store Variables
     const server = useSelector(store => store.server);
@@ -105,10 +108,15 @@ function Login() {
                             </InputAdornment>
                         )
                     }}
-                />
-                <Button id="login-button" onClick={handleLoginButton}>Log In</Button>
+                />  
+                <div>             
+                    <Button onClick={()=>setDialogResetPassword(true)}>Forgot Password</Button>
+                    <Button id="login-button" onClick={handleLoginButton}>Log In</Button>
+                </div> 
                 <input type="submit" hidden />
             </Box>
+
+            <LoginResetPassword dialogResetPassword={dialogResetPassword} setDialogResetPassword={setDialogResetPassword}/>
 
             <Loading />
             <Toast />

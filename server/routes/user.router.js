@@ -158,6 +158,35 @@ router.post('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
+
+
+
+
+
+router.post('/resetPassword', (req, res) => {
+
+  console.log(req.body.email)
+  res.sendStatus(200)
+
+  // const queryValues = [loggedInUsername, passwordNew]
+  // const queryText = `UPDATE "users" SET "password" = $2 WHERE "users"."username" = $1;`;
+  // pool.query(queryText, queryValues)
+  //   .then((result) => {
+  //     res.sendStatus(200)
+  //   })
+  //   .catch((err) => {
+  //     console.log('Failed: ', err);
+  //     res.sendStatus(500);
+  // });
+
+});
+
+
+
+
+
+
+
 function comparePasswords(username, password) {
   return new Promise((resolve, reject )=> {
       const queryValues = [username];
