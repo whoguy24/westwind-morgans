@@ -218,8 +218,9 @@ function* registerUser(action) {
 
 function* resetPassword(action) {
   try {
-    console.log(action.payload)
-    yield axios({ method: 'POST', url: `/api/user/resetPassword`, data: action.payload })
+    const config = { headers: { 'Content-Type': 'application/json' }, withCredentials: true };
+    yield axios({ method: 'PUT', url: `/api/user/${action.payload.email}/resetPassword`, data: action.payload, config})
+
   } catch (error) {
     console.log("Error with user registration:", error);
   }

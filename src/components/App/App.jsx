@@ -119,6 +119,11 @@ function App() {
                 <Route exact path="/admin" element={ user?.id ? <Admin /> : <Login /> } />
                 <Route exact path="/users" element={ user?.id ? <Users /> : <Login /> } />
                 <Route exact path="*" element={<NotFound />} />
+
+
+                <Route exact path="/resetPassword/:username1/:token" element={<Login />} />
+
+
               </Routes>
             </div>
             

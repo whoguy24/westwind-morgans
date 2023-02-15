@@ -8,6 +8,8 @@ import '../Login/Login.css';
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 
+import { useParams } from "react-router-dom";
+
 import Toast from "../Toast/Toast";
 import Loading from "../Loading/Loading";
 import LoginResetPassword from "../LoginResetPassword/LoginResetPassword";
@@ -37,6 +39,8 @@ function Login() {
     const [showPassword, setShowPassword] = useState(false);
 
     const [dialogResetPassword, setDialogResetPassword] = useState(false);
+
+    let { username1, token } = useParams();
 
     // Redux Store Variables
     const server = useSelector(store => store.server);
@@ -109,7 +113,8 @@ function Login() {
                         )
                     }}
                 />  
-                <div>             
+                <div>        
+                    <Button onClick={()=>console.log(username1)}>Test</Button>    
                     <Button onClick={()=>setDialogResetPassword(true)}>Forgot Password</Button>
                     <Button id="login-button" onClick={handleLoginButton}>Log In</Button>
                 </div> 

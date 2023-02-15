@@ -4,6 +4,9 @@ const encryptLib = require('../modules/encryption');
 const pool = require('../modules/pool');
 const userStrategy = require('../strategies/user.strategy');
 
+const nodemailer = require("nodemailer");
+const crypto = require("crypto");
+
 const router = express.Router();
 
 router.get('/', rejectUnauthenticated, (req, res) => {
@@ -46,6 +49,40 @@ router.post('/register', async (req, res, next) => {
 
 });
 
+
+router.put('/:id/changePassword', rejectUnauthenticated, async (req, res) => {
+  
+  const loggedInUsername = req.user.username;
+  const requestUsername = req.body.username
+
+  const passwordCandidate = req.body.password_current;
+  const passwordNew = encryptLib.encryptPassword(req.body.password_new);
+
+  const passwordsMatch = await comparePasswords(loggedInUsername, passwordCandidate);
+
+  if ( loggedInUsername === requestUsername && passwordsMatch ) {
+
+    const queryValues = [loggedInUsername, passwordNew]
+    const queryText = `UPDATE "users" SET "password" = $2 WHERE "users"."username" = $1;`;
+    pool.query(queryText, queryValues)
+      .then((result) => {
+        res.sendStatus(200)
+      })
+      .catch((err) => {
+        console.log('Failed: ', err);
+        res.sendStatus(500);
+    });
+
+    }
+    else if (!passwordsMatch) {
+      res.sendStatus(401);
+    }
+  else {
+    res.sendStatus(500);
+  }
+
+});
+
 router.put('/:id', rejectUnauthenticated, (req, res) => {
   const sqlText = `
     UPDATE "users" 
@@ -81,38 +118,6 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
 
 });
 
-router.put('/:id/changePassword', rejectUnauthenticated, async (req, res) => {
-  
-  const loggedInUsername = req.user.username;
-  const requestUsername = req.body.username
-
-  const passwordCandidate = req.body.password_current;
-  const passwordNew = encryptLib.encryptPassword(req.body.password_new);
-
-  const passwordsMatch = await comparePasswords(loggedInUsername, passwordCandidate);
-
-  if ( loggedInUsername === requestUsername && passwordsMatch ) {
-
-    const queryValues = [loggedInUsername, passwordNew]
-    const queryText = `UPDATE "users" SET "password" = $2 WHERE "users"."username" = $1;`;
-    pool.query(queryText, queryValues)
-      .then((result) => {
-        res.sendStatus(200)
-      })
-      .catch((err) => {
-        console.log('Failed: ', err);
-        res.sendStatus(500);
-    });
-
-    }
-    else if (!passwordsMatch) {
-      res.sendStatus(401);
-    }
-  else {
-    res.sendStatus(500);
-  }
-
-});
 
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
   const sqlText = "DELETE FROM users WHERE id = $1"
@@ -163,23 +168,99 @@ router.post('/logout', (req, res) => {
 
 
 
-router.post('/resetPassword', (req, res) => {
 
-  console.log(req.body.email)
-  res.sendStatus(200)
 
-  // const queryValues = [loggedInUsername, passwordNew]
-  // const queryText = `UPDATE "users" SET "password" = $2 WHERE "users"."username" = $1;`;
-  // pool.query(queryText, queryValues)
-  //   .then((result) => {
-  //     res.sendStatus(200)
-  //   })
-  //   .catch((err) => {
-  //     console.log('Failed: ', err);
-  //     res.sendStatus(500);
-  // });
+
+
+
+
+
+
+
+router.put('/:email/resetPassword', async (req, res) => {
+
+  console.log("WE'RE HERE")
+
+  const user = await fetchUserByEmail(req.body.email);
+
+  console.log(user)
+
+  if (user) {
+    let token = crypto.randomBytes(20).toString("hex");
+    const queryValues = [user.id, token]
+    const queryText = `
+      UPDATE "users" 
+        SET 
+          "reset_token" = $2
+      WHERE "id" = $1;
+  `;
+    pool.query(queryText, queryValues)
+      .then((result) => {
+        sendEmail(user.username, user.email, token);
+        res.sendStatus(200)
+      })
+      .catch((err) => {
+        console.log('Failed: ', err);
+        res.sendStatus(500);
+    });
+  } else {
+    res.sendStatus(500);
+  }
 
 });
+
+function fetchUserByEmail (email) {
+  return new Promise((resolve, reject )=> {
+    const queryValues = [email]
+    const queryText = `SELECT "id", "username", "email" FROM "users" WHERE "users"."email" = $1;`;
+    pool.query(queryText, queryValues)
+    .then(async(result) => { 
+        resolve(result.rows[0]);
+    })
+    .catch((error) => { 
+        reject(error);
+    });
+  })
+}
+
+function sendEmail(username, email, token) {
+
+  let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      type: 'OAuth2',
+      user: process.env.MAIL_USERNAME,
+      pass: process.env.MAIL_PASSWORD,
+      clientId: process.env.OAUTH_CLIENTID,
+      clientSecret: process.env.OAUTH_CLIENT_SECRET,
+      refreshToken: process.env.OAUTH_REFRESH_TOKEN
+    }
+  });
+
+  let mailOptions = {
+    from: "whoguy24@gmail.com",
+    to: email,
+    subject: 'Westwind Morgans',
+    text: `localhost:3000/#/resetPassword/${username}/${token}`
+  };
+
+  transporter.sendMail(mailOptions, function(err, data) {
+    if (err) {
+      console.log("Error " + err);
+    } else {
+      console.log("Email sent successfully");
+    }
+  });
+
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -216,5 +297,8 @@ function fetchUsernames() {
 
   })
 }
+
+
+
 
 module.exports = router;
