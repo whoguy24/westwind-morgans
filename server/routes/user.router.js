@@ -196,7 +196,7 @@ router.put('/:email/resetPassword', async (req, res) => {
   `;
     pool.query(queryText, queryValues)
       .then((result) => {
-        sendEmail(user.username, user.email, token);
+        sendEmail(user.email, token);
         res.sendStatus(200)
       })
       .catch((err) => {
@@ -223,7 +223,7 @@ function fetchUserByEmail (email) {
   })
 }
 
-function sendEmail(username, email, token) {
+function sendEmail(email, token) {
 
   let transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -241,7 +241,7 @@ function sendEmail(username, email, token) {
     from: "whoguy24@gmail.com",
     to: email,
     subject: 'Westwind Morgans',
-    text: `localhost:3000/#/resetPassword/${username}/${token}`
+    text: `localhost:3000/#/resetPassword/${token}`
   };
 
   transporter.sendMail(mailOptions, function(err, data) {
@@ -253,6 +253,51 @@ function sendEmail(username, email, token) {
   });
 
 }
+
+router.get('/fetchUserFromResetToken/:reset_token', (req, res) => {
+
+    const reset_token = req.params.reset_token;
+
+    const queryValues = [reset_token]
+    const queryText = `
+    SELECT "id", "username", "email", reset_token FROM "users" WHERE "users"."reset_token" = $1;
+  `;
+    pool.query(queryText, queryValues)
+      .then((result) => {
+        res.send(result.rows[0]);
+      })
+      .catch((err) => {
+        console.log('Failed: ', err);
+        res.sendStatus(500);
+    });
+
+});
+
+router.put('/:id/resetPasswordFromToken', (req, res) => {
+
+  console.log("WE'RE HERE")
+
+  const token = req.body
+  const password_new = encryptLib.encryptPassword(token.password_new);
+
+    const queryValues = [token.id, password_new, token.reset_token]
+    const queryText = `
+      UPDATE "users" 
+        SET 
+          "password" = $2
+      WHERE "id" = $1 AND reset_token = $3;
+    `;
+
+    pool.query(queryText, queryValues)
+      .then((result) => {
+        res.sendStatus(200)
+      })
+      .catch((err) => {
+        console.log('Failed: ', err);
+        res.sendStatus(500);
+    });
+
+});
 
 
 
