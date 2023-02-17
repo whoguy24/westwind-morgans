@@ -85,6 +85,10 @@ function Login() {
         event.preventDefault();
     };
 
+    function test() {
+        dispatch({type:"FETCH_USERS"})
+    }
+
     // Render DOM
     return (
         
@@ -124,7 +128,7 @@ function Login() {
                     }}
                 />  
                 <div>        
-                    <Button onClick={()=>console.log(username1)}>Test</Button>    
+                    <Button onClick={test}>Test</Button>    
                     <Button onClick={()=>setDialogResetPassword(true)}>Forgot Password</Button>
                     <Button id="login-button" onClick={handleLoginButton}>Log In</Button>
                 </div> 
