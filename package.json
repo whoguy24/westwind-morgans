@@ -1,5 +1,6 @@
 {
   "name": "westwind-morgans",
+  "homepage": "http://www.obriensoftwarestudios.com",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:5000",

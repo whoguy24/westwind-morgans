@@ -41,6 +41,8 @@ function HorseDetail({type, title}) {
   // Redux Store Variables
   const horse = useSelector(store => store.horse);
 
+  console.log(horse)
+
   // Fetch Object from Database On Page Load
   useEffect(() => {
     dispatch({ type: "FETCH_HORSE", route: type, id: id });

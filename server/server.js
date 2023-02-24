@@ -10,7 +10,7 @@ const app = express();
 // // Route includes
 // const userRouter = require('./routes/user.router');
 const usersRouter = require('./routes/users.router');
-// const horsesRouter = require('./routes/horses.router');
+const horsesRouter = require('./routes/horses.router');
 
 // // Body parser middleware
 // app.use(bodyParser.json());
@@ -26,7 +26,7 @@ const usersRouter = require('./routes/users.router');
 // /* Routes */
 // app.use('/api/user', userRouter);
 app.use('/api/users', usersRouter);
-// app.use('/api/horses', horsesRouter);
+app.use('/api/horses', horsesRouter);
 
 // // Serve static files
 app.use(express.static('build'));

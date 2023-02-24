@@ -48,10 +48,16 @@
 
 const mysql = require("mysql");
 
-// this creates the pool that will be shared by all other modules
+// const pool = new mysql.createPool({
+//   user: "westwind",
+//   host: "208.109.25.83",
+//   password: "bastogne",
+//   database: "westwind_morgans"
+// })
+
 const pool = new mysql.createPool({
   user: "westwind",
-  host: "208.109.25.83",
+  host: "localhost",
   password: "bastogne",
   database: "westwind_morgans"
 })
