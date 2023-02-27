@@ -30,9 +30,11 @@ function HorseGallery({type, title}) {
     window.scrollTo(0, 0);
   }, [type]);
 
+  console.log("THIS IS JUST A TEST TO MAKE SURE SHIT IS UPDATIN'")
+
   // Redux Store Variables
   const horses = useSelector(store => store.horses);
-  const visibleHorses = horses.filter(horse=>horse.visible === true);
+  // const visibleHorses = horses?.filter(horse=>horse.visible === 1);
 
   // Render DOM
   return (
@@ -44,11 +46,16 @@ function HorseGallery({type, title}) {
         <Toolbar type={type} title={title}/>
 
         <div id="horse-gallery">
-          {visibleHorses.map((horse) => {
-              return (
+
+
+          {/* { horses && horses.map((horse) => {
+            return (
                 <HorseCard key={horse.id} horse={horse}/>
               )
-          })}
+            })
+          } */}
+
+
         </div>
       
     </>

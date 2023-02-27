@@ -28,7 +28,7 @@ function PedigreeCell({horse}) {
 
               <>
 
-                { horse.visible === true ?
+                { horse.visible === 1 ?
 
                   <NavLink to={`/${horse.type}/${horse.id}`}>
                     <Typography id="pedigree-cell-text">{horse.name}</Typography>

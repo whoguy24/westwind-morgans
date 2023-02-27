@@ -25,6 +25,7 @@ import Visit from "../Visit/Visit";
 import Contact from "../Contact/Contact";
 import UserBar from "../UserBar/UserBar";
 import Users from "../Users/Users";
+import ResetPassword from "../ResetPassword/ResetPassword";
 
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
@@ -37,6 +38,7 @@ function App() {
 
   // Redux Store Variables
   const user = useSelector(store => store.user);
+  const token = useSelector(store => store.token);
 
   // Delay Render to Allow Preloader Time to Display
   const [loading, setLoading] = useState(false);
@@ -115,13 +117,17 @@ function App() {
                 {/* <Route exact path="/foundation" element={<Placeholder />} /> */}
                 <Route exact path="/contact" element={<Contact type="contact" title="Contact" facebookLink={facebookLink}/>} />
                 {/* <Route exact path="/visit" element={<Visit />} /> */}
-                <Route exact path="/login" element={<Login />} />
+
+
+                <Route exact path="/login" element={ <Login />} />
+
+
                 <Route exact path="/admin" element={ user?.id ? <Admin /> : <Login /> } />
-                <Route exact path="/users" element={ user?.id ? <Users /> : <Login /> } />
+                <Route exact path="/users" element={ <Users /> } />
                 <Route exact path="*" element={<NotFound />} />
 
 
-                <Route exact path="/resetPassword/:username1/:token" element={<Login />} />
+                <Route exact path="/resetPassword/:reset_token" element={ token?.reset_token ? <ResetPassword /> : <Login /> } />
 
 
               </Routes>

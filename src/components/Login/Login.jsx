@@ -5,7 +5,7 @@
 // Import Stylesheets
 import '../Login/Login.css';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 
 import { useParams } from "react-router-dom";
@@ -30,6 +30,8 @@ function Login() {
 
     const dispatch = useDispatch();
 
+
+
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -40,10 +42,18 @@ function Login() {
 
     const [dialogResetPassword, setDialogResetPassword] = useState(false);
 
-    let { username1, token } = useParams();
-
     // Redux Store Variables
     const server = useSelector(store => store.server);
+    const token = useSelector(store => store.token);
+
+    const { reset_token } = useParams();
+
+    useEffect(() => { 
+        dispatch({
+          type: "FETCH_USER_FROM_RESET_TOKEN",
+          payload: { reset_token: reset_token },
+        });
+      }, []);
 
     function handleLoginButton(event) {
         event.preventDefault();
@@ -74,6 +84,10 @@ function Login() {
     const handleMouseDownShowPassword = (event) => {
         event.preventDefault();
     };
+
+    function test() {
+        dispatch({type:"FETCH_USERS"})
+    }
 
     // Render DOM
     return (
@@ -114,7 +128,7 @@ function Login() {
                     }}
                 />  
                 <div>        
-                    <Button onClick={()=>console.log(username1)}>Test</Button>    
+                    <Button onClick={test}>Test</Button>    
                     <Button onClick={()=>setDialogResetPassword(true)}>Forgot Password</Button>
                     <Button id="login-button" onClick={handleLoginButton}>Log In</Button>
                 </div> 

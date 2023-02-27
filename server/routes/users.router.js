@@ -1,24 +1,24 @@
 const express = require('express');
-const { rejectUnauthenticated, } = require('../modules/authentication-middleware');
+// const { rejectUnauthenticated, } = require('../modules/authentication-middleware');
 const pool = require('../modules/pool');
 
 const router = express.Router();
 
-router.get('/', rejectUnauthenticated, (req, res) => {
-  const queryText = `SELECT "id", "username", "email", "phone", "first_name", "last_name", "role", "comments", created_by FROM "users" ORDER BY "id" ASC;`;
-  pool.query(queryText)
-  .then((result) => {  
-    if (req.user.role === "USER") {
-      res.send(result.rows.filter(user=>user.created_by === req.user.username || user.username === req.user.username))
-    }
-    else {
-      res.send(result.rows)
-    }
-  })
-  .catch((error) => {
-      console.log(error);
-      res.sendStatus(500);
-  });
+router.get('/', (req, res) => {
+    
+  pool.query(
+      `SELECT * FROM users;`,
+      (error, result) => {
+          if (error) {
+              console.log(error);
+          } else {
+              console.log(result);
+              res.send(result)
+              
+          }
+      }
+  )
+  
 });
 
 module.exports = router;

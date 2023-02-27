@@ -222,9 +222,41 @@ function* resetPassword(action) {
     yield axios({ method: 'PUT', url: `/api/user/${action.payload.email}/resetPassword`, data: action.payload, config})
 
   } catch (error) {
-    console.log("Error with user registration:", error);
+    console.log("Error:", error);
   }
 }
+
+function* fetchUserFromResetToken(action) {
+  try {
+    const response = yield axios({ method: 'GET', url: `/api/user/fetchUserFromResetToken/${action.payload.reset_token}` })
+    yield put({ type: 'SET_RESET_TOKEN', payload: response.data });
+  } catch (error) {
+    console.log("Error:", error);
+    yield put({ type: 'CLEAR_RESET_TOKEN' });
+  }
+}
+
+function* resetPasswordFromToken(action) {
+  try {
+    yield axios({ method: 'PUT', url: `/api/user/${action.payload.id}/resetPasswordFromToken`, data: action.payload })
+    // const response = yield axios({ method: 'GET', url: `/api/user/fetchUserFromResetToken/${action.payload.reset_token}` })
+    // yield put({ type: 'SET_RESET_TOKEN', payload: response.data });
+  } catch (error) {
+    console.log("Error:", error);
+    // yield put({ type: 'CLEAR_RESET_TOKEN' });
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
@@ -233,6 +265,8 @@ function* userSaga() {
   yield takeLatest('DELETE_USER', deleteUser);
   yield takeLatest('CHANGE_USER_PASSWORD', changeUserPassword);
   yield takeLatest('RESET_PASSWORD', resetPassword);
+  yield takeLatest('FETCH_USER_FROM_RESET_TOKEN', fetchUserFromResetToken);
+  yield takeLatest('RESET_PASSWORD_FROM_TOKEN', resetPasswordFromToken);
 }
 
 export default userSaga;
