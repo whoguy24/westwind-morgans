@@ -113,9 +113,8 @@ function Login() {
                         )
                     }}
                 />  
-                <div>        
-                    <Button onClick={()=>console.log(username1)}>Test</Button>    
-                    <Button onClick={()=>setDialogResetPassword(true)}>Forgot Password</Button>
+                <div>         
+                    {/* <Button onClick={()=>setDialogResetPassword(true)}>Forgot Password</Button> */}
                     <Button id="login-button" onClick={handleLoginButton}>Log In</Button>
                 </div> 
                 <input type="submit" hidden />

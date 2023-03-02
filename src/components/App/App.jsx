@@ -47,7 +47,7 @@ function App() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 4000);
+    }, 1000);
       dispatch({ 
         type: 'SET_SERVER', 
         payload: {
@@ -109,8 +109,9 @@ function App() {
                 <Route path="/fillies/:id" element={<HorseDetail type="fillies" title="Fillies" />} />
                 <Route exact path="/geldings" element={<HorseGallery type="geldings" title="Geldings" />} />
                 <Route path="/geldings/:id" element={<HorseDetail type="geldings" title="Geldings" />} />
-                <Route exact path="/testimonials" element={<HorseGallery type="testimonials" title="Testimonials" />} />
-                <Route path="/testimonials/:id" element={<HorseDetail type="testimonials" title="Testimonials" />} />
+                <Route exact path="/testimonials" element={<Placeholder />} />
+                {/* <Route exact path="/testimonials" element={<HorseGallery type="testimonials" title="Testimonials" />} />
+                <Route path="/testimonials/:id" element={<HorseDetail type="testimonials" title="Testimonials" />} /> */}
                 {/* <Route exact path="/breeding" element={<Placeholder />} /> */}
                 {/* <Route exact path="/foundation" element={<Placeholder />} /> */}
                 <Route exact path="/contact" element={<Contact type="contact" title="Contact" facebookLink={facebookLink}/>} />

@@ -48,14 +48,14 @@ function Footer() {
                                 <li><NavLink to="/colts">Colts</NavLink></li>
                                 <li><NavLink to="/fillies">Fillies</NavLink></li>
                             </ul>
-                            <ul>
+                            {/* <ul>
                                 <li><NavLink to="/foundation">Why Foundation</NavLink></li>
                                 <li><NavLink to="/breeding">Breeding</NavLink></li>
                                 <li><NavLink to="/testimonials">Testimonials</NavLink></li>
                                 
-                            </ul>
+                            </ul> */}
                             <ul>
-                            <li><NavLink to="/visit">Visit</NavLink></li>
+                                {/* <li><NavLink to="/visit">Visit</NavLink></li> */}
                                 <li><NavLink to="/contact">Contact</NavLink></li>
                                 <li><NavLink to="/admin">Admin</NavLink></li>
                             </ul>
