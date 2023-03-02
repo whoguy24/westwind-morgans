@@ -116,7 +116,7 @@ function HorseDetail({type, title}) {
 
         }
 
-        { horse.progeny?.length > 0 &&
+        { horse.progeny?.filter(progeny=>progeny.visible == true )?.length > 0 &&
 
           <>
 
@@ -124,7 +124,7 @@ function HorseDetail({type, title}) {
 
             <div id="horse-detail-progeny-gallery">
 
-              {horse.progeny.map((horse) => {
+              {horse.progeny?.filter(progeny=>progeny.visible == true ).map((horse) => {
                   return (
                     <HorseCard key={horse.id} horse={horse}/>
                   )
