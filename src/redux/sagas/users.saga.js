@@ -7,17 +7,8 @@ import { serverStore } from '../reducers/server.reducer.js'
 function* fetchUsers(action) {
     try {
       // const server = yield select(serverStore)
-      console.log("In fetch users saga");
-      
-      // const response = yield axios({ method: 'GET', url: '/api/users' });
-
-
       const response = yield axios({ method: 'GET', url: '/api/users' });
-
-
-
       console.log(response)
-
       yield put({ type: 'LOAD_USERS', payload: response.data });
       // yield put({ 
       //   type: 'SET_SERVER', 

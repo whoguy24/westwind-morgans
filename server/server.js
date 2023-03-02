@@ -1,22 +1,16 @@
-// const express = require('express');
-// const bodyParser = require('body-parser');
-// require('dotenv').config();
+const express = require('express');
+const bodyParser = require('body-parser');
+require('dotenv').config();
 
-// const cors = require("cors");
-
-// const app = express();
-
-// app.use(cors({
-//   origin: "http://obriensoftwarestudios.com"
-// }));
+const app = express();
 
 // const sessionMiddleware = require('./modules/session-middleware');
 // const passport = require('./strategies/user.strategy');
 
 // // Route includes
 // const userRouter = require('./routes/user.router');
-// const usersRouter = require('./routes/users.router');
-// const horsesRouter = require('./routes/horses.router');
+const usersRouter = require('./routes/users.router');
+const horsesRouter = require('./routes/horses.router');
 
 // // Body parser middleware
 // app.use(bodyParser.json());
@@ -31,45 +25,16 @@
 
 // /* Routes */
 // app.use('/api/user', userRouter);
-// app.use('/api/users', usersRouter);
-// app.use('/api/horses', horsesRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/horses', horsesRouter);
 
 // // Serve static files
-// app.use(express.static('build'));
-
-// // App Set //
-// const PORT = process.env.PORT || 5000;
-
-// /** Listen * */
-// app.listen(PORT, () => {
-//   console.log(`Listening on port: ${PORT}`);
-// });
-
-const express = require('express');
-const bodyParser = require('body-parser');
-require('dotenv').config();
-
-const cors = require("cors");
-
-const app = express();
-
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use(cors({
-  origin: "*"
-}));
-
-const usersRouter = require('./routes/users.router');
-
-app.use('/api/users', usersRouter);
-
-// Serve static files
 app.use(express.static('build'));
 
-// App Set //
+// // App Set //
 const PORT = process.env.PORT || 5000;
 
-// Listen
+// /** Listen * */
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
 });

@@ -64,16 +64,14 @@ function App() {
             toast_description:""
         }
     });
-    console.log("Fetching Users")
-    dispatch({ type: "FETCH_USERS" });
   }, []);
 
   // Fetch User if Logged In
-  // useEffect(() => {
-  //   // if (user.id) {
-  //     dispatch({ type: "FETCH_USER" });
-  //   // }
-  // }, [dispatch]);
+  useEffect(() => {
+    // if (user.id) {
+      dispatch({ type: "FETCH_USER" });
+    // }
+  }, [dispatch]);
 
 
   // App is rendered inside React Router DOM component. 

@@ -5,9 +5,6 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-
-
-    console.log("TEEEEEESSSSSSSSSTTTTTTT!!!!!!!!!!!!!!!")
     
   pool.query(
       `SELECT * FROM users;`,
