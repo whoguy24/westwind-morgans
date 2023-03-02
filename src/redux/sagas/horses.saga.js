@@ -6,7 +6,6 @@ function* fetchHorses(action) {
       const response = yield axios({ method: 'GET', url: `/api/horses/${action.route}` })
       yield put({ type: 'LOAD_HORSES', payload: response.data })
       yield put({ type: 'SERVER_200' });
-      console.log(response.data)
     } catch(error) {
       console.error('ERROR:', error)
       yield put({ type: `SERVER_${error.response.status}` });
