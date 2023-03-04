@@ -26,6 +26,9 @@ import Contact from "../Contact/Contact";
 import UserBar from "../UserBar/UserBar";
 import Users from "../Users/Users";
 
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
 ///////////////////////////////////////////////////////
 ///// COMPONENT FUNCTION //////////////////////////////
 ///////////////////////////////////////////////////////
@@ -42,34 +45,47 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   const facebookLink = "https://www.facebook.com/people/Westwind-Morgans/100063575859271/";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDAfj1HaGNJ3r783qI_MgGehWa8qjsxknI",
+    authDomain: "westwind-morgans-377918.firebaseapp.com",
+    projectId: "westwind-morgans-377918",
+    storageBucket: "westwind-morgans-377918.appspot.com",
+    messagingSenderId: "597094908498",
+    appId: "1:597094908498:web:88dd373472f95e35e0d58b",
+    measurementId: "G-E14QW04W7R"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
   
-  useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-      dispatch({ 
-        type: 'SET_SERVER', 
-        payload: {
-            result:200,
-            userbar:true,
-            loading:false, 
-            loading_duration:1000,
-            toast_open:false,
-            toast_autoHideDuration:6000, 
-            toast_severity:"info", 
-            toast_variant:"filled",
-            toast_description:""
-        }
-    });
-  }, []);
+  // useEffect(() => {
+  //   setLoading(true);
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   }, 1000);
+  //     dispatch({ 
+  //       type: 'SET_SERVER', 
+  //       payload: {
+  //           result:200,
+  //           userbar:true,
+  //           loading:false, 
+  //           loading_duration:1000,
+  //           toast_open:false,
+  //           toast_autoHideDuration:6000, 
+  //           toast_severity:"info", 
+  //           toast_variant:"filled",
+  //           toast_description:""
+  //       }
+  //   });
+  // }, []);
 
   // Fetch User if Logged In
-  useEffect(() => {
-    // if (user.id) {
-      dispatch({ type: "FETCH_USER" });
-    // }
-  }, [dispatch]);
+  // useEffect(() => {
+  //   // if (user.id) {
+  //     dispatch({ type: "FETCH_USER" });
+  //   // }
+  // }, [dispatch]);
 
 
   // App is rendered inside React Router DOM component. 
