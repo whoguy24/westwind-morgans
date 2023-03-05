@@ -43,33 +43,37 @@ function App() {
 
   const facebookLink = "https://www.facebook.com/people/Westwind-Morgans/100063575859271/";
   
-  useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-      dispatch({ 
-        type: 'SET_SERVER', 
-        payload: {
-            result:200,
-            userbar:true,
-            loading:false, 
-            loading_duration:1000,
-            toast_open:false,
-            toast_autoHideDuration:6000, 
-            toast_severity:"info", 
-            toast_variant:"filled",
-            toast_description:""
-        }
-    });
-  }, []);
+  // useEffect(() => {
+  //   setLoading(true);
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   }, 1000);
+  //     dispatch({ 
+  //       type: 'SET_SERVER', 
+  //       payload: {
+  //           result:200,
+  //           userbar:true,
+  //           loading:false, 
+  //           loading_duration:1000,
+  //           toast_open:false,
+  //           toast_autoHideDuration:6000, 
+  //           toast_severity:"info", 
+  //           toast_variant:"filled",
+  //           toast_description:""
+  //       }
+  //   });
+  // }, []);
 
-  // Fetch User if Logged In
+  // // Fetch User if Logged In
+  // useEffect(() => {
+  //   // if (user.id) {
+  //     dispatch({ type: "FETCH_USER" });
+  //   // }
+  // }, [dispatch]);
+
   useEffect(() => {
-    // if (user.id) {
-      dispatch({ type: "FETCH_USER" });
-    // }
-  }, [dispatch]);
+      dispatch({ type: "FETCH_USERS" });
+  }, []);
 
 
   // App is rendered inside React Router DOM component. 
